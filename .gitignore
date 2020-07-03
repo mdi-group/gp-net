@@ -1,0 +1,17 @@
+*.py~
+*.pyc
+*.md~
+**/__pycache__
+.gitignore~
+.DS_Store
+*.pdf
+*.json
+*.hdf5
+*.h5
+*.pkl
+**/callback
+**entropy/
+**random/
+**no_cycle/
+**train_test_split/
+**k_fold/ 

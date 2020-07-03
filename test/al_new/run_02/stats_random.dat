@@ -1,0 +1,2957 @@
+
+gp-net.py ver  1.0
+MEGNet training requested ...
+
+Get graph inputs to MEGNet ...
+Bond features =  10
+Global features =  2
+Radial cutoff =  5
+Gaussian width =  0.5
+
+Number of input entries found for band_gap data = 10461
+Excluding zero optical property values from the dataset ...
+Remaining number of entries = 9254
+
+Obtaining valid structures and targets ...
+Skipping structure with isolated atom ...
+Skipping structure with isolated atom ...
+Skipping structure with isolated atom ...
+Skipping structure with isolated atom ...
+Number of invalid structures = 4
+
+Total number of entries available for analysis = 9250
+
+Requested pool: 20.0%
+Requested validation set: 80.0% of pool
+Requested test set: 80.0%
+Pool: (1850,)
+Test set: (7400,)
+Training set: (370,)
+Validation set: (1480,)
+
+Active learning requested ...
+Number of cycle(s):  50
+Number of samples per cycle:  1
+
+Query number  0
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/00_model/model-best-new-band_gap.h5 found
+Epoch 1/5
+
+1/8 [==>...........................] - ETA: 39s - loss: 0.3359
+2/8 [======>.......................] - ETA: 17s - loss: 0.3701
+3/8 [==========>...................] - ETA: 9s - loss: 0.4655 
+4/8 [==============>...............] - ETA: 6s - loss: 0.4345
+5/8 [=================>............] - ETA: 3s - loss: 0.4074
+6/8 [=====================>........] - ETA: 2s - loss: 0.3888
+7/8 [=========================>....] - ETA: 0s - loss: 0.4110
+8/8 [==============================] - 12s 1s/step - loss: 0.4144 - val_loss: 0.8600
+
+Epoch 00001: val_loss improved from inf to 0.85999, saving model to random/00_model/model-best-new-band_gap.h5
+Epoch 2/5
+
+1/8 [==>...........................] - ETA: 1s - loss: 0.4828
+2/8 [======>.......................] - ETA: 1s - loss: 0.4173
+3/8 [==========>...................] - ETA: 0s - loss: 0.3887
+4/8 [==============>...............] - ETA: 0s - loss: 0.3845
+5/8 [=================>............] - ETA: 0s - loss: 0.3766
+6/8 [=====================>........] - ETA: 0s - loss: 0.3673
+7/8 [=========================>....] - ETA: 0s - loss: 0.3840
+8/8 [==============================] - 6s 776ms/step - loss: 0.3954 - val_loss: 0.6126
+
+Epoch 00002: val_loss improved from 0.85999 to 0.61256, saving model to random/00_model/model-best-new-band_gap.h5
+Epoch 3/5
+
+1/8 [==>...........................] - ETA: 1s - loss: 0.3082
+2/8 [======>.......................] - ETA: 0s - loss: 0.3250
+3/8 [==========>...................] - ETA: 0s - loss: 0.3453
+4/8 [==============>...............] - ETA: 0s - loss: 0.3594
+5/8 [=================>............] - ETA: 0s - loss: 0.3473
+6/8 [=====================>........] - ETA: 0s - loss: 0.3563
+7/8 [=========================>....] - ETA: 0s - loss: 0.3500
+8/8 [==============================] - 6s 744ms/step - loss: 0.3567 - val_loss: 0.8681
+
+Epoch 00003: val_loss did not improve from 0.61256
+Epoch 4/5
+
+1/8 [==>...........................] - ETA: 1s - loss: 0.3353
+2/8 [======>.......................] - ETA: 1s - loss: 0.3249
+3/8 [==========>...................] - ETA: 0s - loss: 0.3662
+4/8 [==============>...............] - ETA: 0s - loss: 0.3099
+5/8 [=================>............] - ETA: 0s - loss: 0.3184
+6/8 [=====================>........] - ETA: 0s - loss: 0.3320
+7/8 [=========================>....] - ETA: 0s - loss: 0.3248
+8/8 [==============================] - 6s 736ms/step - loss: 0.3355 - val_loss: 0.6785
+
+Epoch 00004: val_loss did not improve from 0.61256
+Epoch 5/5
+
+1/8 [==>...........................] - ETA: 1s - loss: 0.4178
+2/8 [======>.......................] - ETA: 1s - loss: 0.3463
+3/8 [==========>...................] - ETA: 0s - loss: 0.3466
+4/8 [==============>...............] - ETA: 0s - loss: 0.3377
+5/8 [=================>............] - ETA: 0s - loss: 0.3330
+6/8 [=====================>........] - ETA: 0s - loss: 0.3403
+7/8 [=========================>....] - ETA: 0s - loss: 0.3372
+8/8 [==============================] - 6s 725ms/step - loss: 0.3297 - val_loss: 0.7233
+
+Epoch 00005: val_loss did not improve from 0.61256
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46265975.3251, amplitude=8.0804, length_scale=7.9204, mae=0.7250, mse=1.4545
+At step 10: loss=39795776.3552, amplitude=8.9129, length_scale=7.1791, mae=0.7498, mse=1.9172
+At step 20: loss=34324345.5182, amplitude=9.7938, length_scale=6.5248, mae=0.8086, mse=2.4877
+At step 30: loss=28439254.8019, amplitude=10.7667, length_scale=5.9220, mae=0.9039, mse=3.0171
+At step 40: loss=23610751.4543, amplitude=11.7928, length_scale=5.3889, mae=1.1244, mse=8.4651
+At step 50: loss=19751583.8806, amplitude=12.7891, length_scale=4.9460, mae=1.8466, mse=43.0430
+At step 60: loss=15386181.9956, amplitude=13.8803, length_scale=4.5290, mae=2.7448, mse=107.4671
+At step 70: loss=11255302.1966, amplitude=15.0633, length_scale=4.1440, mae=3.5295, mse=181.8541
+At step 80: loss=8584712.3493, amplitude=16.1901, length_scale=3.8311, mae=4.1288, mse=317.5799
+At step 90: loss=6644130.0314, amplitude=17.2196, length_scale=3.5840, mae=4.6822, mse=429.8262
+At step 100: loss=4893117.6880, amplitude=18.2477, length_scale=3.3674, mae=6.5309, mse=589.5213
+At step 110: loss=3468917.4275, amplitude=19.2937, length_scale=3.1778, mae=8.2882, mse=688.5109
+At step 120: loss=2411540.3668, amplitude=20.3347, length_scale=3.0178, mae=11.4817, mse=1910.4465
+At step 130: loss=1704356.6652, amplitude=21.3107, length_scale=2.8887, mae=16.5089, mse=3920.7287
+At step 140: loss=1213181.4509, amplitude=22.2027, length_scale=2.7844, mae=20.4360, mse=5775.0860
+At step 150: loss=863281.0665, amplitude=23.0205, length_scale=2.6985, mae=22.5355, mse=6723.9383
+At step 160: loss=627703.8171, amplitude=23.7560, length_scale=2.6284, mae=23.1493, mse=6733.0913
+At step 170: loss=476066.1340, amplitude=24.3992, length_scale=2.5723, mae=22.9567, mse=6267.4079
+At step 180: loss=378447.6556, amplitude=24.9531, length_scale=2.5276, mae=22.4354, mse=5683.8689
+At step 190: loss=313615.8476, amplitude=25.4305, length_scale=2.4916, mae=21.8494, mse=5134.5844
+At step 200: loss=268651.2102, amplitude=25.8466, length_scale=2.4620, mae=21.2735, mse=4661.2314
+At step 210: loss=236069.1768, amplitude=26.2147, length_scale=2.4371, mae=20.7270, mse=4264.0785
+At step 220: loss=211521.8248, amplitude=26.5453, length_scale=2.4157, mae=20.2274, mse=3931.9957
+At step 230: loss=192413.6748, amplitude=26.8463, length_scale=2.3969, mae=19.7665, mse=3652.8133
+At step 240: loss=177136.1216, amplitude=27.1233, length_scale=2.3801, mae=19.3503, mse=3416.1336
+At step 250: loss=164651.4166, amplitude=27.3808, length_scale=2.3650, mae=18.9642, mse=3213.6778
+At step 260: loss=154263.9271, amplitude=27.6218, length_scale=2.3513, mae=18.6076, mse=3038.9868
+At step 270: loss=145490.6510, amplitude=27.8488, length_scale=2.3386, mae=18.2746, mse=2887.0212
+At step 280: loss=137986.0578, amplitude=28.0639, length_scale=2.3269, mae=17.9670, mse=2753.8288
+At step 290: loss=131496.3117, amplitude=28.2684, length_scale=2.3160, mae=17.6811, mse=2636.2801
+At step 299: loss=126364.6566, amplitude=28.4446, length_scale=2.3068, mae=17.4384, mse=2541.7867
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9655, mse = 2.5586
+
+Random sampling ...
+Updated pool: (1851,)
+Updated training set (371,)
+Updated test set: (7400,)
+
+Query number  1
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46489526.5409, amplitude=8.0804, length_scale=7.9204, mae=0.7199, mse=1.3903
+At step 10: loss=39957069.1938, amplitude=8.9137, length_scale=7.1784, mae=0.7452, mse=1.8095
+At step 20: loss=34433407.5411, amplitude=9.7955, length_scale=6.5235, mae=0.7940, mse=2.3699
+At step 30: loss=28529807.8256, amplitude=10.7669, length_scale=5.9215, mae=0.9111, mse=3.1012
+At step 40: loss=23661425.3572, amplitude=11.7918, length_scale=5.3886, mae=1.1629, mse=9.0274
+At step 50: loss=19742685.5718, amplitude=12.7897, length_scale=4.9445, mae=1.8617, mse=43.6515
+At step 60: loss=15376750.0930, amplitude=13.8786, length_scale=4.5281, mae=2.7492, mse=107.9783
+At step 70: loss=11313814.0585, amplitude=15.0519, length_scale=4.1461, mae=3.4417, mse=184.3917
+At step 80: loss=8637869.8550, amplitude=16.1711, length_scale=3.8345, mae=4.0140, mse=319.3767
+At step 90: loss=6708175.9212, amplitude=17.1941, length_scale=3.5881, mae=4.2615, mse=388.9000
+At step 100: loss=4971799.4218, amplitude=18.2099, length_scale=3.3726, mae=5.8561, mse=502.4067
+At step 110: loss=3518086.7555, amplitude=19.2494, length_scale=3.1821, mae=7.9418, mse=669.9964
+At step 120: loss=2433183.8473, amplitude=20.2915, length_scale=3.0205, mae=11.4961, mse=1941.8130
+At step 130: loss=1715213.9894, amplitude=21.2692, length_scale=2.8903, mae=16.5163, mse=3935.5751
+At step 140: loss=1220771.1371, amplitude=22.1606, length_scale=2.7857, mae=20.4420, mse=5769.4307
+At step 150: loss=869243.5448, amplitude=22.9766, length_scale=2.6998, mae=22.5352, mse=6709.3597
+At step 160: loss=632334.5986, amplitude=23.7104, length_scale=2.6296, mae=23.1508, mse=6725.1918
+At step 170: loss=479638.8872, amplitude=24.3523, length_scale=2.5734, mae=22.9541, mse=6270.7363
+At step 180: loss=381239.5345, amplitude=24.9054, length_scale=2.5287, mae=22.4302, mse=5694.5820
+At step 190: loss=315843.5709, amplitude=25.3822, length_scale=2.4926, mae=21.8338, mse=5148.1588
+At step 200: loss=270468.4751, amplitude=25.7979, length_scale=2.4630, mae=21.2480, mse=4674.9220
+At step 210: loss=237582.5783, amplitude=26.1657, length_scale=2.4380, mae=20.7020, mse=4276.6131
+At step 220: loss=212805.3360, amplitude=26.4961, length_scale=2.4165, mae=20.1946, mse=3942.9216
+At step 230: loss=193519.4620, amplitude=26.7968, length_scale=2.3977, mae=19.7316, mse=3662.0668
+At step 240: loss=178101.7859, amplitude=27.0737, length_scale=2.3809, mae=19.3164, mse=3423.8148
+At step 250: loss=165504.5217, amplitude=27.3310, length_scale=2.3657, mae=18.9322, mse=3219.9491
+At step 260: loss=155025.0950, amplitude=27.5718, length_scale=2.3519, mae=18.5769, mse=3044.0187
+At step 270: loss=146175.7396, amplitude=27.7986, length_scale=2.3393, mae=18.2455, mse=2890.9769
+At step 280: loss=138607.2839, amplitude=28.0135, length_scale=2.3275, mae=17.9379, mse=2756.8543
+At step 290: loss=132063.4077, amplitude=28.2179, length_scale=2.3166, mae=17.6509, mse=2638.5039
+At step 299: loss=126889.7444, amplitude=28.3939, length_scale=2.3074, mae=17.4074, mse=2543.3832
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9565, mse = 2.4300
+
+Random sampling ...
+Updated pool: (1852,)
+Updated training set (372,)
+Updated test set: (7400,)
+
+Query number  2
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46557210.8836, amplitude=8.0804, length_scale=7.9204, mae=0.7192, mse=1.3751
+At step 10: loss=39992453.1034, amplitude=8.9139, length_scale=7.1782, mae=0.7462, mse=1.7914
+At step 20: loss=34450114.9878, amplitude=9.7956, length_scale=6.5234, mae=0.7932, mse=2.3573
+At step 30: loss=28542725.7967, amplitude=10.7659, length_scale=5.9220, mae=0.9124, mse=3.1135
+At step 40: loss=23671383.5721, amplitude=11.7895, length_scale=5.3895, mae=1.1640, mse=9.0239
+At step 50: loss=19756513.2707, amplitude=12.7855, length_scale=4.9460, mae=1.8592, mse=43.4932
+At step 60: loss=15398504.2955, amplitude=13.8718, length_scale=4.5302, mae=2.7448, mse=107.5702
+At step 70: loss=11337682.5844, amplitude=15.0423, length_scale=4.1485, mae=3.4359, mse=183.6027
+At step 80: loss=8656646.5288, amplitude=16.1599, length_scale=3.8370, mae=4.0129, mse=318.6852
+At step 90: loss=6728157.0468, amplitude=17.1812, length_scale=3.5906, mae=4.2462, mse=387.2655
+At step 100: loss=4992365.8767, amplitude=18.1945, length_scale=3.3752, mae=5.8345, mse=502.3375
+At step 110: loss=3536829.9333, amplitude=19.2316, length_scale=3.1847, mae=7.9000, mse=660.9105
+At step 120: loss=2447634.3931, amplitude=20.2722, length_scale=3.0229, mae=11.4145, mse=1912.1189
+At step 130: loss=1725838.2870, amplitude=21.2495, length_scale=2.8924, mae=16.4300, mse=3897.3674
+At step 140: loss=1229135.3292, amplitude=22.1406, length_scale=2.7876, mae=20.3786, mse=5738.6628
+At step 150: loss=875593.6389, amplitude=22.9565, length_scale=2.7015, mae=22.5064, mse=6698.6859
+At step 160: loss=636834.3870, amplitude=23.6909, length_scale=2.6311, mae=23.1466, mse=6730.6824
+At step 170: loss=482745.5623, amplitude=24.3339, length_scale=2.5747, mae=22.9631, mse=6283.5254
+At step 180: loss=383416.5292, amplitude=24.8880, length_scale=2.5297, mae=22.4448, mse=5709.1164
+At step 190: loss=317422.2761, amplitude=25.3659, length_scale=2.4935, mae=21.8496, mse=5162.0634
+At step 200: loss=271658.5607, amplitude=25.7824, length_scale=2.4638, mae=21.2644, mse=4687.4474
+At step 210: loss=238512.3018, amplitude=26.1508, length_scale=2.4387, mae=20.7178, mse=4287.6695
+At step 220: loss=213554.1573, amplitude=26.4817, length_scale=2.4172, mae=20.2100, mse=3952.6411
+At step 230: loss=194137.8958, amplitude=26.7829, length_scale=2.3983, mae=19.7461, mse=3670.6311
+At step 240: loss=178623.0673, amplitude=27.0600, length_scale=2.3814, mae=19.3300, mse=3431.3999
+At step 250: loss=165951.3599, amplitude=27.3175, length_scale=2.3663, mae=18.9454, mse=3226.7052
+At step 260: loss=155413.5083, amplitude=27.5586, length_scale=2.3524, mae=18.5895, mse=3050.0728
+At step 270: loss=146517.3098, amplitude=27.7856, length_scale=2.3397, mae=18.2577, mse=2896.4332
+At step 280: loss=138910.7069, amplitude=28.0005, length_scale=2.3280, mae=17.9495, mse=2761.7985
+At step 290: loss=132335.2121, amplitude=28.2050, length_scale=2.3171, mae=17.6622, mse=2643.0072
+At step 299: loss=127137.5052, amplitude=28.3811, length_scale=2.3078, mae=17.4183, mse=2547.5402
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9549, mse = 2.3967
+
+Random sampling ...
+Updated pool: (1853,)
+Updated training set (373,)
+Updated test set: (7400,)
+
+Query number  3
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46589900.2052, amplitude=8.0804, length_scale=7.9204, mae=0.7192, mse=1.3685
+At step 10: loss=40008022.1284, amplitude=8.9139, length_scale=7.1782, mae=0.7467, mse=1.7840
+At step 20: loss=34457286.0860, amplitude=9.7956, length_scale=6.5234, mae=0.7933, mse=2.3524
+At step 30: loss=28549210.0268, amplitude=10.7653, length_scale=5.9223, mae=0.9129, mse=3.1182
+At step 40: loss=23677129.3786, amplitude=11.7881, length_scale=5.3902, mae=1.1641, mse=9.0122
+At step 50: loss=19765094.5331, amplitude=12.7830, length_scale=4.9469, mae=1.8576, mse=43.3928
+At step 60: loss=15411278.0337, amplitude=13.8679, length_scale=4.5314, mae=2.7422, mse=107.3317
+At step 70: loss=11351145.4843, amplitude=15.0371, length_scale=4.1499, mae=3.4327, mse=183.1626
+At step 80: loss=8666946.6411, amplitude=16.1540, length_scale=3.8383, mae=4.0124, mse=318.3012
+At step 90: loss=6738897.6838, amplitude=17.1743, length_scale=3.5920, mae=4.2380, mse=386.4005
+At step 100: loss=5003298.6994, amplitude=18.1865, length_scale=3.3766, mae=5.8230, mse=502.2901
+At step 110: loss=3546720.0307, amplitude=19.2223, length_scale=3.1861, mae=7.8783, mse=656.2538
+At step 120: loss=2455223.1550, amplitude=20.2621, length_scale=3.0241, mae=11.3720, mse=1896.6994
+At step 130: loss=1731383.2008, amplitude=21.2393, length_scale=2.8935, mae=16.3851, mse=3877.5312
+At step 140: loss=1233480.0713, amplitude=22.1303, length_scale=2.7886, mae=20.3456, mse=5722.6369
+At step 150: loss=878884.7601, amplitude=22.9463, length_scale=2.7023, mae=22.4914, mse=6693.0454
+At step 160: loss=639161.7359, amplitude=23.6810, length_scale=2.6318, mae=23.1444, mse=6733.4426
+At step 170: loss=484348.2419, amplitude=24.3245, length_scale=2.5753, mae=22.9677, mse=6290.0846
+At step 180: loss=384536.2262, amplitude=24.8792, length_scale=2.5303, mae=22.4523, mse=5716.5868
+At step 190: loss=318231.7052, amplitude=25.3576, length_scale=2.4940, mae=21.8576, mse=5169.2097
+At step 200: loss=272266.7660, amplitude=25.7745, length_scale=2.4642, mae=21.2728, mse=4693.8808
+At step 210: loss=238986.0168, amplitude=26.1433, length_scale=2.4391, mae=20.7259, mse=4293.3442
+At step 220: loss=213934.5652, amplitude=26.4745, length_scale=2.4175, mae=20.2178, mse=3957.6248
+At step 230: loss=194451.1721, amplitude=26.7758, length_scale=2.3986, mae=19.7536, mse=3675.0196
+At step 240: loss=178886.4091, amplitude=27.0532, length_scale=2.3817, mae=19.3370, mse=3435.2833
+At step 250: loss=166176.4492, amplitude=27.3108, length_scale=2.3665, mae=18.9522, mse=3230.1627
+At step 260: loss=155608.5997, amplitude=27.5519, length_scale=2.3527, mae=18.5960, mse=3053.1694
+At step 270: loss=146688.3922, amplitude=27.7790, length_scale=2.3400, mae=18.2639, mse=2899.2224
+At step 280: loss=139062.2508, amplitude=27.9941, length_scale=2.3282, mae=17.9554, mse=2764.3255
+At step 290: loss=132470.6187, amplitude=28.1986, length_scale=2.3173, mae=17.6679, mse=2645.3077
+At step 299: loss=127260.6010, amplitude=28.3747, length_scale=2.3080, mae=17.4239, mse=2549.6636
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9544, mse = 2.3815
+
+Random sampling ...
+Updated pool: (1854,)
+Updated training set (374,)
+Updated test set: (7400,)
+
+Query number  4
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46609158.3614, amplitude=8.0804, length_scale=7.9204, mae=0.7192, mse=1.3648
+At step 10: loss=40016786.7650, amplitude=8.9140, length_scale=7.1781, mae=0.7469, mse=1.7800
+At step 20: loss=34461324.0859, amplitude=9.7955, length_scale=6.5234, mae=0.7933, mse=2.3499
+At step 30: loss=28553171.9487, amplitude=10.7648, length_scale=5.9225, mae=0.9132, mse=3.1207
+At step 40: loss=23680803.5952, amplitude=11.7871, length_scale=5.3906, mae=1.1641, mse=9.0028
+At step 50: loss=19770666.2870, amplitude=12.7814, length_scale=4.9475, mae=1.8566, mse=43.3272
+At step 60: loss=15419410.3488, amplitude=13.8654, length_scale=4.5322, mae=2.7405, mse=107.1799
+At step 70: loss=11359599.8768, amplitude=15.0338, length_scale=4.1508, mae=3.4308, mse=182.8882
+At step 80: loss=8673347.6362, amplitude=16.1503, length_scale=3.8391, mae=4.0121, mse=318.0608
+At step 90: loss=6745516.5619, amplitude=17.1701, length_scale=3.5928, mae=4.2329, mse=385.8714
+At step 100: loss=5010008.2356, amplitude=18.1816, length_scale=3.3774, mae=5.8158, mse=502.2563
+At step 110: loss=3552773.5997, amplitude=19.2167, length_scale=3.1869, mae=7.8652, mse=653.4485
+At step 120: loss=2459860.3337, amplitude=20.2561, length_scale=3.0249, mae=11.3460, mse=1887.3318
+At step 130: loss=1734762.3394, amplitude=21.2331, length_scale=2.8942, mae=16.3577, mse=3865.4707
+At step 140: loss=1236122.6420, amplitude=22.1241, length_scale=2.7892, mae=20.3254, mse=5712.8680
+At step 150: loss=880884.3739, amplitude=22.9401, length_scale=2.7029, mae=22.4821, mse=6689.5747
+At step 160: loss=640574.5334, amplitude=23.6750, length_scale=2.6323, mae=23.1429, mse=6735.0874
+At step 170: loss=485319.6637, amplitude=24.3188, length_scale=2.5757, mae=22.9705, mse=6294.0494
+At step 180: loss=385213.5313, amplitude=24.8739, length_scale=2.5306, mae=22.4568, mse=5721.1103
+At step 190: loss=318720.1943, amplitude=25.3526, length_scale=2.4943, mae=21.8625, mse=5173.5384
+At step 200: loss=272632.9151, amplitude=25.7698, length_scale=2.4644, mae=21.2779, mse=4697.7771
+At step 210: loss=239270.4740, amplitude=26.1388, length_scale=2.4393, mae=20.7308, mse=4296.7799
+At step 220: loss=214162.3742, amplitude=26.4701, length_scale=2.4177, mae=20.2226, mse=3960.6416
+At step 230: loss=194638.2474, amplitude=26.7716, length_scale=2.3988, mae=19.7581, mse=3677.6749
+At step 240: loss=179043.1872, amplitude=27.0490, length_scale=2.3819, mae=19.3412, mse=3437.6331
+At step 250: loss=166310.0929, amplitude=27.3067, length_scale=2.3667, mae=18.9562, mse=3232.2536
+At step 260: loss=155724.0880, amplitude=27.5479, length_scale=2.3529, mae=18.5998, mse=3055.0413
+At step 270: loss=146789.3235, amplitude=27.7751, length_scale=2.3401, mae=18.2677, mse=2900.9088
+At step 280: loss=139151.3436, amplitude=27.9902, length_scale=2.3284, mae=17.9590, mse=2765.8524
+At step 290: loss=132549.9438, amplitude=28.1947, length_scale=2.3174, mae=17.6714, mse=2646.6978
+At step 299: loss=127332.5092, amplitude=28.3709, length_scale=2.3082, mae=17.4273, mse=2550.9462
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9542, mse = 2.3728
+
+Random sampling ...
+Updated pool: (1855,)
+Updated training set (375,)
+Updated test set: (7400,)
+
+Query number  5
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46621851.3365, amplitude=8.0804, length_scale=7.9204, mae=0.7193, mse=1.3624
+At step 10: loss=40022407.5464, amplitude=8.9140, length_scale=7.1781, mae=0.7471, mse=1.7775
+At step 20: loss=34463923.1373, amplitude=9.7955, length_scale=6.5234, mae=0.7934, mse=2.3483
+At step 30: loss=28555849.8050, amplitude=10.7645, length_scale=5.9227, mae=0.9133, mse=3.1222
+At step 40: loss=23683342.2335, amplitude=11.7864, length_scale=5.3908, mae=1.1640, mse=8.9957
+At step 50: loss=19774536.6885, amplitude=12.7804, length_scale=4.9479, mae=1.8558, mse=43.2816
+At step 60: loss=15425001.4610, amplitude=13.8637, length_scale=4.5327, mae=2.7394, mse=107.0757
+At step 70: loss=11365373.1021, amplitude=15.0316, length_scale=4.1514, mae=3.4294, mse=182.7016
+At step 80: loss=8677692.4190, amplitude=16.1478, length_scale=3.8397, mae=4.0119, mse=317.8967
+At step 90: loss=6749990.2673, amplitude=17.1672, length_scale=3.5933, mae=4.2295, mse=385.5155
+At step 100: loss=5014533.3611, amplitude=18.1783, length_scale=3.3780, mae=5.8110, mse=502.2319
+At step 110: loss=3556849.9848, amplitude=19.2129, length_scale=3.1875, mae=7.8563, mse=651.5780
+At step 120: loss=2462980.1206, amplitude=20.2520, length_scale=3.0254, mae=11.3286, mse=1881.0514
+At step 130: loss=1737032.1645, amplitude=21.2290, length_scale=2.8946, mae=16.3393, mse=3857.3783
+At step 140: loss=1237895.2634, amplitude=22.1199, length_scale=2.7896, mae=20.3119, mse=5706.3014
+At step 150: loss=882224.9551, amplitude=22.9359, length_scale=2.7032, mae=22.4759, mse=6687.2294
+At step 160: loss=641520.7841, amplitude=23.6710, length_scale=2.6326, mae=23.1419, mse=6736.1783
+At step 170: loss=485969.5318, amplitude=24.3150, length_scale=2.5760, mae=22.9723, mse=6296.7017
+At step 180: loss=385665.7830, amplitude=24.8703, length_scale=2.5308, mae=22.4598, mse=5724.1399
+At step 190: loss=319045.6198, amplitude=25.3492, length_scale=2.4945, mae=21.8658, mse=5176.4379
+At step 200: loss=272876.2726, amplitude=25.7666, length_scale=2.4646, mae=21.2813, mse=4700.3857
+At step 210: loss=239458.9638, amplitude=26.1358, length_scale=2.4395, mae=20.7341, mse=4299.0808
+At step 220: loss=214312.8838, amplitude=26.4672, length_scale=2.4178, mae=20.2257, mse=3962.6615
+At step 230: loss=194761.4686, amplitude=26.7688, length_scale=2.3989, mae=19.7611, mse=3679.4530
+At step 240: loss=179146.0855, amplitude=27.0463, length_scale=2.3820, mae=19.3440, mse=3439.2057
+At step 250: loss=166397.4756, amplitude=27.3040, length_scale=2.3668, mae=18.9590, mse=3233.6530
+At step 260: loss=155799.3123, amplitude=27.5453, length_scale=2.3530, mae=18.6024, mse=3056.2946
+At step 270: loss=146854.8690, amplitude=27.7725, length_scale=2.3402, mae=18.2702, mse=2902.0371
+At step 280: loss=139208.9232, amplitude=27.9876, length_scale=2.3285, mae=17.9614, mse=2766.8739
+At step 290: loss=132600.9927, amplitude=28.1921, length_scale=2.3175, mae=17.6737, mse=2647.6279
+At step 299: loss=127378.5994, amplitude=28.3683, length_scale=2.3082, mae=17.4295, mse=2551.8046
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9540, mse = 2.3672
+
+Random sampling ...
+Updated pool: (1856,)
+Updated training set (376,)
+Updated test set: (7400,)
+
+Query number  6
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46630846.6186, amplitude=8.0804, length_scale=7.9204, mae=0.7193, mse=1.3608
+At step 10: loss=40026320.0687, amplitude=8.9140, length_scale=7.1781, mae=0.7472, mse=1.7758
+At step 20: loss=34465739.8131, amplitude=9.7954, length_scale=6.5234, mae=0.7935, mse=2.3472
+At step 30: loss=28557782.0703, amplitude=10.7642, length_scale=5.9228, mae=0.9134, mse=3.1232
+At step 40: loss=23685196.6508, amplitude=11.7859, length_scale=5.3910, mae=1.1640, mse=8.9902
+At step 50: loss=19777370.5277, amplitude=12.7796, length_scale=4.9482, mae=1.8553, mse=43.2481
+At step 60: loss=15429070.1458, amplitude=13.8625, length_scale=4.5331, mae=2.7385, mse=106.9999
+At step 70: loss=11369556.6892, amplitude=15.0300, length_scale=4.1518, mae=3.4284, mse=182.5668
+At step 80: loss=8680829.3601, amplitude=16.1460, length_scale=3.8401, mae=4.0117, mse=317.7777
+At step 90: loss=6753210.9690, amplitude=17.1652, length_scale=3.5938, mae=4.2270, mse=385.2600
+At step 100: loss=5017787.8367, amplitude=18.1759, length_scale=3.3784, mae=5.8075, mse=502.2132
+At step 110: loss=3559778.1502, amplitude=19.2102, length_scale=3.1879, mae=7.8499, mse=650.2431
+At step 120: loss=2465220.1887, amplitude=20.2491, length_scale=3.0257, mae=11.3161, mse=1876.5493
+At step 130: loss=1738660.0553, amplitude=21.2260, length_scale=2.8949, mae=16.3261, mse=3851.5728
+At step 140: loss=1239165.4718, amplitude=22.1169, length_scale=2.7899, mae=20.3022, mse=5701.5882
+At step 150: loss=883185.0770, amplitude=22.9330, length_scale=2.7035, mae=22.4715, mse=6685.5396
+At step 160: loss=642197.9838, amplitude=23.6681, length_scale=2.6328, mae=23.1412, mse=6736.9539
+At step 170: loss=486433.8998, amplitude=24.3123, length_scale=2.5762, mae=22.9736, mse=6298.5983
+At step 180: loss=385988.3163, amplitude=24.8678, length_scale=2.5310, mae=22.4620, mse=5726.3096
+At step 190: loss=319277.2099, amplitude=25.3469, length_scale=2.4946, mae=21.8681, mse=5178.5137
+At step 200: loss=273048.9041, amplitude=25.7644, length_scale=2.4647, mae=21.2837, mse=4702.2547
+At step 210: loss=239592.3082, amplitude=26.1336, length_scale=2.4396, mae=20.7364, mse=4300.7282
+At step 220: loss=214418.9792, amplitude=26.4651, length_scale=2.4179, mae=20.2280, mse=3964.1079
+At step 230: loss=194847.9695, amplitude=26.7667, length_scale=2.3990, mae=19.7632, mse=3680.7257
+At step 240: loss=179218.0926, amplitude=27.0443, length_scale=2.3821, mae=19.3460, mse=3440.3310
+At step 250: loss=166458.3330, amplitude=27.3021, length_scale=2.3669, mae=18.9609, mse=3234.6547
+At step 260: loss=155851.4758, amplitude=27.5434, length_scale=2.3530, mae=18.6043, mse=3057.1907
+At step 270: loss=146900.0194, amplitude=27.7706, length_scale=2.3403, mae=18.2720, mse=2902.8442
+At step 280: loss=139248.4517, amplitude=27.9857, length_scale=2.3285, mae=17.9631, mse=2767.6049
+At step 290: loss=132635.7962, amplitude=28.1903, length_scale=2.3176, mae=17.6753, mse=2648.2929
+At step 299: loss=127409.8410, amplitude=28.3665, length_scale=2.3083, mae=17.4311, mse=2552.4182
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9540, mse = 2.3632
+
+Random sampling ...
+Updated pool: (1857,)
+Updated training set (377,)
+Updated test set: (7400,)
+
+Query number  7
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46637554.0031, amplitude=8.0804, length_scale=7.9204, mae=0.7193, mse=1.3595
+At step 10: loss=40029199.3255, amplitude=8.9140, length_scale=7.1781, mae=0.7473, mse=1.7746
+At step 20: loss=34467081.4806, amplitude=9.7954, length_scale=6.5235, mae=0.7936, mse=2.3464
+At step 30: loss=28559241.0767, amplitude=10.7641, length_scale=5.9229, mae=0.9135, mse=3.1240
+At step 40: loss=23686607.2877, amplitude=11.7856, length_scale=5.3912, mae=1.1639, mse=8.9858
+At step 50: loss=19779530.9908, amplitude=12.7789, length_scale=4.9484, mae=1.8549, mse=43.2226
+At step 60: loss=15432160.5502, amplitude=13.8616, length_scale=4.5334, mae=2.7379, mse=106.9423
+At step 70: loss=11372724.3926, amplitude=15.0288, length_scale=4.1522, mae=3.4277, mse=182.4649
+At step 80: loss=8683199.5324, amplitude=16.1446, length_scale=3.8404, mae=4.0116, mse=317.6876
+At step 90: loss=6755639.1958, amplitude=17.1637, length_scale=3.5941, mae=4.2251, mse=385.0677
+At step 100: loss=5020238.5678, amplitude=18.1741, length_scale=3.3787, mae=5.8049, mse=502.1988
+At step 110: loss=3561982.9434, amplitude=19.2082, length_scale=3.1882, mae=7.8452, mse=649.2430
+At step 120: loss=2466905.5786, amplitude=20.2469, length_scale=3.0260, mae=11.3067, mse=1873.1653
+At step 130: loss=1739883.6780, amplitude=21.2238, length_scale=2.8952, mae=16.3162, mse=3847.2115
+At step 140: loss=1240119.5096, amplitude=22.1147, length_scale=2.7901, mae=20.2949, mse=5698.0388
+At step 150: loss=883905.6920, amplitude=22.9307, length_scale=2.7037, mae=22.4681, mse=6684.2602
+At step 160: loss=642705.7994, amplitude=23.6660, length_scale=2.6330, mae=23.1407, mse=6737.5304
+At step 170: loss=486781.5839, amplitude=24.3102, length_scale=2.5763, mae=22.9746, mse=6300.0209
+At step 180: loss=386229.3403, amplitude=24.8659, length_scale=2.5311, mae=22.4636, mse=5727.9376
+At step 190: loss=319449.7743, amplitude=25.3451, length_scale=2.4947, mae=21.8699, mse=5180.0737
+At step 200: loss=273177.1667, amplitude=25.7627, length_scale=2.4648, mae=21.2856, mse=4703.6584
+At step 210: loss=239690.9729, amplitude=26.1320, length_scale=2.4396, mae=20.7382, mse=4301.9653
+At step 220: loss=214497.1961, amplitude=26.4636, length_scale=2.4180, mae=20.2297, mse=3965.1936
+At step 230: loss=194911.4463, amplitude=26.7652, length_scale=2.3990, mae=19.7649, mse=3681.6820
+At step 240: loss=179270.6508, amplitude=27.0428, length_scale=2.3822, mae=19.3476, mse=3441.1766
+At step 250: loss=166502.5500, amplitude=27.3007, length_scale=2.3670, mae=18.9624, mse=3235.4067
+At step 260: loss=155889.1516, amplitude=27.5419, length_scale=2.3531, mae=18.6057, mse=3057.8640
+At step 270: loss=146932.4609, amplitude=27.7692, length_scale=2.3404, mae=18.2733, mse=2903.4506
+At step 280: loss=139276.6175, amplitude=27.9843, length_scale=2.3286, mae=17.9644, mse=2768.1537
+At step 290: loss=132660.4607, amplitude=28.1889, length_scale=2.3176, mae=17.6766, mse=2648.7925
+At step 299: loss=127431.8363, amplitude=28.3651, length_scale=2.3084, mae=17.4323, mse=2552.8792
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9539, mse = 2.3603
+
+Random sampling ...
+Updated pool: (1858,)
+Updated training set (378,)
+Updated test set: (7400,)
+
+Query number  8
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46642747.4240, amplitude=8.0804, length_scale=7.9204, mae=0.7193, mse=1.3586
+At step 10: loss=40031406.1417, amplitude=8.9140, length_scale=7.1781, mae=0.7474, mse=1.7737
+At step 20: loss=34468111.9238, amplitude=9.7954, length_scale=6.5235, mae=0.7936, mse=2.3458
+At step 30: loss=28560381.5360, amplitude=10.7639, length_scale=5.9230, mae=0.9135, mse=3.1245
+At step 40: loss=23687715.9760, amplitude=11.7853, length_scale=5.3913, mae=1.1639, mse=8.9823
+At step 50: loss=19781231.1571, amplitude=12.7785, length_scale=4.9486, mae=1.8545, mse=43.2024
+At step 60: loss=15434585.7587, amplitude=13.8608, length_scale=4.5336, mae=2.7374, mse=106.8971
+At step 70: loss=11375205.2957, amplitude=15.0278, length_scale=4.1524, mae=3.4271, mse=182.3852
+At step 80: loss=8685052.0732, amplitude=16.1436, length_scale=3.8407, mae=4.0115, mse=317.6168
+At step 90: loss=6757534.0341, amplitude=17.1625, length_scale=3.5943, mae=4.2237, mse=384.9179
+At step 100: loss=5022149.2545, amplitude=18.1727, length_scale=3.3790, mae=5.8028, mse=502.1869
+At step 110: loss=3563701.3397, amplitude=19.2066, length_scale=3.1884, mae=7.8414, mse=648.4659
+At step 120: loss=2468219.1327, amplitude=20.2452, length_scale=3.0262, mae=11.2993, mse=1870.5307
+At step 130: loss=1740836.5545, amplitude=21.2221, length_scale=2.8954, mae=16.3084, mse=3843.8122
+At step 140: loss=1240861.7562, amplitude=22.1129, length_scale=2.7903, mae=20.2892, mse=5695.2708
+At step 150: loss=884466.0632, amplitude=22.9290, length_scale=2.7038, mae=22.4655, mse=6683.2617
+At step 160: loss=643100.2152, amplitude=23.6643, length_scale=2.6331, mae=23.1402, mse=6737.9786
+At step 170: loss=487051.1859, amplitude=24.3087, length_scale=2.5764, mae=22.9753, mse=6301.1306
+At step 180: loss=386415.8101, amplitude=24.8644, length_scale=2.5312, mae=22.4649, mse=5729.2053
+At step 190: loss=319582.8804, amplitude=25.3437, length_scale=2.4948, mae=21.8713, mse=5181.2878
+At step 200: loss=273275.7206, amplitude=25.7613, length_scale=2.4649, mae=21.2870, mse=4704.7516
+At step 210: loss=239766.5319, amplitude=26.1307, length_scale=2.4397, mae=20.7396, mse=4302.9290
+At step 220: loss=214556.7652, amplitude=26.4623, length_scale=2.4181, mae=20.2311, mse=3966.0397
+At step 230: loss=194959.5994, amplitude=26.7641, length_scale=2.3991, mae=19.7661, mse=3682.4259
+At step 240: loss=179310.2274, amplitude=27.0417, length_scale=2.3822, mae=19.3487, mse=3441.8352
+At step 250: loss=166535.6523, amplitude=27.2995, length_scale=2.3670, mae=18.9635, mse=3235.9922
+At step 260: loss=155917.1330, amplitude=27.5408, length_scale=2.3531, mae=18.6068, mse=3058.3880
+At step 270: loss=146956.3815, amplitude=27.7681, length_scale=2.3404, mae=18.2744, mse=2903.9221
+At step 280: loss=139297.2073, amplitude=27.9832, length_scale=2.3286, mae=17.9654, mse=2768.5809
+At step 290: loss=132678.3283, amplitude=28.1879, length_scale=2.3177, mae=17.6776, mse=2649.1816
+At step 299: loss=127447.6247, amplitude=28.3641, length_scale=2.3084, mae=17.4332, mse=2553.2379
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9539, mse = 2.3581
+
+Random sampling ...
+Updated pool: (1859,)
+Updated training set (379,)
+Updated test set: (7400,)
+
+Query number  9
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46646887.1189, amplitude=8.0804, length_scale=7.9204, mae=0.7193, mse=1.3579
+At step 10: loss=40033150.4893, amplitude=8.9140, length_scale=7.1781, mae=0.7475, mse=1.7729
+At step 20: loss=34468930.1341, amplitude=9.7953, length_scale=6.5235, mae=0.7936, mse=2.3453
+At step 30: loss=28561296.7095, amplitude=10.7638, length_scale=5.9230, mae=0.9136, mse=3.1250
+At step 40: loss=23688610.7643, amplitude=11.7850, length_scale=5.3914, mae=1.1638, mse=8.9795
+At step 50: loss=19782603.2264, amplitude=12.7781, length_scale=4.9487, mae=1.8543, mse=43.1862
+At step 60: loss=15436537.5714, amplitude=13.8603, length_scale=4.5338, mae=2.7370, mse=106.8606
+At step 70: loss=11377200.5906, amplitude=15.0271, length_scale=4.1526, mae=3.4266, mse=182.3211
+At step 80: loss=8686538.3046, amplitude=16.1427, length_scale=3.8408, mae=4.0115, mse=317.5600
+At step 90: loss=6759053.8377, amplitude=17.1615, length_scale=3.5945, mae=4.2225, mse=384.7978
+At step 100: loss=5023681.3065, amplitude=18.1716, length_scale=3.3792, mae=5.8012, mse=502.1773
+At step 110: loss=3565078.2828, amplitude=19.2053, length_scale=3.1886, mae=7.8384, mse=647.8446
+At step 120: loss=2469270.8309, amplitude=20.2438, length_scale=3.0264, mae=11.2934, mse=1868.4221
+At step 130: loss=1741598.8459, amplitude=21.2207, length_scale=2.8955, mae=16.3022, mse=3841.0894
+At step 140: loss=1241455.2904, amplitude=22.1116, length_scale=2.7904, mae=20.2846, mse=5693.0559
+At step 150: loss=884913.8451, amplitude=22.9276, length_scale=2.7039, mae=22.4634, mse=6682.4610
+At step 160: loss=643415.0221, amplitude=23.6629, length_scale=2.6332, mae=23.1399, mse=6738.3391
+At step 170: loss=487265.9899, amplitude=24.3074, length_scale=2.5765, mae=22.9759, mse=6302.0182
+At step 180: loss=386563.9587, amplitude=24.8632, length_scale=2.5313, mae=22.4659, mse=5730.2224
+At step 190: loss=319688.2908, amplitude=25.3426, length_scale=2.4949, mae=21.8724, mse=5182.2616
+At step 200: loss=273353.4815, amplitude=25.7603, length_scale=2.4649, mae=21.2881, mse=4705.6278
+At step 210: loss=239825.8097, amplitude=26.1297, length_scale=2.4398, mae=20.7407, mse=4303.7005
+At step 220: loss=214603.2391, amplitude=26.4614, length_scale=2.4181, mae=20.2321, mse=3966.7179
+At step 230: loss=194996.8836, amplitude=26.7631, length_scale=2.3991, mae=19.7671, mse=3683.0217
+At step 240: loss=179340.7498, amplitude=27.0408, length_scale=2.3823, mae=19.3497, mse=3442.3621
+At step 250: loss=166560.9379, amplitude=27.2986, length_scale=2.3670, mae=18.9644, mse=3236.4613
+At step 260: loss=155938.3415, amplitude=27.5400, length_scale=2.3532, mae=18.6077, mse=3058.8083
+At step 270: loss=146974.3117, amplitude=27.7672, length_scale=2.3404, mae=18.2752, mse=2904.3002
+At step 280: loss=139312.4949, amplitude=27.9824, length_scale=2.3287, mae=17.9662, mse=2768.9233
+At step 290: loss=132691.4037, amplitude=28.1870, length_scale=2.3177, mae=17.6783, mse=2649.4928
+At step 299: loss=127459.0578, amplitude=28.3632, length_scale=2.3084, mae=17.4340, mse=2553.5251
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9539, mse = 2.3563
+
+Random sampling ...
+Updated pool: (1860,)
+Updated training set (380,)
+Updated test set: (7400,)
+
+Query number  10
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46650263.9424, amplitude=8.0804, length_scale=7.9204, mae=0.7193, mse=1.3573
+At step 10: loss=40034564.9293, amplitude=8.9140, length_scale=7.1781, mae=0.7475, mse=1.7723
+At step 20: loss=34469592.5924, amplitude=9.7953, length_scale=6.5235, mae=0.7937, mse=2.3450
+At step 30: loss=28562047.9776, amplitude=10.7637, length_scale=5.9231, mae=0.9136, mse=3.1253
+At step 40: loss=23689346.8123, amplitude=11.7848, length_scale=5.3915, mae=1.1638, mse=8.9771
+At step 50: loss=19783734.0271, amplitude=12.7778, length_scale=4.9488, mae=1.8541, mse=43.1728
+At step 60: loss=15438142.2448, amplitude=13.8598, length_scale=4.5340, mae=2.7367, mse=106.8307
+At step 70: loss=11378838.2726, amplitude=15.0264, length_scale=4.1528, mae=3.4262, mse=182.2686
+At step 80: loss=8687758.1501, amplitude=16.1420, length_scale=3.8410, mae=4.0114, mse=317.5133
+At step 90: loss=6760299.0545, amplitude=17.1607, length_scale=3.5946, mae=4.2215, mse=384.6994
+At step 100: loss=5024936.6231, amplitude=18.1707, length_scale=3.3793, mae=5.7998, mse=502.1693
+At step 110: loss=3566205.7294, amplitude=19.2043, length_scale=3.1888, mae=7.8360, mse=647.3364
+At step 120: loss=2470131.7084, amplitude=20.2427, length_scale=3.0265, mae=11.2886, mse=1866.6935
+At step 130: loss=1742222.4834, amplitude=21.2196, length_scale=2.8956, mae=16.2971, mse=3838.8599
+At step 140: loss=1241940.6392, amplitude=22.1104, length_scale=2.7905, mae=20.2808, mse=5691.2386
+At step 150: loss=885279.6955, amplitude=22.9265, length_scale=2.7040, mae=22.4617, mse=6681.8047
+At step 160: loss=643671.8611, amplitude=23.6618, length_scale=2.6333, mae=23.1396, mse=6738.6290
+At step 170: loss=487440.8791, amplitude=24.3063, length_scale=2.5766, mae=22.9764, mse=6302.7419
+At step 180: loss=386684.2616, amplitude=24.8622, length_scale=2.5314, mae=22.4667, mse=5731.0523
+At step 190: loss=319773.5518, amplitude=25.3417, length_scale=2.4949, mae=21.8732, mse=5183.0564
+At step 200: loss=273416.0575, amplitude=25.7594, length_scale=2.4650, mae=21.2891, mse=4706.3435
+At step 210: loss=239873.2722, amplitude=26.1289, length_scale=2.4398, mae=20.7416, mse=4304.3323
+At step 220: loss=214640.2693, amplitude=26.4606, length_scale=2.4181, mae=20.2330, mse=3967.2714
+At step 230: loss=195026.3446, amplitude=26.7623, length_scale=2.3992, mae=19.7679, mse=3683.5091
+At step 240: loss=179364.6255, amplitude=27.0400, length_scale=2.3823, mae=19.3505, mse=3442.7935
+At step 250: loss=166580.5577, amplitude=27.2979, length_scale=2.3671, mae=18.9652, mse=3236.8450
+At step 260: loss=155954.6160, amplitude=27.5392, length_scale=2.3532, mae=18.6084, mse=3059.1515
+At step 270: loss=146987.9472, amplitude=27.7665, length_scale=2.3405, mae=18.2759, mse=2904.6096
+At step 280: loss=139323.9304, amplitude=27.9817, length_scale=2.3287, mae=17.9668, mse=2769.2031
+At step 290: loss=132701.0559, amplitude=28.1863, length_scale=2.3177, mae=17.6790, mse=2649.7476
+At step 299: loss=127467.3442, amplitude=28.3625, length_scale=2.3084, mae=17.4346, mse=2553.7602
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3549
+
+Random sampling ...
+Updated pool: (1861,)
+Updated training set (381,)
+Updated test set: (7400,)
+
+Query number  11
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46653070.7241, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3568
+At step 10: loss=40035735.2242, amplitude=8.9140, length_scale=7.1781, mae=0.7476, mse=1.7718
+At step 20: loss=34470141.6417, amplitude=9.7953, length_scale=6.5235, mae=0.7937, mse=2.3446
+At step 30: loss=28562676.4085, amplitude=10.7636, length_scale=5.9231, mae=0.9136, mse=3.1256
+At step 40: loss=23689962.7687, amplitude=11.7847, length_scale=5.3916, mae=1.1638, mse=8.9751
+At step 50: loss=19784680.0461, amplitude=12.7775, length_scale=4.9489, mae=1.8539, mse=43.1616
+At step 60: loss=15439484.7008, amplitude=13.8594, length_scale=4.5341, mae=2.7364, mse=106.8056
+At step 70: loss=11380207.0950, amplitude=15.0259, length_scale=4.1529, mae=3.4259, mse=182.2247
+At step 80: loss=8688775.4845, amplitude=16.1415, length_scale=3.8411, mae=4.0113, mse=317.4742
+At step 90: loss=6761337.8627, amplitude=17.1601, length_scale=3.5948, mae=4.2207, mse=384.6174
+At step 100: loss=5025983.3018, amplitude=18.1699, length_scale=3.3794, mae=5.7987, mse=502.1624
+At step 110: loss=3567146.0830, amplitude=19.2034, length_scale=3.1889, mae=7.8339, mse=646.9138
+At step 120: loss=2470849.4669, amplitude=20.2417, length_scale=3.0267, mae=11.2846, mse=1865.2536
+At step 130: loss=1742741.5362, amplitude=21.2186, length_scale=2.8957, mae=16.2929, mse=3836.9997
+At step 140: loss=1242344.1671, amplitude=22.1095, length_scale=2.7906, mae=20.2777, mse=5689.7230
+At step 150: loss=885583.6315, amplitude=22.9255, length_scale=2.7041, mae=22.4602, mse=6681.2547
+At step 160: loss=643885.1180, amplitude=23.6609, length_scale=2.6334, mae=23.1394, mse=6738.8743
+At step 170: loss=487585.7521, amplitude=24.3055, length_scale=2.5766, mae=22.9768, mse=6303.3482
+At step 180: loss=386783.5868, amplitude=24.8614, length_scale=2.5314, mae=22.4674, mse=5731.7453
+At step 190: loss=319843.6299, amplitude=25.3409, length_scale=2.4950, mae=21.8740, mse=5183.7199
+At step 200: loss=273467.2368, amplitude=25.7587, length_scale=2.4650, mae=21.2898, mse=4706.9414
+At step 210: loss=239911.8477, amplitude=26.1282, length_scale=2.4398, mae=20.7423, mse=4304.8584
+At step 220: loss=214670.0695, amplitude=26.4599, length_scale=2.4182, mae=20.2337, mse=3967.7344
+At step 230: loss=195049.9473, amplitude=26.7617, length_scale=2.3992, mae=19.7686, mse=3683.9163
+At step 240: loss=179383.5528, amplitude=27.0394, length_scale=2.3823, mae=19.3511, mse=3443.1529
+At step 250: loss=166595.9503, amplitude=27.2973, length_scale=2.3671, mae=18.9658, mse=3237.1648
+At step 260: loss=155967.2098, amplitude=27.5386, length_scale=2.3532, mae=18.6090, mse=3059.4379
+At step 270: loss=146998.2725, amplitude=27.7659, length_scale=2.3405, mae=18.2765, mse=2904.8672
+At step 280: loss=139332.4690, amplitude=27.9811, length_scale=2.3287, mae=17.9674, mse=2769.4366
+At step 290: loss=132708.1021, amplitude=28.1857, length_scale=2.3177, mae=17.6795, mse=2649.9600
+At step 299: loss=127473.2294, amplitude=28.3620, length_scale=2.3085, mae=17.4351, mse=2553.9562
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3537
+
+Random sampling ...
+Updated pool: (1862,)
+Updated training set (382,)
+Updated test set: (7400,)
+
+Query number  12
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46655440.3552, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3564
+At step 10: loss=40036717.4132, amplitude=8.9140, length_scale=7.1781, mae=0.7476, mse=1.7714
+At step 20: loss=34470602.7271, amplitude=9.7953, length_scale=6.5235, mae=0.7937, mse=2.3444
+At step 30: loss=28563206.1838, amplitude=10.7635, length_scale=5.9232, mae=0.9137, mse=3.1258
+At step 40: loss=23690485.0656, amplitude=11.7845, length_scale=5.3917, mae=1.1638, mse=8.9734
+At step 50: loss=19785482.9888, amplitude=12.7773, length_scale=4.9490, mae=1.8537, mse=43.1520
+At step 60: loss=15440624.5342, amplitude=13.8590, length_scale=4.5342, mae=2.7362, mse=106.7843
+At step 70: loss=11381367.4558, amplitude=15.0255, length_scale=4.1531, mae=3.4256, mse=182.1875
+At step 80: loss=8689638.0311, amplitude=16.1410, length_scale=3.8413, mae=4.0113, mse=317.4410
+At step 90: loss=6762216.8998, amplitude=17.1595, length_scale=3.5949, mae=4.2200, mse=384.5479
+At step 100: loss=5026868.7672, amplitude=18.1693, length_scale=3.3796, mae=5.7977, mse=502.1565
+At step 110: loss=3567941.0997, amplitude=19.2027, length_scale=3.1890, mae=7.8322, mse=646.5563
+At step 120: loss=2471456.0084, amplitude=20.2409, length_scale=3.0268, mae=11.2812, mse=1864.0345
+At step 130: loss=1743180.3659, amplitude=21.2178, length_scale=2.8958, mae=16.2893, mse=3835.4245
+At step 140: loss=1242684.9991, amplitude=22.1087, length_scale=2.7907, mae=20.2751, mse=5688.4390
+At step 150: loss=885840.1454, amplitude=22.9247, length_scale=2.7042, mae=22.4590, mse=6680.7896
+At step 160: loss=644064.7473, amplitude=23.6601, length_scale=2.6334, mae=23.1392, mse=6739.0799
+At step 170: loss=487707.5226, amplitude=24.3048, length_scale=2.5767, mae=22.9772, mse=6303.8585
+At step 180: loss=386866.7294, amplitude=24.8607, length_scale=2.5314, mae=22.4680, mse=5732.3325
+At step 190: loss=319902.0831, amplitude=25.3403, length_scale=2.4950, mae=21.8746, mse=5184.2823
+At step 200: loss=273509.6737, amplitude=25.7581, length_scale=2.4651, mae=21.2905, mse=4707.4472
+At step 210: loss=239943.5938, amplitude=26.1276, length_scale=2.4399, mae=20.7430, mse=4305.3048
+At step 220: loss=214694.4227, amplitude=26.4594, length_scale=2.4182, mae=20.2343, mse=3968.1251
+At step 230: loss=195068.9631, amplitude=26.7612, length_scale=2.3992, mae=19.7692, mse=3684.2608
+At step 240: loss=179398.6538, amplitude=27.0389, length_scale=2.3823, mae=19.3516, mse=3443.4576
+At step 250: loss=166608.0410, amplitude=27.2968, length_scale=2.3671, mae=18.9663, mse=3237.4359
+At step 260: loss=155976.9548, amplitude=27.5381, length_scale=2.3532, mae=18.6095, mse=3059.6808
+At step 270: loss=147006.1194, amplitude=27.7654, length_scale=2.3405, mae=18.2770, mse=2905.0853
+At step 280: loss=139338.7908, amplitude=27.9806, length_scale=2.3287, mae=17.9678, mse=2769.6348
+At step 290: loss=132713.1417, amplitude=28.1852, length_scale=2.3177, mae=17.6799, mse=2650.1397
+At step 299: loss=127477.2953, amplitude=28.3615, length_scale=2.3085, mae=17.4355, mse=2554.1221
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3527
+
+Random sampling ...
+Updated pool: (1863,)
+Updated training set (383,)
+Updated test set: (7400,)
+
+Query number  13
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46657467.3986, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3561
+At step 10: loss=40037553.5689, amplitude=8.9140, length_scale=7.1781, mae=0.7477, mse=1.7711
+At step 20: loss=34470996.1913, amplitude=9.7953, length_scale=6.5235, mae=0.7937, mse=2.3442
+At step 30: loss=28563662.1231, amplitude=10.7635, length_scale=5.9232, mae=0.9137, mse=3.1260
+At step 40: loss=23690934.0049, amplitude=11.7844, length_scale=5.3917, mae=1.1637, mse=8.9719
+At step 50: loss=19786172.4043, amplitude=12.7771, length_scale=4.9491, mae=1.8536, mse=43.1438
+At step 60: loss=15441602.4380, amplitude=13.8587, length_scale=4.5343, mae=2.7360, mse=106.7660
+At step 70: loss=11382363.7886, amplitude=15.0251, length_scale=4.1532, mae=3.4254, mse=182.1555
+At step 80: loss=8690377.6022, amplitude=16.1406, length_scale=3.8413, mae=4.0112, mse=317.4125
+At step 90: loss=6762971.4389, amplitude=17.1591, length_scale=3.5950, mae=4.2195, mse=384.4883
+At step 100: loss=5027627.8168, amplitude=18.1687, length_scale=3.3797, mae=5.7969, mse=502.1515
+At step 110: loss=3568622.5566, amplitude=19.2020, length_scale=3.1891, mae=7.8307, mse=646.2501
+At step 120: loss=2471975.9376, amplitude=20.2402, length_scale=3.0268, mae=11.2782, mse=1862.9893
+At step 130: loss=1743556.0803, amplitude=21.2171, length_scale=2.8959, mae=16.2863, mse=3834.0744
+At step 140: loss=1242976.5200, amplitude=22.1080, length_scale=2.7907, mae=20.2728, mse=5687.3371
+At step 150: loss=886059.2714, amplitude=22.9240, length_scale=2.7042, mae=22.4580, mse=6680.3878
+At step 160: loss=644217.9067, amplitude=23.6595, length_scale=2.6335, mae=23.1390, mse=6739.2553
+At step 170: loss=487811.0518, amplitude=24.3041, length_scale=2.5767, mae=22.9775, mse=6304.2972
+At step 180: loss=386937.2144, amplitude=24.8602, length_scale=2.5315, mae=22.4685, mse=5732.8350
+At step 190: loss=319951.3241, amplitude=25.3397, length_scale=2.4950, mae=21.8752, mse=5184.7640
+At step 200: loss=273545.1493, amplitude=25.7576, length_scale=2.4651, mae=21.2911, mse=4707.8811
+At step 210: loss=239969.9312, amplitude=26.1271, length_scale=2.4399, mae=20.7435, mse=4305.6875
+At step 220: loss=214714.4708, amplitude=26.4589, length_scale=2.4182, mae=20.2349, mse=3968.4608
+At step 230: loss=195084.4599, amplitude=26.7607, length_scale=2.3993, mae=19.7697, mse=3684.5557
+At step 240: loss=179410.7713, amplitude=27.0384, length_scale=2.3824, mae=19.3521, mse=3443.7187
+At step 250: loss=166617.5359, amplitude=27.2963, length_scale=2.3671, mae=18.9667, mse=3237.6677
+At step 260: loss=155984.4387, amplitude=27.5377, length_scale=2.3533, mae=18.6099, mse=3059.8886
+At step 270: loss=147011.9889, amplitude=27.7650, length_scale=2.3405, mae=18.2774, mse=2905.2729
+At step 280: loss=139343.3163, amplitude=27.9802, length_scale=2.3287, mae=17.9682, mse=2769.8035
+At step 290: loss=132716.5834, amplitude=28.1848, length_scale=2.3178, mae=17.6803, mse=2650.2942
+At step 299: loss=127479.9544, amplitude=28.3610, length_scale=2.3085, mae=17.4359, mse=2554.2644
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3518
+
+Random sampling ...
+Updated pool: (1864,)
+Updated training set (384,)
+Updated test set: (7400,)
+
+Query number  14
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46659220.9772, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3558
+At step 10: loss=40038274.9670, amplitude=8.9140, length_scale=7.1781, mae=0.7477, mse=1.7708
+At step 20: loss=34471336.3958, amplitude=9.7953, length_scale=6.5235, mae=0.7937, mse=2.3440
+At step 30: loss=28564057.9367, amplitude=10.7634, length_scale=5.9232, mae=0.9137, mse=3.1262
+At step 40: loss=23691324.4727, amplitude=11.7843, length_scale=5.3918, mae=1.1637, mse=8.9706
+At step 50: loss=19786774.0616, amplitude=12.7769, length_scale=4.9491, mae=1.8535, mse=43.1366
+At step 60: loss=15442452.7864, amplitude=13.8585, length_scale=4.5344, mae=2.7358, mse=106.7502
+At step 70: loss=11383228.5262, amplitude=15.0248, length_scale=4.1533, mae=3.4252, mse=182.1277
+At step 80: loss=8691019.0140, amplitude=16.1402, length_scale=3.8414, mae=4.0112, mse=317.3877
+At step 90: loss=6763624.5998, amplitude=17.1586, length_scale=3.5951, mae=4.2190, mse=384.4368
+At step 100: loss=5028285.9364, amplitude=18.1682, length_scale=3.3797, mae=5.7962, mse=502.1471
+At step 110: loss=3569213.1071, amplitude=19.2015, length_scale=3.1892, mae=7.8294, mse=645.9844
+At step 120: loss=2472425.8361, amplitude=20.2397, length_scale=3.0269, mae=11.2757, mse=1862.0828
+At step 130: loss=1743881.0998, amplitude=21.2165, length_scale=2.8960, mae=16.2836, mse=3832.9044
+At step 140: loss=1243228.5520, amplitude=22.1074, length_scale=2.7908, mae=20.2708, mse=5686.3811
+At step 150: loss=886248.6916, amplitude=22.9234, length_scale=2.7043, mae=22.4570, mse=6680.0411
+At step 160: loss=644350.0359, amplitude=23.6589, length_scale=2.6335, mae=23.1388, mse=6739.4068
+At step 170: loss=487900.0768, amplitude=24.3036, length_scale=2.5768, mae=22.9778, mse=6304.6786
+At step 180: loss=386997.5391, amplitude=24.8596, length_scale=2.5315, mae=22.4689, mse=5733.2715
+At step 190: loss=319993.2590, amplitude=25.3392, length_scale=2.4951, mae=21.8756, mse=5185.1824
+At step 200: loss=273575.2048, amplitude=25.7571, length_scale=2.4651, mae=21.2916, mse=4708.2566
+At step 210: loss=239991.9941, amplitude=26.1267, length_scale=2.4399, mae=20.7440, mse=4306.0188
+At step 220: loss=214731.0404, amplitude=26.4585, length_scale=2.4182, mae=20.2353, mse=3968.7518
+At step 230: loss=195097.0802, amplitude=26.7603, length_scale=2.3993, mae=19.7701, mse=3684.8115
+At step 240: loss=179420.4440, amplitude=27.0380, length_scale=2.3824, mae=19.3525, mse=3443.9445
+At step 250: loss=166625.0013, amplitude=27.2959, length_scale=2.3671, mae=18.9671, mse=3237.8692
+At step 260: loss=155990.1332, amplitude=27.5373, length_scale=2.3533, mae=18.6103, mse=3060.0684
+At step 270: loss=147016.2879, amplitude=27.7646, length_scale=2.3405, mae=18.2777, mse=2905.4348
+At step 280: loss=139346.5027, amplitude=27.9798, length_scale=2.3287, mae=17.9686, mse=2769.9504
+At step 290: loss=132718.8085, amplitude=28.1845, length_scale=2.3178, mae=17.6806, mse=2650.4276
+At step 299: loss=127481.4616, amplitude=28.3607, length_scale=2.3085, mae=17.4362, mse=2554.3875
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3511
+
+Random sampling ...
+Updated pool: (1865,)
+Updated training set (385,)
+Updated test set: (7400,)
+
+Query number  15
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46660752.7902, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3555
+At step 10: loss=40038903.8871, amplitude=8.9140, length_scale=7.1781, mae=0.7477, mse=1.7705
+At step 20: loss=34471631.8221, amplitude=9.7953, length_scale=6.5235, mae=0.7937, mse=2.3438
+At step 30: loss=28564402.9461, amplitude=10.7634, length_scale=5.9233, mae=0.9137, mse=3.1264
+At step 40: loss=23691666.1737, amplitude=11.7842, length_scale=5.3918, mae=1.1637, mse=8.9694
+At step 50: loss=19787299.5263, amplitude=12.7768, length_scale=4.9492, mae=1.8534, mse=43.1303
+At step 60: loss=15443196.0628, amplitude=13.8583, length_scale=4.5345, mae=2.7357, mse=106.7362
+At step 70: loss=11383986.3192, amplitude=15.0245, length_scale=4.1533, mae=3.4250, mse=182.1035
+At step 80: loss=8691579.2232, amplitude=16.1399, length_scale=3.8415, mae=4.0112, mse=317.3661
+At step 90: loss=6764195.3930, amplitude=17.1583, length_scale=3.5951, mae=4.2185, mse=384.3915
+At step 100: loss=5028860.7974, amplitude=18.1678, length_scale=3.3798, mae=5.7956, mse=502.1432
+At step 110: loss=3569728.9164, amplitude=19.2010, length_scale=3.1892, mae=7.8283, mse=645.7524
+At step 120: loss=2472819.2548, amplitude=20.2391, length_scale=3.0270, mae=11.2735, mse=1861.2893
+At step 130: loss=1744164.5167, amplitude=21.2160, length_scale=2.8960, mae=16.2813, mse=3831.8792
+At step 140: loss=1243448.4918, amplitude=22.1068, length_scale=2.7908, mae=20.2691, mse=5685.5450
+At step 150: loss=886413.5092, amplitude=22.9229, length_scale=2.7043, mae=22.4563, mse=6679.7366
+At step 160: loss=644464.8767, amplitude=23.6584, length_scale=2.6336, mae=23.1387, mse=6739.5399
+At step 170: loss=487977.2930, amplitude=24.3031, length_scale=2.5768, mae=22.9780, mse=6305.0113
+At step 180: loss=387049.5913, amplitude=24.8592, length_scale=2.5315, mae=22.4693, mse=5733.6515
+At step 190: loss=320029.2036, amplitude=25.3388, length_scale=2.4951, mae=21.8761, mse=5185.5477
+At step 200: loss=273600.7011, amplitude=25.7567, length_scale=2.4651, mae=21.2920, mse=4708.5867
+At step 210: loss=240010.5671, amplitude=26.1263, length_scale=2.4399, mae=20.7444, mse=4306.3088
+At step 220: loss=214744.7993, amplitude=26.4581, length_scale=2.4183, mae=20.2357, mse=3969.0067
+At step 230: loss=195107.3859, amplitude=26.7599, length_scale=2.3993, mae=19.7705, mse=3685.0355
+At step 240: loss=179428.1554, amplitude=27.0377, length_scale=2.3824, mae=19.3529, mse=3444.1423
+At step 250: loss=166630.7554, amplitude=27.2956, length_scale=2.3672, mae=18.9675, mse=3238.0448
+At step 260: loss=155994.3784, amplitude=27.5370, length_scale=2.3533, mae=18.6106, mse=3060.2256
+At step 270: loss=147019.2919, amplitude=27.7643, length_scale=2.3405, mae=18.2781, mse=2905.5769
+At step 280: loss=139348.5054, amplitude=27.9795, length_scale=2.3288, mae=17.9689, mse=2770.0788
+At step 290: loss=132720.0073, amplitude=28.1841, length_scale=2.3178, mae=17.6809, mse=2650.5446
+At step 299: loss=127482.0018, amplitude=28.3604, length_scale=2.3085, mae=17.4365, mse=2554.4953
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3505
+
+Random sampling ...
+Updated pool: (1866,)
+Updated training set (386,)
+Updated test set: (7400,)
+
+Query number  16
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46662102.2776, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3553
+At step 10: loss=40039455.5934, amplitude=8.9140, length_scale=7.1781, mae=0.7477, mse=1.7703
+At step 20: loss=34471890.7261, amplitude=9.7953, length_scale=6.5236, mae=0.7938, mse=2.3437
+At step 30: loss=28564707.8522, amplitude=10.7633, length_scale=5.9233, mae=0.9137, mse=3.1265
+At step 40: loss=23691966.6744, amplitude=11.7841, length_scale=5.3918, mae=1.1637, mse=8.9684
+At step 50: loss=19787763.9801, amplitude=12.7766, length_scale=4.9493, mae=1.8533, mse=43.1248
+At step 60: loss=15443853.9484, amplitude=13.8581, length_scale=4.5345, mae=2.7355, mse=106.7239
+At step 70: loss=11384654.1849, amplitude=15.0242, length_scale=4.1534, mae=3.4249, mse=182.0820
+At step 80: loss=8692074.2565, amplitude=16.1396, length_scale=3.8416, mae=4.0112, mse=317.3468
+At step 90: loss=6764699.7126, amplitude=17.1580, length_scale=3.5952, mae=4.2181, mse=384.3516
+At step 100: loss=5029368.3327, amplitude=18.1674, length_scale=3.3799, mae=5.7950, mse=502.1396
+At step 110: loss=3570184.1751, amplitude=19.2006, length_scale=3.1893, mae=7.8273, mse=645.5479
+At step 120: loss=2473165.7551, amplitude=20.2387, length_scale=3.0270, mae=11.2715, mse=1860.5896
+At step 130: loss=1744414.7079, amplitude=21.2155, length_scale=2.8961, mae=16.2792, mse=3830.9749
+At step 140: loss=1243641.9665, amplitude=22.1064, length_scale=2.7909, mae=20.2676, mse=5684.8060
+At step 150: loss=886558.5197, amplitude=22.9225, length_scale=2.7044, mae=22.4556, mse=6679.4692
+At step 160: loss=644565.6886, amplitude=23.6580, length_scale=2.6336, mae=23.1386, mse=6739.6573
+At step 170: loss=488044.7404, amplitude=24.3027, length_scale=2.5768, mae=22.9782, mse=6305.3034
+At step 180: loss=387094.8418, amplitude=24.8588, length_scale=2.5316, mae=22.4696, mse=5733.9892
+At step 190: loss=320060.2221, amplitude=25.3384, length_scale=2.4951, mae=21.8764, mse=5185.8703
+At step 200: loss=273622.5488, amplitude=25.7564, length_scale=2.4651, mae=21.2924, mse=4708.8755
+At step 210: loss=240026.2640, amplitude=26.1260, length_scale=2.4399, mae=20.7448, mse=4306.5644
+At step 220: loss=214756.2173, amplitude=26.4578, length_scale=2.4183, mae=20.2361, mse=3969.2311
+At step 230: loss=195115.7725, amplitude=26.7596, length_scale=2.3993, mae=19.7709, mse=3685.2333
+At step 240: loss=179434.2999, amplitude=27.0374, length_scale=2.3824, mae=19.3532, mse=3444.3171
+At step 250: loss=166635.1630, amplitude=27.2953, length_scale=2.3672, mae=18.9678, mse=3238.2006
+At step 260: loss=155997.4039, amplitude=27.5367, length_scale=2.3533, mae=18.6109, mse=3060.3647
+At step 270: loss=147021.2845, amplitude=27.7640, length_scale=2.3406, mae=18.2783, mse=2905.7016
+At step 280: loss=139349.5993, amplitude=27.9792, length_scale=2.3288, mae=17.9691, mse=2770.1920
+At step 290: loss=132720.3458, amplitude=28.1838, length_scale=2.3178, mae=17.6812, mse=2650.6475
+At step 299: loss=127481.8154, amplitude=28.3601, length_scale=2.3085, mae=17.4368, mse=2554.5902
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3499
+
+Random sampling ...
+Updated pool: (1867,)
+Updated training set (387,)
+Updated test set: (7400,)
+
+Query number  17
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46663300.0503, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3551
+At step 10: loss=40039943.1887, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7701
+At step 20: loss=34472120.7578, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3435
+At step 30: loss=28564978.2929, amplitude=10.7633, length_scale=5.9233, mae=0.9137, mse=3.1266
+At step 40: loss=23692234.3638, amplitude=11.7841, length_scale=5.3919, mae=1.1637, mse=8.9675
+At step 50: loss=19788176.2939, amplitude=12.7765, length_scale=4.9493, mae=1.8532, mse=43.1198
+At step 60: loss=15444439.0047, amplitude=13.8579, length_scale=4.5346, mae=2.7354, mse=106.7129
+At step 70: loss=11385248.5648, amplitude=15.0240, length_scale=4.1535, mae=3.4247, mse=182.0629
+At step 80: loss=8692513.8487, amplitude=16.1393, length_scale=3.8416, mae=4.0111, mse=317.3297
+At step 90: loss=6765147.1682, amplitude=17.1577, length_scale=3.5953, mae=4.2178, mse=384.3161
+At step 100: loss=5029818.2956, amplitude=18.1671, length_scale=3.3799, mae=5.7945, mse=502.1367
+At step 110: loss=3570588.2479, amplitude=19.2002, length_scale=3.1894, mae=7.8264, mse=645.3655
+At step 120: loss=2473473.5933, amplitude=20.2383, length_scale=3.0271, mae=11.2698, mse=1859.9667
+At step 130: loss=1744635.9905, amplitude=21.2151, length_scale=2.8961, mae=16.2774, mse=3830.1711
+At step 140: loss=1243813.2360, amplitude=22.1060, length_scale=2.7909, mae=20.2662, mse=5684.1507
+At step 150: loss=886686.6962, amplitude=22.9220, length_scale=2.7044, mae=22.4549, mse=6679.2304
+At step 160: loss=644654.4813, amplitude=23.6576, length_scale=2.6336, mae=23.1385, mse=6739.7599
+At step 170: loss=488103.9918, amplitude=24.3023, length_scale=2.5769, mae=22.9784, mse=6305.5644
+At step 180: loss=387134.4277, amplitude=24.8585, length_scale=2.5316, mae=22.4699, mse=5734.2897
+At step 190: loss=320087.1407, amplitude=25.3381, length_scale=2.4951, mae=21.8767, mse=5186.1573
+At step 200: loss=273641.2648, amplitude=25.7561, length_scale=2.4652, mae=21.2927, mse=4709.1343
+At step 210: loss=240039.5227, amplitude=26.1257, length_scale=2.4400, mae=20.7451, mse=4306.7916
+At step 220: loss=214765.7516, amplitude=26.4575, length_scale=2.4183, mae=20.2364, mse=3969.4296
+At step 230: loss=195122.5360, amplitude=26.7594, length_scale=2.3993, mae=19.7712, mse=3685.4082
+At step 240: loss=179439.0766, amplitude=27.0371, length_scale=2.3824, mae=19.3535, mse=3444.4730
+At step 250: loss=166638.4044, amplitude=27.2950, length_scale=2.3672, mae=18.9681, mse=3238.3386
+At step 260: loss=155999.4311, amplitude=27.5364, length_scale=2.3533, mae=18.6111, mse=3060.4885
+At step 270: loss=147022.3458, amplitude=27.7637, length_scale=2.3406, mae=18.2786, mse=2905.8131
+At step 280: loss=139349.8731, amplitude=27.9789, length_scale=2.3288, mae=17.9694, mse=2770.2925
+At step 290: loss=132720.0062, amplitude=28.1836, length_scale=2.3178, mae=17.6814, mse=2650.7393
+At step 299: loss=127480.9773, amplitude=28.3598, length_scale=2.3085, mae=17.4370, mse=2554.6749
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3494
+
+Random sampling ...
+Updated pool: (1868,)
+Updated training set (388,)
+Updated test set: (7400,)
+
+Query number  18
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46664370.2302, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3549
+At step 10: loss=40040378.4991, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7699
+At step 20: loss=34472324.3953, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3434
+At step 30: loss=28565219.9712, amplitude=10.7632, length_scale=5.9233, mae=0.9137, mse=3.1267
+At step 40: loss=23692473.1817, amplitude=11.7840, length_scale=5.3919, mae=1.1637, mse=8.9666
+At step 50: loss=19788546.3936, amplitude=12.7764, length_scale=4.9493, mae=1.8531, mse=43.1154
+At step 60: loss=15444962.1887, amplitude=13.8577, length_scale=4.5346, mae=2.7353, mse=106.7031
+At step 70: loss=11385779.7760, amplitude=15.0238, length_scale=4.1535, mae=3.4246, mse=182.0458
+At step 80: loss=8692907.7962, amplitude=16.1391, length_scale=3.8417, mae=4.0111, mse=317.3144
+At step 90: loss=6765547.1310, amplitude=17.1574, length_scale=3.5953, mae=4.2175, mse=384.2843
+At step 100: loss=5030221.7882, amplitude=18.1668, length_scale=3.3800, mae=5.7941, mse=502.1338
+At step 110: loss=3570949.2923, amplitude=19.1999, length_scale=3.1894, mae=7.8256, mse=645.2031
+At step 120: loss=2473747.8908, amplitude=20.2379, length_scale=3.0271, mae=11.2682, mse=1859.4106
+At step 130: loss=1744833.6333, amplitude=21.2148, length_scale=2.8961, mae=16.2758, mse=3829.4506
+At step 140: loss=1243965.9360, amplitude=22.1056, length_scale=2.7910, mae=20.2650, mse=5683.5644
+At step 150: loss=886800.8192, amplitude=22.9217, length_scale=2.7044, mae=22.4544, mse=6679.0160
+At step 160: loss=644733.3573, amplitude=23.6572, length_scale=2.6337, mae=23.1384, mse=6739.8554
+At step 170: loss=488156.4016, amplitude=24.3020, length_scale=2.5769, mae=22.9785, mse=6305.7990
+At step 180: loss=387169.1876, amplitude=24.8582, length_scale=2.5316, mae=22.4702, mse=5734.5573
+At step 190: loss=320110.6046, amplitude=25.3378, length_scale=2.4951, mae=21.8770, mse=5186.4140
+At step 200: loss=273657.3860, amplitude=25.7558, length_scale=2.4652, mae=21.2930, mse=4709.3659
+At step 210: loss=240050.7648, amplitude=26.1254, length_scale=2.4400, mae=20.7454, mse=4306.9959
+At step 220: loss=214773.6348, amplitude=26.4572, length_scale=2.4183, mae=20.2367, mse=3969.6097
+At step 230: loss=195128.0141, amplitude=26.7591, length_scale=2.3993, mae=19.7714, mse=3685.5658
+At step 240: loss=179442.7352, amplitude=27.0369, length_scale=2.3824, mae=19.3537, mse=3444.6125
+At step 250: loss=166640.6610, amplitude=27.2948, length_scale=2.3672, mae=18.9683, mse=3238.4630
+At step 260: loss=156000.6122, amplitude=27.5362, length_scale=2.3533, mae=18.6114, mse=3060.5994
+At step 270: loss=147022.6769, amplitude=27.7635, length_scale=2.3406, mae=18.2788, mse=2905.9134
+At step 280: loss=139349.5301, amplitude=27.9787, length_scale=2.3288, mae=17.9696, mse=2770.3831
+At step 290: loss=132719.0535, amplitude=28.1834, length_scale=2.3178, mae=17.6816, mse=2650.8215
+At step 299: loss=127479.5813, amplitude=28.3596, length_scale=2.3085, mae=17.4372, mse=2554.7511
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3489
+
+Random sampling ...
+Updated pool: (1869,)
+Updated training set (389,)
+Updated test set: (7400,)
+
+Query number  19
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46665332.0825, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3547
+At step 10: loss=40040769.6074, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7697
+At step 20: loss=34472507.8280, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3433
+At step 30: loss=28565437.2793, amplitude=10.7632, length_scale=5.9233, mae=0.9137, mse=3.1268
+At step 40: loss=23692689.6028, amplitude=11.7839, length_scale=5.3919, mae=1.1636, mse=8.9659
+At step 50: loss=19788878.2104, amplitude=12.7763, length_scale=4.9494, mae=1.8531, mse=43.1114
+At step 60: loss=15445432.3489, amplitude=13.8576, length_scale=4.5347, mae=2.7352, mse=106.6942
+At step 70: loss=11386258.3480, amplitude=15.0236, length_scale=4.1536, mae=3.4245, mse=182.0304
+At step 80: loss=8693260.5540, amplitude=16.1389, length_scale=3.8417, mae=4.0111, mse=317.3006
+At step 90: loss=6765906.7829, amplitude=17.1572, length_scale=3.5953, mae=4.2172, mse=384.2557
+At step 100: loss=5030583.1016, amplitude=18.1666, length_scale=3.3800, mae=5.7937, mse=502.1314
+At step 110: loss=3571273.6620, amplitude=19.1996, length_scale=3.1895, mae=7.8249, mse=645.0568
+At step 120: loss=2473994.4685, amplitude=20.2376, length_scale=3.0272, mae=11.2668, mse=1858.9093
+At step 130: loss=1745010.6575, amplitude=21.2144, length_scale=2.8962, mae=16.2743, mse=3828.8027
+At step 140: loss=1244102.7991, amplitude=22.1053, length_scale=2.7910, mae=20.2639, mse=5683.0342
+At step 150: loss=886902.9061, amplitude=22.9214, length_scale=2.7045, mae=22.4539, mse=6678.8242
+At step 160: loss=644803.7982, amplitude=23.6569, length_scale=2.6337, mae=23.1383, mse=6739.9381
+At step 170: loss=488202.9988, amplitude=24.3017, length_scale=2.5769, mae=22.9787, mse=6306.0102
+At step 180: loss=387199.8803, amplitude=24.8579, length_scale=2.5316, mae=22.4705, mse=5734.7985
+At step 190: loss=320131.1429, amplitude=25.3376, length_scale=2.4952, mae=21.8773, mse=5186.6451
+At step 200: loss=273671.3266, amplitude=25.7556, length_scale=2.4652, mae=21.2933, mse=4709.5729
+At step 210: loss=240060.2966, amplitude=26.1252, length_scale=2.4400, mae=20.7456, mse=4307.1788
+At step 220: loss=214780.0945, amplitude=26.4570, length_scale=2.4183, mae=20.2369, mse=3969.7702
+At step 230: loss=195132.3100, amplitude=26.7589, length_scale=2.3993, mae=19.7717, mse=3685.7079
+At step 240: loss=179445.4145, amplitude=27.0367, length_scale=2.3824, mae=19.3539, mse=3444.7369
+At step 250: loss=166642.0997, amplitude=27.2946, length_scale=2.3672, mae=18.9685, mse=3238.5740
+At step 260: loss=156001.1301, amplitude=27.5360, length_scale=2.3533, mae=18.6116, mse=3060.6983
+At step 270: loss=147022.3524, amplitude=27.7633, length_scale=2.3406, mae=18.2790, mse=2906.0030
+At step 280: loss=139348.5674, amplitude=27.9785, length_scale=2.3288, mae=17.9698, mse=2770.4646
+At step 290: loss=132717.6108, amplitude=28.1832, length_scale=2.3178, mae=17.6818, mse=2650.8954
+At step 299: loss=127477.7198, amplitude=28.3594, length_scale=2.3085, mae=17.4374, mse=2554.8189
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3485
+
+Random sampling ...
+Updated pool: (1870,)
+Updated training set (390,)
+Updated test set: (7400,)
+
+Query number  20
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46666201.1802, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3546
+At step 10: loss=40041121.0092, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7696
+At step 20: loss=34472671.9605, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3432
+At step 30: loss=28565632.7032, amplitude=10.7632, length_scale=5.9234, mae=0.9138, mse=3.1269
+At step 40: loss=23692882.3197, amplitude=11.7839, length_scale=5.3919, mae=1.1636, mse=8.9652
+At step 50: loss=19789179.7031, amplitude=12.7762, length_scale=4.9494, mae=1.8530, mse=43.1078
+At step 60: loss=15445859.2319, amplitude=13.8575, length_scale=4.5347, mae=2.7351, mse=106.6862
+At step 70: loss=11386691.2507, amplitude=15.0234, length_scale=4.1536, mae=3.4244, mse=182.0165
+At step 80: loss=8693579.6795, amplitude=16.1387, length_scale=3.8418, mae=4.0111, mse=317.2882
+At step 90: loss=6766231.8049, amplitude=17.1570, length_scale=3.5954, mae=4.2170, mse=384.2298
+At step 100: loss=5030910.5430, amplitude=18.1663, length_scale=3.3801, mae=5.7934, mse=502.1290
+At step 110: loss=3571566.6478, amplitude=19.1993, length_scale=3.1895, mae=7.8243, mse=644.9243
+At step 120: loss=2474217.2199, amplitude=20.2373, length_scale=3.0272, mae=11.2655, mse=1858.4547
+At step 130: loss=1745170.7401, amplitude=21.2141, length_scale=2.8962, mae=16.2729, mse=3828.2176
+At step 140: loss=1244226.1979, amplitude=22.1050, length_scale=2.7910, mae=20.2630, mse=5682.5558
+At step 150: loss=886994.7735, amplitude=22.9211, length_scale=2.7045, mae=22.4534, mse=6678.6484
+At step 160: loss=644867.1262, amplitude=23.6566, length_scale=2.6337, mae=23.1382, mse=6740.0143
+At step 170: loss=488244.6050, amplitude=24.3014, length_scale=2.5769, mae=22.9788, mse=6306.1977
+At step 180: loss=387227.1120, amplitude=24.8576, length_scale=2.5316, mae=22.4707, mse=5735.0160
+At step 190: loss=320149.1333, amplitude=25.3373, length_scale=2.4952, mae=21.8775, mse=5186.8529
+At step 200: loss=273683.3831, amplitude=25.7553, length_scale=2.4652, mae=21.2935, mse=4709.7607
+At step 210: loss=240068.3751, amplitude=26.1250, length_scale=2.4400, mae=20.7459, mse=4307.3443
+At step 220: loss=214785.4099, amplitude=26.4568, length_scale=2.4183, mae=20.2371, mse=3969.9156
+At step 230: loss=195135.6578, amplitude=26.7587, length_scale=2.3993, mae=19.7719, mse=3685.8351
+At step 240: loss=179447.2743, amplitude=27.0365, length_scale=2.3824, mae=19.3541, mse=3444.8500
+At step 250: loss=166642.8765, amplitude=27.2944, length_scale=2.3672, mae=18.9687, mse=3238.6744
+At step 260: loss=156000.9913, amplitude=27.5358, length_scale=2.3533, mae=18.6118, mse=3060.7885
+At step 270: loss=147021.5487, amplitude=27.7631, length_scale=2.3406, mae=18.2792, mse=2906.0839
+At step 280: loss=139347.1773, amplitude=27.9783, length_scale=2.3288, mae=17.9700, mse=2770.5375
+At step 290: loss=132715.7084, amplitude=28.1830, length_scale=2.3178, mae=17.6820, mse=2650.9619
+At step 299: loss=127475.4952, amplitude=28.3592, length_scale=2.3086, mae=17.4375, mse=2554.8801
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3482
+
+Random sampling ...
+Updated pool: (1871,)
+Updated training set (391,)
+Updated test set: (7400,)
+
+Query number  21
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46666990.2475, amplitude=8.0804, length_scale=7.9204, mae=0.7194, mse=1.3545
+At step 10: loss=40041439.9204, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7694
+At step 20: loss=34472820.5260, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3431
+At step 30: loss=28565811.0317, amplitude=10.7632, length_scale=5.9234, mae=0.9138, mse=3.1270
+At step 40: loss=23693059.6111, amplitude=11.7838, length_scale=5.3920, mae=1.1636, mse=8.9646
+At step 50: loss=19789452.7943, amplitude=12.7762, length_scale=4.9494, mae=1.8529, mse=43.1045
+At step 60: loss=15446246.2929, amplitude=13.8573, length_scale=4.5348, mae=2.7350, mse=106.6789
+At step 70: loss=11387083.6121, amplitude=15.0233, length_scale=4.1537, mae=3.4243, mse=182.0038
+At step 80: loss=8693870.2387, amplitude=16.1385, length_scale=3.8418, mae=4.0111, mse=317.2768
+At step 90: loss=6766527.0163, amplitude=17.1568, length_scale=3.5954, mae=4.2167, mse=384.2063
+At step 100: loss=5031207.4290, amplitude=18.1661, length_scale=3.3801, mae=5.7930, mse=502.1268
+At step 110: loss=3571832.6136, amplitude=19.1990, length_scale=3.1895, mae=7.8237, mse=644.8042
+At step 120: loss=2474419.2101, amplitude=20.2370, length_scale=3.0273, mae=11.2644, mse=1858.0429
+At step 130: loss=1745315.6310, amplitude=21.2139, length_scale=2.8962, mae=16.2717, mse=3827.6839
+At step 140: loss=1244337.7514, amplitude=22.1047, length_scale=2.7910, mae=20.2621, mse=5682.1210
+At step 150: loss=887077.7516, amplitude=22.9208, length_scale=2.7045, mae=22.4530, mse=6678.4904
+At step 160: loss=644923.9417, amplitude=23.6563, length_scale=2.6337, mae=23.1382, mse=6740.0831
+At step 170: loss=488281.8915, amplitude=24.3012, length_scale=2.5769, mae=22.9789, mse=6306.3721
+At step 180: loss=387251.3425, amplitude=24.8574, length_scale=2.5317, mae=22.4709, mse=5735.2146
+At step 190: loss=320164.9529, amplitude=25.3371, length_scale=2.4952, mae=21.8777, mse=5187.0440
+At step 200: loss=273693.7685, amplitude=25.7551, length_scale=2.4652, mae=21.2937, mse=4709.9329
+At step 210: loss=240075.1344, amplitude=26.1248, length_scale=2.4400, mae=20.7461, mse=4307.4957
+At step 220: loss=214789.6989, amplitude=26.4566, length_scale=2.4183, mae=20.2373, mse=3970.0487
+At step 230: loss=195138.1405, amplitude=26.7585, length_scale=2.3993, mae=19.7721, mse=3685.9524
+At step 240: loss=179448.4532, amplitude=27.0363, length_scale=2.3824, mae=19.3543, mse=3444.9540
+At step 250: loss=166642.9719, amplitude=27.2942, length_scale=2.3672, mae=18.9689, mse=3238.7663
+At step 260: loss=156000.2773, amplitude=27.5356, length_scale=2.3533, mae=18.6119, mse=3060.8710
+At step 270: loss=147020.2398, amplitude=27.7629, length_scale=2.3406, mae=18.2793, mse=2906.1575
+At step 280: loss=139345.3433, amplitude=27.9782, length_scale=2.3288, mae=17.9701, mse=2770.6047
+At step 290: loss=132713.4571, amplitude=28.1828, length_scale=2.3178, mae=17.6821, mse=2651.0234
+At step 299: loss=127472.9451, amplitude=28.3591, length_scale=2.3086, mae=17.4377, mse=2554.9368
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3478
+
+Random sampling ...
+Updated pool: (1872,)
+Updated training set (392,)
+Updated test set: (7400,)
+
+Query number  22
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46667709.7832, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3543
+At step 10: loss=40041728.2915, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7693
+At step 20: loss=34472957.2378, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3431
+At step 30: loss=28565973.8596, amplitude=10.7631, length_scale=5.9234, mae=0.9138, mse=3.1270
+At step 40: loss=23693220.3025, amplitude=11.7838, length_scale=5.3920, mae=1.1636, mse=8.9640
+At step 50: loss=19789702.1977, amplitude=12.7761, length_scale=4.9495, mae=1.8529, mse=43.1015
+At step 60: loss=15446599.5933, amplitude=13.8572, length_scale=4.5348, mae=2.7350, mse=106.6723
+At step 70: loss=11387442.9099, amplitude=15.0231, length_scale=4.1537, mae=3.4242, mse=181.9921
+At step 80: loss=8694134.4312, amplitude=16.1384, length_scale=3.8418, mae=4.0110, mse=317.2664
+At step 90: loss=6766795.7518, amplitude=17.1566, length_scale=3.5955, mae=4.2165, mse=384.1847
+At step 100: loss=5031477.8503, amplitude=18.1659, length_scale=3.3801, mae=5.7927, mse=502.1250
+At step 110: loss=3572075.1738, amplitude=19.1988, length_scale=3.1896, mae=7.8231, mse=644.6943
+At step 120: loss=2474603.1296, amplitude=20.2368, length_scale=3.0273, mae=11.2633, mse=1857.6671
+At step 130: loss=1745447.3265, amplitude=21.2136, length_scale=2.8963, mae=16.2706, mse=3827.1964
+At step 140: loss=1244439.0515, amplitude=22.1045, length_scale=2.7911, mae=20.2612, mse=5681.7238
+At step 150: loss=887153.0964, amplitude=22.9205, length_scale=2.7045, mae=22.4526, mse=6678.3453
+At step 160: loss=644975.3160, amplitude=23.6561, length_scale=2.6337, mae=23.1381, mse=6740.1476
+At step 170: loss=488315.4390, amplitude=24.3009, length_scale=2.5770, mae=22.9790, mse=6306.5285
+At step 180: loss=387272.9177, amplitude=24.8572, length_scale=2.5317, mae=22.4710, mse=5735.3960
+At step 190: loss=320178.8875, amplitude=25.3369, length_scale=2.4952, mae=21.8779, mse=5187.2173
+At step 200: loss=273702.7403, amplitude=25.7549, length_scale=2.4652, mae=21.2939, mse=4710.0892
+At step 210: loss=240080.8269, amplitude=26.1246, length_scale=2.4400, mae=20.7463, mse=4307.6338
+At step 220: loss=214793.0832, amplitude=26.4565, length_scale=2.4183, mae=20.2375, mse=3970.1685
+At step 230: loss=195139.8860, amplitude=26.7583, length_scale=2.3994, mae=19.7723, mse=3686.0583
+At step 240: loss=179448.9615, amplitude=27.0361, length_scale=2.3825, mae=19.3545, mse=3445.0469
+At step 250: loss=166642.6012, amplitude=27.2941, length_scale=2.3672, mae=18.9690, mse=3238.8498
+At step 260: loss=155999.1902, amplitude=27.5355, length_scale=2.3533, mae=18.6121, mse=3060.9454
+At step 270: loss=147018.5241, amplitude=27.7628, length_scale=2.3406, mae=18.2795, mse=2906.2251
+At step 280: loss=139343.1613, amplitude=27.9780, length_scale=2.3288, mae=17.9703, mse=2770.6658
+At step 290: loss=132710.8997, amplitude=28.1827, length_scale=2.3178, mae=17.6823, mse=2651.0786
+At step 299: loss=127470.0582, amplitude=28.3589, length_scale=2.3086, mae=17.4378, mse=2554.9876
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9538, mse = 2.3475
+
+Random sampling ...
+Updated pool: (1873,)
+Updated training set (393,)
+Updated test set: (7400,)
+
+Query number  23
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46668368.5265, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3542
+At step 10: loss=40041995.2295, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7692
+At step 20: loss=34473080.8005, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3430
+At step 30: loss=28566121.0186, amplitude=10.7631, length_scale=5.9234, mae=0.9138, mse=3.1271
+At step 40: loss=23693367.7385, amplitude=11.7838, length_scale=5.3920, mae=1.1636, mse=8.9635
+At step 50: loss=19789931.3206, amplitude=12.7760, length_scale=4.9495, mae=1.8529, mse=43.0987
+At step 60: loss=15446922.5384, amplitude=13.8571, length_scale=4.5348, mae=2.7349, mse=106.6661
+At step 70: loss=11387770.8103, amplitude=15.0230, length_scale=4.1537, mae=3.4241, mse=181.9816
+At step 80: loss=8694376.6030, amplitude=16.1383, length_scale=3.8419, mae=4.0110, mse=317.2569
+At step 90: loss=6767041.5170, amplitude=17.1565, length_scale=3.5955, mae=4.2163, mse=384.1650
+At step 100: loss=5031725.6185, amplitude=18.1657, length_scale=3.3802, mae=5.7925, mse=502.1232
+At step 110: loss=3572297.0512, amplitude=19.1986, length_scale=3.1896, mae=7.8226, mse=644.5938
+At step 120: loss=2474771.2870, amplitude=20.2366, length_scale=3.0273, mae=11.2624, mse=1857.3208
+At step 130: loss=1745567.5734, amplitude=21.2134, length_scale=2.8963, mae=16.2696, mse=3826.7506
+At step 140: loss=1244531.5633, amplitude=22.1042, length_scale=2.7911, mae=20.2605, mse=5681.3576
+At step 150: loss=887221.5082, amplitude=22.9203, length_scale=2.7046, mae=22.4523, mse=6678.2131
+At step 160: loss=645022.0901, amplitude=23.6559, length_scale=2.6338, mae=23.1380, mse=6740.2028
+At step 170: loss=488345.6924, amplitude=24.3007, length_scale=2.5770, mae=22.9791, mse=6306.6733
+At step 180: loss=387292.2704, amplitude=24.8570, length_scale=2.5317, mae=22.4712, mse=5735.5611
+At step 190: loss=320191.1882, amplitude=25.3367, length_scale=2.4952, mae=21.8781, mse=5187.3764
+At step 200: loss=273710.4921, amplitude=25.7548, length_scale=2.4652, mae=21.2941, mse=4710.2317
+At step 210: loss=240085.5526, amplitude=26.1244, length_scale=2.4400, mae=20.7465, mse=4307.7598
+At step 220: loss=214795.6651, amplitude=26.4563, length_scale=2.4184, mae=20.2377, mse=3970.2790
+At step 230: loss=195140.9804, amplitude=26.7582, length_scale=2.3994, mae=19.7724, mse=3686.1559
+At step 240: loss=179448.9256, amplitude=27.0360, length_scale=2.3825, mae=19.3546, mse=3445.1332
+At step 250: loss=166641.7151, amplitude=27.2939, length_scale=2.3672, mae=18.9692, mse=3238.9265
+At step 260: loss=155997.6341, amplitude=27.5353, length_scale=2.3534, mae=18.6122, mse=3061.0142
+At step 270: loss=147016.4239, amplitude=27.7627, length_scale=2.3406, mae=18.2796, mse=2906.2867
+At step 280: loss=139340.6748, amplitude=27.9779, length_scale=2.3288, mae=17.9704, mse=2770.7212
+At step 290: loss=132708.0416, amplitude=28.1825, length_scale=2.3178, mae=17.6824, mse=2651.1292
+At step 299: loss=127466.9091, amplitude=28.3588, length_scale=2.3086, mae=17.4379, mse=2555.0345
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3473
+
+Random sampling ...
+Updated pool: (1874,)
+Updated training set (394,)
+Updated test set: (7400,)
+
+Query number  24
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46668973.8109, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3541
+At step 10: loss=40042236.5656, amplitude=8.9140, length_scale=7.1781, mae=0.7478, mse=1.7691
+At step 20: loss=34473192.6575, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3429
+At step 30: loss=28566256.4509, amplitude=10.7631, length_scale=5.9234, mae=0.9138, mse=3.1272
+At step 40: loss=23693502.9774, amplitude=11.7837, length_scale=5.3920, mae=1.1636, mse=8.9630
+At step 50: loss=19790140.3448, amplitude=12.7760, length_scale=4.9495, mae=1.8528, mse=43.0962
+At step 60: loss=15447220.6868, amplitude=13.8571, length_scale=4.5349, mae=2.7348, mse=106.6605
+At step 70: loss=11388073.3809, amplitude=15.0229, length_scale=4.1538, mae=3.4240, mse=181.9718
+At step 80: loss=8694599.1017, amplitude=16.1381, length_scale=3.8419, mae=4.0110, mse=317.2481
+At step 90: loss=6767268.1833, amplitude=17.1563, length_scale=3.5955, mae=4.2162, mse=384.1469
+At step 100: loss=5031953.1724, amplitude=18.1655, length_scale=3.3802, mae=5.7922, mse=502.1215
+At step 110: loss=3572500.8584, amplitude=19.1984, length_scale=3.1896, mae=7.8222, mse=644.5011
+At step 120: loss=2474925.7272, amplitude=20.2364, length_scale=3.0273, mae=11.2615, mse=1857.0029
+At step 130: loss=1745677.8200, amplitude=21.2132, length_scale=2.8963, mae=16.2687, mse=3826.3402
+At step 140: loss=1244616.2158, amplitude=22.1040, length_scale=2.7911, mae=20.2598, mse=5681.0231
+At step 150: loss=887284.1576, amplitude=22.9201, length_scale=2.7046, mae=22.4519, mse=6678.0906
+At step 160: loss=645064.5938, amplitude=23.6557, length_scale=2.6338, mae=23.1380, mse=6740.2551
+At step 170: loss=488373.0551, amplitude=24.3005, length_scale=2.5770, mae=22.9792, mse=6306.8059
+At step 180: loss=387309.5045, amplitude=24.8568, length_scale=2.5317, mae=22.4714, mse=5735.7140
+At step 190: loss=320201.9841, amplitude=25.3365, length_scale=2.4952, mae=21.8783, mse=5187.5231
+At step 200: loss=273717.1244, amplitude=25.7546, length_scale=2.4652, mae=21.2943, mse=4710.3625
+At step 210: loss=240089.3991, amplitude=26.1243, length_scale=2.4400, mae=20.7466, mse=4307.8756
+At step 220: loss=214797.6170, amplitude=26.4561, length_scale=2.4184, mae=20.2379, mse=3970.3819
+At step 230: loss=195141.5051, amplitude=26.7580, length_scale=2.3994, mae=19.7726, mse=3686.2454
+At step 240: loss=179448.4453, amplitude=27.0358, length_scale=2.3825, mae=19.3548, mse=3445.2124
+At step 250: loss=166640.4295, amplitude=27.2938, length_scale=2.3672, mae=18.9693, mse=3238.9970
+At step 260: loss=155995.7511, amplitude=27.5352, length_scale=2.3534, mae=18.6124, mse=3061.0773
+At step 270: loss=147014.0634, amplitude=27.7625, length_scale=2.3406, mae=18.2798, mse=2906.3434
+At step 280: loss=139337.8946, amplitude=27.9777, length_scale=2.3288, mae=17.9705, mse=2770.7726
+At step 290: loss=132704.9238, amplitude=28.1824, length_scale=2.3178, mae=17.6825, mse=2651.1759
+At step 299: loss=127463.5633, amplitude=28.3586, length_scale=2.3086, mae=17.4380, mse=2555.0777
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3470
+
+Random sampling ...
+Updated pool: (1875,)
+Updated training set (395,)
+Updated test set: (7400,)
+
+Query number  25
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46669531.8363, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3540
+At step 10: loss=40042459.9380, amplitude=8.9140, length_scale=7.1781, mae=0.7479, mse=1.7690
+At step 20: loss=34473297.2456, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3429
+At step 30: loss=28566382.5129, amplitude=10.7631, length_scale=5.9234, mae=0.9138, mse=3.1272
+At step 40: loss=23693627.1756, amplitude=11.7837, length_scale=5.3920, mae=1.1636, mse=8.9626
+At step 50: loss=19790334.6930, amplitude=12.7759, length_scale=4.9495, mae=1.8528, mse=43.0938
+At step 60: loss=15447494.5266, amplitude=13.8570, length_scale=4.5349, mae=2.7348, mse=106.6553
+At step 70: loss=11388351.4751, amplitude=15.0228, length_scale=4.1538, mae=3.4240, mse=181.9627
+At step 80: loss=8694803.6690, amplitude=16.1380, length_scale=3.8419, mae=4.0110, mse=317.2400
+At step 90: loss=6767476.7771, amplitude=17.1562, length_scale=3.5955, mae=4.2160, mse=384.1302
+At step 100: loss=5032162.8274, amplitude=18.1654, length_scale=3.3802, mae=5.7920, mse=502.1199
+At step 110: loss=3572688.2611, amplitude=19.1982, length_scale=3.1897, mae=7.8218, mse=644.4156
+At step 120: loss=2475067.5544, amplitude=20.2362, length_scale=3.0274, mae=11.2607, mse=1856.7098
+At step 130: loss=1745779.2092, amplitude=21.2130, length_scale=2.8963, mae=16.2678, mse=3825.9613
+At step 140: loss=1244693.7867, amplitude=22.1038, length_scale=2.7911, mae=20.2592, mse=5680.7131
+At step 150: loss=887341.3370, amplitude=22.9199, length_scale=2.7046, mae=22.4517, mse=6677.9770
+At step 160: loss=645103.2485, amplitude=23.6555, length_scale=2.6338, mae=23.1379, mse=6740.3043
+At step 170: loss=488397.8632, amplitude=24.3004, length_scale=2.5770, mae=22.9793, mse=6306.9300
+At step 180: loss=387325.0423, amplitude=24.8566, length_scale=2.5317, mae=22.4715, mse=5735.8554
+At step 190: loss=320211.5107, amplitude=25.3364, length_scale=2.4952, mae=21.8784, mse=5187.6585
+At step 200: loss=273722.7808, amplitude=25.7545, length_scale=2.4653, mae=21.2945, mse=4710.4852
+At step 210: loss=240092.4835, amplitude=26.1242, length_scale=2.4400, mae=20.7468, mse=4307.9822
+At step 220: loss=214798.9250, amplitude=26.4560, length_scale=2.4184, mae=20.2380, mse=3970.4753
+At step 230: loss=195141.5392, amplitude=26.7579, length_scale=2.3994, mae=19.7727, mse=3686.3276
+At step 240: loss=179447.5422, amplitude=27.0357, length_scale=2.3825, mae=19.3549, mse=3445.2855
+At step 250: loss=166638.8446, amplitude=27.2937, length_scale=2.3672, mae=18.9695, mse=3239.0619
+At step 260: loss=155993.5409, amplitude=27.5351, length_scale=2.3534, mae=18.6125, mse=3061.1355
+At step 270: loss=147011.4258, amplitude=27.7624, length_scale=2.3406, mae=18.2799, mse=2906.3959
+At step 280: loss=139334.8499, amplitude=27.9776, length_scale=2.3288, mae=17.9706, mse=2770.8203
+At step 290: loss=132701.6088, amplitude=28.1823, length_scale=2.3179, mae=17.6826, mse=2651.2193
+At step 299: loss=127460.0108, amplitude=28.3585, length_scale=2.3086, mae=17.4381, mse=2555.1179
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3468
+
+Random sampling ...
+Updated pool: (1876,)
+Updated training set (396,)
+Updated test set: (7400,)
+
+Query number  26
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46670047.8791, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3540
+At step 10: loss=40042665.4938, amplitude=8.9140, length_scale=7.1781, mae=0.7479, mse=1.7689
+At step 20: loss=34473392.6065, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3428
+At step 30: loss=28566498.3759, amplitude=10.7631, length_scale=5.9234, mae=0.9138, mse=3.1273
+At step 40: loss=23693741.9432, amplitude=11.7836, length_scale=5.3920, mae=1.1636, mse=8.9622
+At step 50: loss=19790513.3747, amplitude=12.7759, length_scale=4.9495, mae=1.8527, mse=43.0916
+At step 60: loss=15447747.8717, amplitude=13.8569, length_scale=4.5349, mae=2.7347, mse=106.6505
+At step 70: loss=11388610.0233, amplitude=15.0227, length_scale=4.1538, mae=3.4239, mse=181.9543
+At step 80: loss=8694992.9011, amplitude=16.1379, length_scale=3.8420, mae=4.0110, mse=317.2326
+At step 90: loss=6767669.0380, amplitude=17.1561, length_scale=3.5956, mae=4.2158, mse=384.1147
+At step 100: loss=5032356.5212, amplitude=18.1652, length_scale=3.3803, mae=5.7918, mse=502.1186
+At step 110: loss=3572861.1033, amplitude=19.1981, length_scale=3.1897, mae=7.8214, mse=644.3365
+At step 120: loss=2475198.8948, amplitude=20.2360, length_scale=3.0274, mae=11.2599, mse=1856.4385
+At step 130: loss=1745872.6998, amplitude=21.2128, length_scale=2.8964, mae=16.2670, mse=3825.6083
+At step 140: loss=1244765.2190, amplitude=22.1036, length_scale=2.7912, mae=20.2586, mse=5680.4256
+At step 150: loss=887393.9445, amplitude=22.9197, length_scale=2.7046, mae=22.4514, mse=6677.8709
+At step 160: loss=645138.7206, amplitude=23.6553, length_scale=2.6338, mae=23.1379, mse=6740.3479
+At step 170: loss=488420.3384, amplitude=24.3002, length_scale=2.5770, mae=22.9794, mse=6307.0425
+At step 180: loss=387338.9094, amplitude=24.8565, length_scale=2.5317, mae=22.4716, mse=5735.9859
+At step 190: loss=320219.8750, amplitude=25.3363, length_scale=2.4952, mae=21.8786, mse=5187.7833
+At step 200: loss=273727.6010, amplitude=25.7543, length_scale=2.4653, mae=21.2946, mse=4710.5977
+At step 210: loss=240094.9315, amplitude=26.1240, length_scale=2.4400, mae=20.7469, mse=4308.0818
+At step 220: loss=214799.7250, amplitude=26.4559, length_scale=2.4184, mae=20.2381, mse=3970.5624
+At step 230: loss=195141.1523, amplitude=26.7578, length_scale=2.3994, mae=19.7728, mse=3686.4044
+At step 240: loss=179446.2777, amplitude=27.0356, length_scale=2.3825, mae=19.3550, mse=3445.3533
+At step 250: loss=166636.8395, amplitude=27.2936, length_scale=2.3672, mae=18.9696, mse=3239.1220
+At step 260: loss=155991.0751, amplitude=27.5350, length_scale=2.3534, mae=18.6126, mse=3061.1897
+At step 270: loss=147008.5023, amplitude=27.7623, length_scale=2.3406, mae=18.2800, mse=2906.4439
+At step 280: loss=139331.6132, amplitude=27.9775, length_scale=2.3288, mae=17.9707, mse=2770.8643
+At step 290: loss=132698.0879, amplitude=28.1822, length_scale=2.3179, mae=17.6827, mse=2651.2590
+At step 299: loss=127456.2480, amplitude=28.3584, length_scale=2.3086, mae=17.4382, mse=2555.1546
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3466
+
+Random sampling ...
+Updated pool: (1877,)
+Updated training set (397,)
+Updated test set: (7400,)
+
+Query number  27
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46670526.4588, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3539
+At step 10: loss=40042857.2816, amplitude=8.9140, length_scale=7.1781, mae=0.7479, mse=1.7689
+At step 20: loss=34473481.1761, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3428
+At step 30: loss=28566604.9835, amplitude=10.7630, length_scale=5.9234, mae=0.9138, mse=3.1273
+At step 40: loss=23693848.1262, amplitude=11.7836, length_scale=5.3921, mae=1.1636, mse=8.9618
+At step 50: loss=19790679.6270, amplitude=12.7758, length_scale=4.9496, mae=1.8527, mse=43.0896
+At step 60: loss=15447984.1441, amplitude=13.8568, length_scale=4.5349, mae=2.7347, mse=106.6460
+At step 70: loss=11388848.4884, amplitude=15.0226, length_scale=4.1538, mae=3.4239, mse=181.9466
+At step 80: loss=8695168.0235, amplitude=16.1378, length_scale=3.8420, mae=4.0110, mse=317.2255
+At step 90: loss=6767847.5094, amplitude=17.1559, length_scale=3.5956, mae=4.2157, mse=384.1003
+At step 100: loss=5032535.9340, amplitude=18.1651, length_scale=3.3803, mae=5.7916, mse=502.1173
+At step 110: loss=3573022.0013, amplitude=19.1979, length_scale=3.1897, mae=7.8211, mse=644.2630
+At step 120: loss=2475319.8624, amplitude=20.2358, length_scale=3.0274, mae=11.2592, mse=1856.1869
+At step 130: loss=1745959.0267, amplitude=21.2126, length_scale=2.8964, mae=16.2663, mse=3825.2826
+At step 140: loss=1244831.1992, amplitude=22.1035, length_scale=2.7912, mae=20.2580, mse=5680.1608
+At step 150: loss=887442.3788, amplitude=22.9196, length_scale=2.7046, mae=22.4511, mse=6677.7739
+At step 160: loss=645171.1876, amplitude=23.6552, length_scale=2.6338, mae=23.1379, mse=6740.3931
+At step 170: loss=488440.8481, amplitude=24.3000, length_scale=2.5770, mae=22.9794, mse=6307.1487
+At step 180: loss=387351.4121, amplitude=24.8563, length_scale=2.5317, mae=22.4717, mse=5736.1074
+At step 190: loss=320227.2758, amplitude=25.3361, length_scale=2.4952, mae=21.8787, mse=5187.8999
+At step 200: loss=273731.6222, amplitude=25.7542, length_scale=2.4653, mae=21.2947, mse=4710.7021
+At step 210: loss=240096.7375, amplitude=26.1239, length_scale=2.4401, mae=20.7471, mse=4308.1749
+At step 220: loss=214799.9970, amplitude=26.4558, length_scale=2.4184, mae=20.2383, mse=3970.6440
+At step 230: loss=195140.3484, amplitude=26.7577, length_scale=2.3994, mae=19.7730, mse=3686.4755
+At step 240: loss=179444.6248, amplitude=27.0355, length_scale=2.3825, mae=19.3551, mse=3445.4162
+At step 250: loss=166634.5999, amplitude=27.2934, length_scale=2.3672, mae=18.9697, mse=3239.1779
+At step 260: loss=155988.3353, amplitude=27.5349, length_scale=2.3534, mae=18.6127, mse=3061.2399
+At step 270: loss=147005.3952, amplitude=27.7622, length_scale=2.3406, mae=18.2801, mse=2906.4895
+At step 280: loss=139328.1856, amplitude=27.9774, length_scale=2.3288, mae=17.9708, mse=2770.9051
+At step 290: loss=132694.3780, amplitude=28.1821, length_scale=2.3179, mae=17.6828, mse=2651.2965
+At step 299: loss=127452.3269, amplitude=28.3583, length_scale=2.3086, mae=17.4383, mse=2555.1888
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3464
+
+Random sampling ...
+Updated pool: (1878,)
+Updated training set (398,)
+Updated test set: (7400,)
+
+Query number  28
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46670971.4684, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3538
+At step 10: loss=40043033.0228, amplitude=8.9140, length_scale=7.1781, mae=0.7479, mse=1.7688
+At step 20: loss=34473561.4675, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3427
+At step 30: loss=28566703.1586, amplitude=10.7630, length_scale=5.9234, mae=0.9138, mse=3.1274
+At step 40: loss=23693946.5169, amplitude=11.7836, length_scale=5.3921, mae=1.1636, mse=8.9614
+At step 50: loss=19790833.2717, amplitude=12.7758, length_scale=4.9496, mae=1.8527, mse=43.0877
+At step 60: loss=15448202.6937, amplitude=13.8568, length_scale=4.5349, mae=2.7346, mse=106.6418
+At step 70: loss=11389070.7656, amplitude=15.0225, length_scale=4.1539, mae=3.4238, mse=181.9393
+At step 80: loss=8695331.5319, amplitude=16.1377, length_scale=3.8420, mae=4.0110, mse=317.2190
+At step 90: loss=6768013.3449, amplitude=17.1558, length_scale=3.5956, mae=4.2156, mse=384.0869
+At step 100: loss=5032702.5404, amplitude=18.1650, length_scale=3.3803, mae=5.7914, mse=502.1161
+At step 110: loss=3573171.2012, amplitude=19.1978, length_scale=3.1897, mae=7.8208, mse=644.1946
+At step 120: loss=2475432.5306, amplitude=20.2357, length_scale=3.0274, mae=11.2586, mse=1855.9511
+At step 130: loss=1746038.9572, amplitude=21.2125, length_scale=2.8964, mae=16.2656, mse=3824.9790
+At step 140: loss=1244892.2257, amplitude=22.1033, length_scale=2.7912, mae=20.2575, mse=5679.9124
+At step 150: loss=887487.1095, amplitude=22.9194, length_scale=2.7046, mae=22.4509, mse=6677.6846
+At step 160: loss=645201.1001, amplitude=23.6550, length_scale=2.6338, mae=23.1378, mse=6740.4294
+At step 170: loss=488459.5747, amplitude=24.2999, length_scale=2.5770, mae=22.9795, mse=6307.2471
+At step 180: loss=387362.6120, amplitude=24.8562, length_scale=2.5317, mae=22.4719, mse=5736.2193
+At step 190: loss=320233.6945, amplitude=25.3360, length_scale=2.4953, mae=21.8788, mse=5188.0068
+At step 200: loss=273734.9786, amplitude=25.7541, length_scale=2.4653, mae=21.2949, mse=4710.7998
+At step 210: loss=240098.0236, amplitude=26.1238, length_scale=2.4401, mae=20.7472, mse=4308.2602
+At step 220: loss=214799.8372, amplitude=26.4557, length_scale=2.4184, mae=20.2384, mse=3970.7187
+At step 230: loss=195139.1898, amplitude=26.7576, length_scale=2.3994, mae=19.7731, mse=3686.5422
+At step 240: loss=179442.7204, amplitude=27.0354, length_scale=2.3825, mae=19.3552, mse=3445.4747
+At step 250: loss=166632.1112, amplitude=27.2933, length_scale=2.3673, mae=18.9698, mse=3239.2299
+At step 260: loss=155985.3742, amplitude=27.5348, length_scale=2.3534, mae=18.6128, mse=3061.2859
+At step 270: loss=147002.0858, amplitude=27.7621, length_scale=2.3406, mae=18.2802, mse=2906.5316
+At step 280: loss=139324.5905, amplitude=27.9773, length_scale=2.3288, mae=17.9709, mse=2770.9428
+At step 290: loss=132690.5055, amplitude=28.1820, length_scale=2.3179, mae=17.6829, mse=2651.3309
+At step 299: loss=127448.3233, amplitude=28.3582, length_scale=2.3086, mae=17.4384, mse=2555.2208
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3462
+
+Random sampling ...
+Updated pool: (1879,)
+Updated training set (399,)
+Updated test set: (7400,)
+
+Query number  29
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46671386.2798, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3537
+At step 10: loss=40043198.5456, amplitude=8.9140, length_scale=7.1781, mae=0.7479, mse=1.7687
+At step 20: loss=34473637.7729, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3427
+At step 30: loss=28566795.3141, amplitude=10.7630, length_scale=5.9234, mae=0.9138, mse=3.1274
+At step 40: loss=23694038.2438, amplitude=11.7836, length_scale=5.3921, mae=1.1636, mse=8.9611
+At step 50: loss=19790977.6154, amplitude=12.7757, length_scale=4.9496, mae=1.8526, mse=43.0859
+At step 60: loss=15448406.1242, amplitude=13.8567, length_scale=4.5350, mae=2.7346, mse=106.6379
+At step 70: loss=11389277.3529, amplitude=15.0224, length_scale=4.1539, mae=3.4238, mse=181.9326
+At step 80: loss=8695483.5142, amplitude=16.1376, length_scale=3.8420, mae=4.0110, mse=317.2130
+At step 90: loss=6768167.7192, amplitude=17.1557, length_scale=3.5956, mae=4.2154, mse=384.0744
+At step 100: loss=5032857.8738, amplitude=18.1649, length_scale=3.3803, mae=5.7912, mse=502.1149
+At step 110: loss=3573309.9890, amplitude=19.1976, length_scale=3.1897, mae=7.8205, mse=644.1308
+At step 120: loss=2475537.2001, amplitude=20.2355, length_scale=3.0274, mae=11.2580, mse=1855.7320
+At step 130: loss=1746113.0558, amplitude=21.2124, length_scale=2.8964, mae=16.2649, mse=3824.6970
+At step 140: loss=1244948.6904, amplitude=22.1032, length_scale=2.7912, mae=20.2570, mse=5679.6802
+At step 150: loss=887528.3778, amplitude=22.9193, length_scale=2.7046, mae=22.4507, mse=6677.6007
+At step 160: loss=645228.5514, amplitude=23.6549, length_scale=2.6338, mae=23.1378, mse=6740.4678
+At step 170: loss=488476.5219, amplitude=24.2998, length_scale=2.5770, mae=22.9796, mse=6307.3393
+At step 180: loss=387372.6764, amplitude=24.8561, length_scale=2.5317, mae=22.4720, mse=5736.3262
+At step 190: loss=320239.3079, amplitude=25.3359, length_scale=2.4953, mae=21.8789, mse=5188.1086
+At step 200: loss=273737.7077, amplitude=25.7540, length_scale=2.4653, mae=21.2950, mse=4710.8915
+At step 210: loss=240098.8281, amplitude=26.1237, length_scale=2.4401, mae=20.7473, mse=4308.3402
+At step 220: loss=214799.3239, amplitude=26.4556, length_scale=2.4184, mae=20.2385, mse=3970.7897
+At step 230: loss=195137.7037, amplitude=26.7575, length_scale=2.3994, mae=19.7732, mse=3686.6042
+At step 240: loss=179440.5270, amplitude=27.0353, length_scale=2.3825, mae=19.3553, mse=3445.5302
+At step 250: loss=166629.3582, amplitude=27.2933, length_scale=2.3673, mae=18.9699, mse=3239.2792
+At step 260: loss=155982.2394, amplitude=27.5347, length_scale=2.3534, mae=18.6129, mse=3061.3300
+At step 270: loss=146998.5796, amplitude=27.7620, length_scale=2.3406, mae=18.2803, mse=2906.5709
+At step 280: loss=139320.7728, amplitude=27.9772, length_scale=2.3288, mae=17.9710, mse=2770.9791
+At step 290: loss=132686.4849, amplitude=28.1819, length_scale=2.3179, mae=17.6830, mse=2651.3632
+At step 299: loss=127444.1298, amplitude=28.3581, length_scale=2.3086, mae=17.4385, mse=2555.2509
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3460
+
+Random sampling ...
+Updated pool: (1880,)
+Updated training set (400,)
+Updated test set: (7400,)
+
+Query number  30
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46671773.8277, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3537
+At step 10: loss=40043352.1639, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7686
+At step 20: loss=34473708.7220, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3426
+At step 30: loss=28566881.9934, amplitude=10.7630, length_scale=5.9234, mae=0.9138, mse=3.1274
+At step 40: loss=23694124.1427, amplitude=11.7835, length_scale=5.3921, mae=1.1636, mse=8.9608
+At step 50: loss=19791111.9340, amplitude=12.7757, length_scale=4.9496, mae=1.8526, mse=43.0843
+At step 60: loss=15448597.1231, amplitude=13.8566, length_scale=4.5350, mae=2.7345, mse=106.6342
+At step 70: loss=11389470.5321, amplitude=15.0224, length_scale=4.1539, mae=3.4237, mse=181.9262
+At step 80: loss=8695624.5282, amplitude=16.1375, length_scale=3.8420, mae=4.0110, mse=317.2072
+At step 90: loss=6768311.0755, amplitude=17.1556, length_scale=3.5957, mae=4.2153, mse=384.0626
+At step 100: loss=5033002.3948, amplitude=18.1648, length_scale=3.3803, mae=5.7911, mse=502.1138
+At step 110: loss=3573439.3063, amplitude=19.1975, length_scale=3.1898, mae=7.8202, mse=644.0707
+At step 120: loss=2475634.6060, amplitude=20.2354, length_scale=3.0275, mae=11.2574, mse=1855.5269
+At step 130: loss=1746182.3571, amplitude=21.2122, length_scale=2.8964, mae=16.2643, mse=3824.4311
+At step 140: loss=1245001.2692, amplitude=22.1030, length_scale=2.7912, mae=20.2566, mse=5679.4639
+At step 150: loss=887566.6724, amplitude=22.9191, length_scale=2.7047, mae=22.4505, mse=6677.5216
+At step 160: loss=645253.9016, amplitude=23.6547, length_scale=2.6339, mae=23.1377, mse=6740.5005
+At step 170: loss=488492.1348, amplitude=24.2997, length_scale=2.5770, mae=22.9796, mse=6307.4246
+At step 180: loss=387381.7691, amplitude=24.8560, length_scale=2.5317, mae=22.4721, mse=5736.4233
+At step 190: loss=320244.2201, amplitude=25.3358, length_scale=2.4953, mae=21.8790, mse=5188.2025
+At step 200: loss=273739.8982, amplitude=25.7539, length_scale=2.4653, mae=21.2951, mse=4710.9756
+At step 210: loss=240099.1887, amplitude=26.1236, length_scale=2.4401, mae=20.7474, mse=4308.4146
+At step 220: loss=214798.4597, amplitude=26.4555, length_scale=2.4184, mae=20.2386, mse=3970.8542
+At step 230: loss=195135.9438, amplitude=26.7574, length_scale=2.3994, mae=19.7733, mse=3686.6614
+At step 240: loss=179438.1182, amplitude=27.0352, length_scale=2.3825, mae=19.3554, mse=3445.5802
+At step 250: loss=166626.4191, amplitude=27.2932, length_scale=2.3673, mae=18.9700, mse=3239.3239
+At step 260: loss=155978.8943, amplitude=27.5346, length_scale=2.3534, mae=18.6130, mse=3061.3703
+At step 270: loss=146994.9136, amplitude=27.7619, length_scale=2.3406, mae=18.2803, mse=2906.6069
+At step 280: loss=139316.8728, amplitude=27.9771, length_scale=2.3288, mae=17.9711, mse=2771.0114
+At step 290: loss=132682.3871, amplitude=28.1818, length_scale=2.3179, mae=17.6830, mse=2651.3933
+At step 299: loss=127439.8483, amplitude=28.3581, length_scale=2.3086, mae=17.4386, mse=2555.2778
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3458
+
+Random sampling ...
+Updated pool: (1881,)
+Updated training set (401,)
+Updated test set: (7400,)
+
+Query number  31
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46672136.6786, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3536
+At step 10: loss=40043495.3265, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7686
+At step 20: loss=34473775.3317, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3426
+At step 30: loss=28566961.6910, amplitude=10.7630, length_scale=5.9235, mae=0.9138, mse=3.1275
+At step 40: loss=23694203.6875, amplitude=11.7835, length_scale=5.3921, mae=1.1636, mse=8.9605
+At step 50: loss=19791236.8092, amplitude=12.7756, length_scale=4.9496, mae=1.8526, mse=43.0828
+At step 60: loss=15448776.1735, amplitude=13.8566, length_scale=4.5350, mae=2.7345, mse=106.6308
+At step 70: loss=11389651.1586, amplitude=15.0223, length_scale=4.1539, mae=3.4237, mse=181.9204
+At step 80: loss=8695757.6384, amplitude=16.1374, length_scale=3.8421, mae=4.0109, mse=317.2020
+At step 90: loss=6768446.5172, amplitude=17.1556, length_scale=3.5957, mae=4.2152, mse=384.0517
+At step 100: loss=5033137.8499, amplitude=18.1647, length_scale=3.3804, mae=5.7909, mse=502.1128
+At step 110: loss=3573560.4431, amplitude=19.1974, length_scale=3.1898, mae=7.8200, mse=644.0152
+At step 120: loss=2475725.8103, amplitude=20.2353, length_scale=3.0275, mae=11.2569, mse=1855.3352
+At step 130: loss=1746246.6859, amplitude=21.2121, length_scale=2.8964, mae=16.2638, mse=3824.1828
+At step 140: loss=1245050.0329, amplitude=22.1029, length_scale=2.7912, mae=20.2562, mse=5679.2606
+At step 150: loss=887602.1617, amplitude=22.9190, length_scale=2.7047, mae=22.4503, mse=6677.4464
+At step 160: loss=645277.1446, amplitude=23.6546, length_scale=2.6339, mae=23.1377, mse=6740.5317
+At step 170: loss=488506.2965, amplitude=24.2995, length_scale=2.5771, mae=22.9797, mse=6307.5059
+At step 180: loss=387389.8294, amplitude=24.8559, length_scale=2.5318, mae=22.4722, mse=5736.5154
+At step 190: loss=320248.3583, amplitude=25.3357, length_scale=2.4953, mae=21.8791, mse=5188.2921
+At step 200: loss=273741.5407, amplitude=25.7538, length_scale=2.4653, mae=21.2952, mse=4711.0557
+At step 210: loss=240099.1555, amplitude=26.1235, length_scale=2.4401, mae=20.7475, mse=4308.4850
+At step 220: loss=214797.2365, amplitude=26.4554, length_scale=2.4184, mae=20.2387, mse=3970.9162
+At step 230: loss=195133.8887, amplitude=26.7573, length_scale=2.3994, mae=19.7734, mse=3686.7159
+At step 240: loss=179435.4116, amplitude=27.0351, length_scale=2.3825, mae=19.3555, mse=3445.6285
+At step 250: loss=166623.2979, amplitude=27.2931, length_scale=2.3673, mae=18.9700, mse=3239.3671
+At step 260: loss=155975.3916, amplitude=27.5345, length_scale=2.3534, mae=18.6130, mse=3061.4086
+At step 270: loss=146991.1338, amplitude=27.7618, length_scale=2.3406, mae=18.2804, mse=2906.6417
+At step 280: loss=139312.8380, amplitude=27.9771, length_scale=2.3288, mae=17.9711, mse=2771.0427
+At step 290: loss=132678.1570, amplitude=28.1817, length_scale=2.3179, mae=17.6831, mse=2651.4219
+At step 299: loss=127435.4439, amplitude=28.3580, length_scale=2.3086, mae=17.4386, mse=2555.3047
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3457
+
+Random sampling ...
+Updated pool: (1882,)
+Updated training set (402,)
+Updated test set: (7400,)
+
+Query number  32
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46672477.0867, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3535
+At step 10: loss=40043629.0556, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7685
+At step 20: loss=34473835.1900, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3426
+At step 30: loss=28567036.6080, amplitude=10.7630, length_scale=5.9235, mae=0.9138, mse=3.1275
+At step 40: loss=23694278.4566, amplitude=11.7835, length_scale=5.3921, mae=1.1635, mse=8.9602
+At step 50: loss=19791353.7455, amplitude=12.7756, length_scale=4.9496, mae=1.8526, mse=43.0813
+At step 60: loss=15448942.5618, amplitude=13.8565, length_scale=4.5350, mae=2.7345, mse=106.6276
+At step 70: loss=11389821.6411, amplitude=15.0222, length_scale=4.1539, mae=3.4236, mse=181.9148
+At step 80: loss=8695881.0644, amplitude=16.1374, length_scale=3.8421, mae=4.0109, mse=317.1970
+At step 90: loss=6768572.2364, amplitude=17.1555, length_scale=3.5957, mae=4.2151, mse=384.0414
+At step 100: loss=5033264.4384, amplitude=18.1646, length_scale=3.3804, mae=5.7908, mse=502.1118
+At step 110: loss=3573673.4634, amplitude=19.1973, length_scale=3.1898, mae=7.8197, mse=643.9628
+At step 120: loss=2475811.0233, amplitude=20.2351, length_scale=3.0275, mae=11.2564, mse=1855.1547
+At step 130: loss=1746306.7262, amplitude=21.2120, length_scale=2.8965, mae=16.2632, mse=3823.9491
+At step 140: loss=1245095.4734, amplitude=22.1028, length_scale=2.7912, mae=20.2558, mse=5679.0702
+At step 150: loss=887635.2219, amplitude=22.9189, length_scale=2.7047, mae=22.4501, mse=6677.3759
+At step 160: loss=645298.7414, amplitude=23.6545, length_scale=2.6339, mae=23.1377, mse=6740.5622
+At step 170: loss=488519.2473, amplitude=24.2994, length_scale=2.5771, mae=22.9797, mse=6307.5825
+At step 180: loss=387397.0653, amplitude=24.8558, length_scale=2.5318, mae=22.4722, mse=5736.6027
+At step 190: loss=320251.9039, amplitude=25.3356, length_scale=2.4953, mae=21.8792, mse=5188.3744
+At step 200: loss=273742.7240, amplitude=25.7537, length_scale=2.4653, mae=21.2953, mse=4711.1300
+At step 210: loss=240098.7763, amplitude=26.1234, length_scale=2.4401, mae=20.7476, mse=4308.5515
+At step 220: loss=214795.7726, amplitude=26.4553, length_scale=2.4184, mae=20.2388, mse=3970.9745
+At step 230: loss=195131.6232, amplitude=26.7572, length_scale=2.3994, mae=19.7734, mse=3686.7674
+At step 240: loss=179432.5714, amplitude=27.0350, length_scale=2.3825, mae=19.3556, mse=3445.6736
+At step 250: loss=166620.0025, amplitude=27.2930, length_scale=2.3673, mae=18.9701, mse=3239.4075
+At step 260: loss=155971.7379, amplitude=27.5344, length_scale=2.3534, mae=18.6131, mse=3061.4447
+At step 270: loss=146987.2046, amplitude=27.7618, length_scale=2.3406, mae=18.2805, mse=2906.6739
+At step 280: loss=139308.6673, amplitude=27.9770, length_scale=2.3288, mae=17.9712, mse=2771.0720
+At step 290: loss=132673.8027, amplitude=28.1817, length_scale=2.3179, mae=17.6832, mse=2651.4485
+At step 299: loss=127430.9555, amplitude=28.3579, length_scale=2.3086, mae=17.4387, mse=2555.3292
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3455
+
+Random sampling ...
+Updated pool: (1883,)
+Updated training set (403,)
+Updated test set: (7400,)
+
+Query number  33
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46672797.0398, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3535
+At step 10: loss=40043754.6295, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7685
+At step 20: loss=34473892.7284, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3425
+At step 30: loss=28567106.7918, amplitude=10.7630, length_scale=5.9235, mae=0.9138, mse=3.1275
+At step 40: loss=23694348.5210, amplitude=11.7835, length_scale=5.3921, mae=1.1635, mse=8.9600
+At step 50: loss=19791464.3128, amplitude=12.7756, length_scale=4.9496, mae=1.8525, mse=43.0799
+At step 60: loss=15449099.6274, amplitude=13.8565, length_scale=4.5350, mae=2.7344, mse=106.6246
+At step 70: loss=11389981.1858, amplitude=15.0222, length_scale=4.1540, mae=3.4236, mse=181.9095
+At step 80: loss=8695997.9333, amplitude=16.1373, length_scale=3.8421, mae=4.0109, mse=317.1922
+At step 90: loss=6768690.0623, amplitude=17.1554, length_scale=3.5957, mae=4.2150, mse=384.0319
+At step 100: loss=5033384.0497, amplitude=18.1645, length_scale=3.3804, mae=5.7906, mse=502.1109
+At step 110: loss=3573779.6609, amplitude=19.1972, length_scale=3.1898, mae=7.8195, mse=643.9130
+At step 120: loss=2475890.8388, amplitude=20.2350, length_scale=3.0275, mae=11.2559, mse=1854.9851
+At step 130: loss=1746362.9101, amplitude=21.2119, length_scale=2.8965, mae=16.2627, mse=3823.7308
+At step 140: loss=1245138.0355, amplitude=22.1027, length_scale=2.7912, mae=20.2554, mse=5678.8897
+At step 150: loss=887665.8757, amplitude=22.9188, length_scale=2.7047, mae=22.4499, mse=6677.3102
+At step 160: loss=645318.7513, amplitude=23.6544, length_scale=2.6339, mae=23.1376, mse=6740.5917
+At step 170: loss=488531.1270, amplitude=24.2993, length_scale=2.5771, mae=22.9798, mse=6307.6537
+At step 180: loss=387403.5629, amplitude=24.8557, length_scale=2.5318, mae=22.4723, mse=5736.6856
+At step 190: loss=320254.9436, amplitude=25.3355, length_scale=2.4953, mae=21.8793, mse=5188.4523
+At step 200: loss=273743.4963, amplitude=25.7536, length_scale=2.4653, mae=21.2954, mse=4711.2006
+At step 210: loss=240098.0594, amplitude=26.1233, length_scale=2.4401, mae=20.7477, mse=4308.6134
+At step 220: loss=214793.9937, amplitude=26.4552, length_scale=2.4184, mae=20.2389, mse=3971.0283
+At step 230: loss=195129.1399, amplitude=26.7572, length_scale=2.3994, mae=19.7735, mse=3686.8148
+At step 240: loss=179429.5392, amplitude=27.0350, length_scale=2.3825, mae=19.3557, mse=3445.7161
+At step 250: loss=166616.5322, amplitude=27.2929, length_scale=2.3673, mae=18.9702, mse=3239.4450
+At step 260: loss=155967.9386, amplitude=27.5344, length_scale=2.3534, mae=18.6132, mse=3061.4784
+At step 270: loss=146983.1316, amplitude=27.7617, length_scale=2.3406, mae=18.2806, mse=2906.7041
+At step 280: loss=139304.3984, amplitude=27.9769, length_scale=2.3289, mae=17.9713, mse=2771.0995
+At step 290: loss=132669.3376, amplitude=28.1816, length_scale=2.3179, mae=17.6832, mse=2651.4731
+At step 299: loss=127426.3876, amplitude=28.3578, length_scale=2.3086, mae=17.4388, mse=2555.3520
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3454
+
+Random sampling ...
+Updated pool: (1884,)
+Updated training set (404,)
+Updated test set: (7400,)
+
+Query number  34
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46673098.2980, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3534
+At step 10: loss=40043872.2362, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7684
+At step 20: loss=34473946.0978, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3425
+At step 30: loss=28567173.1515, amplitude=10.7630, length_scale=5.9235, mae=0.9138, mse=3.1276
+At step 40: loss=23694413.4467, amplitude=11.7835, length_scale=5.3921, mae=1.1635, mse=8.9597
+At step 50: loss=19791567.3287, amplitude=12.7756, length_scale=4.9497, mae=1.8525, mse=43.0786
+At step 60: loss=15449247.7438, amplitude=13.8564, length_scale=4.5351, mae=2.7344, mse=106.6217
+At step 70: loss=11390130.1532, amplitude=15.0221, length_scale=4.1540, mae=3.4235, mse=181.9046
+At step 80: loss=8696107.4412, amplitude=16.1372, length_scale=3.8421, mae=4.0109, mse=317.1878
+At step 90: loss=6768801.5807, amplitude=17.1553, length_scale=3.5957, mae=4.2149, mse=384.0226
+At step 100: loss=5033495.5460, amplitude=18.1644, length_scale=3.3804, mae=5.7905, mse=502.1103
+At step 110: loss=3573879.6138, amplitude=19.1971, length_scale=3.1898, mae=7.8193, mse=643.8668
+At step 120: loss=2475965.9932, amplitude=20.2349, length_scale=3.0275, mae=11.2555, mse=1854.8250
+At step 130: loss=1746415.7278, amplitude=21.2118, length_scale=2.8965, mae=16.2623, mse=3823.5225
+At step 140: loss=1245177.7660, amplitude=22.1026, length_scale=2.7913, mae=20.2551, mse=5678.7199
+At step 150: loss=887694.4878, amplitude=22.9187, length_scale=2.7047, mae=22.4498, mse=6677.2494
+At step 160: loss=645337.2033, amplitude=23.6543, length_scale=2.6339, mae=23.1376, mse=6740.6176
+At step 170: loss=488541.9618, amplitude=24.2992, length_scale=2.5771, mae=22.9798, mse=6307.7198
+At step 180: loss=387409.3203, amplitude=24.8556, length_scale=2.5318, mae=22.4724, mse=5736.7614
+At step 190: loss=320257.4449, amplitude=25.3354, length_scale=2.4953, mae=21.8794, mse=5188.5268
+At step 200: loss=273743.9003, amplitude=25.7535, length_scale=2.4653, mae=21.2955, mse=4711.2672
+At step 210: loss=240097.0351, amplitude=26.1233, length_scale=2.4401, mae=20.7478, mse=4308.6724
+At step 220: loss=214792.0333, amplitude=26.4552, length_scale=2.4184, mae=20.2390, mse=3971.0803
+At step 230: loss=195126.4497, amplitude=26.7571, length_scale=2.3994, mae=19.7736, mse=3686.8599
+At step 240: loss=179426.3111, amplitude=27.0349, length_scale=2.3825, mae=19.3557, mse=3445.7561
+At step 250: loss=166612.9321, amplitude=27.2929, length_scale=2.3673, mae=18.9703, mse=3239.4805
+At step 260: loss=155964.0109, amplitude=27.5343, length_scale=2.3534, mae=18.6133, mse=3061.5098
+At step 270: loss=146978.9655, amplitude=27.7616, length_scale=2.3406, mae=18.2806, mse=2906.7330
+At step 280: loss=139300.0510, amplitude=27.9769, length_scale=2.3289, mae=17.9713, mse=2771.1255
+At step 290: loss=132664.8252, amplitude=28.1815, length_scale=2.3179, mae=17.6833, mse=2651.4970
+At step 299: loss=127421.7157, amplitude=28.3578, length_scale=2.3086, mae=17.4388, mse=2555.3737
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3453
+
+Random sampling ...
+Updated pool: (1885,)
+Updated training set (405,)
+Updated test set: (7400,)
+
+Query number  35
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46673382.4247, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3534
+At step 10: loss=40043984.7987, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7684
+At step 20: loss=34473996.6722, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3425
+At step 30: loss=28567234.3356, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1276
+At step 40: loss=23694475.3699, amplitude=11.7834, length_scale=5.3921, mae=1.1635, mse=8.9595
+At step 50: loss=19791665.6142, amplitude=12.7755, length_scale=4.9497, mae=1.8525, mse=43.0774
+At step 60: loss=15449387.2433, amplitude=13.8564, length_scale=4.5351, mae=2.7344, mse=106.6190
+At step 70: loss=11390271.6980, amplitude=15.0220, length_scale=4.1540, mae=3.4235, mse=181.8999
+At step 80: loss=8696210.4873, amplitude=16.1372, length_scale=3.8421, mae=4.0109, mse=317.1835
+At step 90: loss=6768906.7345, amplitude=17.1552, length_scale=3.5957, mae=4.2149, mse=384.0138
+At step 100: loss=5033601.1204, amplitude=18.1643, length_scale=3.3804, mae=5.7904, mse=502.1093
+At step 110: loss=3573973.1350, amplitude=19.1970, length_scale=3.1898, mae=7.8191, mse=643.8224
+At step 120: loss=2476036.2962, amplitude=20.2348, length_scale=3.0275, mae=11.2551, mse=1854.6731
+At step 130: loss=1746464.9480, amplitude=21.2117, length_scale=2.8965, mae=16.2618, mse=3823.3258
+At step 140: loss=1245215.0998, amplitude=22.1025, length_scale=2.7913, mae=20.2547, mse=5678.5619
+At step 150: loss=887721.2530, amplitude=22.9186, length_scale=2.7047, mae=22.4496, mse=6677.1904
+At step 160: loss=645354.3315, amplitude=23.6542, length_scale=2.6339, mae=23.1376, mse=6740.6444
+At step 170: loss=488551.8944, amplitude=24.2991, length_scale=2.5771, mae=22.9799, mse=6307.7827
+At step 180: loss=387414.4006, amplitude=24.8555, length_scale=2.5318, mae=22.4725, mse=5736.8348
+At step 190: loss=320259.4560, amplitude=25.3353, length_scale=2.4953, mae=21.8795, mse=5188.5960
+At step 200: loss=273743.9376, amplitude=25.7535, length_scale=2.4653, mae=21.2956, mse=4711.3305
+At step 210: loss=240095.7614, amplitude=26.1232, length_scale=2.4401, mae=20.7478, mse=4308.7266
+At step 220: loss=214789.8088, amplitude=26.4551, length_scale=2.4184, mae=20.2390, mse=3971.1284
+At step 230: loss=195123.5559, amplitude=26.7570, length_scale=2.3994, mae=19.7737, mse=3686.9031
+At step 240: loss=179422.9582, amplitude=27.0348, length_scale=2.3825, mae=19.3558, mse=3445.7942
+At step 250: loss=166609.1974, amplitude=27.2928, length_scale=2.3673, mae=18.9703, mse=3239.5140
+At step 260: loss=155959.9796, amplitude=27.5342, length_scale=2.3534, mae=18.6133, mse=3061.5401
+At step 270: loss=146974.6865, amplitude=27.7616, length_scale=2.3406, mae=18.2807, mse=2906.7599
+At step 280: loss=139295.5895, amplitude=27.9768, length_scale=2.3289, mae=17.9714, mse=2771.1500
+At step 290: loss=132660.2051, amplitude=28.1815, length_scale=2.3179, mae=17.6834, mse=2651.5190
+At step 299: loss=127416.9736, amplitude=28.3577, length_scale=2.3086, mae=17.4389, mse=2555.3945
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3452
+
+Random sampling ...
+Updated pool: (1886,)
+Updated training set (406,)
+Updated test set: (7400,)
+
+Query number  36
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46673650.8139, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3534
+At step 10: loss=40044089.2524, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7683
+At step 20: loss=34474044.3220, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3424
+At step 30: loss=28567293.9563, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1276
+At step 40: loss=23694534.1886, amplitude=11.7834, length_scale=5.3921, mae=1.1635, mse=8.9593
+At step 50: loss=19791757.6671, amplitude=12.7755, length_scale=4.9497, mae=1.8525, mse=43.0762
+At step 60: loss=15449518.6745, amplitude=13.8563, length_scale=4.5351, mae=2.7343, mse=106.6165
+At step 70: loss=11390404.6216, amplitude=15.0220, length_scale=4.1540, mae=3.4235, mse=181.8955
+At step 80: loss=8696307.8439, amplitude=16.1371, length_scale=3.8421, mae=4.0109, mse=317.1796
+At step 90: loss=6769006.2416, amplitude=17.1552, length_scale=3.5957, mae=4.2148, mse=384.0058
+At step 100: loss=5033700.7626, amplitude=18.1642, length_scale=3.3804, mae=5.7903, mse=502.1086
+At step 110: loss=3574062.6541, amplitude=19.1969, length_scale=3.1898, mae=7.8189, mse=643.7808
+At step 120: loss=2476102.6325, amplitude=20.2347, length_scale=3.0275, mae=11.2547, mse=1854.5302
+At step 130: loss=1746511.3925, amplitude=21.2116, length_scale=2.8965, mae=16.2614, mse=3823.1408
+At step 140: loss=1245249.7835, amplitude=22.1024, length_scale=2.7913, mae=20.2544, mse=5678.4101
+At step 150: loss=887746.0892, amplitude=22.9185, length_scale=2.7047, mae=22.4495, mse=6677.1366
+At step 160: loss=645370.1734, amplitude=23.6541, length_scale=2.6339, mae=23.1376, mse=6740.6666
+At step 170: loss=488560.9587, amplitude=24.2991, length_scale=2.5771, mae=22.9799, mse=6307.8434
+At step 180: loss=387418.9005, amplitude=24.8554, length_scale=2.5318, mae=22.4725, mse=5736.9039
+At step 190: loss=320261.0474, amplitude=25.3353, length_scale=2.4953, mae=21.8795, mse=5188.6630
+At step 200: loss=273743.6229, amplitude=25.7534, length_scale=2.4653, mae=21.2956, mse=4711.3904
+At step 210: loss=240094.2012, amplitude=26.1231, length_scale=2.4401, mae=20.7479, mse=4308.7805
+At step 220: loss=214787.3715, amplitude=26.4550, length_scale=2.4184, mae=20.2391, mse=3971.1747
+At step 230: loss=195120.5027, amplitude=26.7570, length_scale=2.3994, mae=19.7737, mse=3686.9439
+At step 240: loss=179419.4532, amplitude=27.0348, length_scale=2.3825, mae=19.3559, mse=3445.8296
+At step 250: loss=166605.3188, amplitude=27.2927, length_scale=2.3673, mae=18.9704, mse=3239.5462
+At step 260: loss=155955.8482, amplitude=27.5342, length_scale=2.3534, mae=18.6134, mse=3061.5690
+At step 270: loss=146970.3147, amplitude=27.7615, length_scale=2.3407, mae=18.2807, mse=2906.7861
+At step 280: loss=139291.0358, amplitude=27.9767, length_scale=2.3289, mae=17.9714, mse=2771.1732
+At step 290: loss=132655.5156, amplitude=28.1814, length_scale=2.3179, mae=17.6834, mse=2651.5407
+At step 299: loss=127412.1874, amplitude=28.3577, length_scale=2.3086, mae=17.4389, mse=2555.4143
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3450
+
+Random sampling ...
+Updated pool: (1887,)
+Updated training set (407,)
+Updated test set: (7400,)
+
+Query number  37
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46673904.7124, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3533
+At step 10: loss=40044187.9231, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7683
+At step 20: loss=34474088.4807, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3424
+At step 30: loss=28567348.2924, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1276
+At step 40: loss=23694588.1417, amplitude=11.7834, length_scale=5.3922, mae=1.1635, mse=8.9591
+At step 50: loss=19791844.7617, amplitude=12.7755, length_scale=4.9497, mae=1.8525, mse=43.0751
+At step 60: loss=15449642.9644, amplitude=13.8563, length_scale=4.5351, mae=2.7343, mse=106.6141
+At step 70: loss=11390531.7110, amplitude=15.0219, length_scale=4.1540, mae=3.4234, mse=181.8913
+At step 80: loss=8696399.6141, amplitude=16.1371, length_scale=3.8421, mae=4.0109, mse=317.1758
+At step 90: loss=6769098.7680, amplitude=17.1551, length_scale=3.5958, mae=4.2147, mse=383.9980
+At step 100: loss=5033794.2392, amplitude=18.1642, length_scale=3.3805, mae=5.7902, mse=502.1078
+At step 110: loss=3574145.8699, amplitude=19.1968, length_scale=3.1899, mae=7.8188, mse=643.7414
+At step 120: loss=2476165.0648, amplitude=20.2347, length_scale=3.0276, mae=11.2543, mse=1854.3943
+At step 130: loss=1746555.1533, amplitude=21.2115, length_scale=2.8965, mae=16.2610, mse=3822.9669
+At step 140: loss=1245282.5839, amplitude=22.1023, length_scale=2.7913, mae=20.2541, mse=5678.2668
+At step 150: loss=887769.3627, amplitude=22.9184, length_scale=2.7047, mae=22.4493, mse=6677.0819
+At step 160: loss=645384.9327, amplitude=23.6540, length_scale=2.6339, mae=23.1375, mse=6740.6896
+At step 170: loss=488569.1981, amplitude=24.2990, length_scale=2.5771, mae=22.9799, mse=6307.9005
+At step 180: loss=387422.8864, amplitude=24.8553, length_scale=2.5318, mae=22.4726, mse=5736.9689
+At step 190: loss=320262.2112, amplitude=25.3352, length_scale=2.4953, mae=21.8796, mse=5188.7253
+At step 200: loss=273743.0549, amplitude=25.7533, length_scale=2.4653, mae=21.2957, mse=4711.4461
+At step 210: loss=240092.4048, amplitude=26.1231, length_scale=2.4401, mae=20.7480, mse=4308.8291
+At step 220: loss=214784.7875, amplitude=26.4550, length_scale=2.4184, mae=20.2392, mse=3971.2183
+At step 230: loss=195117.3132, amplitude=26.7569, length_scale=2.3994, mae=19.7738, mse=3686.9817
+At step 240: loss=179415.8214, amplitude=27.0347, length_scale=2.3825, mae=19.3559, mse=3445.8637
+At step 250: loss=166601.3484, amplitude=27.2927, length_scale=2.3673, mae=18.9705, mse=3239.5760
+At step 260: loss=155951.6084, amplitude=27.5341, length_scale=2.3534, mae=18.6134, mse=3061.5954
+At step 270: loss=146965.8933, amplitude=27.7615, length_scale=2.3407, mae=18.2808, mse=2906.8096
+At step 280: loss=139286.4514, amplitude=27.9767, length_scale=2.3289, mae=17.9715, mse=2771.1950
+At step 290: loss=132650.7434, amplitude=28.1814, length_scale=2.3179, mae=17.6835, mse=2651.5604
+At step 299: loss=127407.3459, amplitude=28.3576, length_scale=2.3086, mae=17.4390, mse=2555.4323
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3449
+
+Random sampling ...
+Updated pool: (1888,)
+Updated training set (408,)
+Updated test set: (7400,)
+
+Query number  38
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46674145.2387, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3533
+At step 10: loss=40044280.9941, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7683
+At step 20: loss=34474130.1950, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3424
+At step 30: loss=28567399.5955, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1277
+At step 40: loss=23694640.3150, amplitude=11.7834, length_scale=5.3922, mae=1.1635, mse=8.9589
+At step 50: loss=19791926.5756, amplitude=12.7754, length_scale=4.9497, mae=1.8525, mse=43.0741
+At step 60: loss=15449761.1288, amplitude=13.8563, length_scale=4.5351, mae=2.7343, mse=106.6118
+At step 70: loss=11390649.9989, amplitude=15.0219, length_scale=4.1540, mae=3.4234, mse=181.8873
+At step 80: loss=8696486.1714, amplitude=16.1370, length_scale=3.8422, mae=4.0109, mse=317.1723
+At step 90: loss=6769186.8868, amplitude=17.1551, length_scale=3.5958, mae=4.2146, mse=383.9907
+At step 100: loss=5033883.3245, amplitude=18.1641, length_scale=3.3805, mae=5.7901, mse=502.1072
+At step 110: loss=3574224.9223, amplitude=19.1968, length_scale=3.1899, mae=7.8186, mse=643.7039
+At step 120: loss=2476224.1582, amplitude=20.2346, length_scale=3.0276, mae=11.2539, mse=1854.2658
+At step 130: loss=1746596.2451, amplitude=21.2114, length_scale=2.8965, mae=16.2606, mse=3822.7991
+At step 140: loss=1245313.4435, amplitude=22.1022, length_scale=2.7913, mae=20.2538, mse=5678.1306
+At step 150: loss=887791.2253, amplitude=22.9183, length_scale=2.7047, mae=22.4492, mse=6677.0333
+At step 160: loss=645398.5813, amplitude=23.6539, length_scale=2.6339, mae=23.1375, mse=6740.7090
+At step 170: loss=488576.7631, amplitude=24.2989, length_scale=2.5771, mae=22.9800, mse=6307.9545
+At step 180: loss=387426.3288, amplitude=24.8553, length_scale=2.5318, mae=22.4727, mse=5737.0305
+At step 190: loss=320263.0787, amplitude=25.3351, length_scale=2.4953, mae=21.8797, mse=5188.7850
+At step 200: loss=273742.1468, amplitude=25.7533, length_scale=2.4653, mae=21.2958, mse=4711.4992
+At step 210: loss=240090.3965, amplitude=26.1230, length_scale=2.4401, mae=20.7481, mse=4308.8759
+At step 220: loss=214782.0109, amplitude=26.4549, length_scale=2.4184, mae=20.2392, mse=3971.2593
+At step 230: loss=195113.9583, amplitude=26.7568, length_scale=2.3994, mae=19.7739, mse=3687.0181
+At step 240: loss=179412.0725, amplitude=27.0346, length_scale=2.3825, mae=19.3560, mse=3445.8957
+At step 250: loss=166597.2861, amplitude=27.2926, length_scale=2.3673, mae=18.9705, mse=3239.6047
+At step 260: loss=155947.2795, amplitude=27.5341, length_scale=2.3534, mae=18.6135, mse=3061.6216
+At step 270: loss=146961.3679, amplitude=27.7614, length_scale=2.3407, mae=18.2808, mse=2906.8327
+At step 280: loss=139281.7553, amplitude=27.9766, length_scale=2.3289, mae=17.9715, mse=2771.2160
+At step 290: loss=132645.9576, amplitude=28.1813, length_scale=2.3179, mae=17.6835, mse=2651.5795
+At step 299: loss=127402.4074, amplitude=28.3576, length_scale=2.3086, mae=17.4390, mse=2555.4498
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3448
+
+Random sampling ...
+Updated pool: (1889,)
+Updated training set (409,)
+Updated test set: (7400,)
+
+Query number  39
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46674373.3989, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3532
+At step 10: loss=40044369.9829, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7682
+At step 20: loss=34474170.2001, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3424
+At step 30: loss=28567448.7178, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1277
+At step 40: loss=23694688.8157, amplitude=11.7834, length_scale=5.3922, mae=1.1635, mse=8.9587
+At step 50: loss=19792004.6423, amplitude=12.7754, length_scale=4.9497, mae=1.8524, mse=43.0731
+At step 60: loss=15449871.8917, amplitude=13.8562, length_scale=4.5351, mae=2.7343, mse=106.6096
+At step 70: loss=11390763.0870, amplitude=15.0219, length_scale=4.1540, mae=3.4234, mse=181.8835
+At step 80: loss=8696568.5255, amplitude=16.1370, length_scale=3.8422, mae=4.0109, mse=317.1689
+At step 90: loss=6769270.7355, amplitude=17.1550, length_scale=3.5958, mae=4.2146, mse=383.9837
+At step 100: loss=5033967.7511, amplitude=18.1640, length_scale=3.3805, mae=5.7900, mse=502.1067
+At step 110: loss=3574299.6558, amplitude=19.1967, length_scale=3.1899, mae=7.8184, mse=643.6685
+At step 120: loss=2476279.7929, amplitude=20.2345, length_scale=3.0276, mae=11.2536, mse=1854.1436
+At step 130: loss=1746635.1892, amplitude=21.2113, length_scale=2.8965, mae=16.2603, mse=3822.6421
+At step 140: loss=1245342.3214, amplitude=22.1021, length_scale=2.7913, mae=20.2536, mse=5678.0015
+At step 150: loss=887811.7137, amplitude=22.9182, length_scale=2.7047, mae=22.4491, mse=6676.9857
+At step 160: loss=645411.2672, amplitude=23.6539, length_scale=2.6339, mae=23.1375, mse=6740.7308
+At step 170: loss=488583.6008, amplitude=24.2988, length_scale=2.5771, mae=22.9800, mse=6308.0035
+At step 180: loss=387429.3096, amplitude=24.8552, length_scale=2.5318, mae=22.4727, mse=5737.0897
+At step 190: loss=320263.5368, amplitude=25.3350, length_scale=2.4953, mae=21.8797, mse=5188.8410
+At step 200: loss=273741.0448, amplitude=25.7532, length_scale=2.4653, mae=21.2958, mse=4711.5498
+At step 210: loss=240088.2232, amplitude=26.1229, length_scale=2.4401, mae=20.7481, mse=4308.9210
+At step 220: loss=214779.0590, amplitude=26.4548, length_scale=2.4184, mae=20.2393, mse=3971.2984
+At step 230: loss=195110.4931, amplitude=26.7568, length_scale=2.3994, mae=19.7739, mse=3687.0528
+At step 240: loss=179408.1828, amplitude=27.0346, length_scale=2.3825, mae=19.3560, mse=3445.9262
+At step 250: loss=166593.1288, amplitude=27.2926, length_scale=2.3673, mae=18.9706, mse=3239.6318
+At step 260: loss=155942.8848, amplitude=27.5340, length_scale=2.3534, mae=18.6135, mse=3061.6456
+At step 270: loss=146956.7954, amplitude=27.7613, length_scale=2.3407, mae=18.2809, mse=2906.8545
+At step 280: loss=139277.0032, amplitude=27.9766, length_scale=2.3289, mae=17.9716, mse=2771.2356
+At step 290: loss=132641.0665, amplitude=28.1813, length_scale=2.3179, mae=17.6836, mse=2651.5975
+At step 299: loss=127397.4273, amplitude=28.3575, length_scale=2.3086, mae=17.4391, mse=2555.4666
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3447
+
+Random sampling ...
+Updated pool: (1890,)
+Updated training set (410,)
+Updated test set: (7400,)
+
+Query number  40
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46674590.1007, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3532
+At step 10: loss=40044454.0809, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7682
+At step 20: loss=34474206.5672, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3423
+At step 30: loss=28567495.2655, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1277
+At step 40: loss=23694734.7104, amplitude=11.7834, length_scale=5.3922, mae=1.1635, mse=8.9585
+At step 50: loss=19792078.6017, amplitude=12.7754, length_scale=4.9497, mae=1.8524, mse=43.0722
+At step 60: loss=15449979.0643, amplitude=13.8562, length_scale=4.5351, mae=2.7343, mse=106.6075
+At step 70: loss=11390870.5993, amplitude=15.0218, length_scale=4.1541, mae=3.4234, mse=181.8799
+At step 80: loss=8696646.9472, amplitude=16.1369, length_scale=3.8422, mae=4.0109, mse=317.1656
+At step 90: loss=6769349.7917, amplitude=17.1550, length_scale=3.5958, mae=4.2145, mse=383.9771
+At step 100: loss=5034047.0022, amplitude=18.1640, length_scale=3.3805, mae=5.7899, mse=502.1058
+At step 110: loss=3574370.5781, amplitude=19.1966, length_scale=3.1899, mae=7.8183, mse=643.6345
+At step 120: loss=2476332.6695, amplitude=20.2344, length_scale=3.0276, mae=11.2533, mse=1854.0275
+At step 130: loss=1746671.6380, amplitude=21.2112, length_scale=2.8965, mae=16.2599, mse=3822.4904
+At step 140: loss=1245369.4032, amplitude=22.1020, length_scale=2.7913, mae=20.2533, mse=5677.8778
+At step 150: loss=887830.7748, amplitude=22.9181, length_scale=2.7047, mae=22.4489, mse=6676.9408
+At step 160: loss=645423.0443, amplitude=23.6538, length_scale=2.6339, mae=23.1375, mse=6740.7478
+At step 170: loss=488589.8501, amplitude=24.2988, length_scale=2.5771, mae=22.9800, mse=6308.0537
+At step 180: loss=387431.8419, amplitude=24.8551, length_scale=2.5318, mae=22.4728, mse=5737.1449
+At step 190: loss=320263.7553, amplitude=25.3350, length_scale=2.4953, mae=21.8798, mse=5188.8945
+At step 200: loss=273739.7008, amplitude=25.7531, length_scale=2.4653, mae=21.2959, mse=4711.5978
+At step 210: loss=240085.8420, amplitude=26.1229, length_scale=2.4401, mae=20.7482, mse=4308.9635
+At step 220: loss=214775.9538, amplitude=26.4548, length_scale=2.4184, mae=20.2394, mse=3971.3356
+At step 230: loss=195106.9299, amplitude=26.7567, length_scale=2.3994, mae=19.7740, mse=3687.0848
+At step 240: loss=179404.2232, amplitude=27.0345, length_scale=2.3825, mae=19.3561, mse=3445.9547
+At step 250: loss=166588.8549, amplitude=27.2925, length_scale=2.3673, mae=18.9706, mse=3239.6569
+At step 260: loss=155938.3979, amplitude=27.5340, length_scale=2.3534, mae=18.6136, mse=3061.6682
+At step 270: loss=146952.1144, amplitude=27.7613, length_scale=2.3407, mae=18.2809, mse=2906.8753
+At step 280: loss=139272.1814, amplitude=27.9765, length_scale=2.3289, mae=17.9716, mse=2771.2548
+At step 290: loss=132636.1191, amplitude=28.1812, length_scale=2.3179, mae=17.6836, mse=2651.6143
+At step 299: loss=127392.3927, amplitude=28.3575, length_scale=2.3086, mae=17.4391, mse=2555.4819
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3446
+
+Random sampling ...
+Updated pool: (1891,)
+Updated training set (411,)
+Updated test set: (7400,)
+
+Query number  41
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46674796.1653, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3532
+At step 10: loss=40044533.5455, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7681
+At step 20: loss=34474241.7285, amplitude=9.7952, length_scale=6.5236, mae=0.7938, mse=2.3423
+At step 30: loss=28567539.4610, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1277
+At step 40: loss=23694778.1087, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9583
+At step 50: loss=19792148.8692, amplitude=12.7754, length_scale=4.9497, mae=1.8524, mse=43.0713
+At step 60: loss=15450078.5832, amplitude=13.8562, length_scale=4.5351, mae=2.7342, mse=106.6055
+At step 70: loss=11390973.2707, amplitude=15.0218, length_scale=4.1541, mae=3.4233, mse=181.8765
+At step 80: loss=8696720.1952, amplitude=16.1369, length_scale=3.8422, mae=4.0109, mse=317.1625
+At step 90: loss=6769425.0468, amplitude=17.1549, length_scale=3.5958, mae=4.2144, mse=383.9708
+At step 100: loss=5034122.5506, amplitude=18.1639, length_scale=3.3805, mae=5.7898, mse=502.1054
+At step 110: loss=3574437.6701, amplitude=19.1965, length_scale=3.1899, mae=7.8181, mse=643.6028
+At step 120: loss=2476382.5639, amplitude=20.2343, length_scale=3.0276, mae=11.2530, mse=1853.9167
+At step 130: loss=1746706.1884, amplitude=21.2112, length_scale=2.8965, mae=16.2596, mse=3822.3481
+At step 140: loss=1245395.0468, amplitude=22.1020, length_scale=2.7913, mae=20.2531, mse=5677.7600
+At step 150: loss=887848.7165, amplitude=22.9181, length_scale=2.7047, mae=22.4488, mse=6676.8975
+At step 160: loss=645433.9460, amplitude=23.6537, length_scale=2.6339, mae=23.1375, mse=6740.7675
+At step 170: loss=488595.4965, amplitude=24.2987, length_scale=2.5771, mae=22.9801, mse=6308.0998
+At step 180: loss=387433.9611, amplitude=24.8551, length_scale=2.5318, mae=22.4728, mse=5737.1999
+At step 190: loss=320263.6001, amplitude=25.3349, length_scale=2.4953, mae=21.8799, mse=5188.9453
+At step 200: loss=273738.0861, amplitude=25.7531, length_scale=2.4653, mae=21.2960, mse=4711.6442
+At step 210: loss=240083.2667, amplitude=26.1228, length_scale=2.4401, mae=20.7482, mse=4309.0040
+At step 220: loss=214772.7623, amplitude=26.4547, length_scale=2.4184, mae=20.2394, mse=3971.3716
+At step 230: loss=195103.2155, amplitude=26.7567, length_scale=2.3994, mae=19.7740, mse=3687.1161
+At step 240: loss=179400.1645, amplitude=27.0345, length_scale=2.3825, mae=19.3562, mse=3445.9829
+At step 250: loss=166584.5114, amplitude=27.2925, length_scale=2.3673, mae=18.9707, mse=3239.6822
+At step 260: loss=155933.8451, amplitude=27.5339, length_scale=2.3534, mae=18.6136, mse=3061.6906
+At step 270: loss=146947.3882, amplitude=27.7613, length_scale=2.3407, mae=18.2810, mse=2906.8954
+At step 280: loss=139267.3413, amplitude=27.9765, length_scale=2.3289, mae=17.9717, mse=2771.2725
+At step 290: loss=132631.1484, amplitude=28.1812, length_scale=2.3179, mae=17.6836, mse=2651.6308
+At step 299: loss=127387.3463, amplitude=28.3574, length_scale=2.3086, mae=17.4391, mse=2555.4970
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3446
+
+Random sampling ...
+Updated pool: (1892,)
+Updated training set (412,)
+Updated test set: (7400,)
+
+Query number  42
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46674992.3369, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3531
+At step 10: loss=40044608.3071, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7681
+At step 20: loss=34474275.1237, amplitude=9.7952, length_scale=6.5236, mae=0.7939, mse=2.3423
+At step 30: loss=28567580.5060, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1277
+At step 40: loss=23694819.0437, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9582
+At step 50: loss=19792214.5755, amplitude=12.7754, length_scale=4.9497, mae=1.8524, mse=43.0704
+At step 60: loss=15450174.4196, amplitude=13.8561, length_scale=4.5351, mae=2.7342, mse=106.6036
+At step 70: loss=11391069.9757, amplitude=15.0217, length_scale=4.1541, mae=3.4233, mse=181.8733
+At step 80: loss=8696790.9618, amplitude=16.1368, length_scale=3.8422, mae=4.0109, mse=317.1597
+At step 90: loss=6769495.9942, amplitude=17.1549, length_scale=3.5958, mae=4.2144, mse=383.9647
+At step 100: loss=5034194.3337, amplitude=18.1639, length_scale=3.3805, mae=5.7897, mse=502.1049
+At step 110: loss=3574501.6274, amplitude=19.1965, length_scale=3.1899, mae=7.8180, mse=643.5718
+At step 120: loss=2476430.1159, amplitude=20.2343, length_scale=3.0276, mae=11.2527, mse=1853.8114
+At step 130: loss=1746739.0326, amplitude=21.2111, length_scale=2.8965, mae=16.2593, mse=3822.2110
+At step 140: loss=1245419.0885, amplitude=22.1019, length_scale=2.7913, mae=20.2528, mse=5677.6495
+At step 150: loss=887865.5161, amplitude=22.9180, length_scale=2.7047, mae=22.4487, mse=6676.8584
+At step 160: loss=645444.1736, amplitude=23.6537, length_scale=2.6339, mae=23.1374, mse=6740.7861
+At step 170: loss=488600.5981, amplitude=24.2986, length_scale=2.5771, mae=22.9801, mse=6308.1435
+At step 180: loss=387435.7200, amplitude=24.8550, length_scale=2.5318, mae=22.4729, mse=5737.2490
+At step 190: loss=320263.2049, amplitude=25.3349, length_scale=2.4953, mae=21.8799, mse=5188.9939
+At step 200: loss=273736.3232, amplitude=25.7530, length_scale=2.4653, mae=21.2960, mse=4711.6884
+At step 210: loss=240080.5511, amplitude=26.1228, length_scale=2.4401, mae=20.7483, mse=4309.0423
+At step 220: loss=214769.4049, amplitude=26.4547, length_scale=2.4184, mae=20.2395, mse=3971.4058
+At step 230: loss=195099.3995, amplitude=26.7566, length_scale=2.3994, mae=19.7741, mse=3687.1462
+At step 240: loss=179395.9842, amplitude=27.0345, length_scale=2.3825, mae=19.3562, mse=3446.0094
+At step 250: loss=166580.0915, amplitude=27.2924, length_scale=2.3673, mae=18.9707, mse=3239.7056
+At step 260: loss=155929.2382, amplitude=27.5339, length_scale=2.3534, mae=18.6137, mse=3061.7116
+At step 270: loss=146942.5926, amplitude=27.7612, length_scale=2.3407, mae=18.2810, mse=2906.9142
+At step 280: loss=139262.3915, amplitude=27.9764, length_scale=2.3289, mae=17.9717, mse=2771.2895
+At step 290: loss=132626.1238, amplitude=28.1811, length_scale=2.3179, mae=17.6837, mse=2651.6464
+At step 299: loss=127382.2512, amplitude=28.3574, length_scale=2.3086, mae=17.4392, mse=2555.5116
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3445
+
+Random sampling ...
+Updated pool: (1893,)
+Updated training set (413,)
+Updated test set: (7400,)
+
+Query number  43
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46675179.2922, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3531
+At step 10: loss=40044680.3887, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7681
+At step 20: loss=34474307.3860, amplitude=9.7952, length_scale=6.5236, mae=0.7939, mse=2.3423
+At step 30: loss=28567619.6551, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1278
+At step 40: loss=23694858.4652, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9580
+At step 50: loss=19792278.1378, amplitude=12.7753, length_scale=4.9497, mae=1.8524, mse=43.0696
+At step 60: loss=15450265.9005, amplitude=13.8561, length_scale=4.5352, mae=2.7342, mse=106.6018
+At step 70: loss=11391162.5301, amplitude=15.0217, length_scale=4.1541, mae=3.4233, mse=181.8702
+At step 80: loss=8696857.5108, amplitude=16.1368, length_scale=3.8422, mae=4.0109, mse=317.1568
+At step 90: loss=6769563.7579, amplitude=17.1548, length_scale=3.5958, mae=4.2143, mse=383.9590
+At step 100: loss=5034262.5202, amplitude=18.1638, length_scale=3.3805, mae=5.7896, mse=502.1043
+At step 110: loss=3574562.1389, amplitude=19.1964, length_scale=3.1899, mae=7.8179, mse=643.5425
+At step 120: loss=2476475.0363, amplitude=20.2342, length_scale=3.0276, mae=11.2524, mse=1853.7105
+At step 130: loss=1746770.0646, amplitude=21.2110, length_scale=2.8966, mae=16.2590, mse=3822.0805
+At step 140: loss=1245441.8724, amplitude=22.1018, length_scale=2.7913, mae=20.2526, mse=5677.5427
+At step 150: loss=887881.3417, amplitude=22.9179, length_scale=2.7048, mae=22.4486, mse=6676.8188
+At step 160: loss=645453.5469, amplitude=23.6536, length_scale=2.6339, mae=23.1374, mse=6740.8037
+At step 170: loss=488605.1898, amplitude=24.2986, length_scale=2.5771, mae=22.9801, mse=6308.1863
+At step 180: loss=387437.1424, amplitude=24.8550, length_scale=2.5318, mae=22.4729, mse=5737.2975
+At step 190: loss=320262.5771, amplitude=25.3348, length_scale=2.4953, mae=21.8800, mse=5189.0409
+At step 200: loss=273734.3295, amplitude=25.7530, length_scale=2.4653, mae=21.2961, mse=4711.7312
+At step 210: loss=240077.7167, amplitude=26.1227, length_scale=2.4401, mae=20.7484, mse=4309.0798
+At step 220: loss=214765.9345, amplitude=26.4546, length_scale=2.4184, mae=20.2395, mse=3971.4380
+At step 230: loss=195095.4837, amplitude=26.7566, length_scale=2.3994, mae=19.7741, mse=3687.1747
+At step 240: loss=179391.7792, amplitude=27.0344, length_scale=2.3825, mae=19.3562, mse=3446.0346
+At step 250: loss=166575.6105, amplitude=27.2924, length_scale=2.3673, mae=18.9707, mse=3239.7278
+At step 260: loss=155924.5266, amplitude=27.5338, length_scale=2.3534, mae=18.6137, mse=3061.7317
+At step 270: loss=146937.7669, amplitude=27.7612, length_scale=2.3407, mae=18.2811, mse=2906.9325
+At step 280: loss=139257.4434, amplitude=27.9764, length_scale=2.3289, mae=17.9718, mse=2771.3061
+At step 290: loss=132621.0699, amplitude=28.1811, length_scale=2.3179, mae=17.6837, mse=2651.6612
+At step 299: loss=127377.0895, amplitude=28.3573, length_scale=2.3086, mae=17.4392, mse=2555.5255
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3444
+
+Random sampling ...
+Updated pool: (1894,)
+Updated training set (414,)
+Updated test set: (7400,)
+
+Query number  44
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46675357.6473, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3531
+At step 10: loss=40044747.9569, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7680
+At step 20: loss=34474336.7295, amplitude=9.7952, length_scale=6.5236, mae=0.7939, mse=2.3423
+At step 30: loss=28567657.5494, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1278
+At step 40: loss=23694896.0077, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9579
+At step 50: loss=19792338.0602, amplitude=12.7753, length_scale=4.9497, mae=1.8524, mse=43.0688
+At step 60: loss=15450353.1009, amplitude=13.8561, length_scale=4.5352, mae=2.7342, mse=106.6001
+At step 70: loss=11391250.1873, amplitude=15.0217, length_scale=4.1541, mae=3.4233, mse=181.8672
+At step 80: loss=8696920.7837, amplitude=16.1367, length_scale=3.8422, mae=4.0109, mse=317.1542
+At step 90: loss=6769628.7723, amplitude=17.1548, length_scale=3.5958, mae=4.2143, mse=383.9535
+At step 100: loss=5034327.8971, amplitude=18.1637, length_scale=3.3805, mae=5.7896, mse=502.1037
+At step 110: loss=3574620.0434, amplitude=19.1964, length_scale=3.1899, mae=7.8178, mse=643.5145
+At step 120: loss=2476517.5987, amplitude=20.2341, length_scale=3.0276, mae=11.2521, mse=1853.6140
+At step 130: loss=1746799.2026, amplitude=21.2110, length_scale=2.8966, mae=16.2587, mse=3821.9569
+At step 140: loss=1245463.5286, amplitude=22.1018, length_scale=2.7913, mae=20.2524, mse=5677.4417
+At step 150: loss=887896.2149, amplitude=22.9179, length_scale=2.7048, mae=22.4485, mse=6676.7820
+At step 160: loss=645462.3098, amplitude=23.6535, length_scale=2.6339, mae=23.1374, mse=6740.8179
+At step 170: loss=488609.3723, amplitude=24.2985, length_scale=2.5771, mae=22.9802, mse=6308.2269
+At step 180: loss=387438.1912, amplitude=24.8549, length_scale=2.5318, mae=22.4730, mse=5737.3437
+At step 190: loss=320261.6827, amplitude=25.3348, length_scale=2.4953, mae=21.8800, mse=5189.0845
+At step 200: loss=273732.1711, amplitude=25.7529, length_scale=2.4653, mae=21.2961, mse=4711.7705
+At step 210: loss=240074.7034, amplitude=26.1227, length_scale=2.4401, mae=20.7484, mse=4309.1148
+At step 220: loss=214762.3383, amplitude=26.4546, length_scale=2.4184, mae=20.2396, mse=3971.4691
+At step 230: loss=195091.4797, amplitude=26.7566, length_scale=2.3994, mae=19.7742, mse=3687.2024
+At step 240: loss=179387.4322, amplitude=27.0344, length_scale=2.3825, mae=19.3563, mse=3446.0587
+At step 250: loss=166571.0622, amplitude=27.2924, length_scale=2.3673, mae=18.9708, mse=3239.7495
+At step 260: loss=155919.8074, amplitude=27.5338, length_scale=2.3534, mae=18.6138, mse=3061.7506
+At step 270: loss=146932.8746, amplitude=27.7611, length_scale=2.3407, mae=18.2811, mse=2906.9497
+At step 280: loss=139252.4115, amplitude=27.9764, length_scale=2.3289, mae=17.9718, mse=2771.3216
+At step 290: loss=132615.9325, amplitude=28.1810, length_scale=2.3179, mae=17.6837, mse=2651.6755
+At step 299: loss=127371.9013, amplitude=28.3573, length_scale=2.3086, mae=17.4392, mse=2555.5385
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3443
+
+Random sampling ...
+Updated pool: (1895,)
+Updated training set (415,)
+Updated test set: (7400,)
+
+Query number  45
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46675527.9647, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3530
+At step 10: loss=40044813.5498, amplitude=8.9140, length_scale=7.1780, mae=0.7479, mse=1.7680
+At step 20: loss=34474364.9155, amplitude=9.7952, length_scale=6.5236, mae=0.7939, mse=2.3422
+At step 30: loss=28567692.7802, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1278
+At step 40: loss=23694932.0504, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9577
+At step 50: loss=19792395.8642, amplitude=12.7753, length_scale=4.9498, mae=1.8524, mse=43.0681
+At step 60: loss=15450435.2165, amplitude=13.8561, length_scale=4.5352, mae=2.7342, mse=106.5985
+At step 70: loss=11391334.0956, amplitude=15.0216, length_scale=4.1541, mae=3.4233, mse=181.8643
+At step 80: loss=8696981.6828, amplitude=16.1367, length_scale=3.8422, mae=4.0109, mse=317.1516
+At step 90: loss=6769690.2134, amplitude=17.1547, length_scale=3.5958, mae=4.2142, mse=383.9482
+At step 100: loss=5034389.8001, amplitude=18.1637, length_scale=3.3805, mae=5.7895, mse=502.1033
+At step 110: loss=3574674.7071, amplitude=19.1963, length_scale=3.1899, mae=7.8176, mse=643.4876
+At step 120: loss=2476558.6119, amplitude=20.2341, length_scale=3.0276, mae=11.2519, mse=1853.5223
+At step 130: loss=1746826.9835, amplitude=21.2109, length_scale=2.8966, mae=16.2584, mse=3821.8362
+At step 140: loss=1245483.8290, amplitude=22.1017, length_scale=2.7913, mae=20.2522, mse=5677.3422
+At step 150: loss=887910.1220, amplitude=22.9178, length_scale=2.7048, mae=22.4484, mse=6676.7458
+At step 160: loss=645470.4474, amplitude=23.6535, length_scale=2.6340, mae=23.1374, mse=6740.8353
+At step 170: loss=488613.0624, amplitude=24.2985, length_scale=2.5771, mae=22.9802, mse=6308.2652
+At step 180: loss=387438.9780, amplitude=24.8549, length_scale=2.5318, mae=22.4730, mse=5737.3886
+At step 190: loss=320260.6124, amplitude=25.3347, length_scale=2.4953, mae=21.8801, mse=5189.1279
+At step 200: loss=273729.8767, amplitude=25.7529, length_scale=2.4653, mae=21.2962, mse=4711.8080
+At step 210: loss=240071.5794, amplitude=26.1226, length_scale=2.4401, mae=20.7484, mse=4309.1487
+At step 220: loss=214758.6589, amplitude=26.4546, length_scale=2.4184, mae=20.2396, mse=3971.4984
+At step 230: loss=195087.3942, amplitude=26.7565, length_scale=2.3994, mae=19.7742, mse=3687.2274
+At step 240: loss=179383.0425, amplitude=27.0343, length_scale=2.3825, mae=19.3563, mse=3446.0811
+At step 250: loss=166566.4501, amplitude=27.2923, length_scale=2.3673, mae=18.9708, mse=3239.7696
+At step 260: loss=155915.0246, amplitude=27.5337, length_scale=2.3534, mae=18.6138, mse=3061.7689
+At step 270: loss=146927.9442, amplitude=27.7611, length_scale=2.3407, mae=18.2811, mse=2906.9657
+At step 280: loss=139247.3903, amplitude=27.9763, length_scale=2.3289, mae=17.9718, mse=2771.3362
+At step 290: loss=132610.8153, amplitude=28.1810, length_scale=2.3179, mae=17.6838, mse=2651.6889
+At step 299: loss=127366.6639, amplitude=28.3573, length_scale=2.3086, mae=17.4393, mse=2555.5510
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3442
+
+Random sampling ...
+Updated pool: (1896,)
+Updated training set (416,)
+Updated test set: (7400,)
+
+Query number  46
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46675690.7589, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3530
+At step 10: loss=40044875.3251, amplitude=8.9140, length_scale=7.1780, mae=0.7480, mse=1.7680
+At step 20: loss=34474392.2515, amplitude=9.7952, length_scale=6.5236, mae=0.7939, mse=2.3422
+At step 30: loss=28567726.7437, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1278
+At step 40: loss=23694965.0702, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9576
+At step 50: loss=19792449.9639, amplitude=12.7753, length_scale=4.9498, mae=1.8523, mse=43.0674
+At step 60: loss=15450514.5578, amplitude=13.8560, length_scale=4.5352, mae=2.7341, mse=106.5969
+At step 70: loss=11391414.5439, amplitude=15.0216, length_scale=4.1541, mae=3.4232, mse=181.8616
+At step 80: loss=8697039.7380, amplitude=16.1367, length_scale=3.8422, mae=4.0109, mse=317.1492
+At step 90: loss=6769748.6403, amplitude=17.1547, length_scale=3.5958, mae=4.2142, mse=383.9431
+At step 100: loss=5034448.3380, amplitude=18.1637, length_scale=3.3805, mae=5.7894, mse=502.1026
+At step 110: loss=3574727.3225, amplitude=19.1962, length_scale=3.1899, mae=7.8175, mse=643.4620
+At step 120: loss=2476597.0574, amplitude=20.2340, length_scale=3.0276, mae=11.2516, mse=1853.4334
+At step 130: loss=1746853.5073, amplitude=21.2108, length_scale=2.8966, mae=16.2582, mse=3821.7223
+At step 140: loss=1245503.0474, amplitude=22.1017, length_scale=2.7913, mae=20.2520, mse=5677.2502
+At step 150: loss=887923.1673, amplitude=22.9178, length_scale=2.7048, mae=22.4483, mse=6676.7103
+At step 160: loss=645477.8569, amplitude=23.6534, length_scale=2.6340, mae=23.1374, mse=6740.8484
+At step 170: loss=488616.3392, amplitude=24.2984, length_scale=2.5771, mae=22.9802, mse=6308.3017
+At step 180: loss=387439.4654, amplitude=24.8548, length_scale=2.5318, mae=22.4731, mse=5737.4307
+At step 190: loss=320259.2676, amplitude=25.3347, length_scale=2.4953, mae=21.8801, mse=5189.1675
+At step 200: loss=273727.4131, amplitude=25.7528, length_scale=2.4653, mae=21.2962, mse=4711.8447
+At step 210: loss=240068.3432, amplitude=26.1226, length_scale=2.4401, mae=20.7485, mse=4309.1806
+At step 220: loss=214754.8617, amplitude=26.4545, length_scale=2.4184, mae=20.2397, mse=3971.5263
+At step 230: loss=195083.2046, amplitude=26.7565, length_scale=2.3994, mae=19.7743, mse=3687.2532
+At step 240: loss=179378.6120, amplitude=27.0343, length_scale=2.3825, mae=19.3564, mse=3446.1026
+At step 250: loss=166561.7810, amplitude=27.2923, length_scale=2.3673, mae=18.9709, mse=3239.7893
+At step 260: loss=155910.1833, amplitude=27.5337, length_scale=2.3534, mae=18.6138, mse=3061.7862
+At step 270: loss=146922.9730, amplitude=27.7611, length_scale=2.3407, mae=18.2812, mse=2906.9815
+At step 280: loss=139242.2972, amplitude=27.9763, length_scale=2.3289, mae=17.9719, mse=2771.3505
+At step 290: loss=132605.6129, amplitude=28.1810, length_scale=2.3179, mae=17.6838, mse=2651.7019
+At step 299: loss=127361.4321, amplitude=28.3572, length_scale=2.3086, mae=17.4393, mse=2555.5631
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3442
+
+Random sampling ...
+Updated pool: (1897,)
+Updated training set (417,)
+Updated test set: (7400,)
+
+Query number  47
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46675846.5014, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3530
+At step 10: loss=40044933.9827, amplitude=8.9140, length_scale=7.1780, mae=0.7480, mse=1.7680
+At step 20: loss=34474416.9483, amplitude=9.7952, length_scale=6.5236, mae=0.7939, mse=2.3422
+At step 30: loss=28567757.4276, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1278
+At step 40: loss=23694997.4753, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9575
+At step 50: loss=19792502.9628, amplitude=12.7753, length_scale=4.9498, mae=1.8523, mse=43.0667
+At step 60: loss=15450589.9909, amplitude=13.8560, length_scale=4.5352, mae=2.7341, mse=106.5954
+At step 70: loss=11391491.3492, amplitude=15.0216, length_scale=4.1541, mae=3.4232, mse=181.8590
+At step 80: loss=8697094.3568, amplitude=16.1366, length_scale=3.8422, mae=4.0109, mse=317.1468
+At step 90: loss=6769804.3581, amplitude=17.1546, length_scale=3.5959, mae=4.2141, mse=383.9384
+At step 100: loss=5034504.9169, amplitude=18.1636, length_scale=3.3806, mae=5.7894, mse=502.1022
+At step 110: loss=3574777.0934, amplitude=19.1962, length_scale=3.1900, mae=7.8174, mse=643.4376
+At step 120: loss=2476633.7611, amplitude=20.2340, length_scale=3.0276, mae=11.2514, mse=1853.3491
+At step 130: loss=1746878.2896, amplitude=21.2108, length_scale=2.8966, mae=16.2579, mse=3821.6154
+At step 140: loss=1245521.1336, amplitude=22.1016, length_scale=2.7913, mae=20.2518, mse=5677.1601
+At step 150: loss=887935.3580, amplitude=22.9177, length_scale=2.7048, mae=22.4483, mse=6676.6780
+At step 160: loss=645484.7754, amplitude=23.6534, length_scale=2.6340, mae=23.1374, mse=6740.8605
+At step 170: loss=488619.1945, amplitude=24.2984, length_scale=2.5771, mae=22.9802, mse=6308.3380
+At step 180: loss=387439.6729, amplitude=24.8548, length_scale=2.5318, mae=22.4731, mse=5737.4719
+At step 190: loss=320257.7634, amplitude=25.3346, length_scale=2.4953, mae=21.8802, mse=5189.2069
+At step 200: loss=273724.7827, amplitude=25.7528, length_scale=2.4653, mae=21.2963, mse=4711.8802
+At step 210: loss=240064.9660, amplitude=26.1226, length_scale=2.4401, mae=20.7485, mse=4309.2118
+At step 220: loss=214750.9681, amplitude=26.4545, length_scale=2.4184, mae=20.2397, mse=3971.5543
+At step 230: loss=195078.9726, amplitude=26.7564, length_scale=2.3994, mae=19.7743, mse=3687.2771
+At step 240: loss=179374.0469, amplitude=27.0343, length_scale=2.3825, mae=19.3564, mse=3446.1244
+At step 250: loss=166557.0410, amplitude=27.2922, length_scale=2.3673, mae=18.9709, mse=3239.8083
+At step 260: loss=155905.2828, amplitude=27.5337, length_scale=2.3534, mae=18.6139, mse=3061.8034
+At step 270: loss=146917.9260, amplitude=27.7610, length_scale=2.3407, mae=18.2812, mse=2906.9968
+At step 280: loss=139237.1555, amplitude=27.9763, length_scale=2.3289, mae=17.9719, mse=2771.3644
+At step 290: loss=132600.3840, amplitude=28.1809, length_scale=2.3179, mae=17.6838, mse=2651.7145
+At step 299: loss=127356.1438, amplitude=28.3572, length_scale=2.3086, mae=17.4393, mse=2555.5745
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3441
+
+Random sampling ...
+Updated pool: (1898,)
+Updated training set (418,)
+Updated test set: (7400,)
+
+Query number  48
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46675995.6251, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3530
+At step 10: loss=40044991.1016, amplitude=8.9140, length_scale=7.1780, mae=0.7480, mse=1.7679
+At step 20: loss=34474440.8382, amplitude=9.7951, length_scale=6.5236, mae=0.7939, mse=2.3422
+At step 30: loss=28567788.1786, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1278
+At step 40: loss=23695028.1720, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9573
+At step 50: loss=19792551.4511, amplitude=12.7753, length_scale=4.9498, mae=1.8523, mse=43.0660
+At step 60: loss=15450661.3496, amplitude=13.8560, length_scale=4.5352, mae=2.7341, mse=106.5939
+At step 70: loss=11391563.6467, amplitude=15.0215, length_scale=4.1541, mae=3.4232, mse=181.8565
+At step 80: loss=8697147.1653, amplitude=16.1366, length_scale=3.8423, mae=4.0109, mse=317.1445
+At step 90: loss=6769857.9985, amplitude=17.1546, length_scale=3.5959, mae=4.2141, mse=383.9337
+At step 100: loss=5034558.3886, amplitude=18.1636, length_scale=3.3806, mae=5.7893, mse=502.1018
+At step 110: loss=3574824.9239, amplitude=19.1961, length_scale=3.1900, mae=7.8173, mse=643.4138
+At step 120: loss=2476668.9149, amplitude=20.2339, length_scale=3.0276, mae=11.2512, mse=1853.2670
+At step 130: loss=1746902.1474, amplitude=21.2107, length_scale=2.8966, mae=16.2577, mse=3821.5083
+At step 140: loss=1245538.3779, amplitude=22.1015, length_scale=2.7914, mae=20.2517, mse=5677.0738
+At step 150: loss=887946.9448, amplitude=22.9176, length_scale=2.7048, mae=22.4482, mse=6676.6468
+At step 160: loss=645491.2179, amplitude=23.6533, length_scale=2.6340, mae=23.1374, mse=6740.8755
+At step 170: loss=488621.7404, amplitude=24.2983, length_scale=2.5771, mae=22.9803, mse=6308.3716
+At step 180: loss=387439.6393, amplitude=24.8547, length_scale=2.5318, mae=22.4731, mse=5737.5105
+At step 190: loss=320256.0571, amplitude=25.3346, length_scale=2.4953, mae=21.8802, mse=5189.2441
+At step 200: loss=273722.0409, amplitude=25.7528, length_scale=2.4653, mae=21.2963, mse=4711.9130
+At step 210: loss=240061.4758, amplitude=26.1225, length_scale=2.4401, mae=20.7486, mse=4309.2411
+At step 220: loss=214747.0162, amplitude=26.4544, length_scale=2.4184, mae=20.2397, mse=3971.5795
+At step 230: loss=195074.6415, amplitude=26.7564, length_scale=2.3994, mae=19.7743, mse=3687.2995
+At step 240: loss=179369.5093, amplitude=27.0342, length_scale=2.3825, mae=19.3564, mse=3446.1445
+At step 250: loss=166552.2550, amplitude=27.2922, length_scale=2.3673, mae=18.9709, mse=3239.8257
+At step 260: loss=155900.3397, amplitude=27.5336, length_scale=2.3534, mae=18.6139, mse=3061.8191
+At step 270: loss=146912.8958, amplitude=27.7610, length_scale=2.3407, mae=18.2812, mse=2907.0112
+At step 280: loss=139232.0027, amplitude=27.9762, length_scale=2.3289, mae=17.9719, mse=2771.3775
+At step 290: loss=132595.1220, amplitude=28.1809, length_scale=2.3179, mae=17.6839, mse=2651.7261
+At step 299: loss=127350.8347, amplitude=28.3572, length_scale=2.3086, mae=17.4394, mse=2555.5853
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3440
+
+Random sampling ...
+Updated pool: (1899,)
+Updated training set (419,)
+Updated test set: (7400,)
+
+Query number  49
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46676138.5282, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3529
+At step 10: loss=40045044.6703, amplitude=8.9140, length_scale=7.1780, mae=0.7480, mse=1.7679
+At step 20: loss=34474463.6988, amplitude=9.7951, length_scale=6.5236, mae=0.7939, mse=2.3422
+At step 30: loss=28567817.6739, amplitude=10.7629, length_scale=5.9235, mae=0.9138, mse=3.1279
+At step 40: loss=23695056.5248, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9572
+At step 50: loss=19792600.7234, amplitude=12.7752, length_scale=4.9498, mae=1.8523, mse=43.0654
+At step 60: loss=15450730.5877, amplitude=13.8560, length_scale=4.5352, mae=2.7341, mse=106.5925
+At step 70: loss=11391633.4208, amplitude=15.0215, length_scale=4.1541, mae=3.4232, mse=181.8541
+At step 80: loss=8697196.9973, amplitude=16.1366, length_scale=3.8423, mae=4.0109, mse=317.1423
+At step 90: loss=6769909.3240, amplitude=17.1546, length_scale=3.5959, mae=4.2140, mse=383.9293
+At step 100: loss=5034609.7343, amplitude=18.1635, length_scale=3.3806, mae=5.7892, mse=502.1015
+At step 110: loss=3574870.4032, amplitude=19.1961, length_scale=3.1900, mae=7.8172, mse=643.3915
+At step 120: loss=2476702.1838, amplitude=20.2339, length_scale=3.0277, mae=11.2510, mse=1853.1901
+At step 130: loss=1746924.6230, amplitude=21.2107, length_scale=2.8966, mae=16.2574, mse=3821.4076
+At step 140: loss=1245554.6120, amplitude=22.1015, length_scale=2.7914, mae=20.2515, mse=5676.9921
+At step 150: loss=887957.7799, amplitude=22.9176, length_scale=2.7048, mae=22.4481, mse=6676.6168
+At step 160: loss=645497.0586, amplitude=23.6533, length_scale=2.6340, mae=23.1373, mse=6740.8878
+At step 170: loss=488623.9566, amplitude=24.2983, length_scale=2.5771, mae=22.9803, mse=6308.4035
+At step 180: loss=387439.3606, amplitude=24.8547, length_scale=2.5318, mae=22.4732, mse=5737.5479
+At step 190: loss=320254.2431, amplitude=25.3345, length_scale=2.4953, mae=21.8802, mse=5189.2813
+At step 200: loss=273719.1285, amplitude=25.7527, length_scale=2.4653, mae=21.2964, mse=4711.9460
+At step 210: loss=240057.9212, amplitude=26.1225, length_scale=2.4401, mae=20.7486, mse=4309.2693
+At step 220: loss=214742.9683, amplitude=26.4544, length_scale=2.4184, mae=20.2398, mse=3971.6048
+At step 230: loss=195070.2824, amplitude=26.7564, length_scale=2.3994, mae=19.7744, mse=3687.3212
+At step 240: loss=179364.8661, amplitude=27.0342, length_scale=2.3825, mae=19.3565, mse=3446.1640
+At step 250: loss=166547.4259, amplitude=27.2922, length_scale=2.3673, mae=18.9710, mse=3239.8436
+At step 260: loss=155895.3540, amplitude=27.5336, length_scale=2.3534, mae=18.6139, mse=3061.8348
+At step 270: loss=146907.7834, amplitude=27.7610, length_scale=2.3407, mae=18.2813, mse=2907.0251
+At step 280: loss=139226.7835, amplitude=27.9762, length_scale=2.3289, mae=17.9719, mse=2771.3902
+At step 290: loss=132589.8775, amplitude=28.1809, length_scale=2.3179, mae=17.6839, mse=2651.7378
+At step 299: loss=127345.4554, amplitude=28.3571, length_scale=2.3086, mae=17.4394, mse=2555.5960
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3440
+
+Random sampling ...
+Updated pool: (1900,)
+Updated training set (420,)
+Updated test set: (7400,)
+
+Query number  50
+Training MEGNet on the pool ...
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46676275.5774, amplitude=8.0804, length_scale=7.9204, mae=0.7195, mse=1.3529
+At step 10: loss=40045095.7658, amplitude=8.9140, length_scale=7.1780, mae=0.7480, mse=1.7679
+At step 20: loss=34474485.6978, amplitude=9.7951, length_scale=6.5236, mae=0.7939, mse=2.3422
+At step 30: loss=28567845.3858, amplitude=10.7628, length_scale=5.9235, mae=0.9138, mse=3.1279
+At step 40: loss=23695084.9467, amplitude=11.7833, length_scale=5.3922, mae=1.1635, mse=8.9571
+At step 50: loss=19792645.2003, amplitude=12.7752, length_scale=4.9498, mae=1.8523, mse=43.0648
+At step 60: loss=15450796.7267, amplitude=13.8559, length_scale=4.5352, mae=2.7341, mse=106.5912
+At step 70: loss=11391701.0669, amplitude=15.0215, length_scale=4.1542, mae=3.4232, mse=181.8518
+At step 80: loss=8697245.4217, amplitude=16.1365, length_scale=3.8423, mae=4.0109, mse=317.1403
+At step 90: loss=6769958.4232, amplitude=17.1545, length_scale=3.5959, mae=4.2140, mse=383.9250
+At step 100: loss=5034659.1255, amplitude=18.1635, length_scale=3.3806, mae=5.7892, mse=502.1011
+At step 110: loss=3574913.4846, amplitude=19.1961, length_scale=3.1900, mae=7.8171, mse=643.3696
+At step 120: loss=2476734.0336, amplitude=20.2338, length_scale=3.0277, mae=11.2508, mse=1853.1157
+At step 130: loss=1746946.1815, amplitude=21.2106, length_scale=2.8966, mae=16.2572, mse=3821.3127
+At step 140: loss=1245569.8249, amplitude=22.1014, length_scale=2.7914, mae=20.2513, mse=5676.9124
+At step 150: loss=887967.9280, amplitude=22.9175, length_scale=2.7048, mae=22.4480, mse=6676.5900
+At step 160: loss=645502.4912, amplitude=23.6532, length_scale=2.6340, mae=23.1373, mse=6740.9016
+At step 170: loss=488625.8478, amplitude=24.2982, length_scale=2.5771, mae=22.9803, mse=6308.4363
+At step 180: loss=387438.8741, amplitude=24.8546, length_scale=2.5318, mae=22.4732, mse=5737.5838
+At step 190: loss=320252.1556, amplitude=25.3345, length_scale=2.4953, mae=21.8803, mse=5189.3149
+At step 200: loss=273716.1016, amplitude=25.7527, length_scale=2.4653, mae=21.2964, mse=4711.9770
+At step 210: loss=240054.2592, amplitude=26.1225, length_scale=2.4401, mae=20.7487, mse=4309.2973
+At step 220: loss=214738.8624, amplitude=26.4544, length_scale=2.4184, mae=20.2398, mse=3971.6291
+At step 230: loss=195065.8248, amplitude=26.7563, length_scale=2.3994, mae=19.7744, mse=3687.3430
+At step 240: loss=179360.1525, amplitude=27.0342, length_scale=2.3825, mae=19.3565, mse=3446.1830
+At step 250: loss=166542.5607, amplitude=27.2921, length_scale=2.3673, mae=18.9710, mse=3239.8600
+At step 260: loss=155890.3404, amplitude=27.5336, length_scale=2.3534, mae=18.6140, mse=3061.8499
+At step 270: loss=146902.6328, amplitude=27.7609, length_scale=2.3407, mae=18.2813, mse=2907.0384
+At step 280: loss=139221.5884, amplitude=27.9762, length_scale=2.3289, mae=17.9720, mse=2771.4023
+At step 290: loss=132584.5539, amplitude=28.1808, length_scale=2.3179, mae=17.6839, mse=2651.7488
+At step 299: loss=127340.1178, amplitude=28.3571, length_scale=2.3086, mae=17.4394, mse=2555.6063
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9537, mse = 2.3439

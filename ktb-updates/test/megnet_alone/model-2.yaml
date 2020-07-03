@@ -1,0 +1,1140 @@
+backend: tensorflow
+class_name: Model
+config:
+  input_layers:
+  - - input_1
+    - 0
+    - 0
+  - - input_2
+    - 0
+    - 0
+  - - input_3
+    - 0
+    - 0
+  - - input_4
+    - 0
+    - 0
+  - - input_5
+    - 0
+    - 0
+  - - input_6
+    - 0
+    - 0
+  - - input_7
+    - 0
+    - 0
+  layers:
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      dtype: int32
+      name: input_1
+      sparse: false
+    inbound_nodes: []
+    name: input_1
+  - class_name: Embedding
+    config:
+      activity_regularizer: null
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      dtype: float32
+      embeddings_constraint: null
+      embeddings_initializer:
+        class_name: RandomUniform
+        config:
+          maxval: 0.05
+          minval: -0.05
+          seed: null
+      embeddings_regularizer: null
+      input_dim: 95
+      input_length: null
+      mask_zero: false
+      name: embedding_1
+      output_dim: 16
+      trainable: true
+    inbound_nodes:
+    - - - input_1
+        - 0
+        - 0
+        - {}
+    name: embedding_1
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      - 10
+      dtype: float32
+      name: input_2
+      sparse: false
+    inbound_nodes: []
+    name: input_2
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      - 2
+      dtype: float32
+      name: input_3
+      sparse: false
+    inbound_nodes: []
+    name: input_3
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_1
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - embedding_1
+        - 0
+        - 0
+        - {}
+    name: dense_1
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_3
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - input_2
+        - 0
+        - 0
+        - {}
+    name: dense_3
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_5
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - input_3
+        - 0
+        - 0
+        - {}
+    name: dense_5
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_2
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_1
+        - 0
+        - 0
+        - {}
+    name: dense_2
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_4
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_3
+        - 0
+        - 0
+        - {}
+    name: dense_4
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_6
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_5
+        - 0
+        - 0
+        - {}
+    name: dense_6
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      dtype: int32
+      name: input_4
+      sparse: false
+    inbound_nodes: []
+    name: input_4
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      dtype: int32
+      name: input_5
+      sparse: false
+    inbound_nodes: []
+    name: input_5
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      dtype: int32
+      name: input_6
+      sparse: false
+    inbound_nodes: []
+    name: input_6
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - null
+      dtype: int32
+      name: input_7
+      sparse: false
+    inbound_nodes: []
+    name: input_7
+  - class_name: MEGNetLayer
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: meg_net_layer_1
+      pool_method: mean
+      trainable: true
+      units_e:
+      - 64
+      - 64
+      - 32
+      units_u:
+      - 64
+      - 64
+      - 32
+      units_v:
+      - 64
+      - 64
+      - 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_2
+        - 0
+        - 0
+        - &id001 {}
+      - - dense_4
+        - 0
+        - 0
+        - *id001
+      - - dense_6
+        - 0
+        - 0
+        - *id001
+      - - input_4
+        - 0
+        - 0
+        - *id001
+      - - input_5
+        - 0
+        - 0
+        - *id001
+      - - input_6
+        - 0
+        - 0
+        - *id001
+      - - input_7
+        - 0
+        - 0
+        - *id001
+    name: meg_net_layer_1
+  - class_name: Add
+    config:
+      name: add_1
+      trainable: true
+    inbound_nodes:
+    - - - dense_2
+        - 0
+        - 0
+        - &id002 {}
+      - - meg_net_layer_1
+        - 0
+        - 0
+        - *id002
+    name: add_1
+  - class_name: Add
+    config:
+      name: add_2
+      trainable: true
+    inbound_nodes:
+    - - - dense_4
+        - 0
+        - 0
+        - &id003 {}
+      - - meg_net_layer_1
+        - 0
+        - 1
+        - *id003
+    name: add_2
+  - class_name: Add
+    config:
+      name: add_3
+      trainable: true
+    inbound_nodes:
+    - - - dense_6
+        - 0
+        - 0
+        - &id004 {}
+      - - meg_net_layer_1
+        - 0
+        - 2
+        - *id004
+    name: add_3
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_7
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - add_1
+        - 0
+        - 0
+        - {}
+    name: dense_7
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_9
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - add_2
+        - 0
+        - 0
+        - {}
+    name: dense_9
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_11
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - add_3
+        - 0
+        - 0
+        - {}
+    name: dense_11
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_8
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_7
+        - 0
+        - 0
+        - {}
+    name: dense_8
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_10
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_9
+        - 0
+        - 0
+        - {}
+    name: dense_10
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_12
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_11
+        - 0
+        - 0
+        - {}
+    name: dense_12
+  - class_name: MEGNetLayer
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: meg_net_layer_2
+      pool_method: mean
+      trainable: true
+      units_e:
+      - 64
+      - 64
+      - 32
+      units_u:
+      - 64
+      - 64
+      - 32
+      units_v:
+      - 64
+      - 64
+      - 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_8
+        - 0
+        - 0
+        - &id005 {}
+      - - dense_10
+        - 0
+        - 0
+        - *id005
+      - - dense_12
+        - 0
+        - 0
+        - *id005
+      - - input_4
+        - 0
+        - 0
+        - *id005
+      - - input_5
+        - 0
+        - 0
+        - *id005
+      - - input_6
+        - 0
+        - 0
+        - *id005
+      - - input_7
+        - 0
+        - 0
+        - *id005
+    name: meg_net_layer_2
+  - class_name: Add
+    config:
+      name: add_4
+      trainable: true
+    inbound_nodes:
+    - - - add_1
+        - 0
+        - 0
+        - &id006 {}
+      - - meg_net_layer_2
+        - 0
+        - 0
+        - *id006
+    name: add_4
+  - class_name: Add
+    config:
+      name: add_5
+      trainable: true
+    inbound_nodes:
+    - - - add_2
+        - 0
+        - 0
+        - &id007 {}
+      - - meg_net_layer_2
+        - 0
+        - 1
+        - *id007
+    name: add_5
+  - class_name: Add
+    config:
+      name: add_6
+      trainable: true
+    inbound_nodes:
+    - - - add_3
+        - 0
+        - 0
+        - &id008 {}
+      - - meg_net_layer_2
+        - 0
+        - 2
+        - *id008
+    name: add_6
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_13
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - add_4
+        - 0
+        - 0
+        - {}
+    name: dense_13
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_15
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - add_5
+        - 0
+        - 0
+        - {}
+    name: dense_15
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_17
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - add_6
+        - 0
+        - 0
+        - {}
+    name: dense_17
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_14
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_13
+        - 0
+        - 0
+        - {}
+    name: dense_14
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_16
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_15
+        - 0
+        - 0
+        - {}
+    name: dense_16
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_18
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_17
+        - 0
+        - 0
+        - {}
+    name: dense_18
+  - class_name: MEGNetLayer
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: meg_net_layer_3
+      pool_method: mean
+      trainable: true
+      units_e:
+      - 64
+      - 64
+      - 32
+      units_u:
+      - 64
+      - 64
+      - 32
+      units_v:
+      - 64
+      - 64
+      - 32
+      use_bias: true
+    inbound_nodes:
+    - - - dense_14
+        - 0
+        - 0
+        - &id009 {}
+      - - dense_16
+        - 0
+        - 0
+        - *id009
+      - - dense_18
+        - 0
+        - 0
+        - *id009
+      - - input_4
+        - 0
+        - 0
+        - *id009
+      - - input_5
+        - 0
+        - 0
+        - *id009
+      - - input_6
+        - 0
+        - 0
+        - *id009
+      - - input_7
+        - 0
+        - 0
+        - *id009
+    name: meg_net_layer_3
+  - class_name: Add
+    config:
+      name: add_7
+      trainable: true
+    inbound_nodes:
+    - - - add_4
+        - 0
+        - 0
+        - &id010 {}
+      - - meg_net_layer_3
+        - 0
+        - 0
+        - *id010
+    name: add_7
+  - class_name: Add
+    config:
+      name: add_8
+      trainable: true
+    inbound_nodes:
+    - - - add_5
+        - 0
+        - 0
+        - &id011 {}
+      - - meg_net_layer_3
+        - 0
+        - 1
+        - *id011
+    name: add_8
+  - class_name: Set2Set
+    config:
+      T: 3
+      activation: linear
+      activation_lstm: tanh
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      n_hidden: 16
+      name: set2_set_1
+      recurrent_activation: hard_sigmoid
+      recurrent_constraint: null
+      recurrent_initializer:
+        class_name: Orthogonal
+        config:
+          gain: 1.0
+          seed: null
+      recurrent_regularizer: null
+      trainable: true
+      unit_forget_bias: true
+      use_bias: true
+    inbound_nodes:
+    - - - add_7
+        - 0
+        - 0
+        - &id012 {}
+      - - input_6
+        - 0
+        - 0
+        - *id012
+    name: set2_set_1
+  - class_name: Set2Set
+    config:
+      T: 3
+      activation: linear
+      activation_lstm: tanh
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      n_hidden: 16
+      name: set2_set_2
+      recurrent_activation: hard_sigmoid
+      recurrent_constraint: null
+      recurrent_initializer:
+        class_name: Orthogonal
+        config:
+          gain: 1.0
+          seed: null
+      recurrent_regularizer: null
+      trainable: true
+      unit_forget_bias: true
+      use_bias: true
+    inbound_nodes:
+    - - - add_8
+        - 0
+        - 0
+        - &id013 {}
+      - - input_7
+        - 0
+        - 0
+        - *id013
+    name: set2_set_2
+  - class_name: Add
+    config:
+      name: add_9
+      trainable: true
+    inbound_nodes:
+    - - - add_6
+        - 0
+        - 0
+        - &id014 {}
+      - - meg_net_layer_3
+        - 0
+        - 2
+        - *id014
+    name: add_9
+  - class_name: Concatenate
+    config:
+      axis: -1
+      name: concatenate_1
+      trainable: true
+    inbound_nodes:
+    - - - set2_set_1
+        - 0
+        - 0
+        - &id015 {}
+      - - set2_set_2
+        - 0
+        - 0
+        - *id015
+      - - add_9
+        - 0
+        - 0
+        - *id015
+    name: concatenate_1
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_19
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - concatenate_1
+        - 0
+        - 0
+        - {}
+    name: dense_19
+  - class_name: Dense
+    config:
+      activation: softplus2
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_20
+      trainable: true
+      units: 16
+      use_bias: true
+    inbound_nodes:
+    - - - dense_19
+        - 0
+        - 0
+        - {}
+    name: dense_20
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: VarianceScaling
+        config:
+          distribution: uniform
+          mode: fan_avg
+          scale: 1.0
+          seed: null
+      kernel_regularizer: null
+      name: dense_21
+      trainable: true
+      units: 1
+      use_bias: true
+    inbound_nodes:
+    - - - dense_20
+        - 0
+        - 0
+        - {}
+    name: dense_21
+  name: model_1
+  output_layers:
+  - - dense_21
+    - 0
+    - 0
+keras_version: 2.2.4

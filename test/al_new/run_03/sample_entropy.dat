@@ -1,0 +1,2600 @@
+Query  0
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.9845, mse = 2.8487
+
+Entropy sampling ..
+Updated pool (1851,)
+Updated training set (371,)
+Updated test set: (7400,)
+Query  1
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.9673, mse = 2.5960
+
+Entropy sampling ..
+Updated pool (1852,)
+Updated training set (372,)
+Updated test set: (7400,)
+Query  2
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8719, mse = 1.5960
+
+Entropy sampling ..
+Updated pool (1853,)
+Updated training set (373,)
+Updated test set: (7400,)
+Query  3
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8630, mse = 1.4691
+
+Entropy sampling ..
+Updated pool (1854,)
+Updated training set (374,)
+Updated test set: (7400,)
+Query  4
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8600, mse = 1.4574
+
+Entropy sampling ..
+Updated pool (1855,)
+Updated training set (375,)
+Updated test set: (7400,)
+Query  5
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8581, mse = 1.4503
+
+Entropy sampling ..
+Updated pool (1856,)
+Updated training set (376,)
+Updated test set: (7400,)
+Query  6
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8541, mse = 1.4245
+
+Entropy sampling ..
+Updated pool (1857,)
+Updated training set (377,)
+Updated test set: (7400,)
+Query  7
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8106, mse = 1.1911
+
+Entropy sampling ..
+Updated pool (1858,)
+Updated training set (378,)
+Updated test set: (7400,)
+Query  8
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8064, mse = 1.1784
+
+Entropy sampling ..
+Updated pool (1859,)
+Updated training set (379,)
+Updated test set: (7400,)
+Query  9
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8055, mse = 1.1790
+
+Entropy sampling ..
+Updated pool (1860,)
+Updated training set (380,)
+Updated test set: (7400,)
+Query  10
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8013, mse = 1.1631
+
+Entropy sampling ..
+Updated pool (1861,)
+Updated training set (381,)
+Updated test set: (7400,)
+Query  11
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8018, mse = 1.1630
+
+Entropy sampling ..
+Updated pool (1862,)
+Updated training set (382,)
+Updated test set: (7400,)
+Query  12
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8059, mse = 1.1718
+
+Entropy sampling ..
+Updated pool (1863,)
+Updated training set (383,)
+Updated test set: (7400,)
+Query  13
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8057, mse = 1.1710
+
+Entropy sampling ..
+Updated pool (1864,)
+Updated training set (384,)
+Updated test set: (7400,)
+Query  14
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8059, mse = 1.1721
+
+Entropy sampling ..
+Updated pool (1865,)
+Updated training set (385,)
+Updated test set: (7400,)
+Query  15
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8070, mse = 1.1729
+
+Entropy sampling ..
+Updated pool (1866,)
+Updated training set (386,)
+Updated test set: (7400,)
+Query  16
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8058, mse = 1.1708
+
+Entropy sampling ..
+Updated pool (1867,)
+Updated training set (387,)
+Updated test set: (7400,)
+Query  17
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8039, mse = 1.1699
+
+Entropy sampling ..
+Updated pool (1868,)
+Updated training set (388,)
+Updated test set: (7400,)
+Query  18
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8092, mse = 1.1937
+
+Entropy sampling ..
+Updated pool (1869,)
+Updated training set (389,)
+Updated test set: (7400,)
+Query  19
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8091, mse = 1.1936
+
+Entropy sampling ..
+Updated pool (1870,)
+Updated training set (390,)
+Updated test set: (7400,)
+Query  20
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8071, mse = 1.1876
+
+Entropy sampling ..
+Updated pool (1871,)
+Updated training set (391,)
+Updated test set: (7400,)
+Query  21
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8072, mse = 1.1883
+
+Entropy sampling ..
+Updated pool (1872,)
+Updated training set (392,)
+Updated test set: (7400,)
+Query  22
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8077, mse = 1.1897
+
+Entropy sampling ..
+Updated pool (1873,)
+Updated training set (393,)
+Updated test set: (7400,)
+Query  23
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8061, mse = 1.1847
+
+Entropy sampling ..
+Updated pool (1874,)
+Updated training set (394,)
+Updated test set: (7400,)
+Query  24
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8061, mse = 1.1847
+
+Entropy sampling ..
+Updated pool (1875,)
+Updated training set (395,)
+Updated test set: (7400,)
+Query  25
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8073, mse = 1.1866
+
+Entropy sampling ..
+Updated pool (1876,)
+Updated training set (396,)
+Updated test set: (7400,)
+Query  26
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8069, mse = 1.1861
+
+Entropy sampling ..
+Updated pool (1877,)
+Updated training set (397,)
+Updated test set: (7400,)
+Query  27
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8070, mse = 1.1863
+
+Entropy sampling ..
+Updated pool (1878,)
+Updated training set (398,)
+Updated test set: (7400,)
+Query  28
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8048, mse = 1.1839
+
+Entropy sampling ..
+Updated pool (1879,)
+Updated training set (399,)
+Updated test set: (7400,)
+Query  29
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.8047, mse = 1.1849
+
+Entropy sampling ..
+Updated pool (1880,)
+Updated training set (400,)
+Updated test set: (7400,)
+Query  30
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7984, mse = 1.1604
+
+Entropy sampling ..
+Updated pool (1881,)
+Updated training set (401,)
+Updated test set: (7400,)
+Query  31
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7938, mse = 1.1515
+
+Entropy sampling ..
+Updated pool (1882,)
+Updated training set (402,)
+Updated test set: (7400,)
+Query  32
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7932, mse = 1.1454
+
+Entropy sampling ..
+Updated pool (1883,)
+Updated training set (403,)
+Updated test set: (7400,)
+Query  33
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7915, mse = 1.1445
+
+Entropy sampling ..
+Updated pool (1884,)
+Updated training set (404,)
+Updated test set: (7400,)
+Query  34
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7913, mse = 1.1441
+
+Entropy sampling ..
+Updated pool (1885,)
+Updated training set (405,)
+Updated test set: (7400,)
+Query  35
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7914, mse = 1.1441
+
+Entropy sampling ..
+Updated pool (1886,)
+Updated training set (406,)
+Updated test set: (7400,)
+Query  36
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7929, mse = 1.1470
+
+Entropy sampling ..
+Updated pool (1887,)
+Updated training set (407,)
+Updated test set: (7400,)
+Query  37
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7932, mse = 1.1440
+
+Entropy sampling ..
+Updated pool (1888,)
+Updated training set (408,)
+Updated test set: (7400,)
+Query  38
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7933, mse = 1.1439
+
+Entropy sampling ..
+Updated pool (1889,)
+Updated training set (409,)
+Updated test set: (7400,)
+Query  39
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7605, mse = 1.0384
+
+Entropy sampling ..
+Updated pool (1890,)
+Updated training set (410,)
+Updated test set: (7400,)
+Query  40
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7631, mse = 1.0405
+
+Entropy sampling ..
+Updated pool (1891,)
+Updated training set (411,)
+Updated test set: (7400,)
+Query  41
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7644, mse = 1.0457
+
+Entropy sampling ..
+Updated pool (1892,)
+Updated training set (412,)
+Updated test set: (7400,)
+Query  42
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7643, mse = 1.0461
+
+Entropy sampling ..
+Updated pool (1893,)
+Updated training set (413,)
+Updated test set: (7400,)
+Query  43
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7637, mse = 1.0439
+
+Entropy sampling ..
+Updated pool (1894,)
+Updated training set (414,)
+Updated test set: (7400,)
+Query  44
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7583, mse = 1.0310
+
+Entropy sampling ..
+Updated pool (1895,)
+Updated training set (415,)
+Updated test set: (7400,)
+Query  45
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7569, mse = 1.0290
+
+Entropy sampling ..
+Updated pool (1896,)
+Updated training set (416,)
+Updated test set: (7400,)
+Query  46
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7550, mse = 1.0217
+
+Entropy sampling ..
+Updated pool (1897,)
+Updated training set (417,)
+Updated test set: (7400,)
+Query  47
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7544, mse = 1.0208
+
+Entropy sampling ..
+Updated pool (1898,)
+Updated training set (418,)
+Updated test set: (7400,)
+Query  48
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7564, mse = 1.0259
+
+Entropy sampling ..
+Updated pool (1899,)
+Updated training set (419,)
+Updated test set: (7400,)
+Query  49
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7577, mse = 1.0267
+
+Entropy sampling ..
+Updated pool (1900,)
+Updated training set (420,)
+Updated test set: (7400,)
+Query  50
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7575, mse = 1.0267
+
+Entropy sampling ..
+Updated pool (1901,)
+Updated training set (421,)
+Updated test set: (7400,)
+Query  51
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7592, mse = 1.0315
+
+Entropy sampling ..
+Updated pool (1902,)
+Updated training set (422,)
+Updated test set: (7400,)
+Query  52
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7559, mse = 1.0201
+
+Entropy sampling ..
+Updated pool (1903,)
+Updated training set (423,)
+Updated test set: (7400,)
+Query  53
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7560, mse = 1.0198
+
+Entropy sampling ..
+Updated pool (1904,)
+Updated training set (424,)
+Updated test set: (7400,)
+Query  54
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7560, mse = 1.0198
+
+Entropy sampling ..
+Updated pool (1905,)
+Updated training set (425,)
+Updated test set: (7400,)
+Query  55
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7571, mse = 1.0224
+
+Entropy sampling ..
+Updated pool (1906,)
+Updated training set (426,)
+Updated test set: (7400,)
+Query  56
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7542, mse = 1.0137
+
+Entropy sampling ..
+Updated pool (1907,)
+Updated training set (427,)
+Updated test set: (7400,)
+Query  57
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7540, mse = 1.0133
+
+Entropy sampling ..
+Updated pool (1908,)
+Updated training set (428,)
+Updated test set: (7400,)
+Query  58
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7538, mse = 1.0134
+
+Entropy sampling ..
+Updated pool (1909,)
+Updated training set (429,)
+Updated test set: (7400,)
+Query  59
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7514, mse = 1.0013
+
+Entropy sampling ..
+Updated pool (1910,)
+Updated training set (430,)
+Updated test set: (7400,)
+Query  60
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7506, mse = 1.0003
+
+Entropy sampling ..
+Updated pool (1911,)
+Updated training set (431,)
+Updated test set: (7400,)
+Query  61
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7442, mse = 0.9858
+
+Entropy sampling ..
+Updated pool (1912,)
+Updated training set (432,)
+Updated test set: (7400,)
+Query  62
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7442, mse = 0.9857
+
+Entropy sampling ..
+Updated pool (1913,)
+Updated training set (433,)
+Updated test set: (7400,)
+Query  63
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7445, mse = 0.9857
+
+Entropy sampling ..
+Updated pool (1914,)
+Updated training set (434,)
+Updated test set: (7400,)
+Query  64
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7444, mse = 0.9856
+
+Entropy sampling ..
+Updated pool (1915,)
+Updated training set (435,)
+Updated test set: (7400,)
+Query  65
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7444, mse = 0.9856
+
+Entropy sampling ..
+Updated pool (1916,)
+Updated training set (436,)
+Updated test set: (7400,)
+Query  66
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7425, mse = 0.9828
+
+Entropy sampling ..
+Updated pool (1917,)
+Updated training set (437,)
+Updated test set: (7400,)
+Query  67
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7425, mse = 0.9829
+
+Entropy sampling ..
+Updated pool (1918,)
+Updated training set (438,)
+Updated test set: (7400,)
+Query  68
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7384, mse = 0.9741
+
+Entropy sampling ..
+Updated pool (1919,)
+Updated training set (439,)
+Updated test set: (7400,)
+Query  69
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7384, mse = 0.9742
+
+Entropy sampling ..
+Updated pool (1920,)
+Updated training set (440,)
+Updated test set: (7400,)
+Query  70
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7383, mse = 0.9740
+
+Entropy sampling ..
+Updated pool (1921,)
+Updated training set (441,)
+Updated test set: (7400,)
+Query  71
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7353, mse = 0.9662
+
+Entropy sampling ..
+Updated pool (1922,)
+Updated training set (442,)
+Updated test set: (7400,)
+Query  72
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7321, mse = 0.9590
+
+Entropy sampling ..
+Updated pool (1923,)
+Updated training set (443,)
+Updated test set: (7400,)
+Query  73
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7329, mse = 0.9622
+
+Entropy sampling ..
+Updated pool (1924,)
+Updated training set (444,)
+Updated test set: (7400,)
+Query  74
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7312, mse = 0.9593
+
+Entropy sampling ..
+Updated pool (1925,)
+Updated training set (445,)
+Updated test set: (7400,)
+Query  75
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7312, mse = 0.9592
+
+Entropy sampling ..
+Updated pool (1926,)
+Updated training set (446,)
+Updated test set: (7400,)
+Query  76
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7311, mse = 0.9592
+
+Entropy sampling ..
+Updated pool (1927,)
+Updated training set (447,)
+Updated test set: (7400,)
+Query  77
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7312, mse = 0.9591
+
+Entropy sampling ..
+Updated pool (1928,)
+Updated training set (448,)
+Updated test set: (7400,)
+Query  78
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7311, mse = 0.9589
+
+Entropy sampling ..
+Updated pool (1929,)
+Updated training set (449,)
+Updated test set: (7400,)
+Query  79
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7310, mse = 0.9587
+
+Entropy sampling ..
+Updated pool (1930,)
+Updated training set (450,)
+Updated test set: (7400,)
+Query  80
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7312, mse = 0.9591
+
+Entropy sampling ..
+Updated pool (1931,)
+Updated training set (451,)
+Updated test set: (7400,)
+Query  81
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7308, mse = 0.9586
+
+Entropy sampling ..
+Updated pool (1932,)
+Updated training set (452,)
+Updated test set: (7400,)
+Query  82
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7310, mse = 0.9589
+
+Entropy sampling ..
+Updated pool (1933,)
+Updated training set (453,)
+Updated test set: (7400,)
+Query  83
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7311, mse = 0.9589
+
+Entropy sampling ..
+Updated pool (1934,)
+Updated training set (454,)
+Updated test set: (7400,)
+Query  84
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7303, mse = 0.9567
+
+Entropy sampling ..
+Updated pool (1935,)
+Updated training set (455,)
+Updated test set: (7400,)
+Query  85
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7302, mse = 0.9560
+
+Entropy sampling ..
+Updated pool (1936,)
+Updated training set (456,)
+Updated test set: (7400,)
+Query  86
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7302, mse = 0.9560
+
+Entropy sampling ..
+Updated pool (1937,)
+Updated training set (457,)
+Updated test set: (7400,)
+Query  87
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7295, mse = 0.9530
+
+Entropy sampling ..
+Updated pool (1938,)
+Updated training set (458,)
+Updated test set: (7400,)
+Query  88
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7295, mse = 0.9533
+
+Entropy sampling ..
+Updated pool (1939,)
+Updated training set (459,)
+Updated test set: (7400,)
+Query  89
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7292, mse = 0.9521
+
+Entropy sampling ..
+Updated pool (1940,)
+Updated training set (460,)
+Updated test set: (7400,)
+Query  90
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7290, mse = 0.9516
+
+Entropy sampling ..
+Updated pool (1941,)
+Updated training set (461,)
+Updated test set: (7400,)
+Query  91
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7287, mse = 0.9506
+
+Entropy sampling ..
+Updated pool (1942,)
+Updated training set (462,)
+Updated test set: (7400,)
+Query  92
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7289, mse = 0.9514
+
+Entropy sampling ..
+Updated pool (1943,)
+Updated training set (463,)
+Updated test set: (7400,)
+Query  93
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7272, mse = 0.9475
+
+Entropy sampling ..
+Updated pool (1944,)
+Updated training set (464,)
+Updated test set: (7400,)
+Query  94
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7272, mse = 0.9475
+
+Entropy sampling ..
+Updated pool (1945,)
+Updated training set (465,)
+Updated test set: (7400,)
+Query  95
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7270, mse = 0.9472
+
+Entropy sampling ..
+Updated pool (1946,)
+Updated training set (466,)
+Updated test set: (7400,)
+Query  96
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7268, mse = 0.9465
+
+Entropy sampling ..
+Updated pool (1947,)
+Updated training set (467,)
+Updated test set: (7400,)
+Query  97
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7264, mse = 0.9458
+
+Entropy sampling ..
+Updated pool (1948,)
+Updated training set (468,)
+Updated test set: (7400,)
+Query  98
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7272, mse = 0.9466
+
+Entropy sampling ..
+Updated pool (1949,)
+Updated training set (469,)
+Updated test set: (7400,)
+Query  99
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7268, mse = 0.9459
+
+Entropy sampling ..
+Updated pool (1950,)
+Updated training set (470,)
+Updated test set: (7400,)
+Query  100
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7268, mse = 0.9476
+
+Entropy sampling ..
+Updated pool (1951,)
+Updated training set (471,)
+Updated test set: (7400,)
+Query  101
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7266, mse = 0.9475
+
+Entropy sampling ..
+Updated pool (1952,)
+Updated training set (472,)
+Updated test set: (7400,)
+Query  102
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7267, mse = 0.9478
+
+Entropy sampling ..
+Updated pool (1953,)
+Updated training set (473,)
+Updated test set: (7400,)
+Query  103
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7267, mse = 0.9478
+
+Entropy sampling ..
+Updated pool (1954,)
+Updated training set (474,)
+Updated test set: (7400,)
+Query  104
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7258, mse = 0.9466
+
+Entropy sampling ..
+Updated pool (1955,)
+Updated training set (475,)
+Updated test set: (7400,)
+Query  105
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7272, mse = 0.9484
+
+Entropy sampling ..
+Updated pool (1956,)
+Updated training set (476,)
+Updated test set: (7400,)
+Query  106
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7270, mse = 0.9482
+
+Entropy sampling ..
+Updated pool (1957,)
+Updated training set (477,)
+Updated test set: (7400,)
+Query  107
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7272, mse = 0.9491
+
+Entropy sampling ..
+Updated pool (1958,)
+Updated training set (478,)
+Updated test set: (7400,)
+Query  108
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7271, mse = 0.9483
+
+Entropy sampling ..
+Updated pool (1959,)
+Updated training set (479,)
+Updated test set: (7400,)
+Query  109
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7271, mse = 0.9484
+
+Entropy sampling ..
+Updated pool (1960,)
+Updated training set (480,)
+Updated test set: (7400,)
+Query  110
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7272, mse = 0.9489
+
+Entropy sampling ..
+Updated pool (1961,)
+Updated training set (481,)
+Updated test set: (7400,)
+Query  111
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7265, mse = 0.9482
+
+Entropy sampling ..
+Updated pool (1962,)
+Updated training set (482,)
+Updated test set: (7400,)
+Query  112
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7222, mse = 0.9382
+
+Entropy sampling ..
+Updated pool (1963,)
+Updated training set (483,)
+Updated test set: (7400,)
+Query  113
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7222, mse = 0.9386
+
+Entropy sampling ..
+Updated pool (1964,)
+Updated training set (484,)
+Updated test set: (7400,)
+Query  114
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7220, mse = 0.9382
+
+Entropy sampling ..
+Updated pool (1965,)
+Updated training set (485,)
+Updated test set: (7400,)
+Query  115
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7225, mse = 0.9427
+
+Entropy sampling ..
+Updated pool (1966,)
+Updated training set (486,)
+Updated test set: (7400,)
+Query  116
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7239, mse = 0.9452
+
+Entropy sampling ..
+Updated pool (1967,)
+Updated training set (487,)
+Updated test set: (7400,)
+Query  117
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7252, mse = 0.9467
+
+Entropy sampling ..
+Updated pool (1968,)
+Updated training set (488,)
+Updated test set: (7400,)
+Query  118
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7218, mse = 0.9365
+
+Entropy sampling ..
+Updated pool (1969,)
+Updated training set (489,)
+Updated test set: (7400,)
+Query  119
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7217, mse = 0.9363
+
+Entropy sampling ..
+Updated pool (1970,)
+Updated training set (490,)
+Updated test set: (7400,)
+Query  120
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7215, mse = 0.9361
+
+Entropy sampling ..
+Updated pool (1971,)
+Updated training set (491,)
+Updated test set: (7400,)
+Query  121
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7216, mse = 0.9362
+
+Entropy sampling ..
+Updated pool (1972,)
+Updated training set (492,)
+Updated test set: (7400,)
+Query  122
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7220, mse = 0.9377
+
+Entropy sampling ..
+Updated pool (1973,)
+Updated training set (493,)
+Updated test set: (7400,)
+Query  123
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7194, mse = 0.9325
+
+Entropy sampling ..
+Updated pool (1974,)
+Updated training set (494,)
+Updated test set: (7400,)
+Query  124
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7202, mse = 0.9337
+
+Entropy sampling ..
+Updated pool (1975,)
+Updated training set (495,)
+Updated test set: (7400,)
+Query  125
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7202, mse = 0.9338
+
+Entropy sampling ..
+Updated pool (1976,)
+Updated training set (496,)
+Updated test set: (7400,)
+Query  126
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7182, mse = 0.9306
+
+Entropy sampling ..
+Updated pool (1977,)
+Updated training set (497,)
+Updated test set: (7400,)
+Query  127
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7175, mse = 0.9287
+
+Entropy sampling ..
+Updated pool (1978,)
+Updated training set (498,)
+Updated test set: (7400,)
+Query  128
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7175, mse = 0.9288
+
+Entropy sampling ..
+Updated pool (1979,)
+Updated training set (499,)
+Updated test set: (7400,)
+Query  129
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7175, mse = 0.9288
+
+Entropy sampling ..
+Updated pool (1980,)
+Updated training set (500,)
+Updated test set: (7400,)
+Query  130
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7169, mse = 0.9259
+
+Entropy sampling ..
+Updated pool (1981,)
+Updated training set (501,)
+Updated test set: (7400,)
+Query  131
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7172, mse = 0.9268
+
+Entropy sampling ..
+Updated pool (1982,)
+Updated training set (502,)
+Updated test set: (7400,)
+Query  132
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7160, mse = 0.9279
+
+Entropy sampling ..
+Updated pool (1983,)
+Updated training set (503,)
+Updated test set: (7400,)
+Query  133
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7158, mse = 0.9272
+
+Entropy sampling ..
+Updated pool (1984,)
+Updated training set (504,)
+Updated test set: (7400,)
+Query  134
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7182, mse = 0.9323
+
+Entropy sampling ..
+Updated pool (1985,)
+Updated training set (505,)
+Updated test set: (7400,)
+Query  135
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7182, mse = 0.9323
+
+Entropy sampling ..
+Updated pool (1986,)
+Updated training set (506,)
+Updated test set: (7400,)
+Query  136
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7185, mse = 0.9333
+
+Entropy sampling ..
+Updated pool (1987,)
+Updated training set (507,)
+Updated test set: (7400,)
+Query  137
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7173, mse = 0.9314
+
+Entropy sampling ..
+Updated pool (1988,)
+Updated training set (508,)
+Updated test set: (7400,)
+Query  138
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7175, mse = 0.9318
+
+Entropy sampling ..
+Updated pool (1989,)
+Updated training set (509,)
+Updated test set: (7400,)
+Query  139
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7111, mse = 0.9005
+
+Entropy sampling ..
+Updated pool (1990,)
+Updated training set (510,)
+Updated test set: (7400,)
+Query  140
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7111, mse = 0.9005
+
+Entropy sampling ..
+Updated pool (1991,)
+Updated training set (511,)
+Updated test set: (7400,)
+Query  141
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7111, mse = 0.9004
+
+Entropy sampling ..
+Updated pool (1992,)
+Updated training set (512,)
+Updated test set: (7400,)
+Query  142
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7104, mse = 0.8994
+
+Entropy sampling ..
+Updated pool (1993,)
+Updated training set (513,)
+Updated test set: (7400,)
+Query  143
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7111, mse = 0.9006
+
+Entropy sampling ..
+Updated pool (1994,)
+Updated training set (514,)
+Updated test set: (7400,)
+Query  144
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7115, mse = 0.9012
+
+Entropy sampling ..
+Updated pool (1995,)
+Updated training set (515,)
+Updated test set: (7400,)
+Query  145
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7163, mse = 0.9122
+
+Entropy sampling ..
+Updated pool (1996,)
+Updated training set (516,)
+Updated test set: (7400,)
+Query  146
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7162, mse = 0.9123
+
+Entropy sampling ..
+Updated pool (1997,)
+Updated training set (517,)
+Updated test set: (7400,)
+Query  147
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7163, mse = 0.9125
+
+Entropy sampling ..
+Updated pool (1998,)
+Updated training set (518,)
+Updated test set: (7400,)
+Query  148
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7163, mse = 0.9125
+
+Entropy sampling ..
+Updated pool (1999,)
+Updated training set (519,)
+Updated test set: (7400,)
+Query  149
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7166, mse = 0.9116
+
+Entropy sampling ..
+Updated pool (2000,)
+Updated training set (520,)
+Updated test set: (7400,)
+Query  150
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7166, mse = 0.9116
+
+Entropy sampling ..
+Updated pool (2001,)
+Updated training set (521,)
+Updated test set: (7400,)
+Query  151
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7138, mse = 0.9017
+
+Entropy sampling ..
+Updated pool (2002,)
+Updated training set (522,)
+Updated test set: (7400,)
+Query  152
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7114, mse = 0.8977
+
+Entropy sampling ..
+Updated pool (2003,)
+Updated training set (523,)
+Updated test set: (7400,)
+Query  153
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7115, mse = 0.8979
+
+Entropy sampling ..
+Updated pool (2004,)
+Updated training set (524,)
+Updated test set: (7400,)
+Query  154
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7115, mse = 0.8979
+
+Entropy sampling ..
+Updated pool (2005,)
+Updated training set (525,)
+Updated test set: (7400,)
+Query  155
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7116, mse = 0.8979
+
+Entropy sampling ..
+Updated pool (2006,)
+Updated training set (526,)
+Updated test set: (7400,)
+Query  156
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7116, mse = 0.8979
+
+Entropy sampling ..
+Updated pool (2007,)
+Updated training set (527,)
+Updated test set: (7400,)
+Query  157
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7114, mse = 0.8978
+
+Entropy sampling ..
+Updated pool (2008,)
+Updated training set (528,)
+Updated test set: (7400,)
+Query  158
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7107, mse = 0.8973
+
+Entropy sampling ..
+Updated pool (2009,)
+Updated training set (529,)
+Updated test set: (7400,)
+Query  159
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7107, mse = 0.8973
+
+Entropy sampling ..
+Updated pool (2010,)
+Updated training set (530,)
+Updated test set: (7400,)
+Query  160
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7124, mse = 0.9006
+
+Entropy sampling ..
+Updated pool (2011,)
+Updated training set (531,)
+Updated test set: (7400,)
+Query  161
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7124, mse = 0.9006
+
+Entropy sampling ..
+Updated pool (2012,)
+Updated training set (532,)
+Updated test set: (7400,)
+Query  162
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7126, mse = 0.9009
+
+Entropy sampling ..
+Updated pool (2013,)
+Updated training set (533,)
+Updated test set: (7400,)
+Query  163
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7120, mse = 0.8978
+
+Entropy sampling ..
+Updated pool (2014,)
+Updated training set (534,)
+Updated test set: (7400,)
+Query  164
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7121, mse = 0.8980
+
+Entropy sampling ..
+Updated pool (2015,)
+Updated training set (535,)
+Updated test set: (7400,)
+Query  165
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7121, mse = 0.8980
+
+Entropy sampling ..
+Updated pool (2016,)
+Updated training set (536,)
+Updated test set: (7400,)
+Query  166
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7122, mse = 0.8982
+
+Entropy sampling ..
+Updated pool (2017,)
+Updated training set (537,)
+Updated test set: (7400,)
+Query  167
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7118, mse = 0.8975
+
+Entropy sampling ..
+Updated pool (2018,)
+Updated training set (538,)
+Updated test set: (7400,)
+Query  168
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7121, mse = 0.8987
+
+Entropy sampling ..
+Updated pool (2019,)
+Updated training set (539,)
+Updated test set: (7400,)
+Query  169
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7122, mse = 0.8984
+
+Entropy sampling ..
+Updated pool (2020,)
+Updated training set (540,)
+Updated test set: (7400,)
+Query  170
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7121, mse = 0.8982
+
+Entropy sampling ..
+Updated pool (2021,)
+Updated training set (541,)
+Updated test set: (7400,)
+Query  171
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7118, mse = 0.8976
+
+Entropy sampling ..
+Updated pool (2022,)
+Updated training set (542,)
+Updated test set: (7400,)
+Query  172
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7118, mse = 0.8974
+
+Entropy sampling ..
+Updated pool (2023,)
+Updated training set (543,)
+Updated test set: (7400,)
+Query  173
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7119, mse = 0.8975
+
+Entropy sampling ..
+Updated pool (2024,)
+Updated training set (544,)
+Updated test set: (7400,)
+Query  174
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7116, mse = 0.8984
+
+Entropy sampling ..
+Updated pool (2025,)
+Updated training set (545,)
+Updated test set: (7400,)
+Query  175
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7115, mse = 0.8982
+
+Entropy sampling ..
+Updated pool (2026,)
+Updated training set (546,)
+Updated test set: (7400,)
+Query  176
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7124, mse = 0.8997
+
+Entropy sampling ..
+Updated pool (2027,)
+Updated training set (547,)
+Updated test set: (7400,)
+Query  177
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7084, mse = 0.8917
+
+Entropy sampling ..
+Updated pool (2028,)
+Updated training set (548,)
+Updated test set: (7400,)
+Query  178
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7094, mse = 0.8936
+
+Entropy sampling ..
+Updated pool (2029,)
+Updated training set (549,)
+Updated test set: (7400,)
+Query  179
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7095, mse = 0.8937
+
+Entropy sampling ..
+Updated pool (2030,)
+Updated training set (550,)
+Updated test set: (7400,)
+Query  180
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7094, mse = 0.8935
+
+Entropy sampling ..
+Updated pool (2031,)
+Updated training set (551,)
+Updated test set: (7400,)
+Query  181
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7094, mse = 0.8935
+
+Entropy sampling ..
+Updated pool (2032,)
+Updated training set (552,)
+Updated test set: (7400,)
+Query  182
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7083, mse = 0.8916
+
+Entropy sampling ..
+Updated pool (2033,)
+Updated training set (553,)
+Updated test set: (7400,)
+Query  183
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7070, mse = 0.8832
+
+Entropy sampling ..
+Updated pool (2034,)
+Updated training set (554,)
+Updated test set: (7400,)
+Query  184
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7070, mse = 0.8833
+
+Entropy sampling ..
+Updated pool (2035,)
+Updated training set (555,)
+Updated test set: (7400,)
+Query  185
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7071, mse = 0.8836
+
+Entropy sampling ..
+Updated pool (2036,)
+Updated training set (556,)
+Updated test set: (7400,)
+Query  186
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7070, mse = 0.8832
+
+Entropy sampling ..
+Updated pool (2037,)
+Updated training set (557,)
+Updated test set: (7400,)
+Query  187
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7056, mse = 0.8803
+
+Entropy sampling ..
+Updated pool (2038,)
+Updated training set (558,)
+Updated test set: (7400,)
+Query  188
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7054, mse = 0.8800
+
+Entropy sampling ..
+Updated pool (2039,)
+Updated training set (559,)
+Updated test set: (7400,)
+Query  189
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7052, mse = 0.8796
+
+Entropy sampling ..
+Updated pool (2040,)
+Updated training set (560,)
+Updated test set: (7400,)
+Query  190
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7052, mse = 0.8796
+
+Entropy sampling ..
+Updated pool (2041,)
+Updated training set (561,)
+Updated test set: (7400,)
+Query  191
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7049, mse = 0.8788
+
+Entropy sampling ..
+Updated pool (2042,)
+Updated training set (562,)
+Updated test set: (7400,)
+Query  192
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7055, mse = 0.8793
+
+Entropy sampling ..
+Updated pool (2043,)
+Updated training set (563,)
+Updated test set: (7400,)
+Query  193
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7059, mse = 0.8802
+
+Entropy sampling ..
+Updated pool (2044,)
+Updated training set (564,)
+Updated test set: (7400,)
+Query  194
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7052, mse = 0.8789
+
+Entropy sampling ..
+Updated pool (2045,)
+Updated training set (565,)
+Updated test set: (7400,)
+Query  195
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7051, mse = 0.8787
+
+Entropy sampling ..
+Updated pool (2046,)
+Updated training set (566,)
+Updated test set: (7400,)
+Query  196
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7052, mse = 0.8789
+
+Entropy sampling ..
+Updated pool (2047,)
+Updated training set (567,)
+Updated test set: (7400,)
+Query  197
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7052, mse = 0.8787
+
+Entropy sampling ..
+Updated pool (2048,)
+Updated training set (568,)
+Updated test set: (7400,)
+Query  198
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7055, mse = 0.8791
+
+Entropy sampling ..
+Updated pool (2049,)
+Updated training set (569,)
+Updated test set: (7400,)
+Query  199
+Sample from y test for consistency 7400 2.6080000000000005
+
+Gaussian Process initiated ...
+Prior on the amplitude of the kernel = 8.0000
+Prior on the width of the kernel = 8.0000
+No bijector is applied to the priors ...
+Prediction: mae = 0.7051, mse = 0.8785
+
+Entropy sampling ..
+Updated pool (2050,)
+Updated training set (570,)
+Updated test set: (7400,)

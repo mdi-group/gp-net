@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+#SBATCH --job-name=test_nn_gpu
+#SBATCH --output=test_res_gpu.txt
+#SBATCH --gres=gpu:4
+#SBATCH -p gpu
+#SBATCH --ntasks=12
+#SBATCH --nodes=1
+#SBATCH --time=00-01:20
+
+module load Python/3.6.6-intel-2018b
+module load GPUmodules
+module load CUDA/10.0.130
+module load cuDNN/7.6.0.64-CUDA-10.0.130
+
+python restart.py > run_updates.txt
+

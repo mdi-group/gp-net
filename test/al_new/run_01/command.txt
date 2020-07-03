@@ -1,0 +1,1 @@
+python gp-net.py -meg -cycle 1 5 -samp random -data band_gap_data.pkl -frac 0.05 0.2 -epochs 30 -p 150 -amp 8 -length 8 -maxiters 300  -prev -niters 400

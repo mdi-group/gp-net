@@ -1,0 +1,64 @@
+cpu-bind=MASK - cn2g14, task  0  0 [21438]: mask 0x3f3f set
+Using TensorFlow backend.
+WARNING: Logging before flag parsing goes to stderr.
+W0318 09:28:09.192706 47033329936832 deprecation_wrapper.py:119] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:74: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+W0318 09:28:09.208495 47033329936832 deprecation_wrapper.py:119] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+W0318 09:28:09.210363 47033329936832 deprecation_wrapper.py:119] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+W0318 09:28:09.244866 47033329936832 deprecation_wrapper.py:119] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:1521: The name tf.log is deprecated. Please use tf.math.log instead.
+
+W0318 09:28:09.361771 47033329936832 deprecation_wrapper.py:119] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/megnet/layers/megnet.py:80: The name tf.segment_mean is deprecated. Please use tf.math.segment_mean instead.
+
+W0318 09:28:09.475509 47033329936832 deprecation.py:323] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/tensorflow/python/ops/array_ops.py:1354: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+W0318 09:28:11.639221 47033329936832 deprecation_wrapper.py:119] From /home/vol00/scarf690/.local/lib/python3.6/site-packages/keras/optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+2020-03-18 09:28:14.003513: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-03-18 09:28:14.011385: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2020-03-18 09:28:22.707114: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x6ea0ca0 executing computations on platform CUDA. Devices:
+2020-03-18 09:28:22.709931: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Tesla K80, Compute Capability 3.7
+2020-03-18 09:28:22.712776: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (1): Tesla K80, Compute Capability 3.7
+2020-03-18 09:28:22.712807: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (2): Tesla K80, Compute Capability 3.7
+2020-03-18 09:28:22.712816: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (3): Tesla K80, Compute Capability 3.7
+2020-03-18 09:28:22.716155: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2999990000 Hz
+2020-03-18 09:28:22.716684: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x6f33070 executing computations on platform Host. Devices:
+2020-03-18 09:28:22.716706: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2020-03-18 09:28:22.719010: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:05:00.0
+2020-03-18 09:28:22.720333: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 1 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+2020-03-18 09:28:22.721633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 2 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:84:00.0
+2020-03-18 09:28:22.722951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 3 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:85:00.0
+2020-03-18 09:28:22.723757: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2020-03-18 09:28:22.725649: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+2020-03-18 09:28:22.727416: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10.0
+2020-03-18 09:28:22.728312: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10.0
+2020-03-18 09:28:22.730435: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10.0
+2020-03-18 09:28:22.732158: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10.0
+2020-03-18 09:28:22.736169: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2020-03-18 09:28:22.746213: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0, 1, 2, 3
+2020-03-18 09:28:22.746255: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2020-03-18 09:28:22.752181: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-03-18 09:28:22.752203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 1 2 3 
+2020-03-18 09:28:22.752220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N Y N N 
+2020-03-18 09:28:22.752228: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 1:   Y N N N 
+2020-03-18 09:28:22.752236: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 2:   N N N Y 
+2020-03-18 09:28:22.752244: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 3:   N N Y N 
+2020-03-18 09:28:22.758937: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10805 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:05:00.0, compute capability: 3.7)
+2020-03-18 09:28:22.760797: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 10805 MB memory) -> physical GPU (device: 1, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+2020-03-18 09:28:22.762559: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:2 with 10805 MB memory) -> physical GPU (device: 2, name: Tesla K80, pci bus id: 0000:84:00.0, compute capability: 3.7)
+2020-03-18 09:28:22.764343: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:3 with 10805 MB memory) -> physical GPU (device: 3, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+2020-03-18 09:29:32.263465: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+/home/vol00/scarf690/.local/lib/python3.6/site-packages/megnet/models.py:218: UserWarning: structure with index 689 failed the graph computations
+  UserWarning)
+/home/vol00/scarf690/.local/lib/python3.6/site-packages/megnet/models.py:218: UserWarning: structure with index 2058 failed the graph computations
+  UserWarning)

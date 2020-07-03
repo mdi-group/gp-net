@@ -1,0 +1,1369 @@
+
+gp-net.py ver  1.0
+MEGNet training requested ...
+
+Get graph inputs to MEGNet ...
+Bond features =  10
+Global features =  2
+Radial cutoff =  5
+Gaussian width =  0.5
+
+Number of input entries found for band_gap data = 10461
+Excluding zero optical property values from the dataset ...
+Remaining number of entries = 9254
+
+Obtaining valid structures and targets ...
+Skipping structure with isolated atom ...
+Skipping structure with isolated atom ...
+Skipping structure with isolated atom ...
+Skipping structure with isolated atom ...
+Number of invalid structures = 4
+
+Total number of entries available for analysis = 9250
+
+Requested pool: 5.0%
+Requested validation set: 20.0% of pool
+Requested test set: 95.0%
+Pool: (462,)
+Test set: (8788,)
+Training set: (370,)
+Validation set: (92,)
+
+Active learning requested ...
+Number of cycle(s):  5
+Number of samples per cycle:  1
+
+Query number  0
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/00_model/model-best-new-band_gap.h5 found
+Epoch 1/5
+
+1/2 [==============>...............] - ETA: 5s - loss: 0.4758
+2/2 [==============================] - 12s 6s/step - loss: 0.5240 - val_loss: 0.5496
+
+Epoch 00001: val_loss improved from inf to 0.54964, saving model to random/00_model/model-best-new-band_gap.h5
+Epoch 2/5
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.4156
+2/2 [==============================] - 6s 3s/step - loss: 0.4502 - val_loss: 0.4833
+
+Epoch 00002: val_loss improved from 0.54964 to 0.48329, saving model to random/00_model/model-best-new-band_gap.h5
+Epoch 3/5
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.5817
+2/2 [==============================] - 6s 3s/step - loss: 0.4649 - val_loss: 0.4201
+
+Epoch 00003: val_loss improved from 0.48329 to 0.42013, saving model to random/00_model/model-best-new-band_gap.h5
+Epoch 4/5
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2957
+2/2 [==============================] - 6s 3s/step - loss: 0.3643 - val_loss: 0.9339
+
+Epoch 00004: val_loss did not improve from 0.42013
+Epoch 5/5
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.4066
+2/2 [==============================] - 6s 3s/step - loss: 0.3897 - val_loss: 0.6520
+
+Epoch 00005: val_loss did not improve from 0.42013
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=54632279.5318, amplitude=8.0804, length_scale=7.9204, mae=0.8148, mse=2.3149
+At step 10: loss=48694617.6408, amplitude=8.9270, length_scale=7.1710, mae=0.8510, mse=3.3899
+At step 20: loss=43155233.3951, amplitude=9.8495, length_scale=6.5018, mae=0.9682, mse=5.8083
+At step 30: loss=35885953.2175, amplitude=10.9168, length_scale=5.8587, mae=1.3919, mse=16.8756
+At step 40: loss=28462887.6235, amplitude=12.1198, length_scale=5.2648, mae=2.0509, mse=29.8735
+At step 50: loss=20741109.4114, amplitude=13.4527, length_scale=4.7266, mae=2.7821, mse=67.2135
+At step 60: loss=15389384.3563, amplitude=14.7697, length_scale=4.2853, mae=3.1225, mse=81.6618
+At step 70: loss=12311347.5633, amplitude=15.9130, length_scale=3.9552, mae=4.0260, mse=111.8907
+At step 80: loss=10320879.0575, amplitude=16.8934, length_scale=3.7078, mae=4.8135, mse=142.6428
+At step 90: loss=8447271.9788, amplitude=17.8584, length_scale=3.4931, mae=6.2898, mse=234.4467
+At step 100: loss=6716586.2469, amplitude=18.8807, length_scale=3.2947, mae=8.2570, mse=456.0555
+At step 110: loss=5613895.6910, amplitude=19.8638, length_scale=3.1307, mae=10.6050, mse=703.2903
+At step 120: loss=4976077.6171, amplitude=20.7247, length_scale=3.0075, mae=12.4093, mse=872.2624
+At step 130: loss=4459537.8934, amplitude=21.5414, length_scale=2.9059, mae=16.4506, mse=1359.9321
+At step 140: loss=3944393.7910, amplitude=22.4131, length_scale=2.8108, mae=23.2823, mse=3025.0090
+At step 150: loss=3423671.2393, amplitude=23.3847, length_scale=2.7178, mae=31.5175, mse=7010.0230
+At step 160: loss=2935971.4271, amplitude=24.4472, length_scale=2.6289, mae=40.1388, mse=13738.3750
+At step 170: loss=2509850.8349, amplitude=25.5644, length_scale=2.5468, mae=48.2752, mse=22273.3126
+At step 180: loss=2140353.8332, amplitude=26.7095, length_scale=2.4720, mae=55.5807, mse=31417.6825
+At step 190: loss=1807894.5563, amplitude=27.8805, length_scale=2.4029, mae=62.5115, mse=40476.3192
+At step 200: loss=1500732.1852, amplitude=29.0852, length_scale=2.3380, mae=68.0186, mse=48957.0228
+At step 210: loss=1221319.2417, amplitude=30.3189, length_scale=2.2770, mae=71.0221, mse=56302.9041
+At step 220: loss=981197.3128, amplitude=31.5540, length_scale=2.2207, mae=72.1271, mse=62006.0657
+At step 230: loss=789763.1464, amplitude=32.7462, length_scale=2.1705, mae=71.5228, mse=65758.7823
+At step 240: loss=646425.3323, amplitude=33.8548, length_scale=2.1270, mae=70.2404, mse=67544.4910
+At step 250: loss=542419.5130, amplitude=34.8581, length_scale=2.0901, mae=68.3503, mse=67654.3393
+At step 260: loss=466911.0385, amplitude=35.7549, length_scale=2.0589, mae=66.2178, mse=66534.7221
+At step 270: loss=410851.3142, amplitude=36.5570, length_scale=2.0322, mae=63.9973, mse=64604.6664
+At step 280: loss=367845.7653, amplitude=37.2807, length_scale=2.0091, mae=61.7827, mse=62174.1206
+At step 290: loss=333682.3301, amplitude=37.9419, length_scale=1.9887, mae=59.6974, mse=59446.8639
+At step 299: loss=308227.8433, amplitude=38.4948, length_scale=1.9722, mae=57.9865, mse=56845.8260
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 1.0216, mse = 3.1124
+
+Random sampling ...
+Updated pool: (463,)
+Updated training set (371,)
+Updated test set: (8787,)
+
+Query number  1
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/00_model/model-best-new-band_gap.h5 found
+Epoch 1/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.3315
+2/2 [==============================] - 7s 3s/step - loss: 0.3613 - val_loss: 0.6126
+
+Epoch 00001: val_loss improved from inf to 0.61258, saving model to random/01_model/model-best-new-band_gap.h5
+Epoch 2/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.3354
+2/2 [==============================] - 6s 3s/step - loss: 0.3413 - val_loss: 0.8097
+
+Epoch 00002: val_loss did not improve from 0.61258
+Epoch 3/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2862
+2/2 [==============================] - 6s 3s/step - loss: 0.3260 - val_loss: 0.5777
+
+Epoch 00003: val_loss improved from 0.61258 to 0.57768, saving model to random/01_model/model-best-new-band_gap.h5
+Epoch 4/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2927
+2/2 [==============================] - 6s 3s/step - loss: 0.3057 - val_loss: 0.5474
+
+Epoch 00004: val_loss improved from 0.57768 to 0.54741, saving model to random/01_model/model-best-new-band_gap.h5
+Epoch 5/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2831
+2/2 [==============================] - 6s 3s/step - loss: 0.2972 - val_loss: 0.4732
+
+Epoch 00005: val_loss improved from 0.54741 to 0.47324, saving model to random/01_model/model-best-new-band_gap.h5
+Epoch 6/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2919
+2/2 [==============================] - 6s 3s/step - loss: 0.2853 - val_loss: 0.5979
+
+Epoch 00006: val_loss did not improve from 0.47324
+Epoch 7/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2257
+2/2 [==============================] - 6s 3s/step - loss: 0.2796 - val_loss: 0.8185
+
+Epoch 00007: val_loss did not improve from 0.47324
+Epoch 8/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2510
+2/2 [==============================] - 5s 3s/step - loss: 0.2670 - val_loss: 0.8192
+
+Epoch 00008: val_loss did not improve from 0.47324
+Epoch 9/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.3014
+2/2 [==============================] - 5s 3s/step - loss: 0.2547 - val_loss: 0.6743
+
+Epoch 00009: val_loss did not improve from 0.47324
+Epoch 10/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2559
+2/2 [==============================] - 6s 3s/step - loss: 0.2515 - val_loss: 0.7058
+
+Epoch 00010: val_loss did not improve from 0.47324
+Epoch 11/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2635
+2/2 [==============================] - 6s 3s/step - loss: 0.2465 - val_loss: 0.8178
+
+Epoch 00011: val_loss did not improve from 0.47324
+Epoch 12/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2137
+2/2 [==============================] - 6s 3s/step - loss: 0.2410 - val_loss: 0.5794
+
+Epoch 00012: val_loss did not improve from 0.47324
+Epoch 13/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2291
+2/2 [==============================] - 6s 3s/step - loss: 0.2360 - val_loss: 0.8953
+
+Epoch 00013: val_loss did not improve from 0.47324
+Epoch 14/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2567
+2/2 [==============================] - 6s 3s/step - loss: 0.2238 - val_loss: 0.8465
+
+Epoch 00014: val_loss did not improve from 0.47324
+Epoch 15/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2081
+2/2 [==============================] - 5s 3s/step - loss: 0.2209 - val_loss: 0.6833
+
+Epoch 00015: val_loss did not improve from 0.47324
+Epoch 16/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2280
+2/2 [==============================] - 6s 3s/step - loss: 0.2171 - val_loss: 1.0129
+
+Epoch 00016: val_loss did not improve from 0.47324
+Epoch 17/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2064
+2/2 [==============================] - 6s 3s/step - loss: 0.2133 - val_loss: 1.2550
+
+Epoch 00017: val_loss did not improve from 0.47324
+Epoch 18/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2282
+2/2 [==============================] - 6s 3s/step - loss: 0.2073 - val_loss: 0.6655
+
+Epoch 00018: val_loss did not improve from 0.47324
+Epoch 19/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2393
+2/2 [==============================] - 6s 3s/step - loss: 0.1979 - val_loss: 0.7720
+
+Epoch 00019: val_loss did not improve from 0.47324
+Epoch 20/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1455
+2/2 [==============================] - 6s 3s/step - loss: 0.1975 - val_loss: 0.7025
+
+Epoch 00020: val_loss did not improve from 0.47324
+Epoch 21/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2087
+2/2 [==============================] - 5s 3s/step - loss: 0.1899 - val_loss: 0.9524
+
+Epoch 00021: val_loss did not improve from 0.47324
+Epoch 22/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1940
+2/2 [==============================] - 6s 3s/step - loss: 0.1937 - val_loss: 1.1602
+
+Epoch 00022: val_loss did not improve from 0.47324
+Epoch 23/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1684
+2/2 [==============================] - 6s 3s/step - loss: 0.1957 - val_loss: 0.7153
+
+Epoch 00023: val_loss did not improve from 0.47324
+Epoch 24/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1940
+2/2 [==============================] - 6s 3s/step - loss: 0.1781 - val_loss: 0.9042
+
+Epoch 00024: val_loss did not improve from 0.47324
+Epoch 25/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1910
+2/2 [==============================] - 5s 3s/step - loss: 0.1892 - val_loss: 0.7494
+
+Epoch 00025: val_loss did not improve from 0.47324
+Epoch 26/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1681
+2/2 [==============================] - 6s 3s/step - loss: 0.1790 - val_loss: 0.9138
+
+Epoch 00026: val_loss did not improve from 0.47324
+Epoch 27/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1831
+2/2 [==============================] - 6s 3s/step - loss: 0.1784 - val_loss: 0.8161
+
+Epoch 00027: val_loss did not improve from 0.47324
+Epoch 28/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1717
+2/2 [==============================] - 6s 3s/step - loss: 0.1689 - val_loss: 0.8622
+
+Epoch 00028: val_loss did not improve from 0.47324
+Epoch 29/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1549
+2/2 [==============================] - 6s 3s/step - loss: 0.1670 - val_loss: 0.7318
+
+Epoch 00029: val_loss did not improve from 0.47324
+Epoch 30/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1117
+2/2 [==============================] - 6s 3s/step - loss: 0.1515 - val_loss: 0.8833
+
+Epoch 00030: val_loss did not improve from 0.47324
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=46462995.9938, amplitude=8.0804, length_scale=7.9204, mae=0.7038, mse=0.9903
+At step 10: loss=41970407.1156, amplitude=8.9389, length_scale=7.1593, mae=0.8155, mse=2.1522
+At step 20: loss=36093603.6836, amplitude=9.9201, length_scale=6.4454, mae=0.9668, mse=3.8680
+At step 30: loss=30056658.7456, amplitude=11.0082, length_scale=5.7963, mae=0.9649, mse=4.3229
+At step 40: loss=25906467.7330, amplitude=12.0983, length_scale=5.2565, mae=0.9280, mse=3.0618
+At step 50: loss=23331105.4388, amplitude=13.0655, length_scale=4.8467, mae=1.2324, mse=12.2341
+At step 60: loss=21056883.9498, amplitude=14.0140, length_scale=4.5018, mae=2.4675, mse=87.0403
+At step 70: loss=18116902.4399, amplitude=15.1088, length_scale=4.1600, mae=2.6054, mse=62.3604
+At step 80: loss=14611767.0606, amplitude=16.4478, length_scale=3.8099, mae=2.2350, mse=23.2261
+At step 90: loss=10219425.9694, amplitude=18.0824, length_scale=3.4598, mae=4.2351, mse=81.3738
+At step 100: loss=6731205.0596, amplitude=19.8546, length_scale=3.1467, mae=7.8365, mse=339.0784
+At step 110: loss=4646012.1854, amplitude=21.4741, length_scale=2.9104, mae=15.2077, mse=1934.5482
+At step 120: loss=3238458.5394, amplitude=22.9349, length_scale=2.7303, mae=20.8344, mse=3161.8689
+At step 130: loss=2115534.3696, amplitude=24.3331, length_scale=2.5806, mae=23.6808, mse=3093.5224
+At step 140: loss=1359466.8697, amplitude=25.6440, length_scale=2.4588, mae=23.8075, mse=2627.2134
+At step 150: loss=922443.1604, amplitude=26.7918, length_scale=2.3660, mae=22.9782, mse=2267.6048
+At step 160: loss=668590.0604, amplitude=27.7633, length_scale=2.2967, mae=22.4841, mse=2157.1403
+At step 170: loss=513596.7637, amplitude=28.5838, length_scale=2.2439, mae=22.2268, mse=2172.6488
+At step 180: loss=413040.2140, amplitude=29.2857, length_scale=2.2024, mae=22.0649, mse=2227.8356
+At step 190: loss=343613.0182, amplitude=29.8980, length_scale=2.1687, mae=21.8244, mse=2287.2627
+At step 200: loss=292979.0432, amplitude=30.4433, length_scale=2.1404, mae=21.5394, mse=2340.6569
+At step 210: loss=254362.8211, amplitude=30.9379, length_scale=2.1160, mae=21.2654, mse=2386.1006
+At step 220: loss=223851.5713, amplitude=31.3930, length_scale=2.0944, mae=20.9751, mse=2423.6855
+At step 230: loss=199066.2755, amplitude=31.8166, length_scale=2.0751, mae=20.6674, mse=2453.7421
+At step 240: loss=178489.9448, amplitude=32.2144, length_scale=2.0576, mae=20.4645, mse=2476.4980
+At step 250: loss=161113.5679, amplitude=32.5905, length_scale=2.0416, mae=20.2739, mse=2492.1112
+At step 260: loss=146240.3937, amplitude=32.9478, length_scale=2.0267, mae=20.0711, mse=2500.7415
+At step 270: loss=133373.1287, amplitude=33.2886, length_scale=2.0129, mae=19.8550, mse=2502.6218
+At step 280: loss=122145.8083, amplitude=33.6148, length_scale=2.0000, mae=19.6317, mse=2498.0842
+At step 290: loss=112281.6145, amplitude=33.9275, length_scale=1.9879, mae=19.4029, mse=2487.5628
+At step 299: loss=104390.8410, amplitude=34.1985, length_scale=1.9776, mae=19.2018, mse=2473.4090
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9683, mse = 2.1561
+
+Random sampling ...
+Updated pool: (464,)
+Updated training set (372,)
+Updated test set: (8786,)
+
+Query number  2
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/01_model/model-best-new-band_gap.h5 found
+Epoch 1/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.3057
+2/2 [==============================] - 6s 3s/step - loss: 0.2835 - val_loss: 0.8108
+
+Epoch 00001: val_loss improved from inf to 0.81082, saving model to random/02_model/model-best-new-band_gap.h5
+Epoch 2/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2582
+2/2 [==============================] - 5s 3s/step - loss: 0.2777 - val_loss: 0.7144
+
+Epoch 00002: val_loss improved from 0.81082 to 0.71438, saving model to random/02_model/model-best-new-band_gap.h5
+Epoch 3/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2753
+2/2 [==============================] - 6s 3s/step - loss: 0.2740 - val_loss: 0.5729
+
+Epoch 00003: val_loss improved from 0.71438 to 0.57288, saving model to random/02_model/model-best-new-band_gap.h5
+Epoch 4/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2401
+2/2 [==============================] - 5s 3s/step - loss: 0.2737 - val_loss: 1.1969
+
+Epoch 00004: val_loss did not improve from 0.57288
+Epoch 5/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.3125
+2/2 [==============================] - 6s 3s/step - loss: 0.2610 - val_loss: 0.6253
+
+Epoch 00005: val_loss did not improve from 0.57288
+Epoch 6/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2630
+2/2 [==============================] - 5s 3s/step - loss: 0.2596 - val_loss: 0.5146
+
+Epoch 00006: val_loss improved from 0.57288 to 0.51455, saving model to random/02_model/model-best-new-band_gap.h5
+Epoch 7/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2572
+2/2 [==============================] - 5s 3s/step - loss: 0.2501 - val_loss: 0.5350
+
+Epoch 00007: val_loss did not improve from 0.51455
+Epoch 8/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2627
+2/2 [==============================] - 5s 3s/step - loss: 0.2476 - val_loss: 0.5581
+
+Epoch 00008: val_loss did not improve from 0.51455
+Epoch 9/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2768
+2/2 [==============================] - 6s 3s/step - loss: 0.2515 - val_loss: 1.0517
+
+Epoch 00009: val_loss did not improve from 0.51455
+Epoch 10/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1972
+2/2 [==============================] - 5s 3s/step - loss: 0.2386 - val_loss: 0.8639
+
+Epoch 00010: val_loss did not improve from 0.51455
+Epoch 11/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2647
+2/2 [==============================] - 5s 3s/step - loss: 0.2237 - val_loss: 0.7614
+
+Epoch 00011: val_loss did not improve from 0.51455
+Epoch 12/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1920
+2/2 [==============================] - 6s 3s/step - loss: 0.2446 - val_loss: 0.8877
+
+Epoch 00012: val_loss did not improve from 0.51455
+Epoch 13/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2068
+2/2 [==============================] - 6s 3s/step - loss: 0.2351 - val_loss: 0.7945
+
+Epoch 00013: val_loss did not improve from 0.51455
+Epoch 14/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2043
+2/2 [==============================] - 6s 3s/step - loss: 0.2292 - val_loss: 0.8548
+
+Epoch 00014: val_loss did not improve from 0.51455
+Epoch 15/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2276
+2/2 [==============================] - 6s 3s/step - loss: 0.2179 - val_loss: 0.9513
+
+Epoch 00015: val_loss did not improve from 0.51455
+Epoch 16/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2485
+2/2 [==============================] - 5s 3s/step - loss: 0.2411 - val_loss: 0.6319
+
+Epoch 00016: val_loss did not improve from 0.51455
+Epoch 17/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1718
+2/2 [==============================] - 6s 3s/step - loss: 0.2100 - val_loss: 0.6722
+
+Epoch 00017: val_loss did not improve from 0.51455
+Epoch 18/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1958
+2/2 [==============================] - 5s 3s/step - loss: 0.1998 - val_loss: 0.9220
+
+Epoch 00018: val_loss did not improve from 0.51455
+Epoch 19/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2023
+2/2 [==============================] - 6s 3s/step - loss: 0.1973 - val_loss: 0.5466
+
+Epoch 00019: val_loss did not improve from 0.51455
+Epoch 20/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1904
+2/2 [==============================] - 5s 3s/step - loss: 0.1948 - val_loss: 0.7230
+
+Epoch 00020: val_loss did not improve from 0.51455
+Epoch 21/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1731
+2/2 [==============================] - 5s 3s/step - loss: 0.1788 - val_loss: 0.9631
+
+Epoch 00021: val_loss did not improve from 0.51455
+Epoch 22/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2112
+2/2 [==============================] - 6s 3s/step - loss: 0.1821 - val_loss: 0.8525
+
+Epoch 00022: val_loss did not improve from 0.51455
+Epoch 23/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1713
+2/2 [==============================] - 5s 3s/step - loss: 0.1776 - val_loss: 0.8807
+
+Epoch 00023: val_loss did not improve from 0.51455
+Epoch 24/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1276
+2/2 [==============================] - 6s 3s/step - loss: 0.1721 - val_loss: 0.9435
+
+Epoch 00024: val_loss did not improve from 0.51455
+Epoch 25/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1373
+2/2 [==============================] - 6s 3s/step - loss: 0.1619 - val_loss: 1.3002
+
+Epoch 00025: val_loss did not improve from 0.51455
+Epoch 26/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1570
+2/2 [==============================] - 6s 3s/step - loss: 0.1562 - val_loss: 0.7610
+
+Epoch 00026: val_loss did not improve from 0.51455
+Epoch 27/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1534
+2/2 [==============================] - 5s 3s/step - loss: 0.1573 - val_loss: 1.4461
+
+Epoch 00027: val_loss did not improve from 0.51455
+Epoch 28/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1783
+2/2 [==============================] - 6s 3s/step - loss: 0.1689 - val_loss: 0.7637
+
+Epoch 00028: val_loss did not improve from 0.51455
+Epoch 29/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1972
+2/2 [==============================] - 6s 3s/step - loss: 0.1667 - val_loss: 0.7556
+
+Epoch 00029: val_loss did not improve from 0.51455
+Epoch 30/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1589
+2/2 [==============================] - 6s 3s/step - loss: 0.1692 - val_loss: 0.6201
+
+Epoch 00030: val_loss did not improve from 0.51455
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=51916002.4235, amplitude=8.0804, length_scale=7.9204, mae=0.7522, mse=1.9767
+At step 10: loss=46466168.6466, amplitude=8.9416, length_scale=7.1560, mae=0.9332, mse=6.5660
+At step 20: loss=39993154.0118, amplitude=9.9113, length_scale=6.4491, mae=1.2744, mse=38.9342
+At step 30: loss=34072828.3677, amplitude=10.9444, length_scale=5.8228, mae=1.6969, mse=87.6648
+At step 40: loss=29135421.2793, amplitude=11.9787, length_scale=5.2847, mae=2.3696, mse=140.2449
+At step 50: loss=24931198.7668, amplitude=13.0133, length_scale=4.8205, mae=2.0071, mse=77.0544
+At step 60: loss=22055143.5965, amplitude=14.0157, length_scale=4.4486, mae=3.8781, mse=386.3587
+At step 70: loss=18107365.7284, amplitude=15.1769, length_scale=4.0905, mae=9.3224, mse=2566.6193
+At step 80: loss=12838697.0803, amplitude=16.6690, length_scale=3.7128, mae=7.0081, mse=917.8804
+At step 90: loss=7407251.5921, amplitude=18.4351, length_scale=3.3507, mae=11.7787, mse=1714.1508
+At step 100: loss=4739359.1695, amplitude=20.0585, length_scale=3.0799, mae=14.4918, mse=2240.8510
+At step 110: loss=3540567.8577, amplitude=21.3008, length_scale=2.9012, mae=14.1845, mse=1920.7770
+At step 120: loss=2886532.2739, amplitude=22.2479, length_scale=2.7774, mae=13.2033, mse=1443.4845
+At step 130: loss=2483526.5824, amplitude=23.0079, length_scale=2.6849, mae=13.3733, mse=1349.1277
+At step 140: loss=2208696.0148, amplitude=23.6504, length_scale=2.6116, mae=14.9530, mse=1508.1044
+At step 150: loss=1986350.7190, amplitude=24.2358, length_scale=2.5487, mae=16.5849, mse=1878.2096
+At step 160: loss=1789131.7707, amplitude=24.8033, length_scale=2.4911, mae=18.0563, mse=2319.6144
+At step 170: loss=1619132.0749, amplitude=25.3607, length_scale=2.4378, mae=19.0966, mse=2637.7209
+At step 180: loss=1483048.0587, amplitude=25.8967, length_scale=2.3898, mae=19.7121, mse=2771.9996
+At step 190: loss=1377618.2321, amplitude=26.4028, length_scale=2.3476, mae=20.2661, mse=2803.8202
+At step 200: loss=1293764.1239, amplitude=26.8826, length_scale=2.3105, mae=20.9030, mse=2822.1362
+At step 210: loss=1223189.8314, amplitude=27.3472, length_scale=2.2769, mae=21.6819, mse=2876.3618
+At step 220: loss=1160056.5659, amplitude=27.8096, length_scale=2.2458, mae=22.4337, mse=2992.5621
+At step 230: loss=1100390.0046, amplitude=28.2821, length_scale=2.2160, mae=23.1643, mse=3190.4568
+At step 240: loss=1041263.3399, amplitude=28.7761, length_scale=2.1868, mae=23.9548, mse=3491.1497
+At step 250: loss=980232.1998, amplitude=29.3026, length_scale=2.1576, mae=24.8399, mse=3919.0701
+At step 260: loss=915053.7668, amplitude=29.8726, length_scale=2.1278, mae=25.7242, mse=4498.8155
+At step 270: loss=843719.2566, amplitude=30.4969, length_scale=2.0969, mae=26.5576, mse=5244.0348
+At step 280: loss=764879.3776, amplitude=31.1843, length_scale=2.0648, mae=27.5317, mse=6134.7712
+At step 290: loss=678703.6956, amplitude=31.9386, length_scale=2.0314, mae=28.7391, mse=7088.0217
+At step 299: loss=596982.2972, amplitude=32.6708, length_scale=2.0007, mae=29.4615, mse=7869.6661
+Best-fitted parameters:
+amplitude: 8.3270
+length_scale: 7.6857
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 1.2880, mse = 8.4864
+
+Random sampling ...
+Updated pool: (465,)
+Updated training set (373,)
+Updated test set: (8785,)
+
+Query number  3
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/02_model/model-best-new-band_gap.h5 found
+Epoch 1/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2174
+2/2 [==============================] - 7s 3s/step - loss: 0.2524 - val_loss: 0.7830
+
+Epoch 00001: val_loss improved from inf to 0.78303, saving model to random/03_model/model-best-new-band_gap.h5
+Epoch 2/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2514
+2/2 [==============================] - 6s 3s/step - loss: 0.2507 - val_loss: 0.6391
+
+Epoch 00002: val_loss improved from 0.78303 to 0.63907, saving model to random/03_model/model-best-new-band_gap.h5
+Epoch 3/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2697
+2/2 [==============================] - 6s 3s/step - loss: 0.2494 - val_loss: 0.6392
+
+Epoch 00003: val_loss did not improve from 0.63907
+Epoch 4/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2411
+2/2 [==============================] - 6s 3s/step - loss: 0.2382 - val_loss: 0.7427
+
+Epoch 00004: val_loss did not improve from 0.63907
+Epoch 5/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2394
+2/2 [==============================] - 6s 3s/step - loss: 0.2307 - val_loss: 0.5411
+
+Epoch 00005: val_loss improved from 0.63907 to 0.54106, saving model to random/03_model/model-best-new-band_gap.h5
+Epoch 6/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2491
+2/2 [==============================] - 6s 3s/step - loss: 0.2232 - val_loss: 0.7225
+
+Epoch 00006: val_loss did not improve from 0.54106
+Epoch 7/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2142
+2/2 [==============================] - 5s 3s/step - loss: 0.2164 - val_loss: 0.9851
+
+Epoch 00007: val_loss did not improve from 0.54106
+Epoch 8/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2134
+2/2 [==============================] - 6s 3s/step - loss: 0.2100 - val_loss: 0.6562
+
+Epoch 00008: val_loss did not improve from 0.54106
+Epoch 9/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2026
+2/2 [==============================] - 6s 3s/step - loss: 0.2040 - val_loss: 1.1119
+
+Epoch 00009: val_loss did not improve from 0.54106
+Epoch 10/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1946
+2/2 [==============================] - 5s 3s/step - loss: 0.1951 - val_loss: 0.7786
+
+Epoch 00010: val_loss did not improve from 0.54106
+Epoch 11/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1428
+2/2 [==============================] - 6s 3s/step - loss: 0.1851 - val_loss: 1.1205
+
+Epoch 00011: val_loss did not improve from 0.54106
+Epoch 12/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1473
+2/2 [==============================] - 6s 3s/step - loss: 0.1863 - val_loss: 1.1776
+
+Epoch 00012: val_loss did not improve from 0.54106
+Epoch 13/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1512
+2/2 [==============================] - 6s 3s/step - loss: 0.1788 - val_loss: 0.6550
+
+Epoch 00013: val_loss did not improve from 0.54106
+Epoch 14/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1345
+2/2 [==============================] - 6s 3s/step - loss: 0.1771 - val_loss: 0.8096
+
+Epoch 00014: val_loss did not improve from 0.54106
+Epoch 15/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1631
+2/2 [==============================] - 6s 3s/step - loss: 0.1697 - val_loss: 0.6165
+
+Epoch 00015: val_loss did not improve from 0.54106
+Epoch 16/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1653
+2/2 [==============================] - 6s 3s/step - loss: 0.1578 - val_loss: 0.7330
+
+Epoch 00016: val_loss did not improve from 0.54106
+Epoch 17/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1854
+2/2 [==============================] - 6s 3s/step - loss: 0.1609 - val_loss: 1.1568
+
+Epoch 00017: val_loss did not improve from 0.54106
+Epoch 18/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1353
+2/2 [==============================] - 6s 3s/step - loss: 0.1451 - val_loss: 0.9074
+
+Epoch 00018: val_loss did not improve from 0.54106
+Epoch 19/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1720
+2/2 [==============================] - 6s 3s/step - loss: 0.1459 - val_loss: 0.8542
+
+Epoch 00019: val_loss did not improve from 0.54106
+Epoch 20/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1459
+2/2 [==============================] - 6s 3s/step - loss: 0.1358 - val_loss: 1.0058
+
+Epoch 00020: val_loss did not improve from 0.54106
+Epoch 21/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1376
+2/2 [==============================] - 6s 3s/step - loss: 0.1339 - val_loss: 1.1281
+
+Epoch 00021: val_loss did not improve from 0.54106
+Epoch 22/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1363
+2/2 [==============================] - 6s 3s/step - loss: 0.1329 - val_loss: 0.5721
+
+Epoch 00022: val_loss did not improve from 0.54106
+Epoch 23/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1205
+2/2 [==============================] - 6s 3s/step - loss: 0.1287 - val_loss: 0.9883
+
+Epoch 00023: val_loss did not improve from 0.54106
+Epoch 24/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1181
+2/2 [==============================] - 6s 3s/step - loss: 0.1313 - val_loss: 0.6285
+
+Epoch 00024: val_loss did not improve from 0.54106
+Epoch 25/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1520
+2/2 [==============================] - 6s 3s/step - loss: 0.1270 - val_loss: 1.3057
+
+Epoch 00025: val_loss did not improve from 0.54106
+Epoch 26/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1189
+2/2 [==============================] - 6s 3s/step - loss: 0.1276 - val_loss: 1.1653
+
+Epoch 00026: val_loss did not improve from 0.54106
+Epoch 27/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1117
+2/2 [==============================] - 6s 3s/step - loss: 0.1219 - val_loss: 0.7303
+
+Epoch 00027: val_loss did not improve from 0.54106
+Epoch 28/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1557
+2/2 [==============================] - 6s 3s/step - loss: 0.1320 - val_loss: 1.0105
+
+Epoch 00028: val_loss did not improve from 0.54106
+Epoch 29/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0977
+2/2 [==============================] - 6s 3s/step - loss: 0.1276 - val_loss: 1.3395
+
+Epoch 00029: val_loss did not improve from 0.54106
+Epoch 30/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1232
+2/2 [==============================] - 6s 3s/step - loss: 0.1332 - val_loss: 0.8614
+
+Epoch 00030: val_loss did not improve from 0.54106
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=54878304.8915, amplitude=8.0804, length_scale=7.9204, mae=0.6124, mse=0.9700
+At step 10: loss=48468409.4564, amplitude=8.9205, length_scale=7.1748, mae=0.5952, mse=0.8802
+At step 20: loss=43161280.5799, amplitude=9.8152, length_scale=6.5211, mae=0.5860, mse=0.7969
+At step 30: loss=38340680.7527, amplitude=10.7595, length_scale=5.9400, mae=0.6896, mse=1.0886
+At step 40: loss=33399077.2725, amplitude=11.7568, length_scale=5.4105, mae=0.8435, mse=2.3443
+At step 50: loss=27791879.2491, amplitude=12.8894, length_scale=4.9043, mae=0.7565, mse=1.2986
+At step 60: loss=21764467.9549, amplitude=14.1931, length_scale=4.4344, mae=1.4141, mse=9.9420
+At step 70: loss=15012305.9249, amplitude=15.7927, length_scale=3.9873, mae=2.0337, mse=19.2718
+At step 80: loss=10205031.9479, amplitude=17.4600, length_scale=3.6183, mae=2.7921, mse=36.5453
+At step 90: loss=6995912.9879, amplitude=18.9861, length_scale=3.3314, mae=5.8626, mse=172.2755
+At step 100: loss=5219578.2337, amplitude=20.2675, length_scale=3.1196, mae=8.9893, mse=506.3990
+At step 110: loss=4230726.4103, amplitude=21.3073, length_scale=2.9668, mae=10.5536, mse=674.0880
+At step 120: loss=3561080.2450, amplitude=22.2076, length_scale=2.8491, mae=12.1126, mse=690.7565
+At step 130: loss=3059692.9667, amplitude=23.0447, length_scale=2.7520, mae=13.8057, mse=934.9794
+At step 140: loss=2656651.1411, amplitude=23.8508, length_scale=2.6681, mae=15.7327, mse=1447.5400
+At step 150: loss=2310289.4371, amplitude=24.6421, length_scale=2.5925, mae=18.0229, mse=2192.2162
+At step 160: loss=2000282.6884, amplitude=25.4274, length_scale=2.5225, mae=21.2819, mse=3094.2201
+At step 170: loss=1718798.1552, amplitude=26.2083, length_scale=2.4568, mae=25.4982, mse=3980.3308
+At step 180: loss=1459026.3761, amplitude=26.9838, length_scale=2.3947, mae=29.0652, mse=4661.9813
+At step 190: loss=1209794.2537, amplitude=27.7597, length_scale=2.3348, mae=32.2921, mse=5055.3706
+At step 200: loss=965262.1378, amplitude=28.5444, length_scale=2.2763, mae=34.8959, mse=5157.7177
+At step 210: loss=740665.9980, amplitude=29.3283, length_scale=2.2202, mae=36.1819, mse=5032.2834
+At step 220: loss=563281.6693, amplitude=30.0730, length_scale=2.1694, mae=35.7914, mse=4869.1884
+At step 230: loss=441424.2008, amplitude=30.7387, length_scale=2.1265, mae=34.8333, mse=4810.9281
+At step 240: loss=362191.9857, amplitude=31.3127, length_scale=2.0918, mae=33.9815, mse=4841.0476
+At step 250: loss=309611.0811, amplitude=31.8065, length_scale=2.0638, mae=33.4105, mse=4903.8058
+At step 260: loss=272734.9918, amplitude=32.2393, length_scale=2.0407, mae=32.9842, mse=4968.8752
+At step 270: loss=245252.0796, amplitude=32.6289, length_scale=2.0211, mae=32.6926, mse=5025.6842
+At step 280: loss=223649.2370, amplitude=32.9882, length_scale=2.0041, mae=32.4539, mse=5071.5165
+At step 290: loss=205934.2449, amplitude=33.3261, length_scale=1.9888, mae=32.1583, mse=5106.0510
+At step 299: loss=192333.3702, amplitude=33.6168, length_scale=1.9761, mae=31.8596, mse=5127.6838
+Best-fitted parameters:
+amplitude: 9.9079
+length_scale: 6.4598
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 1.1647, mse = 5.0628
+
+Random sampling ...
+Updated pool: (466,)
+Updated training set (374,)
+Updated test set: (8784,)
+
+Query number  4
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/03_model/model-best-new-band_gap.h5 found
+Epoch 1/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2430
+2/2 [==============================] - 7s 3s/step - loss: 0.2338 - val_loss: 0.7385
+
+Epoch 00001: val_loss improved from inf to 0.73847, saving model to random/04_model/model-best-new-band_gap.h5
+Epoch 2/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2532
+2/2 [==============================] - 6s 3s/step - loss: 0.2362 - val_loss: 1.2001
+
+Epoch 00002: val_loss did not improve from 0.73847
+Epoch 3/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1652
+2/2 [==============================] - 6s 3s/step - loss: 0.2414 - val_loss: 0.5472
+
+Epoch 00003: val_loss improved from 0.73847 to 0.54715, saving model to random/04_model/model-best-new-band_gap.h5
+Epoch 4/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1804
+2/2 [==============================] - 6s 3s/step - loss: 0.2279 - val_loss: 0.6269
+
+Epoch 00004: val_loss did not improve from 0.54715
+Epoch 5/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1879
+2/2 [==============================] - 6s 3s/step - loss: 0.2197 - val_loss: 0.9188
+
+Epoch 00005: val_loss did not improve from 0.54715
+Epoch 6/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1978
+2/2 [==============================] - 6s 3s/step - loss: 0.2256 - val_loss: 0.7642
+
+Epoch 00006: val_loss did not improve from 0.54715
+Epoch 7/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1759
+2/2 [==============================] - 6s 3s/step - loss: 0.2109 - val_loss: 0.8015
+
+Epoch 00007: val_loss did not improve from 0.54715
+Epoch 8/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2049
+2/2 [==============================] - 6s 3s/step - loss: 0.2083 - val_loss: 0.8646
+
+Epoch 00008: val_loss did not improve from 0.54715
+Epoch 9/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1847
+2/2 [==============================] - 5s 3s/step - loss: 0.1899 - val_loss: 0.7465
+
+Epoch 00009: val_loss did not improve from 0.54715
+Epoch 10/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1947
+2/2 [==============================] - 6s 3s/step - loss: 0.1857 - val_loss: 0.8681
+
+Epoch 00010: val_loss did not improve from 0.54715
+Epoch 11/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1704
+2/2 [==============================] - 6s 3s/step - loss: 0.1766 - val_loss: 1.0658
+
+Epoch 00011: val_loss did not improve from 0.54715
+Epoch 12/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.2098
+2/2 [==============================] - 6s 3s/step - loss: 0.1717 - val_loss: 0.8600
+
+Epoch 00012: val_loss did not improve from 0.54715
+Epoch 13/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1733
+2/2 [==============================] - 6s 3s/step - loss: 0.1575 - val_loss: 0.4610
+
+Epoch 00013: val_loss improved from 0.54715 to 0.46102, saving model to random/04_model/model-best-new-band_gap.h5
+Epoch 14/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1684
+2/2 [==============================] - 5s 3s/step - loss: 0.1594 - val_loss: 0.9978
+
+Epoch 00014: val_loss did not improve from 0.46102
+Epoch 15/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1983
+2/2 [==============================] - 6s 3s/step - loss: 0.1563 - val_loss: 0.8041
+
+Epoch 00015: val_loss did not improve from 0.46102
+Epoch 16/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1768
+2/2 [==============================] - 6s 3s/step - loss: 0.1469 - val_loss: 0.7258
+
+Epoch 00016: val_loss did not improve from 0.46102
+Epoch 17/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1440
+2/2 [==============================] - 6s 3s/step - loss: 0.1392 - val_loss: 1.4877
+
+Epoch 00017: val_loss did not improve from 0.46102
+Epoch 18/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1490
+2/2 [==============================] - 6s 3s/step - loss: 0.1370 - val_loss: 1.0825
+
+Epoch 00018: val_loss did not improve from 0.46102
+Epoch 19/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1407
+2/2 [==============================] - 6s 3s/step - loss: 0.1328 - val_loss: 0.7748
+
+Epoch 00019: val_loss did not improve from 0.46102
+Epoch 20/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1148
+2/2 [==============================] - 6s 3s/step - loss: 0.1261 - val_loss: 0.9712
+
+Epoch 00020: val_loss did not improve from 0.46102
+Epoch 21/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1360
+2/2 [==============================] - 6s 3s/step - loss: 0.1247 - val_loss: 1.2397
+
+Epoch 00021: val_loss did not improve from 0.46102
+Epoch 22/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1139
+2/2 [==============================] - 6s 3s/step - loss: 0.1262 - val_loss: 1.3070
+
+Epoch 00022: val_loss did not improve from 0.46102
+Epoch 23/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1225
+2/2 [==============================] - 6s 3s/step - loss: 0.1157 - val_loss: 0.9096
+
+Epoch 00023: val_loss did not improve from 0.46102
+Epoch 24/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1090
+2/2 [==============================] - 5s 3s/step - loss: 0.1194 - val_loss: 1.2758
+
+Epoch 00024: val_loss did not improve from 0.46102
+Epoch 25/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1126
+2/2 [==============================] - 6s 3s/step - loss: 0.1225 - val_loss: 1.3974
+
+Epoch 00025: val_loss did not improve from 0.46102
+Epoch 26/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1193
+2/2 [==============================] - 6s 3s/step - loss: 0.1192 - val_loss: 0.9764
+
+Epoch 00026: val_loss did not improve from 0.46102
+Epoch 27/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0946
+2/2 [==============================] - 6s 3s/step - loss: 0.1159 - val_loss: 0.5176
+
+Epoch 00027: val_loss did not improve from 0.46102
+Epoch 28/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1236
+2/2 [==============================] - 6s 3s/step - loss: 0.1212 - val_loss: 1.2394
+
+Epoch 00028: val_loss did not improve from 0.46102
+Epoch 29/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1035
+2/2 [==============================] - 6s 3s/step - loss: 0.1120 - val_loss: 1.1928
+
+Epoch 00029: val_loss did not improve from 0.46102
+Epoch 30/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1021
+2/2 [==============================] - 6s 3s/step - loss: 0.0975 - val_loss: 0.9720
+
+Epoch 00030: val_loss did not improve from 0.46102
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=52792028.7031, amplitude=8.0804, length_scale=7.9204, mae=0.5984, mse=0.8418
+At step 10: loss=46799858.8837, amplitude=8.9372, length_scale=7.1587, mae=0.6650, mse=1.3394
+At step 20: loss=40388009.7480, amplitude=9.8894, length_scale=6.4633, mae=0.5936, mse=0.9872
+At step 30: loss=35757696.5555, amplitude=10.8648, length_scale=5.8830, mae=0.7872, mse=4.3629
+At step 40: loss=29686566.5674, amplitude=12.0019, length_scale=5.3335, mae=1.0213, mse=10.9135
+At step 50: loss=23429948.9277, amplitude=13.3358, length_scale=4.8168, mae=0.9888, mse=4.0523
+At step 60: loss=16646031.0276, amplitude=14.8566, length_scale=4.3362, mae=1.3622, mse=10.8311
+At step 70: loss=12089112.2035, amplitude=16.3522, length_scale=3.9449, mae=1.4467, mse=17.7007
+At step 80: loss=8677639.1451, amplitude=17.7775, length_scale=3.6328, mae=2.4864, mse=61.8217
+At step 90: loss=5901707.2571, amplitude=19.2023, length_scale=3.3728, mae=4.1702, mse=148.0759
+At step 100: loss=4078220.6435, amplitude=20.5375, length_scale=3.1618, mae=5.3084, mse=258.9744
+At step 110: loss=3297378.5732, amplitude=21.5858, length_scale=3.0153, mae=5.6200, mse=285.0855
+At step 120: loss=2943501.9354, amplitude=22.3523, length_scale=2.9185, mae=5.9748, mse=333.9455
+At step 130: loss=2734265.2561, amplitude=22.9462, length_scale=2.8490, mae=6.4417, mse=416.9766
+At step 140: loss=2580903.7759, amplitude=23.4553, length_scale=2.7929, mae=6.8782, mse=528.4557
+At step 150: loss=2453386.1983, amplitude=23.9272, length_scale=2.7435, mae=8.1155, mse=672.1571
+At step 160: loss=2338223.3086, amplitude=24.3866, length_scale=2.6975, mae=9.5767, mse=857.2149
+At step 170: loss=2225999.6185, amplitude=24.8501, length_scale=2.6529, mae=11.2033, mse=1100.9941
+At step 180: loss=2107459.5418, amplitude=25.3340, length_scale=2.6078, mae=13.0395, mse=1435.5142
+At step 190: loss=1972293.7031, amplitude=25.8564, length_scale=2.5604, mae=15.1670, mse=1911.4367
+At step 200: loss=1809789.0076, amplitude=26.4364, length_scale=2.5092, mae=17.8496, mse=2591.5692
+At step 210: loss=1612930.1835, amplitude=27.0897, length_scale=2.4533, mae=21.0942, mse=3530.6727
+At step 220: loss=1386007.4633, amplitude=27.8196, length_scale=2.3934, mae=25.0677, mse=4808.9952
+At step 230: loss=1148897.1836, amplitude=28.6086, length_scale=2.3319, mae=29.4484, mse=6705.0573
+At step 240: loss=929567.2888, amplitude=29.4187, length_scale=2.2724, mae=33.7332, mse=9572.6160
+At step 250: loss=747344.1096, amplitude=30.2077, length_scale=2.2178, mae=37.0742, mse=13046.7765
+At step 260: loss=605151.8024, amplitude=30.9484, length_scale=2.1696, mae=38.9199, mse=15902.1378
+At step 270: loss=496845.7390, amplitude=31.6324, length_scale=2.1278, mae=39.3099, mse=17222.0578
+At step 280: loss=414643.8090, amplitude=32.2614, length_scale=2.0917, mae=38.6513, mse=17050.6217
+At step 290: loss=351699.3924, amplitude=32.8415, length_scale=2.0605, mae=37.6345, mse=15947.7351
+At step 299: loss=307068.8782, amplitude=33.3276, length_scale=2.0358, mae=36.4014, mse=14607.3664
+Best-fitted parameters:
+amplitude: 8.1616
+length_scale: 7.8415
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 0.9955, mse = 2.5497
+
+Random sampling ...
+Updated pool: (467,)
+Updated training set (375,)
+Updated test set: (8783,)
+
+Query number  5
+Training MEGNet on the pool ...
+
+Requested use of a previous model ...
+Searching for a previous model ...
+Pre-trained model: random/04_model/model-best-new-band_gap.h5 found
+Epoch 1/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1545
+2/2 [==============================] - 6s 3s/step - loss: 0.1640 - val_loss: 0.9636
+
+Epoch 00001: val_loss improved from inf to 0.96361, saving model to random/05_model/model-best-new-band_gap.h5
+Epoch 2/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1584
+2/2 [==============================] - 5s 3s/step - loss: 0.1599 - val_loss: 0.8078
+
+Epoch 00002: val_loss improved from 0.96361 to 0.80776, saving model to random/05_model/model-best-new-band_gap.h5
+Epoch 3/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1318
+2/2 [==============================] - 6s 3s/step - loss: 0.1766 - val_loss: 1.1633
+
+Epoch 00003: val_loss did not improve from 0.80776
+Epoch 4/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1207
+2/2 [==============================] - 6s 3s/step - loss: 0.1555 - val_loss: 1.0619
+
+Epoch 00004: val_loss did not improve from 0.80776
+Epoch 5/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1491
+2/2 [==============================] - 6s 3s/step - loss: 0.1573 - val_loss: 1.3562
+
+Epoch 00005: val_loss did not improve from 0.80776
+Epoch 6/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1524
+2/2 [==============================] - 5s 3s/step - loss: 0.1448 - val_loss: 1.2002
+
+Epoch 00006: val_loss did not improve from 0.80776
+Epoch 7/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1549
+2/2 [==============================] - 6s 3s/step - loss: 0.1523 - val_loss: 0.9311
+
+Epoch 00007: val_loss did not improve from 0.80776
+Epoch 8/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1236
+2/2 [==============================] - 5s 3s/step - loss: 0.1344 - val_loss: 0.4997
+
+Epoch 00008: val_loss improved from 0.80776 to 0.49970, saving model to random/05_model/model-best-new-band_gap.h5
+Epoch 9/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1362
+2/2 [==============================] - 5s 3s/step - loss: 0.1452 - val_loss: 0.7182
+
+Epoch 00009: val_loss did not improve from 0.49970
+Epoch 10/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1333
+2/2 [==============================] - 6s 3s/step - loss: 0.1283 - val_loss: 0.9113
+
+Epoch 00010: val_loss did not improve from 0.49970
+Epoch 11/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1126
+2/2 [==============================] - 6s 3s/step - loss: 0.1253 - val_loss: 1.1612
+
+Epoch 00011: val_loss did not improve from 0.49970
+Epoch 12/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1168
+2/2 [==============================] - 6s 3s/step - loss: 0.1136 - val_loss: 0.8396
+
+Epoch 00012: val_loss did not improve from 0.49970
+Epoch 13/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1144
+2/2 [==============================] - 6s 3s/step - loss: 0.1191 - val_loss: 1.2895
+
+Epoch 00013: val_loss did not improve from 0.49970
+Epoch 14/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1163
+2/2 [==============================] - 5s 3s/step - loss: 0.1092 - val_loss: 1.1397
+
+Epoch 00014: val_loss did not improve from 0.49970
+Epoch 15/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1207
+2/2 [==============================] - 6s 3s/step - loss: 0.1066 - val_loss: 1.0984
+
+Epoch 00015: val_loss did not improve from 0.49970
+Epoch 16/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0807
+2/2 [==============================] - 5s 3s/step - loss: 0.0979 - val_loss: 0.9906
+
+Epoch 00016: val_loss did not improve from 0.49970
+Epoch 17/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1071
+2/2 [==============================] - 6s 3s/step - loss: 0.1000 - val_loss: 1.3834
+
+Epoch 00017: val_loss did not improve from 0.49970
+Epoch 18/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0966
+2/2 [==============================] - 6s 3s/step - loss: 0.0900 - val_loss: 1.4052
+
+Epoch 00018: val_loss did not improve from 0.49970
+Epoch 19/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1229
+2/2 [==============================] - 6s 3s/step - loss: 0.1066 - val_loss: 0.8169
+
+Epoch 00019: val_loss did not improve from 0.49970
+Epoch 20/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1108
+2/2 [==============================] - 5s 3s/step - loss: 0.0940 - val_loss: 0.9536
+
+Epoch 00020: val_loss did not improve from 0.49970
+Epoch 21/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1055
+2/2 [==============================] - 5s 3s/step - loss: 0.1033 - val_loss: 1.0726
+
+Epoch 00021: val_loss did not improve from 0.49970
+Epoch 22/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0844
+2/2 [==============================] - 5s 3s/step - loss: 0.0962 - val_loss: 1.0154
+
+Epoch 00022: val_loss did not improve from 0.49970
+Epoch 23/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0772
+2/2 [==============================] - 6s 3s/step - loss: 0.1042 - val_loss: 1.6443
+
+Epoch 00023: val_loss did not improve from 0.49970
+Epoch 24/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0949
+2/2 [==============================] - 5s 3s/step - loss: 0.0851 - val_loss: 1.5561
+
+Epoch 00024: val_loss did not improve from 0.49970
+Epoch 25/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0839
+2/2 [==============================] - 6s 3s/step - loss: 0.0934 - val_loss: 1.0047
+
+Epoch 00025: val_loss did not improve from 0.49970
+Epoch 26/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.1043
+2/2 [==============================] - 5s 3s/step - loss: 0.0920 - val_loss: 1.3652
+
+Epoch 00026: val_loss did not improve from 0.49970
+Epoch 27/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0786
+2/2 [==============================] - 5s 3s/step - loss: 0.0856 - val_loss: 1.7175
+
+Epoch 00027: val_loss did not improve from 0.49970
+Epoch 28/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0920
+2/2 [==============================] - 5s 3s/step - loss: 0.0852 - val_loss: 1.0920
+
+Epoch 00028: val_loss did not improve from 0.49970
+Epoch 29/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0942
+2/2 [==============================] - 5s 3s/step - loss: 0.0845 - val_loss: 1.2606
+
+Epoch 00029: val_loss did not improve from 0.49970
+Epoch 30/30
+
+1/2 [==============>...............] - ETA: 0s - loss: 0.0701
+2/2 [==============================] - 6s 3s/step - loss: 0.0942 - val_loss: 1.1228
+
+Epoch 00030: val_loss did not improve from 0.49970
+
+Obtaining latent points for the full dataset ...
+Extracting activations from the readout_0 layer ...
+
+Dimensionality reduction using tSNE begins ...
+Requested number of components =  2
+Using max iterations =  400
+Processing perplexity =  150.0
+
+GP Training on the DFT band_gap ...
+
+Gaussian Process initiated ...
+Requested optimisation with Adam algorithm at learning rate 0.01
+Number of iterations = 300
+Prior on the amplitude of the kernel = 8.0
+Prior on the width of the kernel = 8.0
+
+Training GP on the training set to minimise MAE on the validation set ...
+At step 0: loss=52061737.5494, amplitude=8.0804, length_scale=7.9204, mae=0.4812, mse=0.4416
+At step 10: loss=45501179.6863, amplitude=8.9350, length_scale=7.1610, mae=0.5721, mse=1.0142
+At step 20: loss=38331889.6893, amplitude=9.8825, length_scale=6.4655, mae=0.5869, mse=1.0073
+At step 30: loss=30279937.8066, amplitude=10.9568, length_scale=5.8244, mae=0.6116, mse=0.9762
+At step 40: loss=21995237.8280, amplitude=12.1798, length_scale=5.2347, mae=0.9263, mse=7.0060
+At step 50: loss=17991816.9016, amplitude=13.3048, length_scale=4.7926, mae=1.3541, mse=23.1804
+At step 60: loss=14829274.9737, amplitude=14.3073, length_scale=4.4510, mae=2.2213, mse=85.3993
+At step 70: loss=11390401.7342, amplitude=15.3659, length_scale=4.1320, mae=2.6144, mse=93.0160
+At step 80: loss=8510606.3162, amplitude=16.4824, length_scale=3.8427, mae=2.5673, mse=78.6058
+At step 90: loss=6572767.5689, amplitude=17.5171, length_scale=3.6085, mae=3.4024, mse=128.2860
+At step 100: loss=4827230.7692, amplitude=18.5046, length_scale=3.4045, mae=4.0842, mse=96.9590
+At step 110: loss=3239480.0710, amplitude=19.4899, length_scale=3.2179, mae=4.2601, mse=79.3921
+At step 120: loss=2042647.7201, amplitude=20.4471, length_scale=3.0554, mae=4.7530, mse=100.7117
+At step 130: loss=1426724.3356, amplitude=21.2702, length_scale=2.9327, mae=5.7041, mse=124.7021
+At step 140: loss=1156450.0585, amplitude=21.9052, length_scale=2.8493, mae=6.1736, mse=157.5519
+At step 150: loss=1022036.0610, amplitude=22.3882, length_scale=2.7923, mae=6.3929, mse=176.1509
+At step 160: loss=941237.4023, amplitude=22.7742, length_scale=2.7503, mae=6.5957, mse=184.6984
+At step 170: loss=884013.6019, amplitude=23.1040, length_scale=2.7164, mae=6.7604, mse=189.3454
+At step 180: loss=838142.0651, amplitude=23.4027, length_scale=2.6870, mae=6.8974, mse=193.1863
+At step 190: loss=797969.4154, amplitude=23.6855, length_scale=2.6598, mae=7.0580, mse=197.7515
+At step 200: loss=760504.9289, amplitude=23.9618, length_scale=2.6339, mae=7.2268, mse=204.0195
+At step 210: loss=723939.9985, amplitude=24.2383, length_scale=2.6084, mae=7.4101, mse=212.8456
+At step 220: loss=687060.7752, amplitude=24.5200, length_scale=2.5829, mae=7.6346, mse=225.1670
+At step 230: loss=649030.3239, amplitude=24.8109, length_scale=2.5570, mae=7.9793, mse=242.1388
+At step 240: loss=609348.6878, amplitude=25.1141, length_scale=2.5306, mae=8.4179, mse=265.2420
+At step 250: loss=567901.1034, amplitude=25.4316, length_scale=2.5036, mae=8.9371, mse=296.3567
+At step 260: loss=525017.4419, amplitude=25.7640, length_scale=2.4761, mae=9.4916, mse=337.7577
+At step 270: loss=481459.5994, amplitude=26.1106, length_scale=2.4483, mae=10.0850, mse=391.9723
+At step 280: loss=438278.7328, amplitude=26.4690, length_scale=2.4206, mae=10.7281, mse=461.4752
+At step 290: loss=396573.4443, amplitude=26.8356, length_scale=2.3933, mae=11.3988, mse=548.2670
+At step 299: loss=361062.9226, amplitude=27.1694, length_scale=2.3693, mae=12.0259, mse=642.0949
+Best-fitted parameters:
+amplitude: 8.0804
+length_scale: 7.9204
+
+Building optimised kernel using the optimised hyperparameters ...
+GP predicting the test set ...
+Prediction: mae = 1.1558, mse = 4.5052
+
+Saving active learning plots

@@ -59,7 +59,7 @@ class Params:
         self.layer = "readout_0" # for MEGNet        
         self.perp = 50
         self.niters = 1000
-        self.ndims = 2
+        self.ndims = 0
         
         # GP specific arguments
         self.rate = 0.01 
@@ -132,7 +132,9 @@ def main():
                         help="Number of iterations for optimisation in tSNE. [default: 1000]",
                         type=int)
     parser.add_argument("-ndims", 
-                        help="Dimensions of embedded space in tSNE. [default: 2]", type=int)
+                        help="Dimensions of embedded space. 0 => scale activations in 0,1 range\
+                        2 or 3 => Reduce dimensions of activations with tSNE. [default: 0]",
+                        type=int)
     parser.add_argument("-rate", 
                         help="Adam optimizer Learning rate. [default: 0.01]", type=float)
     parser.add_argument("-amp", 
@@ -167,7 +169,20 @@ def main():
     length_scale = args.length or Params().length
     maxiters = args.maxiters or Params().maxiters
 
-    
+
+    # Display layers in a pre-fitted MEGNet model 
+    if args.ltype:
+        from aux.get_info import show_layers
+        show_layers(args.ltype)
+        sys.exit()
+
+    # Check number of entries in dataset 
+    if args.checkdata:
+        from aux.get_info import ReadData
+        for prop in properties:
+            ReadData(prop, args.include)
+        sys.exit()    
+
     if args.nomeg: 
         logging.info("No MEGNet training requested ...")
         sys.exit("No other network implemented!")
@@ -228,12 +243,6 @@ def main():
         else:
             maxiters = maxiters[0]
             
-    # Display layers in a pre-fitted MEGNet model 
-    if args.ltype:
-        from aux.get_info import show_layers
-        show_layers(args.ltype)
-        sys.exit()
-
     # Get data for processing 
     if args.data or (args.data and args.key):
         from aux.get_info import load_data
@@ -243,13 +252,6 @@ def main():
         properties = download(args.key)
     else:
         logging.error("No input data provided. Use -data or -key option!")
-        sys.exit()
-
-    # Check number of entries in dataset 
-    if args.checkdata:
-        from aux.get_info import ReadData
-        for prop in properties:
-            ReadData(prop, args.include)
         sys.exit()
 
     for prop in properties:
@@ -442,8 +444,8 @@ def main():
                      model, activations_input_full, Xfull, yfull = megnet_input(
                          prop, args.include, bond, nfeat_global, cutoff, width,
                          fraction, args.quan)
+
                  print("Requested validation set: %s%% of pool" %(val_frac*100))
-                 
                  datadir = "no_cycle/%s_results/%s_model" %(prop, args.quan)
                  if not os.path.isdir(datadir):
                      os.makedirs(datadir)
@@ -466,15 +468,14 @@ def main():
                  np.save("%s/yval.npy" %datadir, arr=yval)
 
                  print("\nProcessing %s samples ..." %args.quan)
+                 # MEGNet train and tSNE analyse or scale features once 
                  if not args.nomeg and epochs > 0:
-                     # MEGNet train and tNSE analyse only once so we will 
-                     # ensure one can only tSNE analyse when epochs > 0
                      training.train_test_split(datadir, prop, args.prev, model, batch,
                                                epochs, Xpool, ypool, Xtest, ytest)
                      
-                     logging.info("Obtaining latent points for the full dataset ...")
-                     latent.active(datadir, prop, layer, samp, activations_input_full,
-                                       Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
+                 logging.info("Obtaining latent points for the full dataset ...")
+                 latent.active(datadir, prop, layer, samp, activations_input_full,
+                               Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
                      
                  logging.info("Loading the latent points ...")
                  tsne_train = np.load("%s/tsne_train.npy" %datadir)

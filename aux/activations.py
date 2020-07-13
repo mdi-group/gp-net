@@ -1,9 +1,9 @@
 """
 activations.py, SciML-SCD, RAL
 
-Extracts the activations from the specified layer, reduces
-their dimensions and the transformed values are used as 
-latent index points by the Gaussian process. 
+Extracts the activations from the specified layer, scales 
+these activations or apply tSNE. The output is then used 
+as latent index points by the Gaussian process. 
 """
 import sys 
 import logging
@@ -29,7 +29,8 @@ class latent:
         latent.train_test_split(datadir, prop, layer, activations_input_full, 
                                 Xpool, ytest, perp, ndims, niters)
 
-        tSNE analysis of the activations of a layer of a neural network.
+        tSNE analysis or feature scaling of the activations of a layer of a 
+        neural network.
 
         Inputs:
         datadir-                   Directory into which results are written into.
@@ -109,8 +110,8 @@ class latent:
         latent.k_fold(datadir, fold, prop, layer, activations_input_full, 
                       train_idx, val_idx, Xpool, perp, ndims, niters)
         
-        tSNE analysis of the activations of a layer of a neural network for 
-        k-fold cross-validation. 
+        tSNE analysis or feature scaling of the activations of a layer of a 
+        neural network for k-fold cross-validation. 
 
         Inputs:
         datadir-                   Directory into which results are written into.
@@ -182,8 +183,8 @@ class latent:
         latent.active(datadir, prop, layer, sampling, activations_input_full, 
                       Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
 
-        tSNE analysis of the activations of a layer of a neural network for 
-        active learning purposes. 
+        tSNE analysis or feature scalinf of the activations of a layer of a 
+        neural network for active learning purposes. 
 
         Inputs:
         datadir-                  Directory into which results are written into. 

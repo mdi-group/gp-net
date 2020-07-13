@@ -13,15 +13,15 @@ active learning.
 ## Usage
 ```
 usage: gp-net.py [-h] [-nomeg] [-noactive] [-samp SAMP] [-cycle CYCLE CYCLE]
-                 [-norepeat] [-q QUAN [QUAN ...]] [-data DATA [DATA ...]]
-                 [-checkdata] [-key KEY [KEY ...]] [-frac FRAC FRAC]
-                 [-include] [-nsplit NSPLIT] [-epochs EPOCHS] [-batch BATCH]
-                 [-bond BOND] [-nfeat NFEAT] [-cutoff CUTOFF] [-width WIDTH]
-                 [-prev] [-layer LAYER] [-ltype LTYPE] [-p PERP]
-                 [-niters NITERS] [-ndims NDIMS] [-rate RATE] [-amp AMP]
-                 [-length LENGTH] [-maxiters MAXITERS [MAXITERS ...]]
+                 [-norepeat] [-q QUAN] [-data DATA [DATA ...]] [-checkdata]
+                 [-key KEY [KEY ...]] [-frac FRAC FRAC] [-include]
+                 [-nsplit NSPLIT] [-epochs EPOCHS] [-batch BATCH] [-bond BOND]
+                 [-nfeat NFEAT] [-cutoff CUTOFF] [-width WIDTH] [-prev]
+                 [-layer LAYER] [-ltype LTYPE] [-p PERP] [-niters NITERS]
+                 [-ndims NDIMS] [-rate RATE] [-amp AMP] [-length LENGTH]
+                 [-maxiters MAXITERS [MAXITERS ...]]
 
-Uncertainty quantification and active learning in neural networks.
+Uncertainty quantification in neural networks.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -57,7 +57,7 @@ optional arguments:
                         MEGNet]
   -batch BATCH          Batch size for training with MEGNet or CNN. [default:
                         256]
-  -bond BOND            MEGNet feature bond. [default: 10]
+  -bond BOND            MEGNet feature bond. [default: 10]			
   -nfeat NFEAT          MEGNet feature global. [default: 2]
   -cutoff CUTOFF, --cutoff CUTOFF
                         MEGNet radial cutoff. [default: 5]
@@ -72,7 +72,9 @@ optional arguments:
                         tSNE. [default: 50]
   -niters NITERS        Number of iterations for optimisation in tSNE.
                         [default: 1000]
-  -ndims NDIMS          Dimensions of embedded space in tSNE. [default: 2]
+  -ndims NDIMS          Dimensions of embedded space. 0 => scale activations
+                        in 0,1 range 2 or 3 => Reduce dimensions of
+                        activations with tSNE. [default: 0]
   -rate RATE            Adam optimizer Learning rate. [default: 0.01]
   -amp AMP              Amplitude of the GP kernel. [default: 10.0]
   -length LENGTH        The length scale of the GP kernel. [default: 10.0]
@@ -83,12 +85,11 @@ optional arguments:
                         using train-test split. For active learning and no
                         k-fold cross-validation, a single input is required.
                         [default: 0 0 i.e no MEGNet and GP training]
-			
+
 ```
 
 ## Help
-Please see the [wiki page](https://github.com/keeto/gp-net/wiki)
-for description of all the features of `gp-net`. If your questions are not answered
-in the wiki, please contact us by email. If you have found a bug in any of the tools,
-please [submit a ticket](https://github.com/keeto/gp-net/-/issues) and we
-will attend to it. 
+Please see the [wiki page](https://github.com/keeeto/gp-net/wiki) for description
+of all the features of `gp-net`. If your questions are not answered in the wiki,
+please contact us by email. If you have found a bug in any of the tools, please
+[submit a ticket](https://github.com/keeeto/gp-net/issues) and we will attend to it. 

@@ -1,4 +1,4 @@
-"""A
+"""
 activations.py, SciML-SCD, RAL
 
 Extracts the activations from the specified layer, reduces

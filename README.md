@@ -87,7 +87,7 @@ optional arguments:
 ```
 
 ## Help
-Please see the [wiki page](https://github.com/keeto/gp-net.wiki.git)
+Please see the [wiki page](https://github.com/keeto/gp-net/wiki)
 for description of all the features of `gp-net`. If your questions are not answered
 in the wiki, please contact us by email. If you have found a bug in any of the tools,
 please [submit a ticket](https://github.com/keeto/gp-net/-/issues) and we

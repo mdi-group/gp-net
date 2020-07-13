@@ -21,6 +21,23 @@ tfk = tfp.math.psd_kernels
 tfb = tfp.bijectors 
 
 
+def convert_index_points(array):
+    """
+    Reshape an array into a tensor appropriate for GP index points.
+    Extends the amount of dimensions by `array.shape[1] - 1` and 
+    converts to a `Tensor` with `dtype=tf.float64`.
+
+    Inputs:
+    array-        The array to extend.
+
+    Outputs:
+    1-            The converted Tensor.
+    """
+    shape = array.shape
+    shape += (1,) * (shape[1] - 1)
+    return tf.constant(array, dtype=tf.float64, shape=shape), shape[1]
+
+
 class adam:
         
     def train_test_split(datadir, prop, tsne_pool, tsne_test, ypool_dft,
@@ -56,19 +73,14 @@ class adam:
         7-                  Pearson correlation coefficient between the DFT-
                             calculated and GP-predicted optical property. 
         """
-        # Reshape the latent points so the feature_ndims in the kernel
-        # can take into account the dims of the latent points.
-        if np.shape(tsne_pool)[1] == 2:
-            latent_pool = tf.constant(tsne_pool[..., np.newaxis], dtype=tf.float64)
-            latent_test = tf.constant(tsne_test[..., np.newaxis], dtype=tf.float64)
-        elif np.shape(tsne_pool)[1] == 3:
-            latent_pool = tf.constant(tsne_pool[..., np.newaxis, np.newaxis], dtype=tf.float64)
-            latent_test = tf.constant(tsne_test[..., np.newaxis, np.newaxis], dtype=tf.float64)
-            
+        latent_pool = convert_index_points(tsne_pool)[0]
+        latent_test = convert_index_points(tsne_test)[0]
+        feature_ndims = convert_index_points(tsne_pool)[1]
+
         # Define the DFT-calculated values
         ypool_dft = tf.constant(ypool_dft, dtype=tf.float64)
-        ytest_dft =  tf.constant(ytest_dft, dtype=tf.float64)
-
+        ytest_dft = tf.constant(ytest_dft, dtype=tf.float64)
+            
         if maxiters <= 0: 
             amp = tf.cast(amp, tf.float64)
             length_scale = tf.cast(length_scale, tf.float64)
@@ -76,11 +88,13 @@ class adam:
             print("Prior on the width of the kernel = %.4f" %length_scale.numpy())
             logging.info("No bijector is applied to the priors ...")
 
-            gprm_dft = tfd.GaussianProcessRegressionModel(kernel=tfk.ExponentiatedQuadratic(
-                amp, length_scale, feature_ndims=np.shape(tsne_pool)[1]),
-                                                          index_points=latent_test,
-                                                          observation_index_points=latent_pool,
-                                                          observations=ypool_dft)
+            gprm_dft = tfd.GaussianProcessRegressionModel(
+                kernel=tfk.ExponentiatedQuadratic(amp,
+                                                  length_scale,
+                                                  feature_ndims=feature_ndims), 
+                index_points=latent_test,
+                observation_index_points=latent_pool,
+                observations=ypool_dft)
         else:
             print("Requested optimisation with Adam algorithm at learning rate %s" %rate)
             print("Number of iterations = %s" %maxiters)
@@ -105,8 +119,9 @@ class adam:
             @tf.function
             def loss_fn():
                 """ The loss function to be minimised for the DFT values in the pool """
-                kernel = tfk.ExponentiatedQuadratic(amp, length_scale,
-                                                    feature_ndims=np.shape(tsne_pool)[1])
+                kernel = tfk.ExponentiatedQuadratic(amp,
+                                                    length_scale,
+                                                    feature_ndims=feature_ndims) 
                 gp = tfd.GaussianProcess(kernel=kernel, index_points=latent_pool)
                 return -gp.log_prob(ypool_dft)
 
@@ -124,11 +139,13 @@ class adam:
                 OptLoss = np.append(OptLoss, loss.numpy())
                 OptAmp = np.append(OptAmp, amp._value().numpy())
                 OptLength = np.append(OptLength, length_scale._value().numpy())
-                gprm_dft = tfd.GaussianProcessRegressionModel(kernel=tfk.ExponentiatedQuadratic(
-                    OptAmp[i], OptLength[i], feature_ndims=np.shape(tsne_pool)[1]),
-                                                          index_points=latent_test,
-                                                          observation_index_points=latent_pool,
-                                                          observations=ypool_dft)
+                gprm_dft = tfd.GaussianProcessRegressionModel(
+                    kernel=tfk.ExponentiatedQuadratic(OptAmp[i],
+                                                      OptLength[i],
+                                                      feature_ndims=feature_ndims),
+                    index_points=latent_test,
+                    observation_index_points=latent_pool,
+                    observations=ypool_dft)
                 Optmae = np.append(Optmae, tf.losses.MAE(ytest_dft, gprm_dft.mean()).numpy())
                 Optmse = np.append(Optmse, tf.losses.MSE(ytest_dft, gprm_dft.mean()).numpy())
                 Optsae = np.append(Optsae, np.std(np.abs(gprm_dft.mean().numpy() - ytest_dft.numpy())))
@@ -217,22 +234,16 @@ class adam:
                             set.
         4-                  MSE on the test set.
         """
-        # Reshape the latent points so the feature_ndims in the kernel
-        # can take into account the dims of the latent points.
-        if np.shape(tsne_train)[1] == 2:
-            latent_train = tf.constant(tsne_train[..., np.newaxis], dtype=tf.float64)
-            latent_val = tf.constant(tsne_val[..., np.newaxis], dtype=tf.float64)
-            latent_test = tf.constant(tsne_test[..., np.newaxis], dtype=tf.float64)
-        elif np.shape(tsne_train)[1] == 3:
-            latent_train = tf.constant(tsne_train[..., np.newaxis, np.newaxis], dtype=tf.float64)
-            latent_val = tf.constant(tsne_val[..., np.newaxis, np.newaxis], dtype=tf.float64)
-            latent_test = tf.constant(tsne_test[..., np.newaxis, np.newaxis], dtype=tf.float64)
-
+        latent_train = convert_index_points(tsne_train)[0]
+        latent_val = convert_index_points(tsne_val)[0]
+        latent_test = convert_index_points(tsne_test)[0]
+        feature_ndims = convert_index_points(tsne_train)[1] 
+        
         # Define the DFT-calculated values
         ytrain_dft = tf.constant(ytrain_dft, dtype=tf.float64)
         yval_dft =  tf.constant(yval_dft, dtype=tf.float64)
         ytest_dft = tf.constant(ytest_dft, dtype=tf.float64)
-
+            
         if maxiters <= 0: 
             amp = tf.cast(amp, tf.float64)
             length_scale = tf.cast(length_scale, tf.float64)
@@ -241,8 +252,9 @@ class adam:
             logging.info("No bijector is applied to the priors ...")
 
             # Build the optimised kernel using the input hyperparameters
-            Optkernel = tfk.ExponentiatedQuadratic(amp, length_scale,
-                                                   feature_ndims=np.shape(tsne_train)[1])
+            Optkernel = tfk.ExponentiatedQuadratic(amp,
+                                                   length_scale,
+                                                   feature_ndims=feature_ndims)
             gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
                                                           index_points=latent_test,
                                                           observation_index_points=latent_train,
@@ -270,8 +282,9 @@ class adam:
             logging.info("Training GP on the training set to minimise MAE on the validation set ...")
             @tf.function
             def loss_fn():
-                kernel = tfk.ExponentiatedQuadratic(amp, length_scale,
-                                                    feature_ndims=np.shape(tsne_train)[1])
+                kernel = tfk.ExponentiatedQuadratic(amp,
+                                                    length_scale,
+                                                    feature_ndims=feature_ndims)
                 gp = tfd.GaussianProcess(kernel=kernel, index_points=latent_train)
                 return -gp.log_prob(ytrain_dft)
             
@@ -289,11 +302,13 @@ class adam:
                 OptLoss = np.append(OptLoss, loss.numpy()) 
                 OptAmp = np.append(OptAmp, amp._value().numpy())
                 OptLength = np.append(OptLength, length_scale._value().numpy())
-                gprm = tfd.GaussianProcessRegressionModel(kernel=tfk.ExponentiatedQuadratic(
-                    OptAmp[i], OptLength[i], feature_ndims=np.shape(tsne_train)[1]),
-                                                          index_points=latent_val,
-                                                          observation_index_points=latent_train,
-                                                          observations=ytrain_dft)
+                gprm = tfd.GaussianProcessRegressionModel(
+                    kernel=tfk.ExponentiatedQuadratic(OptAmp[i],
+                                                      OptLength[i],
+                                                      feature_ndims=feature_ndims),
+                    index_points=latent_val,
+                    observation_index_points=latent_train,
+                    observations=ytrain_dft)
                 Optmae_val = np.append(Optmae_val, tf.losses.MAE(yval_dft, gprm.mean()).numpy())
                 Optmse_val = np.append(Optmse_val, tf.losses.MSE(yval_dft, gprm.mean()).numpy())
                 Optsae_val = np.append(Optsae_val, np.std(np.abs(gprm.mean().numpy() - yval_dft.numpy()))) 
@@ -306,9 +321,11 @@ class adam:
 
             logging.info("Building optimised kernel using the optimised hyperparameters ...")
             logging.info("GP predicting the test set ...")
-            Optkernel = tfk.ExponentiatedQuadratic(OptAmp[np.argmin(Optmae_val)], OptLength[np.argmin(Optmae_val)],
-                                                   feature_ndims=np.shape(tsne_train)[1])
-            gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel, index_points=latent_test,
+            Optkernel = tfk.ExponentiatedQuadratic(OptAmp[np.argmin(Optmae_val)],
+                                                   OptLength[np.argmin(Optmae_val)],
+                                                   feature_ndims=feature_ndims)
+            gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
+                                                          index_points=latent_test,
                                                           observation_index_points=latent_train,
                                                           observations=ytrain_dft)
 
@@ -393,16 +410,10 @@ class adam:
         10-           Pearson correlation coefficient between the DFT-
                       calculated and GP-predicted optical property.
         """
-        # Reshape the latent points so the kernel can take into
-        # account the dimension of the latent points.
-        if np.shape(tsne_train)[1] == 2:
-            latent_train = tf.constant(tsne_train[..., np.newaxis], dtype=tf.float64)
-            latent_val = tf.constant(tsne_val[..., np.newaxis], dtype=tf.float64)
-            latent_test = tf.constant(tsne_test[..., np.newaxis], dtype=tf.float64)
-        elif np.shape(tsne_train)[1] == 3:
-            latent_train = tf.constant(tsne_train[..., np.newaxis, np.newaxis], dtype=tf.float64)
-            latent_val = tf.constant(tsne_val[..., np.newaxis, np.newaxis], dtype=tf.float64)
-            latent_test = tf.constant(tsne_test[..., np.newaxis, np.newaxis], dtype=tf.float64)
+        latent_train = convert_index_points(tsne_train)[0]
+        latent_val = convert_index_points(tsne_val)[0]
+        latent_test = convert_index_points(tsne_test)[0]
+        feature_ndims = convert_index_points(tsne_train)[1]
 
         # Define the DFT-calculated values 
         ytrain_dft = tf.constant(ytrain_dft, dtype=tf.float64)        
@@ -417,8 +428,9 @@ class adam:
             print("No bijector is applied to the priors ...")
 
             # Build the optimised kernel using the input hyperparameters
-            Optkernel = tfk.ExponentiatedQuadratic(amp, length_scale,
-                                                   feature_ndims=np.shape(tsne_train)[1])
+            Optkernel = tfk.ExponentiatedQuadratic(amp,
+                                                   length_scale,
+                                                   feature_ndims=feature_ndims) 
             gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
                                                           index_points=latent_test,
                                                           observation_index_points=latent_train,
@@ -445,8 +457,9 @@ class adam:
             logging.info("Training GP on the training set to minimise MAE on the validation set ...")            
             @tf.function
             def loss_fn():
-                kernel = tfk.ExponentiatedQuadratic(amp, length_scale,
-                                                    feature_ndims=np.shape(tsne_train)[1])
+                kernel = tfk.ExponentiatedQuadratic(amp,
+                                                    length_scale,
+                                                    feature_ndims=feature_ndims) 
                 gp = tfd.GaussianProcess(kernel=kernel, index_points=latent_train)
                 return -gp.log_prob(ytrain_dft)
 
@@ -464,11 +477,13 @@ class adam:
                 OptLoss = np.append(OptLoss, loss.numpy())
                 OptAmp = np.append(OptAmp, amp._value().numpy())
                 OptLength = np.append(OptLength, length_scale._value().numpy())
-                gprm = tfd.GaussianProcessRegressionModel(kernel=tfk.ExponentiatedQuadratic(
-                    OptAmp[i], OptLength[i], feature_ndims=np.shape(tsne_train)[1]),
-                                                          index_points=latent_val,
-                                                          observation_index_points=latent_train,
-                                                          observations=ytrain_dft)
+                gprm = tfd.GaussianProcessRegressionModel(
+                    kernel=tfk.ExponentiatedQuadratic(OptAmp[i],
+                                                      OptLength[i],
+                                                      feature_ndims=feature_ndims),
+                    index_points=latent_val,
+                    observation_index_points=latent_train,
+                    observations=ytrain_dft)
                 Optmae_val = np.append(Optmae_val, tf.losses.MAE(yval_dft, gprm.mean().numpy()))
                 Optmse_val = np.append(Optmse_val, tf.losses.MSE(yval_dft, gprm.mean().numpy()))
                 Optsae_val = np.append(Optsae_val, np.std(np.abs(gprm.mean().numpy() - yval_dft.numpy())))
@@ -481,9 +496,11 @@ class adam:
                 
             logging.info("Building optimised kernel using the optimised hyperparameters ...")
             logging.info("GP predicting the test set ...") 
-            Optkernel = tfk.ExponentiatedQuadratic(OptAmp[np.argmin(Optmae_val)], OptLength[np.argmin(Optmae_val)],
-                                                   feature_ndims=np.shape(tsne_train)[1])
-            gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel, index_points=latent_test,
+            Optkernel = tfk.ExponentiatedQuadratic(OptAmp[np.argmin(Optmae_val)],
+                                                   OptLength[np.argmin(Optmae_val)],
+                                                   feature_ndims=feature_ndims) 
+            gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
+                                                          index_points=latent_test,
                                                           observation_index_points=latent_train,
                                                           observations=ytrain_dft)
 

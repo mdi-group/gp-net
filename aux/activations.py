@@ -1,4 +1,4 @@
-"""
+"""A
 activations.py, SciML-SCD, RAL
 
 Extracts the activations from the specified layer, reduces
@@ -16,7 +16,6 @@ np.random.seed(1)
 import matplotlib
 matplotlib.use("agg")
 import matplotlib.pyplot as plt 
-from sklearn.manifold import TSNE
 
 from tensorflow.compat.v2.keras import backend as K
 from megnet.models import MEGNetModel
@@ -48,8 +47,8 @@ class latent:
         Outputs:
         1-                         GP latent points for the pool and test sets. 
         """
-        if ndims < 2 or ndims > 3:
-            logging.error("Only ndims 2 or 3 is allowed!")
+        if ndims == 1 or ndims > 3: 
+            logging.error("Only ndims 0, 2 or 3 are allowed!")
             sys.exit() 
         model_pretrained = MEGNetModel.from_file("%s/fitted_%s_model.hdf5" %(datadir, prop))
 
@@ -60,12 +59,22 @@ class latent:
         for full in activations_input_full:
             extracted_activations_full.append(compute_graph(full))
 
-        logging.info("Dimensionality reduction using tSNE begins ...")
-        print("Requested number of components = ", ndims)
-        print("Using max iterations = ", niters)
-        print("Processing perplexity = ", perp)
-        tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
-                         perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
+        if ndims > 0:
+            logging.info("Dimensionality reduction using tSNE begins ...")
+            print("Requested number of components = ", ndims)
+            print("Using max iterations = ", niters)
+            print("Processing perplexity = ", perp)
+            from sklearn.manifold import TSNE            
+            
+            tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
+                             perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
+        elif ndims == 0:
+            logging.info("Scaling each feature to range 0, 1 ...")
+            from sklearn.preprocessing import MinMaxScaler
+            
+            tsne_full = MinMaxScaler().fit(np.squeeze(extracted_activations_full)).transform(
+                np.squeeze(extracted_activations_full))
+
         tsne_pool = tsne_full[:len(Xpool)]
         tsne_test = tsne_full[len(Xpool):]
 
@@ -74,21 +83,22 @@ class latent:
         np.save(file="%s/tsne_pool.npy" %datadir, arr=tsne_pool)
         np.save(file="%s/tsne_test.npy" %datadir, arr=tsne_test)
 
-        logging.info("Saving tSNE plots ...")
-        if ndims == 2:
-            plt.figure(figsize = [12, 6])
-            plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
-                      %(layer, niters, perp))
-            plt.scatter(tsne_test[:,0], tsne_test[:,1], c=ytest)
-        elif ndims == 3:
-            from mpl_toolkits.mplot3d import Axes3D
-            fig = plt.figure(figsize = [14, 6])
-            ax = fig.add_subplot(111, projection="3d")
-            plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
-                      %(layer, niters, perp))
-            ax.scatter(tsne_test[:,0], tsne_test[:,1], tsne_test[:,2], c=ytest)
+        if ndims > 0:
+            logging.info("Saving tSNE plots ...")            
+            if ndims == 2:
+                plt.figure(figsize = [12, 6])
+                plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
+                          %(layer, niters, perp))
+                plt.scatter(tsne_test[:,0], tsne_test[:,1], c=ytest)
+            elif ndims == 3:
+                from mpl_toolkits.mplot3d import Axes3D
+                fig = plt.figure(figsize = [14, 6])
+                ax = fig.add_subplot(111, projection="3d")
+                plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
+                          %(layer, niters, perp))
+                ax.scatter(tsne_test[:,0], tsne_test[:,1], tsne_test[:,2], c=ytest)
             
-        plt.savefig("%s/tSNE_%s.pdf" %(datadir, prop))
+            plt.savefig("%s/tSNE_%s.pdf" %(datadir, prop))
         
         return tsne_pool, tsne_test
 
@@ -121,7 +131,7 @@ class latent:
         1-                         GP latent points for the training, validation,
                                    and test sets.
         """
-        if ndims < 2 or ndims > 3:
+        if ndims == 1 or ndims > 3:
             logging.error("Only ndims 2 or 3 is allowed!")
             sys.exit()
         model_pretrained = MEGNetModel.from_file("%s/fitted_%s_model.hdf5" %(datadir, prop))
@@ -133,23 +143,30 @@ class latent:
         for full in activations_input_full:
             extracted_activations_full.append(compute_graph(full))
 
-        # Run tSNE on the full dataset and write the results to file 
-        logging.info("Dimensionality reduction using tSNE begins ...")
-        print("Requested number of components = ", ndims)
-        print("Using max iterations = ", niters)
-        print("Processing perplexity = ", perp)
-        tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
-                         perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
+        if ndims > 0: 
+            logging.info("Dimensionality reduction using tSNE begins ...")
+            print("Requested number of components = ", ndims)
+            print("Using max iterations = ", niters)
+            print("Processing perplexity = ", perp)
+            from sklearn.manifold import TSNE
+            
+            tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
+                             perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
+        elif ndims == 0:
+            logging.info("Scaling each feature to range 0, 1 ...")
+            from sklearn.preprocessing import MinMaxScaler
 
+            tsne_full = MinMaxScaler().fit(np.squeeze(extracted_activations_full)).transform(
+                np.squeeze(extracted_activations_full))
+            
         logging.info("Writing results to file ...") 
         np.save(file="%s/tsne_full.npy" %datadir, arr=tsne_full)
-
         tsne_pool = tsne_full[:len(Xpool)]
         np.save(file="%s/tsne_pool.npy" %datadir, arr=tsne_pool)
-
+        
         tsne_train = tsne_pool[train_idx]
         np.save(file="%s/tsne_train.npy" %datadir, arr=tsne_train)
-
+        
         tsne_val = tsne_pool[val_idx]
         np.save(file="%s/tsne_val.npy" %datadir, arr=tsne_val)
 
@@ -190,7 +207,7 @@ class latent:
         1-                         GP latent points for the full, pool, training, 
                                    validation, and test sets. 
         """
-        if ndims < 2 or ndims > 3:
+        if ndims == 1 or ndims > 3:
             logging.error("Only ndims 2 or 3 is allowed!")
             sys.exit() 
         model_pretrained = MEGNetModel.from_file("%s/fitted_%s_model.hdf5" %(datadir, prop))
@@ -201,14 +218,23 @@ class latent:
         extracted_activations_full = [ ]
         for full in activations_input_full:
             extracted_activations_full.append(compute_graph(full))
-        
-        logging.info("Dimensionality reduction using tSNE begins ...")
-        print("Requested number of components = ", ndims)
-        print("Using max iterations = ", niters)
-        print("Processing perplexity = ", perp)
-        tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
-                         perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
 
+        if ndims > 0:
+            logging.info("Dimensionality reduction using tSNE begins ...")
+            print("Requested number of components = ", ndims)
+            print("Using max iterations = ", niters)
+            print("Processing perplexity = ", perp)
+            from sklearn.manifold import TSNE
+            
+            tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
+                             perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
+        elif ndims == 0:
+            logging.info("Scaling each feature to range 0, 1 ...")
+            from sklearn.preprocessing import MinMaxScaler
+            
+            tsne_full = MinMaxScaler().fit(np.squeeze(extracted_activations_full)).transform(
+                np.squeeze(extracted_activations_full))
+            
         # Update the tsne values for the training and test sets 
         tsne_test = [ ]
         tsne_train = [ ]
@@ -236,23 +262,24 @@ class latent:
         np.save(file="%s/tsne_train.npy" %datadir, arr=tsne_train)
         np.save(file="%s/tsne_val.npy" %datadir, arr=tsne_val)
         np.save(file="%s/tsne_test.npy" %datadir, arr=tsne_test)
-        
-        logging.info("Saving tSNE plots ...")
-        if ndims == 2:
-            plt.figure(figsize = [12, 6])
-            plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
-                      %(layer, niters, perp))
-            plt.scatter(tsne_test[:,0], tsne_test[:,1], c=ytest)
-        elif ndims == 3:
-            from mpl_toolkits.mplot3d import Axes3D
-            fig = plt.figure(figsize = [14, 6])
-            ax = fig.add_subplot(111, projection="3d")
-            plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
-                      %(layer, niters, perp))
-            ax.scatter(tsne_test[:,0], tsne_test[:,1], tsne_test[:,2], c=ytest)
 
-        if not os.path.isfile("%s/tSNE_%s.pdf" %(sampling, prop)):
-            plt.savefig("%s/tSNE_%s.pdf" %(datadir, prop))
+        if ndims > 0: 
+            logging.info("Saving tSNE plots ...")
+            if ndims == 2:
+                plt.figure(figsize = [12, 6])
+                plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
+                          %(layer, niters, perp))
+                plt.scatter(tsne_test[:,0], tsne_test[:,1], c=ytest)
+            elif ndims == 3:
+                from mpl_toolkits.mplot3d import Axes3D
+                fig = plt.figure(figsize = [14, 6])
+                ax = fig.add_subplot(111, projection="3d")
+                plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
+                          %(layer, niters, perp))
+                ax.scatter(tsne_test[:,0], tsne_test[:,1], tsne_test[:,2], c=ytest)
+
+            if not os.path.isfile("%s/tSNE_%s.pdf" %(sampling, prop)):
+                plt.savefig("%s/tSNE_%s.pdf" %(datadir, prop))
 
         return tsne_train, tsne_val, tsne_test
 

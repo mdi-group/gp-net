@@ -1,9 +1,10 @@
 """
 adam.py, SciML-SCD, RAL
 
-Uses the adam optimiser to optimise the hyperparameters of the Gaussian 
-Process. The optical properties of materials are predicted and their  
-uncertainties are estimated. 
+Uses the adam optimiser to optimise the hyperparameters of the Matern
+One Half kernel Gaussian Process. This process is also known as the 
+Ornstein-Uhlenbeck process. The optical properties of the materials 
+are predicted by the GP, and their uncertainties estimated. 
 """
 import logging
 import os 
@@ -46,9 +47,8 @@ class adam:
         adam.train_test_split(datadir, prop, tsne_pool, tsne_test, ypool_dft, 
                               ytest_dft, maxiters, amp, length_scale, rate)
 
-        A Gaussian Process (GP) with an exponentiated quadratic kernel
-        is used. This will result in a smooth prior on functions sampled 
-        from the GP.
+        A Gaussian Process (GP) with a Matern One Half kernel is used in the 
+        case where a train-test data split approach is used. 
 
         Inputs:
         datadir-            Directory into which results are written into.
@@ -89,9 +89,9 @@ class adam:
             logging.info("No bijector is applied to the priors ...")
 
             gprm_dft = tfd.GaussianProcessRegressionModel(
-                kernel=tfk.ExponentiatedQuadratic(amp,
-                                                  length_scale,
-                                                  feature_ndims=feature_ndims), 
+                kernel=tfk.MaternOneHalf(amp,
+                                         length_scale,
+                                         feature_ndims=feature_ndims), 
                 index_points=latent_test,
                 observation_index_points=latent_pool,
                 observations=ypool_dft)
@@ -119,9 +119,9 @@ class adam:
             @tf.function
             def loss_fn():
                 """ The loss function to be minimised for the DFT values in the pool """
-                kernel = tfk.ExponentiatedQuadratic(amp,
-                                                    length_scale,
-                                                    feature_ndims=feature_ndims) 
+                kernel = tfk.MaternOneHalf(amp, 
+                                           length_scale,
+                                           feature_ndims=feature_ndims) 
                 gp = tfd.GaussianProcess(kernel=kernel, index_points=latent_pool)
                 return -gp.log_prob(ypool_dft)
 
@@ -140,9 +140,9 @@ class adam:
                 OptAmp = np.append(OptAmp, amp._value().numpy())
                 OptLength = np.append(OptLength, length_scale._value().numpy())
                 gprm_dft = tfd.GaussianProcessRegressionModel(
-                    kernel=tfk.ExponentiatedQuadratic(OptAmp[i],
-                                                      OptLength[i],
-                                                      feature_ndims=feature_ndims),
+                    kernel=tfk.MaternOneHalf(OptAmp[i],
+                                             OptLength[i],
+                                             feature_ndims=feature_ndims),
                     index_points=latent_test,
                     observation_index_points=latent_pool,
                     observations=ypool_dft)
@@ -150,8 +150,9 @@ class adam:
                 Optmse = np.append(Optmse, tf.losses.MSE(ytest_dft, gprm_dft.mean()).numpy())
                 Optsae = np.append(Optsae, np.std(np.abs(gprm_dft.mean().numpy() - ytest_dft.numpy())))
                 if i % 10 == 0 or i + 1 == maxiters:
-                    print("At step %d: loss=%.4f, amplitude=%.4f, length_scale=%.4f, mae=%.4f, mse=%.4f, sae=%.4f"
-                          %(i, OptLoss[i], OptAmp[i], OptLength[i], Optmae[i], Optmse[i], Optsae[i]))
+                    print("At step %d: loss=%.4f, amplitude=%.4f, length_scale=%.4f, mae=%.4f, mse=%.4f, sae=%.4f, min(std)=%.4f, max(std)=%.4f"
+                          %(i, OptLoss[i], OptAmp[i], OptLength[i], Optmae[i], Optmse[i], Optsae[i],
+                            min(gprm_dft.stddev().numpy()), max(gprm_dft.stddev().numpy())))
                     
         # Compute the Pearson correlation coefficient 
         R, p = pearsonr(x=ytest_dft.numpy(), y=gprm_dft.mean().numpy())
@@ -171,10 +172,12 @@ class adam:
         np.save(file="%s/gp_variance.npy" %datadir, arr=gprm_dft.variance().numpy())
 
         if maxiters <= 0:
-            print("\nPrediction statistics: mae = %.4f, mse = %.4f, sae = %.4f, R = %.4f"
+            print("\nPrediction statistics: mae = %.4f, mse = %.4f, sae = %.4f, min(std) = %.4f, max(std) = %.4f, R = %.4f"
                   %(tf.losses.MAE(ytest_dft, gprm_dft.mean()).numpy(),
                     tf.losses.MSE(ytest_dft, gprm_dft.mean()).numpy(),
                     np.std(np.abs(gprm_dft.mean().numpy() - ytest_dft.numpy())),
+                    min(gprm_dft.stddev().numpy()),
+                    max(gprm_dft.stddev().numpy()),
                     R) )
             
             return ( None,
@@ -190,8 +193,13 @@ class adam:
             logging.info("Best-fitted parameters:")
             print("          amplitude: %.4f" %OptAmp[np.argmin(Optmae)])
             print("          length_scale: %.4f" %OptLength[np.argmin(Optmae)])
-            print("          Prediction statistics: mae = %.4f, mse = %.4f, sae = %.4f, R = %.4f"
-                  %(min(Optmae), Optmse[np.argmin(Optmae)], Optsae[np.argmin(Optmae)], R) )
+            print("          Prediction statistics: mae = %.4f, mse = %.4f, sae = %.4f, min(std) = %.4f, max(std) = %.4f, R = %.4f"
+                  %(min(Optmae),
+                    Optmse[np.argmin(Optmae)],
+                    Optsae[np.argmin(Optmae)],
+                    min(gprm_dft.stddev().numpy()),
+                    max(gprm_dft.stddev().numpy()),
+                    R) )
             
             return ( OptLoss,
                      OptAmp,
@@ -211,7 +219,7 @@ class adam:
                     ytrain_dft, yval_dft, ytest_dft, maxiters, amp, 
                     length_scale, rate) 
 
-        k-fold cross-validation Gaussian Process. 
+        k-fold cross-validation Gaussian Process with a Matern One Half kernel. 
 
         Inputs:
         datadir-            Directory into which results are written into. 
@@ -252,9 +260,9 @@ class adam:
             logging.info("No bijector is applied to the priors ...")
 
             # Build the optimised kernel using the input hyperparameters
-            Optkernel = tfk.ExponentiatedQuadratic(amp,
-                                                   length_scale,
-                                                   feature_ndims=feature_ndims)
+            Optkernel = tfk.MaternOneHalf(amp, 
+                                          length_scale,
+                                          feature_ndims=feature_ndims)
             gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
                                                           index_points=latent_test,
                                                           observation_index_points=latent_train,
@@ -282,9 +290,9 @@ class adam:
             logging.info("Training GP on the training set to minimise MAE on the validation set ...")
             @tf.function
             def loss_fn():
-                kernel = tfk.ExponentiatedQuadratic(amp,
-                                                    length_scale,
-                                                    feature_ndims=feature_ndims)
+                kernel = tfk.MaternOneHalf(amp, 
+                                           length_scale,
+                                           feature_ndims=feature_ndims)
                 gp = tfd.GaussianProcess(kernel=kernel, index_points=latent_train)
                 return -gp.log_prob(ytrain_dft)
             
@@ -303,9 +311,9 @@ class adam:
                 OptAmp = np.append(OptAmp, amp._value().numpy())
                 OptLength = np.append(OptLength, length_scale._value().numpy())
                 gprm = tfd.GaussianProcessRegressionModel(
-                    kernel=tfk.ExponentiatedQuadratic(OptAmp[i],
-                                                      OptLength[i],
-                                                      feature_ndims=feature_ndims),
+                    kernel=tfk.MaternOneHalf(OptAmp[i],
+                                             OptLength[i],
+                                             feature_ndims=feature_ndims),
                     index_points=latent_val,
                     observation_index_points=latent_train,
                     observations=ytrain_dft)
@@ -313,17 +321,18 @@ class adam:
                 Optmse_val = np.append(Optmse_val, tf.losses.MSE(yval_dft, gprm.mean()).numpy())
                 Optsae_val = np.append(Optsae_val, np.std(np.abs(gprm.mean().numpy() - yval_dft.numpy()))) 
                 if i % 10 == 0 or i + 1 == maxiters:
-                    print("At step %d: loss=%.4f, amplitude=%.4f, length_scale=%.4f, mae=%.4f, mse=%.4f, sae=%.4f"
-                          %(i, OptLoss[i], OptAmp[i], OptLength[i], Optmae_val[i], Optmse_val[i], Optsae_val[i]))
+                    print("At step %d: loss=%.4f, amplitude=%.4f, length_scale=%.4f, mae=%.4f, mse=%.4f, sae=%.4f, min(std)=%.4f, max(std)=%.4f"
+                          %(i, OptLoss[i], OptAmp[i], OptLength[i], Optmae_val[i], Optmse_val[i], Optsae_val[i],
+                            min(gprm.stddev().numpy()), max(gprm.stddev().numpy())))
             logging.info("Best-fitted parameters:")
             print("          amplitude: %.4f" %OptAmp[np.argmin(Optmae_val)])
             print("          length_scale: %.4f" %OptLength[np.argmin(Optmae_val)])
 
             logging.info("Building optimised kernel using the optimised hyperparameters ...")
             logging.info("GP predicting the test set ...")
-            Optkernel = tfk.ExponentiatedQuadratic(OptAmp[np.argmin(Optmae_val)],
-                                                   OptLength[np.argmin(Optmae_val)],
-                                                   feature_ndims=feature_ndims)
+            Optkernel = tfk.MaternOneHalf(OptAmp[np.argmin(Optmae_val)],
+                                          OptLength[np.argmin(Optmae_val)],
+                                          feature_ndims=feature_ndims)
             gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
                                                           index_points=latent_test,
                                                           observation_index_points=latent_train,
@@ -335,7 +344,13 @@ class adam:
         mse_test = tf.losses.MSE(ytest_dft.numpy(), gprm_dft.mean().numpy())
         sae_test = tf.math.reduce_std(tf.abs(gprm_dft.mean().numpy() - ytest_dft.numpy()))
         R, p = pearsonr(x=ytest_dft.numpy(), y=gprm_dft.mean().numpy())
-        print("Prediction: mae = %.4f, mse = %.4f, sae = %.4f, R = %.4f" %(mae_test, mse_test, sae_test, R))
+        print("Prediction: mae = %.4f, mse = %.4f, sae = %.4f, min(std) = %.4f, max(std) = %.4f, R = %.4f"
+              %(mae_test,
+                mse_test,
+                sae_test,
+                min(gprm_dft.stddev().numpy()),
+                max(gprm_dft.stddev().numpy()),
+                R))
 
         logging.info("Writing results to file ...")
         if maxiters > 0:
@@ -375,10 +390,10 @@ class adam:
         adam.active(datadir, prop, tsne_train, tsne_val, tsne_test, ytrain_dft, 
                     yval_dft, ytest_dft, maxiters, amp, length_scale, rate)
 
-        A Gaussian Process (GP) with an exponentiated quadratic kernel
-        is used. This will result in a smooth prior on functions sampled 
-        from the GP. The adam algorithm is use to optimise the hyperparameters 
-        to minimise the negative log likelihood. 
+        A Gaussian Process (GP) with a Matern One Half kernel. The GP is first
+        trained to minimise the MAE on the validation set. The best hyperparameters
+        obtained during the GP training is used to build an optimised kernel 
+        for predicting the test set.
     
         Inputs:
         datadir-        Directory into which results are written into.
@@ -428,9 +443,9 @@ class adam:
             print("No bijector is applied to the priors ...")
 
             # Build the optimised kernel using the input hyperparameters
-            Optkernel = tfk.ExponentiatedQuadratic(amp,
-                                                   length_scale,
-                                                   feature_ndims=feature_ndims) 
+            Optkernel = tfk.MaternOneHalf(amp, 
+                                          length_scale,
+                                          feature_ndims=feature_ndims) 
             gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
                                                           index_points=latent_test,
                                                           observation_index_points=latent_train,
@@ -457,9 +472,9 @@ class adam:
             logging.info("Training GP on the training set to minimise MAE on the validation set ...")            
             @tf.function
             def loss_fn():
-                kernel = tfk.ExponentiatedQuadratic(amp,
-                                                    length_scale,
-                                                    feature_ndims=feature_ndims) 
+                kernel = tfk.MaternOneHalf(amp, 
+                                           length_scale,
+                                           feature_ndims=feature_ndims) 
                 gp = tfd.GaussianProcess(kernel=kernel, index_points=latent_train)
                 return -gp.log_prob(ytrain_dft)
 
@@ -478,9 +493,9 @@ class adam:
                 OptAmp = np.append(OptAmp, amp._value().numpy())
                 OptLength = np.append(OptLength, length_scale._value().numpy())
                 gprm = tfd.GaussianProcessRegressionModel(
-                    kernel=tfk.ExponentiatedQuadratic(OptAmp[i],
-                                                      OptLength[i],
-                                                      feature_ndims=feature_ndims),
+                    kernel=tfk.MaternOneHalf(OptAmp[i],
+                                             OptLength[i],
+                                             feature_ndims=feature_ndims),
                     index_points=latent_val,
                     observation_index_points=latent_train,
                     observations=ytrain_dft)
@@ -488,17 +503,19 @@ class adam:
                 Optmse_val = np.append(Optmse_val, tf.losses.MSE(yval_dft, gprm.mean().numpy()))
                 Optsae_val = np.append(Optsae_val, np.std(np.abs(gprm.mean().numpy() - yval_dft.numpy())))
                 if i % 10 == 0 or i + 1 == maxiters:
-                    print("At step %d: loss=%.4f, amplitude=%.4f, length_scale=%.4f, mae=%.4f, mse=%.4f, sae=%.4f"
-                          %(i, OptLoss[i], OptAmp[i], OptLength[i], Optmae_val[i], Optmse_val[i], Optsae_val[i]))
+                    print("At step %d: loss=%.4f, amplitude=%.4f, length_scale=%.4f, mae=%.4f, mse=%.4f, sae=%.4f, min(std) = %.4f, max(std) = %.4f"
+                          %(i, OptLoss[i], OptAmp[i], OptLength[i], Optmae_val[i], Optmse_val[i], Optsae_val[i],
+                            min(gprm.stddev().numpy()),
+                            max(gprm.stddev().numpy())))
             logging.info("Best-fitted parameters:")
             print("          amplitude: %.4f" %OptAmp[np.argmin(Optmae_val)])
             print("          length_scale: %.4f" %OptLength[np.argmin(Optmae_val)])
                 
             logging.info("Building optimised kernel using the optimised hyperparameters ...")
             logging.info("GP predicting the test set ...") 
-            Optkernel = tfk.ExponentiatedQuadratic(OptAmp[np.argmin(Optmae_val)],
-                                                   OptLength[np.argmin(Optmae_val)],
-                                                   feature_ndims=feature_ndims) 
+            Optkernel = tfk.MaternOneHalf(OptAmp[np.argmin(Optmae_val)],
+                                          OptLength[np.argmin(Optmae_val)],
+                                          feature_ndims=feature_ndims) 
             gprm_dft = tfd.GaussianProcessRegressionModel(kernel=Optkernel,
                                                           index_points=latent_test,
                                                           observation_index_points=latent_train,
@@ -510,7 +527,13 @@ class adam:
         mse_test = tf.losses.MSE(ytest_dft.numpy(), gprm_dft.mean().numpy())
         sae_test = tf.math.reduce_std(tf.abs(gprm_dft.mean().numpy() - ytest_dft.numpy()))
         R, p = pearsonr(x=ytest_dft.numpy(), y=gprm_dft.mean().numpy())
-        print("Prediction: mae = %.4f, mse = %.4f, sae = %.4f, R = %.4f" %(mae_test, mse_test, sae_test, R))
+        print("Prediction: mae = %.4f, mse = %.4f, sae = %.4f, min(std) = %.4f, max(std) = %.4f, R = %.4f"
+              %(mae_test,
+                mse_test,
+                sae_test,
+                min(gprm_dft.stddev().numpy()),
+                max(gprm_dft.stddev().numpy()),
+                R))
 
         logging.info("Writing results to file ...")
         if maxiters > 0:

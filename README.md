@@ -1,16 +1,15 @@
-# gp-net
+## gp-net
 
 `gp-net` is a tool for estimating the uncertainties on the
 predicted properties of materials for the purpose of
 active learning. 
 
-## Features 
-- Training with MEGNet
-- Gaussian Process for uncertainty quantification
-- k-fold cross validation in MEGNet and the Gaussian Process
-- Random and Entropy based sampling active learning. 
+### Features 
+- [Train-test Split](https://github.com/keeeto/gp-net/wiki/Train-test-split)
+- [k-fold Cross-validation](https://github.com/keeeto/gp-net/wiki/k-fold-cross-validation)
+- [Pool-based sampling Active Learning](https://github.com/keeeto/gp-net/wiki/Active-learning)
 
-## Usage
+### Usage
 ```
 usage: gp-net.py [-h] [-checkdata] [-ltype LTYPE] [-nomeg] [-noactive]
                  [-samp SAMP] [-cycle CYCLE CYCLE] [-norepeat] [-q QUAN]
@@ -91,7 +90,7 @@ optional arguments:
 
 ```
 
-## Help
+### Help
 Please see the [wiki page](https://github.com/keeeto/gp-net/wiki) for description
 of all the features of `gp-net`. If your questions are not answered in the wiki,
 please contact us by email. If you have found a bug in any of the tools, please

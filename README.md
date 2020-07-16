@@ -13,13 +13,13 @@ active learning.
 ## Usage
 ```
 usage: gp-net.py [-h] [-nomeg] [-noactive] [-samp SAMP] [-cycle CYCLE CYCLE]
-                 [-norepeat] [-q QUAN] [-data DATA [DATA ...]] [-checkdata]
-                 [-key KEY [KEY ...]] [-frac FRAC FRAC] [-include]
-                 [-nsplit NSPLIT] [-epochs EPOCHS] [-batch BATCH] [-bond BOND]
-                 [-nfeat NFEAT] [-cutoff CUTOFF] [-width WIDTH] [-prev]
-                 [-layer LAYER] [-ltype LTYPE] [-p PERP] [-niters NITERS]
-                 [-ndims NDIMS] [-rate RATE] [-amp AMP] [-length LENGTH]
-                 [-maxiters MAXITERS [MAXITERS ...]]
+                 [-norepeat] [-q QUAN] [-stop STOP] [-data DATA [DATA ...]]
+                 [-checkdata] [-key KEY [KEY ...]] [-frac FRAC FRAC]
+                 [-include] [-nsplit NSPLIT] [-epochs EPOCHS] [-batch BATCH]
+                 [-bond BOND] [-nfeat NFEAT] [-cutoff CUTOFF] [-width WIDTH]
+                 [-prev] [-layer LAYER] [-ltype LTYPE] [-p PERP]
+                 [-niters NITERS] [-ndims NDIMS] [-rate RATE] [-amp AMP]
+                 [-length LENGTH] [-maxiters MAXITERS [MAXITERS ...]]
 
 Uncertainty quantification in neural networks.
 
@@ -36,7 +36,9 @@ optional arguments:
                         [default: False]
   -q QUAN, --quan QUAN  Quantity of data for norepeat active learning [No
                         default]
-  -data DATA [DATA ...]
+  -stop STOP            Maximum fraction of test set required for active
+                        learning [default: 0.1]
+ -data DATA [DATA ...]
                         Input dataset(s). Multiple datasets can be passed, one
                         per optical property of interest. [No default]
   -checkdata            Check number of entries in the dataset. [default:
@@ -57,12 +59,12 @@ optional arguments:
                         MEGNet]
   -batch BATCH          Batch size for training with MEGNet or CNN. [default:
                         256]
-  -bond BOND            MEGNet feature bond. [default: 10]			
+  -bond BOND            MEGNet feature bond. [default: 10]
   -nfeat NFEAT          MEGNet feature global. [default: 2]
   -cutoff CUTOFF, --cutoff CUTOFF
                         MEGNet radial cutoff. [default: 5]
   -width WIDTH, --width WIDTH
-                        MEGNet gaussian width. [default: 0.5]
+                        MEGNet gaussian width. [default: 0.5]			
   -prev                 Use a pre-trained MEGNet model during training with
                         MEGNet. [default: False]
   -layer LAYER          MEGNet fitted model layer to analyse. [default:

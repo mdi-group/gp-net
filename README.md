@@ -5,8 +5,9 @@ predicted properties of materials for the purpose of
 active learning. 
 
 ### Features 
-- [Train-test Split](https://github.com/keeeto/gp-net/wiki/Train-test-split)
-- [k-fold Cross-validation](https://github.com/keeeto/gp-net/wiki/k-fold-cross-validation)
+- Uncertainty Quantification 
+  * [Train-test split](https://github.com/keeeto/gp-net/wiki/Train-test-split)
+  * [k-fold cross-validation](https://github.com/keeeto/gp-net/wiki/k-fold-cross-validation)
 - [Pool-based sampling Active Learning](https://github.com/keeeto/gp-net/wiki/Active-learning)
 
 ### Usage

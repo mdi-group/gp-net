@@ -80,9 +80,9 @@ class latent:
         tsne_test = tsne_full[len(Xpool):]
 
         logging.info("Writing results to file ...") 
-        np.save(file="%s/tsne_full.npy" %datadir, arr=tsne_full)
-        np.save(file="%s/tsne_pool.npy" %datadir, arr=tsne_pool)
-        np.save(file="%s/tsne_test.npy" %datadir, arr=tsne_test)
+        np.save(file="%s/latent_full.npy" %datadir, arr=tsne_full)
+        np.save(file="%s/latent_pool.npy" %datadir, arr=tsne_pool)
+        np.save(file="%s/latent_test.npy" %datadir, arr=tsne_test)
 
         if ndims > 0:
             logging.info("Saving tSNE plots ...")            
@@ -161,18 +161,18 @@ class latent:
                 np.squeeze(extracted_activations_full))
             
         logging.info("Writing results to file ...") 
-        np.save(file="%s/tsne_full.npy" %datadir, arr=tsne_full)
+        np.save(file="%s/latent_full.npy" %datadir, arr=tsne_full)
         tsne_pool = tsne_full[:len(Xpool)]
-        np.save(file="%s/tsne_pool.npy" %datadir, arr=tsne_pool)
+        np.save(file="%s/latent_pool.npy" %datadir, arr=tsne_pool)
         
         tsne_train = tsne_pool[train_idx]
-        np.save(file="%s/tsne_train.npy" %datadir, arr=tsne_train)
+        np.save(file="%s/latent_train.npy" %datadir, arr=tsne_train)
         
         tsne_val = tsne_pool[val_idx]
-        np.save(file="%s/tsne_val.npy" %datadir, arr=tsne_val)
+        np.save(file="%s/latent_val.npy" %datadir, arr=tsne_val)
 
         tsne_test  = tsne_full[len(Xpool):]
-        np.save(file="%s/tsne_test.npy" %datadir, arr=tsne_test)
+        np.save(file="%s/latent_test.npy" %datadir, arr=tsne_test)
 
         return tsne_train, tsne_val, tsne_test 
         
@@ -259,10 +259,10 @@ class latent:
         tsne_test = np.array(tsne_test)
 
         print("\nWriting latent points to file ...")
-        np.save(file="%s/tsne_full.npy" %datadir, arr=tsne_full)
-        np.save(file="%s/tsne_train.npy" %datadir, arr=tsne_train)
-        np.save(file="%s/tsne_val.npy" %datadir, arr=tsne_val)
-        np.save(file="%s/tsne_test.npy" %datadir, arr=tsne_test)
+        np.save(file="%s/latent_full.npy" %datadir, arr=tsne_full)
+        np.save(file="%s/latent_train.npy" %datadir, arr=tsne_train)
+        np.save(file="%s/latent_val.npy" %datadir, arr=tsne_val)
+        np.save(file="%s/latent_test.npy" %datadir, arr=tsne_test)
 
         if ndims > 0: 
             logging.info("Saving tSNE plots ...")

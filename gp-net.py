@@ -31,8 +31,9 @@ class Params:
         These parameters can be changed by accessing these 
         class variables.
         """
-        # For checking data
+        # General arguents
         self.checkdata = False
+        self.ndims = 0
         
         # Specific to active learning 
         self.noactive = False
@@ -50,6 +51,7 @@ class Params:
         self.include = False
         self.batch = 256
         self.prev = False
+        self.mlayer = "readout_0"
         
         # For both MEGNet and GP
         self.epochs = 0
@@ -57,23 +59,27 @@ class Params:
         self.nsplit = 1
         
         # For tSNE only 
-        self.layer = "readout_0" # for MEGNet        
-        self.perp = 50
+        self.perp = 150
         self.niters = 1000
-        self.ndims = 0
         
         # GP specific arguments
         self.rate = 0.01 
-        self.amp = 10.0
-        self.length = 10.0        
+        self.amp = 1.0
+        self.length = 1.0
         self.maxiters = 0,0
 
 
 def main():
     """ From command line, all parsing are handled here """
     parser = argparse.ArgumentParser(description="Uncertainty quantification in neural networks.")
+    parser.add_argument("-checkdata", action="store_true",
+                        help="Check number of entries in the dataset. [default: False]",
+                        default = False)    
+    parser.add_argument("-ltype", help="Display the layers in a fitted MEGNet model.",
+                        type=str)
     parser.add_argument("-nomeg", action="store_true",
                         help="Do not train with MEGNet. [default: False]", default=False)
+
     parser.add_argument("-noactive", action="store_true",
                         help="Don't do active learning [default: False]", default=False)
     parser.add_argument("-samp", help="Type of sampling for active learning. Use random or\
@@ -86,15 +92,12 @@ def main():
                         [default: False]", default=False)
     parser.add_argument("-q", "--quan", help="Quantity of data for norepeat active learning\
                         [No default]", type=int) 
-
     parser.add_argument("-stop", help="Maximum fraction of test set required for active learning\
-                        [default: 0.1]", type=float) 
+                        [default: 0.1]", type=float)
+    
     parser.add_argument("-data", 
                         help="Input dataset(s). Multiple datasets can be passed, one\
                         per optical property of interest. [No default]", type=str, nargs="+")
-    parser.add_argument("-checkdata", action="store_true",
-                        help="Check number of entries in the dataset. [default: False]",
-                        default = False)
     parser.add_argument("-key", 
                         help="API key for data download and the optical properties of\
                         interest, separated by spaces. For MEGNet users only. [eg. Key band_gap\
@@ -108,7 +111,8 @@ def main():
                         and/or Gaussian process analysis. [default: False]", default=False)
     parser.add_argument("-nsplit",
                         help="Number of training set splits for k-fold cross-validation.\
-                        [default: 1 i.e no cross-validation]", type=int)    
+                        [default: 1 i.e no cross-validation]", type=int)
+    
     parser.add_argument("-epochs", 
                         help="Epochs. [default: 0 ie. Perform no training with MEGNet]",
                         type=int)
@@ -124,27 +128,27 @@ def main():
     parser.add_argument("-prev", action="store_true",
                        help="Use a pre-trained MEGNet model during training with MEGNet.\
                        [default: False]", default=False)
-    parser.add_argument("-layer",
+    parser.add_argument("-mlayer",
                         help="MEGNet fitted model layer to analyse. [default: readout_0 i.e 32\
                         dense layer]", type=str)
-    parser.add_argument("-ltype", help="Display the layers in a fitted MEGNet model.",
-                        type=str)
-    parser.add_argument("-p", "--perp", 
-                        help="Perplexity value to use in dimension reduction with tSNE.\
-                        [default: 50]", type=float)
-    parser.add_argument("-niters",
-                        help="Number of iterations for optimisation in tSNE. [default: 1000]",
-                        type=int)
+
     parser.add_argument("-ndims", 
                         help="Dimensions of embedded space. 0 => scale activations in 0,1 range\
                         2 or 3 => Reduce dimensions of activations with tSNE. [default: 0]",
+                        type=int)    
+    parser.add_argument("-p", "--perp", 
+                        help="Perplexity value to use in dimension reduction with tSNE.\
+                        [default: 150]", type=float)
+    parser.add_argument("-niters",
+                        help="Number of iterations for optimisation in tSNE. [default: 1000]",
                         type=int)
+
     parser.add_argument("-rate", 
                         help="Adam optimizer Learning rate. [default: 0.01]", type=float)
     parser.add_argument("-amp", 
-                        help="Amplitude of the GP kernel. [default: 10.0]", type=float)
+                        help="Amplitude of the GP kernel. [default: 1.0]", type=float)
     parser.add_argument("-length",
-                        help="The length scale of the GP kernel. [default: 10.0]", type=float)
+                        help="The length scale of the GP kernel. [default: 1.0]", type=float)
     parser.add_argument("-maxiters",
                         help="Maximum iterations for optimising GP hyperparameters. For\
                         k-fold cross-validation, two inputs are required - one for training\
@@ -159,16 +163,19 @@ def main():
     stop = args.stop or Params().stop 
     fraction = args.frac or Params().frac
     nsplit = args.nsplit or Params().nsplit
+
     epochs = args.epochs or Params().epochs
     batch = args.batch or Params().batch
     bond = args.bond or Params().bond
     nfeat_global = args.nfeat or Params().nfeat
     cutoff = args.cutoff or Params().cutoff
     width = args.width or Params().width
-    layer = args.layer or Params().layer
+    mlayer = args.mlayer or Params().mlayer
+
+    ndims = args.ndims or Params().ndims    
     perp = args.perp or Params().perp
     niters = args.niters or Params().niters
-    ndims = args.ndims or Params().ndims
+    
     rate = args.rate or Params().rate 
     amp = args.amp or Params().amp
     length_scale = args.length or Params().length
@@ -280,7 +287,7 @@ def main():
                     
                 logging.info("Obtaining latent points for the full dataset ...")
                 latent_pool, latent_test = latent.train_test_split(
-                    datadir, prop, layer, activations_input_full, Xpool, ytest, perp,
+                    datadir, prop, mlayer, activations_input_full, Xpool, ytest, perp,
                     ndims, niters)
             
                 logging.info("Gaussian Process initiated ...")
@@ -289,7 +296,7 @@ def main():
                                           maxiters, amp, length_scale, rate)
 
                 logging.info("Saving optimised hyperparameters and GP posterior plots ...")
-                plot.train_test_split(datadir, prop, layer, maxiters, rate, OptLoss, OptAmp,
+                plot.train_test_split(datadir, prop, mlayer, maxiters, rate, OptLoss, OptAmp,
                                       OptLength, ytest, gp_mean, gp_stddev, None, None, Optmae,
                                       Optmse, Optsae, R)
             elif nsplit > 1:
@@ -316,7 +323,7 @@ def main():
 
                     logging.info("Obtaining latent points for the full dataset ...")
                     latent_train, latent_val, latent_test = latent.k_fold(
-                        datadir, fold, prop, layer, activations_input_full, train_idx, val_idx,
+                        datadir, fold, prop, mlayer, activations_input_full, train_idx, val_idx,
                         Xpool, perp, ndims, niters)
 
                     logging.info("Gaussian Process initiated ...")
@@ -348,7 +355,7 @@ def main():
                     
                 logging.info("Obtaining latent points for the full dataset ...")
                 latent_pool, latent_test = latent.train_test_split(
-                    datadir, prop, layer, activations_input_full, Xpool, ytest, perp, ndims, niters)
+                    datadir, prop, mlayer, activations_input_full, Xpool, ytest, perp, ndims, niters)
                 
                 logging.info("Gaussian Process initiated ...")
                 OptLoss, OptAmp, OptLength, Optmae, Optmse, Optsae, gp_mean, gp_stddev, R =\
@@ -356,7 +363,7 @@ def main():
                                           maxiters[1], amp, length_scale, rate)
 
                 logging.info("Saving optimised hyperparameters and GP posterior plots ...")
-                plot.train_test_split(datadir, prop, layer, maxiters[1], rate, OptLoss, OptAmp,
+                plot.train_test_split(datadir, prop, mlayer, maxiters[1], rate, OptLoss, OptAmp,
                                       OptLength, ytest, gp_mean, gp_stddev, Optmae_val_fold,
                                       mae_test_fold, Optmae, Optmse, Optsae, R)
         else:
@@ -403,7 +410,7 @@ def main():
 
                      logging.info("Obtaining latent points for the full dataset ...")
                      latent_train, latent_val, latent_test = latent.active(
-                         datadir, prop, layer, samp, activations_input_full, Xfull, Xtest,
+                         datadir, prop, mlayer, samp, activations_input_full, Xfull, Xtest,
                          ytest, Xtrain, Xval, perp, ndims, niters)
                      
                      logging.info("Gaussian Process initiated ...")
@@ -420,7 +427,7 @@ def main():
                      sae_test_cycle = np.append(sae_test_cycle, sae_test)
                      
                      logging.info("Saving optimised hyperparameters and GP posterior plots ...")
-                     plot.active(datadir, prop, layer, maxiters, rate, OptLoss, OptAmp, OptLength,
+                     plot.active(datadir, prop, mlayer, maxiters, rate, OptLoss, OptAmp, OptLength,
                                  samp, query, training_data, ytest, gp_mean, gp_stddev,
                                  Optmae_val_cycle, mae_test_cycle, mae_test, mse_test, sae_test, R)
                      
@@ -495,7 +502,7 @@ def main():
                                                epochs, Xpool, ypool, Xtest, ytest)
                      
                  logging.info("Obtaining latent points for the full dataset ...")
-                 latent.active(datadir, prop, layer, samp, activations_input_full,
+                 latent.active(datadir, prop, mlayer, samp, activations_input_full,
                                Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
                      
                  logging.info("Loading the latent points ...")

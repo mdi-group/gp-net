@@ -12,19 +12,23 @@ active learning.
 
 ## Usage
 ```
-usage: gp-net.py [-h] [-nomeg] [-noactive] [-samp SAMP] [-cycle CYCLE CYCLE]
-                 [-norepeat] [-q QUAN] [-stop STOP] [-data DATA [DATA ...]]
-                 [-checkdata] [-key KEY [KEY ...]] [-frac FRAC FRAC]
-                 [-include] [-nsplit NSPLIT] [-epochs EPOCHS] [-batch BATCH]
-                 [-bond BOND] [-nfeat NFEAT] [-cutoff CUTOFF] [-width WIDTH]
-                 [-prev] [-layer LAYER] [-ltype LTYPE] [-p PERP]
-                 [-niters NITERS] [-ndims NDIMS] [-rate RATE] [-amp AMP]
-                 [-length LENGTH] [-maxiters MAXITERS [MAXITERS ...]]
+usage: gp-net.py [-h] [-checkdata] [-ltype LTYPE] [-nomeg] [-noactive]
+                 [-samp SAMP] [-cycle CYCLE CYCLE] [-norepeat] [-q QUAN]
+                 [-stop STOP] [-data DATA [DATA ...]] [-key KEY [KEY ...]]
+                 [-frac FRAC FRAC] [-include] [-nsplit NSPLIT]
+                 [-epochs EPOCHS] [-batch BATCH] [-bond BOND] [-nfeat NFEAT]
+                 [-cutoff CUTOFF] [-width WIDTH] [-prev] [-mlayer MLAYER]
+                 [-ndims NDIMS] [-p PERP] [-niters NITERS] [-rate RATE]
+                 [-amp AMP] [-length LENGTH]
+                 [-maxiters MAXITERS [MAXITERS ...]]
 
 Uncertainty quantification in neural networks.
 
 optional arguments:
   -h, --help            show this help message and exit
+  -checkdata            Check number of entries in the dataset. [default:
+                        False]
+  -ltype LTYPE          Display the layers in a fitted MEGNet model.
   -nomeg                Do not train with MEGNet. [default: False]
   -noactive             Don't do active learning [default: False]
   -samp SAMP            Type of sampling for active learning. Use random or
@@ -38,18 +42,16 @@ optional arguments:
                         default]
   -stop STOP            Maximum fraction of test set required for active
                         learning [default: 0.1]
- -data DATA [DATA ...]
+  -data DATA [DATA ...]
                         Input dataset(s). Multiple datasets can be passed, one
                         per optical property of interest. [No default]
-  -checkdata            Check number of entries in the dataset. [default:
-                        False]
   -key KEY [KEY ...]    API key for data download and the optical properties
                         of interest, separated by spaces. For MEGNet users
                         only. [eg. Key band_gap formation_energy_per_atom
                         e_above_hull]
   -frac FRAC FRAC       Fraction of data for training and fraction of the
                         training set for validation separated by spaces.
-                        [default: 0.3 0.7]
+                        [default: 0.3 0.7]			
   -include              Include zero optical property values in the MEGNet
                         training and/or Gaussian process analysis. [default:
                         False]
@@ -64,29 +66,28 @@ optional arguments:
   -cutoff CUTOFF, --cutoff CUTOFF
                         MEGNet radial cutoff. [default: 5]
   -width WIDTH, --width WIDTH
-                        MEGNet gaussian width. [default: 0.5]			
+                        MEGNet gaussian width. [default: 0.5]
   -prev                 Use a pre-trained MEGNet model during training with
                         MEGNet. [default: False]
-  -layer LAYER          MEGNet fitted model layer to analyse. [default:
+  -mlayer MLAYER        MEGNet fitted model layer to analyse. [default:
                         readout_0 i.e 32 dense layer]
-  -ltype LTYPE          Display the layers in a fitted MEGNet model.
-  -p PERP, --perp PERP  Perplexity value to use in dimension reduction with
-                        tSNE. [default: 50]
-  -niters NITERS        Number of iterations for optimisation in tSNE.
-                        [default: 1000]
   -ndims NDIMS          Dimensions of embedded space. 0 => scale activations
                         in 0,1 range 2 or 3 => Reduce dimensions of
                         activations with tSNE. [default: 0]
+  -p PERP, --perp PERP  Perplexity value to use in dimension reduction with
+                        tSNE. [default: 150]
+  -niters NITERS        Number of iterations for optimisation in tSNE.
+                        [default: 1000]
   -rate RATE            Adam optimizer Learning rate. [default: 0.01]
-  -amp AMP              Amplitude of the GP kernel. [default: 10.0]
-  -length LENGTH        The length scale of the GP kernel. [default: 10.0]
+  -amp AMP              Amplitude of the GP kernel. [default: 1.0]
+  -length LENGTH        The length scale of the GP kernel. [default: 1.0]
   -maxiters MAXITERS [MAXITERS ...]
                         Maximum iterations for optimising GP hyperparameters.
                         For k-fold cross-validation, two inputs are required -
                         one for training per fold and the other for training
                         using train-test split. For active learning and no
                         k-fold cross-validation, a single input is required.
-                        [default: 0 0 i.e no MEGNet and GP training]
+                        [default: 0 0 i.e no MEGNet and GP training]			
 
 ```
 

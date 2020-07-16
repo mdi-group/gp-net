@@ -186,10 +186,9 @@ def megnet_input(prop, ZeroVals, bond, nfeat_global, cutoff, width, *fraction):
     pool_frac = fraction[0][0]
     val_frac = fraction[0][1]    
     test_frac = np.round(1 - pool_frac, decimals=2)
-    print("Requested pool: %s%%" %(pool_frac*100))
-    print("Requested test set: %s%%" %(test_frac*100))
-    
     if len(fraction) == 1:
+        print("Requested pool: %s%%" %(pool_frac*100))
+        print("Requested test set: %s%%" %(test_frac*100))        
         # Data split is based on percentages
         pool_boundary = int(len(valid_targets)*pool_frac)    
         Xpool = np.array(valid_structures[0:pool_boundary])

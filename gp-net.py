@@ -39,6 +39,7 @@ class Params:
         self.norepeat = False 
         self.samp = "entropy"
         self.cycle = 20, 5
+        self.stop = 0.1 
         
         # For MEGNet only 
         self.nomeg = False 
@@ -81,10 +82,13 @@ def main():
                         to sample separated by spaces for active learning. [default: 20 5]",
                         nargs=2, type=int)
     parser.add_argument("-norepeat", action="store_true",
-                        help="Do not train with MEGNet in each active learning cycle [default: False]",
-                        default=False)
-    parser.add_argument("-q", "--quan", help="Quantity of data for norepeat active learning [No default]",
-                        type=int)
+                        help="Do not train with MEGNet in each active learning cycle\
+                        [default: False]", default=False)
+    parser.add_argument("-q", "--quan", help="Quantity of data for norepeat active learning\
+                        [No default]", type=int) 
+
+    parser.add_argument("-stop", help="Maximum fraction of test set required for active learning\
+                        [default: 0.1]", type=float) 
     parser.add_argument("-data", 
                         help="Input dataset(s). Multiple datasets can be passed, one\
                         per optical property of interest. [No default]", type=str, nargs="+")
@@ -151,7 +155,8 @@ def main():
     
     args = parser.parse_args()
     samp = args.samp or Params().samp
-    cycle = args.cycle or Params().cycle 
+    cycle = args.cycle or Params().cycle
+    stop = args.stop or Params().stop 
     fraction = args.frac or Params().frac
     nsplit = args.nsplit or Params().nsplit
     epochs = args.epochs or Params().epochs
@@ -220,6 +225,9 @@ def main():
                 sys.exit()            
     else:
         logging.info("Active learning to be performed ...")
+        if stop >= 1.:
+            logging.error("Stop argument should be less than 1!")
+            sys.exit()
         if samp == "entropy":
             logging.info("Entropy sampling for active learning enabled ...")
         elif samp == "random":
@@ -271,13 +279,13 @@ def main():
                                               epochs, Xpool, ypool, Xtest, ytest)
                     
                 logging.info("Obtaining latent points for the full dataset ...")
-                tsne_pool, tsne_test = latent.train_test_split(
+                latent_pool, latent_test = latent.train_test_split(
                     datadir, prop, layer, activations_input_full, Xpool, ytest, perp,
                     ndims, niters)
             
                 logging.info("Gaussian Process initiated ...")
                 OptLoss, OptAmp, OptLength, Optmae, Optmse, Optsae, gp_mean, gp_stddev, R =\
-                    adam.train_test_split(datadir, prop, tsne_pool, tsne_test, ypool, ytest,
+                    adam.train_test_split(datadir, prop, latent_pool, latent_test, ypool, ytest,
                                           maxiters, amp, length_scale, rate)
 
                 logging.info("Saving optimised hyperparameters and GP posterior plots ...")
@@ -307,13 +315,13 @@ def main():
                                         Xtrain, ytrain, Xval, yval)
 
                     logging.info("Obtaining latent points for the full dataset ...")
-                    tsne_train, tsne_val, tsne_test = latent.k_fold(
+                    latent_train, latent_val, latent_test = latent.k_fold(
                         datadir, fold, prop, layer, activations_input_full, train_idx, val_idx,
                         Xpool, perp, ndims, niters)
 
                     logging.info("Gaussian Process initiated ...")
                     amp, length_scale, Optmae_val, Optmse_val, mae_test = adam.k_fold(
-                        datadir, prop, tsne_train, tsne_val, tsne_test, ytrain, yval, ytest,
+                        datadir, prop, latent_train, latent_val, latent_test, ytrain, yval, ytest,
                         maxiters[0], amp, length_scale, rate)
                     OptAmp_fold = np.append(OptAmp_fold, amp) 
                     OptLength_fold = np.append(OptLength_fold, length_scale)
@@ -339,12 +347,12 @@ def main():
                                               Xpool, ypool, Xtest, ytest)
                     
                 logging.info("Obtaining latent points for the full dataset ...")
-                tsne_pool, tsne_test = latent.train_test_split(
+                latent_pool, latent_test = latent.train_test_split(
                     datadir, prop, layer, activations_input_full, Xpool, ytest, perp, ndims, niters)
                 
                 logging.info("Gaussian Process initiated ...")
                 OptLoss, OptAmp, OptLength, Optmae, Optmse, Optsae, gp_mean, gp_stddev, R =\
-                    adam.train_test_split(datadir, prop, tsne_pool, tsne_test, ypool, ytest,
+                    adam.train_test_split(datadir, prop, latent_pool, latent_test, ypool, ytest,
                                           maxiters[1], amp, length_scale, rate)
 
                 logging.info("Saving optimised hyperparameters and GP posterior plots ...")
@@ -377,6 +385,12 @@ def main():
                      (model, activations_input_full, Xfull, yfull, Xpool, ypool, Xtest,
                       ytest, Xtrain, ytrain, Xval, yval) = megnet_input(
                           prop, args.include, bond, nfeat_global, cutoff, width, fraction)
+                     
+                 # Ensure there is adequate data in test set before proceeding
+                 if (query * max_query) > int(stop * len(ytest)):
+                     logging.error("Test test size for prediction should be at least 10% the dataset after active learning!")
+                     sys.exit("Reduce input(s) to stop and/or cycle argument(s)!")
+                     
                  i = 0
                  while i < max_query + 1:
                      print("\nQuery number ", i)
@@ -388,17 +402,17 @@ def main():
                                          batch, epochs, Xpool, ypool, Xtest, ytest)
 
                      logging.info("Obtaining latent points for the full dataset ...")
-                     tsne_train, tsne_val, tsne_test = latent.active(
+                     latent_train, latent_val, latent_test = latent.active(
                          datadir, prop, layer, samp, activations_input_full, Xfull, Xtest,
                          ytest, Xtrain, Xval, perp, ndims, niters)
                      
                      logging.info("Gaussian Process initiated ...")
                      (OptLoss, OptAmp, OptLength, amp, length_scale, gp_mean, gp_stddev,
                       gp_variance, Optmae_val, mae_test, mse_test, sae_test, R) =\
-                          adam.active(datadir, prop, tsne_train, tsne_val, tsne_test, ytrain,
-                                      yval, ytest, maxiters, amp, length_scale, rate)
+                          adam.active(datadir, prop, latent_train, latent_val, latent_test,
+                                      ytrain, yval, ytest, maxiters, amp, length_scale, rate)
                      
-                     # Dump some parameters to an array for plotting purposes.
+                     # Save some parameters for plotting purposes.
                      training_data = np.append(training_data, len(ytrain))
                      Optmae_val_cycle = np.append(Optmae_val_cycle, Optmae_val)
                      mae_test_cycle = np.append(mae_test_cycle, mae_test) 
@@ -445,7 +459,6 @@ def main():
                          prop, args.include, bond, nfeat_global, cutoff, width,
                          fraction, args.quan)
 
-                 print("Requested validation set: %s%% of pool" %(val_frac*100))
                  datadir = "no_cycle/%s_results/%s_model" %(prop, args.quan)
                  if not os.path.isdir(datadir):
                      os.makedirs(datadir)
@@ -455,13 +468,21 @@ def main():
                  Xtest = Xfull[args.quan:]
                  ytest = yfull[args.quan:]
 
+                 # Ensure there is adequate data in test set before proceeding
+                 if (query * max_query) > int(stop * len(ytest)):
+                     logging.error("Test test size for prediction should be at least 10% the dataset after active learning!")
+                     sys.exit("Reduce input to stop and/or cycle argument(s)!")
+                     
                  val_boundary = int(len(Xpool) * val_frac)
                  Xtrain = Xpool[:-val_boundary]
                  ytrain = ypool[:-val_boundary]
                  Xval = Xpool[-val_boundary:]
                  yval = ypool[-val_boundary:]
+
+                 print("Requested validation set: %s%% of pool" %(val_frac*100))
                  print("Training set:", ytrain.shape)
                  print("Validation set:", yval.shape)
+                 print("Test set:", ytest.shape)
 
                  logging.info("Saving the data to file ...")
                  np.save("%s/ytrain.npy" %datadir, arr=ytrain)
@@ -478,9 +499,9 @@ def main():
                                Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
                      
                  logging.info("Loading the latent points ...")
-                 tsne_train = np.load("%s/tsne_train.npy" %datadir)
-                 tsne_test = np.load("%s/tsne_test.npy" %datadir)
-                 tsne_val = np.load("%s/tsne_val.npy" %datadir)
+                 latent_train = np.load("%s/latent_train.npy" %datadir)
+                 latent_test = np.load("%s/latent_test.npy" %datadir)
+                 latent_val = np.load("%s/latent_val.npy" %datadir)
 
                  # Lets create a new data directory and dump GP results into it 
                  datadir = datadir + "/" + samp + "/%s_samples" %query
@@ -496,13 +517,13 @@ def main():
                      if i == 0:
                          (OptLoss, OptAmp, OptLength, amp, length_scale, gp_mean, gp_stddev,
                           gp_variance, Optmae_val, mae_test, mse_test, sae_test, R) =\
-                              adam.active(datadir, prop, tsne_train, tsne_val, tsne_test,
+                              adam.active(datadir, prop, latent_train, latent_val, latent_test,
                                           ytrain, yval, ytest, maxiters, amp, length_scale, rate)
                      else: 
                          maxiters = 0
                          (OptLoss, OptAmp, OptLength, Amp, Length_Scale, gp_mean, gp_stddev,
                           gp_variance, Optmae_val, mae_test, mse_test, sae_test, R) =\
-                              adam.active(datadir, prop, tsne_train, tsne_val, tsne_test,
+                              adam.active(datadir, prop, latent_train, latent_val, latent_test,
                                           ytrain, yval, ytest, maxiters, amp, length_scale, rate)
                          # Set the new hyperparameters to those from query 0 
                          Amp = amp
@@ -518,17 +539,16 @@ def main():
 
                      if i != max_query - 1:
                          if samp == "entropy":
-                             tsne_pool, ypool, tsne_train, ytrain, tsne_test, ytest  =\
-                                 EntropySelection(i, tsne_train, ytrain, tsne_test, ytest,
-                                                  tsne_val, yval, gp_variance, query, max_query)
+                             latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
+                                 EntropySelection(i, latent_train, ytrain, latent_test, ytest,
+                                                  latent_val, yval, gp_variance, query, max_query)
                          elif samp == "random":
-                             tsne_pool, ypool, tsne_train, ytrain, tsne_test, ytest  =\
-                                 RandomSelection(i, tsne_train, ytrain, tsne_test, ytest,
-                                                 tsne_val, yval, gp_variance, query, max_query)
+                             latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
+                                 RandomSelection(i, latent_train, ytrain, latent_test, ytest,
+                                                 latent_val, yval, gp_variance, query, max_query)
                                  
                  logging.info("Writing the results to file ...")
-                 np.save("%s/training_data_for_plotting.npy" %datadir,
-                         arr=training_data)
+                 np.save("%s/training_data_for_plotting.npy" %datadir, arr=training_data)
                  np.save("%s/gp_mae.npy" %datadir, arr=mae_test_cycle)
                  np.save("%s/gp_mse.npy" %datadir, arr=mse_test_cycle)
                  np.save("%s/gp_sae.npy" %datadir, arr=sae_test_cycle)

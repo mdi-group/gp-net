@@ -9,6 +9,8 @@ active learning.
   * [Train-test split](https://github.com/keeeto/gp-net/wiki/Train-test-split)
   * [k-fold cross-validation](https://github.com/keeeto/gp-net/wiki/k-fold-cross-validation)
 - [Pool-based sampling Active Learning](https://github.com/keeeto/gp-net/wiki/Active-learning)
+  * Entropy-based sampling 
+  * Random-based sampling 
 
 ### Usage
 ```

@@ -183,7 +183,7 @@ class latent:
         latent.active(datadir, prop, layer, sampling, activations_input_full, 
                       Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
 
-        tSNE analysis or feature scalinf of the activations of a layer of a 
+        tSNE analysis or feature scaling of the activations of a layer of a 
         neural network for active learning purposes. 
 
         Inputs:

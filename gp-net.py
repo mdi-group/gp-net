@@ -37,9 +37,10 @@ class Params:
         
         # Specific to active learning 
         self.noactive = False
-        self.norepeat = False 
+        self.repeat = False 
         self.samp = "entropy"
-        self.cycle = 20, 5
+        self.cycle = 1, 5
+        self.quan = 1000
         self.stop = 0.1 
         
         # For MEGNet only 
@@ -51,11 +52,11 @@ class Params:
         self.include = False
         self.batch = 256
         self.prev = False
-        self.mlayer = "readout_0"
+        self.layer = "readout_0"
         
         # For both MEGNet and GP
         self.epochs = 0
-        self.frac = 0.3, 0.7 
+        self.frac = [0.3]
         self.nsplit = 1
         
         # For tSNE only 
@@ -66,7 +67,8 @@ class Params:
         self.rate = 0.01 
         self.amp = 1.0
         self.length = 1.0
-        self.maxiters = 0,0
+        self.maxiters = [0]
+
 
 
 def main():
@@ -85,14 +87,14 @@ def main():
     parser.add_argument("-samp", help="Type of sampling for active learning. Use random or\
                          entropy [default: entropy]", type=str)
     parser.add_argument("-cycle", help="Number of structures to sample and maximum number of times\
-                        to sample separated by spaces for active learning. [default: 20 5]",
+                        to sample separated by spaces for active learning. [default: 1 5]",
                         nargs=2, type=int)
-    parser.add_argument("-norepeat", action="store_true",
-                        help="Do not train with MEGNet in each active learning cycle\
+    parser.add_argument("-repeat", action="store_true",
+                        help="MEGNet train and pre-process activations in each active learning cycle\
                         [default: False]", default=False)
     parser.add_argument("-q", "--quan", help="Quantity of data for norepeat active learning\
-                        [No default]", type=int) 
-    parser.add_argument("-stop", help="Maximum fraction of test set required for active learning\
+                        [default: 1000]", type=int) 
+    parser.add_argument("-stop", help="Minimum fraction of test set required for active learning\
                         [default: 0.1]", type=float)
     
     parser.add_argument("-data", 
@@ -103,9 +105,11 @@ def main():
                         interest, separated by spaces. For MEGNet users only. [eg. Key band_gap\
                         formation_energy_per_atom e_above_hull]", type=str, nargs="+")
     parser.add_argument("-frac", 
-                        help="Fraction of data for training and fraction of the training set\
-                        for validation separated by spaces. [default: 0.3 0.7]", nargs=2,
-                        type=float)
+                        help="Fraction of data for training and testing separated by spaces\
+                        for train-test split and k-fold cross-validation. Fraction of data for\
+                        training, and fraction of training data for validation in repeat active\
+                        learning. For norepeat active learning, single input as the fraction of\
+                        the training data for validation. [default: 0.3]", nargs="+", type=float)
     parser.add_argument("-include", action="store_true",
                         help="Include zero optical property values in the MEGNet training\
                         and/or Gaussian process analysis. [default: False]", default=False)
@@ -128,7 +132,7 @@ def main():
     parser.add_argument("-prev", action="store_true",
                        help="Use a pre-trained MEGNet model during training with MEGNet.\
                        [default: False]", default=False)
-    parser.add_argument("-mlayer",
+    parser.add_argument("-layer",
                         help="MEGNet fitted model layer to analyse. [default: readout_0 i.e 32\
                         dense layer]", type=str)
 
@@ -153,13 +157,13 @@ def main():
                         help="Maximum iterations for optimising GP hyperparameters. For\
                         k-fold cross-validation, two inputs are required - one for training\
                         per fold and the other for training using train-test split.\
-                        \nFor active learning and no k-fold cross-validation, a single input\
-                        is required. [default: 0 0 i.e no MEGNet and GP training]",
-                        nargs="+", type=int)
+                        \nFor active learning and train-test split, a single input\
+                        is required. [default: 0 i.e no GP training]", nargs="+", type=int) 
     
     args = parser.parse_args()
     samp = args.samp or Params().samp
     cycle = args.cycle or Params().cycle
+    quan = args.quan or Params().quan 
     stop = args.stop or Params().stop 
     fraction = args.frac or Params().frac
     nsplit = args.nsplit or Params().nsplit
@@ -170,7 +174,7 @@ def main():
     nfeat_global = args.nfeat or Params().nfeat
     cutoff = args.cutoff or Params().cutoff
     width = args.width or Params().width
-    mlayer = args.mlayer or Params().mlayer
+    layer = args.layer or Params().layer
 
     ndims = args.ndims or Params().ndims    
     perp = args.perp or Params().perp
@@ -188,75 +192,61 @@ def main():
         show_layers(args.ltype)
         sys.exit()
 
-    # Check number of entries in dataset 
-    if args.checkdata:
-        from aux.get_info import ReadData
-        for prop in properties:
-            ReadData(prop, args.include)
-        sys.exit()    
-
-    if args.nomeg: 
-        logging.info("No MEGNet training requested ...")
-        sys.exit("No other network implemented!")
-    else:  
-        logging.info("MEGNet training requested...")
-
-    if args.prev:
-        logging.info("Use a pre-trained MEGNet model in MEGNet training ...")
-    else:
-        logging.info("Do not use a pre-trained MEGNet model in MEGNet training ...")
-
     if args.include:
         logging.info("Include zero optical property values ...")
     else:
         logging.info("Exclude zero optical property values ...")
 
-    # NB: fraction[0] is the pool fraction
-    #     fraction[1] is the validation fraction 
+    if args.nomeg: 
+        logging.info("No MEGNet training requested ...")
+        sys.exit("No other network implemented!")
+    else:
+        if epochs > 0:
+            logging.info("MEGNet training requested...")
+            if args.prev:
+                logging.info("Use a pre-trained MEGNet model in MEGNet training ...")
+            else:
+                logging.info("Do not use a pre-trained MEGNet model in MEGNet training ...")
+
     if args.noactive:
         logging.info("No active learning requested ...")
-        if fraction[1] < 1 or fraction[1] > 1:
-            logging.error("The second parameter to -frac must be equal to 1!")
+        assert len(fraction) == 2, "-frac requires two inputs!"
+        assert (fraction[0] + fraction[1]) == 1., "The sum of -frac must be 1!"
+        if not (0 < (fraction[0] and fraction[1]) < 1): 
+            logging.error("-frac must be of the form 0 < parameter < 1!")
             sys.exit()
         if nsplit == 1:
             logging.info("Train-test split approach requested ...")
-            if len(maxiters) > 1:
-                logging.error("-maxiters must have length 1!")
-                sys.exit()
-            else:
-                maxiters = maxiters[0]
+            assert len(maxiters) == 1, "-maxiters must have length 1!"
+            maxiters = maxiters[0]
         else:
             print("%s-fold cross-validation requested ..." %nsplit)
-            if len(maxiters) == 1 or len(maxiters) > 2:
-                logging.error("-maxiters must have length 2!")
-                sys.exit()            
+            assert len(maxiters) == 2, "-maxiters must have length 2!"
     else:
-        logging.info("Active learning to be performed ...")
-        if stop >= 1.:
-            logging.error("Stop argument should be less than 1!")
+        logging.info("Perform active learning ...")
+        assert stop < 1., "Stop argument should be less than 1!"
+        assert nsplit == 1, "Active learning with k-fold cross validation not supported!"
+        assert len(maxiters) == 1, "-maxiters must have length 1!"
+        maxiters = maxiters[0]
+        if samp not in ("entropy", "random"):
+            logging.error("Sampling type not recognised!")
             sys.exit()
-        if samp == "entropy":
-            logging.info("Entropy sampling for active learning enabled ...")
-        elif samp == "random":
-            logging.info("Random sampling for active learning enabled ...")
-        if not args.norepeat:
-            logging.info("MEGNet train and tSNE analyse per cycle of active learning ...")
+            
+        if args.repeat:
+            logging.info("MEGNet train and perform activation analysis per cycle of active learning ...")
+            assert len(fraction) == 2, "-frac requires two inputs!"
+            assert (fraction[0] + fraction[1]) < 1., "The sum of -frac must be less than 1!"
+            if not (0 < (fraction[0] and fraction[1]) < 1):
+                logging.error("-frac must be of the form 0 < parameter < 1!")
+                sys.exit()
         else:
-            logging.info("MEGNet train and tSNE analyse ONCE during the active learning ...")            
-            if not args.quan:
+            logging.info("MEGNet train and perform activation analysis ONCE during the active learning ...")
+            assert len(fraction) == 1, "-frac requires a single input as the validation fraction!"
+            assert fraction[0] < 1., "-frac must be less than 1!" #fraction is a list and we need to pass a single input 
+            if not quan:
                 logging.error("Provide quantity of data to use with -q or --quan!")
                 sys.exit()
-        if fraction[1] >= 1:
-            logging.error("The second parameter to -frac must be less than 1!")
-            sys.exit()
-        if nsplit > 1:
-            logging.error("Active learning with k-fold cross validation not supported!")
-            sys.exit()
-        if len(maxiters) > 1:
-            logging.error("-maxiters must have length 1!")
-            sys.exit()
-        else:
-            maxiters = maxiters[0]
+
             
     # Get data for processing 
     if args.data or (args.data and args.key):
@@ -269,17 +259,26 @@ def main():
         logging.error("No input data provided. Use -data or -key option!")
         sys.exit()
 
+    # Check number of entries in dataset
+    if args.checkdata:
+        from aux.get_info import ReadData
+        for prop in properties:
+            for dat in args.data:
+                ReadData(dat, args.include)
+        sys.exit()    
+
     for prop in properties:
         if args.noactive:
             if not args.nomeg:
-                (model, activations_input_full, Xfull, yfull, Xpool,
-                 ypool, Xtest, ytest, Xtrain, ytrain, Xval, yval)  = megnet_input(
-                     prop, args.include, bond, nfeat_global, cutoff, width, fraction)
+                model, activations_input_full, Xfull, yfull, Xpool, ypool, Xtest, ytest =\
+                    megnet_input(prop, args.include, bond, nfeat_global, cutoff, width, fraction)
+            
             if nsplit == 1:
                 #*****************************
                 # TRAIN-TEST SPLIT APPROACH 
                 #*****************************
                 datadir = "train_test_split/%s_results" %prop
+
                 if not args.nomeg and epochs > 0:
                     logging.info("Training MEGNet on the pool ...")
                     training.train_test_split(datadir, prop, args.prev, model, batch,
@@ -287,7 +286,7 @@ def main():
                     
                 logging.info("Obtaining latent points for the full dataset ...")
                 latent_pool, latent_test = latent.train_test_split(
-                    datadir, prop, mlayer, activations_input_full, Xpool, ytest, perp,
+                    datadir, prop, layer, activations_input_full, Xpool, ytest, perp,
                     ndims, niters)
             
                 logging.info("Gaussian Process initiated ...")
@@ -296,9 +295,10 @@ def main():
                                           maxiters, amp, length_scale, rate)
 
                 logging.info("Saving optimised hyperparameters and GP posterior plots ...")
-                plot.train_test_split(datadir, prop, mlayer, maxiters, rate, OptLoss, OptAmp,
+                plot.train_test_split(datadir, prop, layer, maxiters, rate, OptLoss, OptAmp,
                                       OptLength, ytest, gp_mean, gp_stddev, None, None, Optmae,
                                       Optmse, Optsae, R)
+                
             elif nsplit > 1:
                 #***************************
                 # K-FOLD CROSS VALIDATION
@@ -323,7 +323,7 @@ def main():
 
                     logging.info("Obtaining latent points for the full dataset ...")
                     latent_train, latent_val, latent_test = latent.k_fold(
-                        datadir, fold, prop, mlayer, activations_input_full, train_idx, val_idx,
+                        datadir, fold, prop, layer, activations_input_full, train_idx, val_idx,
                         Xpool, perp, ndims, niters)
 
                     logging.info("Gaussian Process initiated ...")
@@ -355,7 +355,7 @@ def main():
                     
                 logging.info("Obtaining latent points for the full dataset ...")
                 latent_pool, latent_test = latent.train_test_split(
-                    datadir, prop, mlayer, activations_input_full, Xpool, ytest, perp, ndims, niters)
+                    datadir, prop, layer, activations_input_full, Xpool, ytest, perp, ndims, niters)
                 
                 logging.info("Gaussian Process initiated ...")
                 OptLoss, OptAmp, OptLength, Optmae, Optmse, Optsae, gp_mean, gp_stddev, R =\
@@ -363,7 +363,7 @@ def main():
                                           maxiters[1], amp, length_scale, rate)
 
                 logging.info("Saving optimised hyperparameters and GP posterior plots ...")
-                plot.train_test_split(datadir, prop, mlayer, maxiters[1], rate, OptLoss, OptAmp,
+                plot.train_test_split(datadir, prop, layer, maxiters[1], rate, OptLoss, OptAmp,
                                       OptLength, ytest, gp_mean, gp_stddev, Optmae_val_fold,
                                       mae_test_fold, Optmae, Optmse, Optsae, R)
         else:
@@ -375,12 +375,12 @@ def main():
              query = cycle[0]
              max_query = cycle[1]
              print("Number of cycle(s): ", max_query)
-             print("Number of samples per cycle: ", query)
+             print("Number of samples to move per cycle: ", query)
 
-             if not args.norepeat:
+             if args.repeat:
                  #********************************************
                  # ACTIVE LEARNING WITH CYCLES OF NETWORK 
-                 # TRAINING AND tSNE ANALYSIS
+                 # TRAINING AND ACTIVATION EXTRACTION ANALYSIS
                  #********************************************
                  training_data = np.array([])
                  Optmae_val_cycle = np.array([])
@@ -394,25 +394,23 @@ def main():
                           prop, args.include, bond, nfeat_global, cutoff, width, fraction)
                      
                  # Ensure there is adequate data in test set before proceeding
-                 if (query * max_query) > int(stop * len(ytest)):
-                     logging.error("Test test size for prediction should be at least 10% the dataset after active learning!")
-                     sys.exit("Reduce input(s) to stop and/or cycle argument(s)!")
-                     
-                 i = 0
-                 while i < max_query + 1:
+                 assert (query * max_query) < int(stop * len(ytest)),\
+                     "Test set size should be at least %s%% the dataset after active learning. Reduce stop and/or cycle parameters!" %stop                     
+
+                 for i in range(max_query+1):
                      print("\nQuery number ", i)
-                     datadir = "%s/%s_results/0%s_model" %(samp, prop, i)
-                     
+                     datadir = "active_learn/repeat/%s_results/%s/0%s_model" %(prop, samp, i)
+
                      if not args.nomeg and epochs > 0:
                          logging.info("Training MEGNet on the pool ...")
-                         training.active(datadir, i, prop, args.prev, model, args.samp,
+                         training.active(datadir, i, prop, args.prev, model, samp,
                                          batch, epochs, Xpool, ypool, Xtest, ytest)
-
+                         
                      logging.info("Obtaining latent points for the full dataset ...")
                      latent_train, latent_val, latent_test = latent.active(
-                         datadir, prop, mlayer, samp, activations_input_full, Xfull, Xtest,
+                         datadir, prop, layer, samp, activations_input_full, Xfull, Xtest,
                          ytest, Xtrain, Xval, perp, ndims, niters)
-                     
+
                      logging.info("Gaussian Process initiated ...")
                      (OptLoss, OptAmp, OptLength, amp, length_scale, gp_mean, gp_stddev,
                       gp_variance, Optmae_val, mae_test, mse_test, sae_test, R) =\
@@ -420,31 +418,33 @@ def main():
                                       ytrain, yval, ytest, maxiters, amp, length_scale, rate)
                      
                      # Save some parameters for plotting purposes.
-                     training_data = np.append(training_data, len(ytrain))
+                     training_data = np.append(training_data, len(ytrain)) 
                      Optmae_val_cycle = np.append(Optmae_val_cycle, Optmae_val)
-                     mae_test_cycle = np.append(mae_test_cycle, mae_test) 
+                     mae_test_cycle = np.append(mae_test_cycle, mae_test)
                      mse_test_cycle = np.append(mse_test_cycle, mse_test)
                      sae_test_cycle = np.append(sae_test_cycle, sae_test)
-                     
+
                      logging.info("Saving optimised hyperparameters and GP posterior plots ...")
-                     plot.active(datadir, prop, mlayer, maxiters, rate, OptLoss, OptAmp, OptLength,
+                     plot.active(datadir, prop, layer, maxiters, rate, OptLoss, OptAmp, OptLength,
                                  samp, query, training_data, ytest, gp_mean, gp_stddev,
                                  Optmae_val_cycle, mae_test_cycle, mae_test, mse_test, sae_test, R)
-                     
-                     if i != max_query:
+
+                     # Sample using variance on the predictions 
+                     if i < max_query:
                          if samp == "entropy":
+                             if i == 0:
+                                 logging.info("Entropy sampling for active learning enabled ...")
                              Xpool, ypool, Xtrain, ytrain, Xtest, ytest = EntropySelection(
                                  i, Xtrain, ytrain, Xtest, ytest, Xval, yval, gp_variance, query, max_query)
                          elif samp == "random":
+                             if	i == 0:
+                                 logging.info("Random sampling for active learning enabled ...")
                              Xpool, ypool, Xtrain, ytrain, Xtest, ytest = RandomSelection(
                                  i, Xtrain, ytrain, Xtest, ytest, Xval, yval, gp_variance, query, max_query)
-                         else:
-                             logging.error("Sampling type not recognised!")
-                             sys.exit()
-                     else:
+                     elif i == max_query:
                          if os.path.isdir("callback/"):
-                             subprocess.call(["rm", "-r", "callback"])                         
-                     i += 1
+                             subprocess.call(["rm", "-r", "callback"])
+                             
              else:
                  import matplotlib
                  matplotlib.use("agg")
@@ -453,8 +453,7 @@ def main():
                  # ACTIVE LEARNING WITHOUT CYCLES OF
                  # NETWORK TRAINING AND tSNE ANALYSIS
                  #*************************************
-                 pool_frac = fraction[0]
-                 val_frac = fraction[1]
+                 val_frac = fraction[0]
                  training_data = np.array([]) 
                  Optmae_val_cycle = np.array([])
                  mae_test_cycle = np.array([]) 
@@ -462,23 +461,22 @@ def main():
                  sae_test_cycle = np.array([]) 
                  
                  if not args.nomeg:
-                     model, activations_input_full, Xfull, yfull = megnet_input(
-                         prop, args.include, bond, nfeat_global, cutoff, width,
-                         fraction, args.quan)
+                     model, activations_input_full, Xfull, yfull =\
+                         megnet_input(prop, args.include, bond, nfeat_global, cutoff, width,
+                                      fraction, quan)
 
-                 datadir = "no_cycle/%s_results/%s_model" %(prop, args.quan)
+                 datadir = "active_learn/norepeat/%s_results/%s_model" %(prop, quan)
                  if not os.path.isdir(datadir):
                      os.makedirs(datadir)
                          
-                 Xpool = Xfull[:args.quan]
-                 ypool = yfull[:args.quan]
-                 Xtest = Xfull[args.quan:]
-                 ytest = yfull[args.quan:]
+                 Xpool = Xfull[:quan]
+                 ypool = yfull[:quan]
+                 Xtest = Xfull[quan:]
+                 ytest = yfull[quan:]
 
                  # Ensure there is adequate data in test set before proceeding
-                 if (query * max_query) > int(stop * len(ytest)):
-                     logging.error("Test test size for prediction should be at least 10% the dataset after active learning!")
-                     sys.exit("Reduce input to stop and/or cycle argument(s)!")
+                 assert (query * max_query) < int(stop * len(ytest)),\
+                     "Test set size should be at least %s%% the dataset after active learning. Reduce stop and/or cycle parameters!" %stop
                      
                  val_boundary = int(len(Xpool) * val_frac)
                  Xtrain = Xpool[:-val_boundary]
@@ -495,14 +493,14 @@ def main():
                  np.save("%s/ytrain.npy" %datadir, arr=ytrain)
                  np.save("%s/yval.npy" %datadir, arr=yval)
 
-                 print("\nProcessing %s samples ..." %args.quan)
+                 print("\nProcessing %s samples ..." %quan)
                  # MEGNet train and tSNE analyse or scale features once 
                  if not args.nomeg and epochs > 0:
                      training.train_test_split(datadir, prop, args.prev, model, batch,
                                                epochs, Xpool, ypool, Xtest, ytest)
                      
                  logging.info("Obtaining latent points for the full dataset ...")
-                 latent.active(datadir, prop, mlayer, samp, activations_input_full,
+                 latent.active(datadir, prop, layer, samp, activations_input_full,
                                Xfull, Xtest, ytest, Xtrain, Xval, perp, ndims, niters)
                      
                  logging.info("Loading the latent points ...")
@@ -515,7 +513,7 @@ def main():
                  if not os.path.isdir(datadir):
                      os.makedirs(datadir)
                          
-                 for i in range(max_query):
+                 for i in range(max_query+1):
                      print("\nQuery number ", i)
 
                      # Run the Gaussian Process
@@ -544,12 +542,16 @@ def main():
                      if maxiters > 0:
                          Optmae_val_cycle = np.append(Optmae_val_cycle, Optmae_val) 
 
-                     if i != max_query - 1:
+                     if i < max_query: 
                          if samp == "entropy":
+                             if i == 0:
+                                 logging.info("Entropy sampling for active learning enabled ...")
                              latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
                                  EntropySelection(i, latent_train, ytrain, latent_test, ytest,
                                                   latent_val, yval, gp_variance, query, max_query)
                          elif samp == "random":
+                             if i == 0:
+                                 logging.info("Random sampling for active learning enabled ...")
                              latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
                                  RandomSelection(i, latent_train, ytrain, latent_test, ytest,
                                                  latent_val, yval, gp_variance, query, max_query)

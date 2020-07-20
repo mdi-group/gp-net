@@ -201,8 +201,8 @@ class training:
             prev_file = None
         else:
             logging.info("Searching for a previous model ...")
-            prev_file = "%s/%s_results/0%s_model/model-best-new-%s.h5" %(
-                sampling, prop, j, prop)
+            prev_file = "active_learn/repeat/%s_results/%s/0%s_model/model-best-new-%s.h5" %(
+                prop, sampling, j, prop)
             if os.path.isfile(prev_file):
                 logging.info("Pre-trained model: %s found" %prev_file)
                 prev_file = prev_file

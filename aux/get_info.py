@@ -86,15 +86,14 @@ def load_data(data):
     return props
 
 
-def ReadData(prop, ZeroVals):
+def ReadData(datafile, ZeroVals):
     """
-    ReadData(prop, ZeroVals) 
-
+    ReadData(datafile, ZeroVals) 
     Checks the entries in the dataset so the user 
     can decide on how to split data for processing.
 
     Inputs:
-    prop-         Optical property of interest.  
+    datafile-     The data in .pkl format. 
     ZeroVals-     Exclude/Include zero optical 
                   property values. 
     
@@ -102,8 +101,8 @@ def ReadData(prop, ZeroVals):
     1-            Number of entries in the 
                   dataset.
     """
-    datafile = "%s_data.pkl" %prop
     inputs = pd.read_pickle(datafile)
+    prop = datafile.split("_data")[0]
     print("\nNumber of input entries found for %s data = %s" %(prop, len(inputs)))
     if ZeroVals == False:
         logging.info("Excluding zero optical property values from the dataset ...")

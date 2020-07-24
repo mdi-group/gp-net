@@ -78,6 +78,10 @@ optional arguments:
                         MEGNet. [default: False]
   -layer LAYER          MEGNet fitted model layer to analyse. [default:
                         readout_0 i.e 32 dense layer]
+  -ndims NDIMS          Dimensions of embedded space. 0 => Do not preprocess
+                        activations, 1 => scale activations to 0, 1 range, 2
+                        or 3 => Reduce dimensions of activations with tSNE.
+                        [default: 0]
   -ndims NDIMS          Dimensions of embedded space. 0 => scale activations
                         in 0,1 range 2 or 3 => Reduce dimensions of
                         activations with tSNE. [default: 0]

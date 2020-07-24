@@ -48,8 +48,8 @@ class latent:
         Outputs:
         1-                         GP latent points for the pool and test sets. 
         """
-        if ndims == 1 or ndims > 3: 
-            logging.error("Only ndims 0, 2 or 3 are allowed!")
+        if ndims > 3: 
+            logging.error("0 <= ndims < 4!") 
             sys.exit() 
         model_pretrained = MEGNetModel.from_file("%s/fitted_%s_model.hdf5" %(datadir, prop))
 
@@ -60,48 +60,67 @@ class latent:
         for full in activations_input_full:
             extracted_activations_full.append(compute_graph(full))
 
-        if ndims > 0:
+        activations = np.array(np.squeeze(extracted_activations_full))
+        if ndims in (0, 1):
+            if np.ndim(activations) > 2:
+                logging.error("Dimension of extracted activations > 2 so apply tSNE instead!")
+                sys.exit()
+            if ndims == 0:
+                logging.info("No pre-processing on the extracted activations ...")
+                latent_full  = activations
+            elif ndims == 1:
+                logging.info("Scaling each feature to range 0, 1 ...")
+                from sklearn.preprocessing import MinMaxScaler
+            
+                latent_full = MinMaxScaler().fit(activations).transform(activations)
+        elif ndims > 1:
             logging.info("Dimensionality reduction using tSNE begins ...")
             print("Requested number of components = ", ndims)
             print("Using max iterations = ", niters)
             print("Processing perplexity = ", perp)
             from sklearn.manifold import TSNE            
             
-            tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
-                             perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
-        elif ndims == 0:
-            logging.info("Scaling each feature to range 0, 1 ...")
-            from sklearn.preprocessing import MinMaxScaler
-            
-            tsne_full = MinMaxScaler().fit(np.squeeze(extracted_activations_full)).transform(
-                np.squeeze(extracted_activations_full))
+            latent_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
+                          perplexity=perp).fit_transform(activations)
 
-        tsne_pool = tsne_full[:len(Xpool)]
-        tsne_test = tsne_full[len(Xpool):]
+        latent_pool = latent_full[:len(Xpool)]
+        latent_test = latent_full[len(Xpool):]
 
         logging.info("Writing results to file ...") 
-        np.save(file="%s/latent_full.npy" %datadir, arr=tsne_full)
-        np.save(file="%s/latent_pool.npy" %datadir, arr=tsne_pool)
-        np.save(file="%s/latent_test.npy" %datadir, arr=tsne_test)
+        np.save(file="%s/latent_full.npy" %datadir, arr=latent_full)
+        np.save(file="%s/latent_pool.npy" %datadir, arr=latent_pool)
+        np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
 
-        if ndims > 0:
+        if ndims == 0:
+            logging.info("Saving extracted activations plot ...")
+            plt.figure(figsize = [12, 6])
+            plt.title("Raw activations from %s layer" %layer)
+            plt.scatter(latent_test[:,0], latent_test[:,1], c=ytest)
+            plt.savefig("%s/activations_%s.pdf" %(datadir, prop))
+        elif ndims == 1:
+            logging.info("Saving scaled activations plot ...")
+            plt.figure(figsize = [12, 6])
+            plt.title("Scaled activations from %s layer" %layer)
+            plt.scatter(latent_test[:,0], latent_test[:,1], c=ytest)
+            plt.savefig("%s/activations_%s.pdf" %(datadir, prop))
+        elif ndims > 1:
             logging.info("Saving tSNE plots ...")            
             if ndims == 2:
                 plt.figure(figsize = [12, 6])
                 plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
                           %(layer, niters, perp))
-                plt.scatter(tsne_test[:,0], tsne_test[:,1], c=ytest)
+                plt.scatter(latent_test[:,0], latent_test[:,1], c=ytest)
             elif ndims == 3:
                 from mpl_toolkits.mplot3d import Axes3D
                 fig = plt.figure(figsize = [14, 6])
                 ax = fig.add_subplot(111, projection="3d")
                 plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
                           %(layer, niters, perp))
-                ax.scatter(tsne_test[:,0], tsne_test[:,1], tsne_test[:,2], c=ytest)
+                ax.scatter(latent_test[:,0], latent_test[:,1], latent_test[:,2], c=ytest)
             
             plt.savefig("%s/tSNE_%s.pdf" %(datadir, prop))
         
-        return tsne_pool, tsne_test
+        return latent_pool, latent_test
 
 
     def k_fold(datadir, fold, prop, layer, activations_input_full, train_idx,
@@ -132,8 +151,8 @@ class latent:
         1-                         GP latent points for the training, validation,
                                    and test sets.
         """
-        if ndims == 1 or ndims > 3:
-            logging.error("Only ndims 2 or 3 is allowed!")
+        if ndims > 3:
+            logging.error("0 <= ndims < 4 !")
             sys.exit()
         model_pretrained = MEGNetModel.from_file("%s/fitted_%s_model.hdf5" %(datadir, prop))
 
@@ -144,37 +163,45 @@ class latent:
         for full in activations_input_full:
             extracted_activations_full.append(compute_graph(full))
 
-        if ndims > 0: 
+        activations = np.array(np.squeeze(extracted_activations_full))
+        if ndims in (0, 1):
+            if np.ndim(activations) > 2:
+                logging.error("Dimension of extracted activations > 2 so apply tSNE instead!")
+                sys.exit()
+            if ndims == 0:
+                logging.info("No pre-processing on the extracted activations ...")
+                latent_full  = activations
+            elif ndims == 1:
+                logging.info("Scaling each feature to range 0, 1 ...")
+                from sklearn.preprocessing import MinMaxScaler
+
+                latent_full = MinMaxScaler().fit(activations).transform(activations)
+        elif ndims > 1:
             logging.info("Dimensionality reduction using tSNE begins ...")
             print("Requested number of components = ", ndims)
             print("Using max iterations = ", niters)
             print("Processing perplexity = ", perp)
             from sklearn.manifold import TSNE
             
-            tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
-                             perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
-        elif ndims == 0:
-            logging.info("Scaling each feature to range 0, 1 ...")
-            from sklearn.preprocessing import MinMaxScaler
-
-            tsne_full = MinMaxScaler().fit(np.squeeze(extracted_activations_full)).transform(
-                np.squeeze(extracted_activations_full))
+            latent_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
+                               perplexity=perp).fit_transform(activations)
             
         logging.info("Writing results to file ...") 
-        np.save(file="%s/latent_full.npy" %datadir, arr=tsne_full)
-        tsne_pool = tsne_full[:len(Xpool)]
-        np.save(file="%s/latent_pool.npy" %datadir, arr=tsne_pool)
+        np.save(file="%s/latent_full.npy" %datadir, arr=latent_full)
         
-        tsne_train = tsne_pool[train_idx]
-        np.save(file="%s/latent_train.npy" %datadir, arr=tsne_train)
+        latent_pool = latent_full[:len(Xpool)]
+        np.save(file="%s/latent_pool.npy" %datadir, arr=latent_pool)
         
-        tsne_val = tsne_pool[val_idx]
-        np.save(file="%s/latent_val.npy" %datadir, arr=tsne_val)
+        latent_train = latent_pool[train_idx]
+        np.save(file="%s/latent_train.npy" %datadir, arr=latent_train)
+        
+        latent_val = latent_pool[val_idx]
+        np.save(file="%s/latent_val.npy" %datadir, arr=latent_val)
 
-        tsne_test  = tsne_full[len(Xpool):]
-        np.save(file="%s/latent_test.npy" %datadir, arr=tsne_test)
+        latent_test  = latent_full[len(Xpool):]
+        np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
 
-        return tsne_train, tsne_val, tsne_test 
+        return latent_train, latent_val, latent_test 
         
     
     def active(datadir, prop, layer, sampling, activations_input_full,
@@ -208,8 +235,8 @@ class latent:
         1-                         GP latent points for the full, pool, training, 
                                    validation, and test sets. 
         """
-        if ndims == 1 or ndims > 3:
-            logging.error("Only ndims 2 or 3 is allowed!")
+        if ndims > 3:
+            logging.error("0 <= ndims < 4!")
             sys.exit() 
         model_pretrained = MEGNetModel.from_file("%s/fitted_%s_model.hdf5" %(datadir, prop))
 
@@ -220,68 +247,86 @@ class latent:
         for full in activations_input_full:
             extracted_activations_full.append(compute_graph(full))
 
-        if ndims > 0:
+        activations = np.array(np.squeeze(extracted_activations_full))
+        if ndims in (0, 1):
+            if np.ndim(activations) > 2:
+                logging.error("Dimension of extracted activations > 2 so apply tSNE instead!")
+                sys.exit()
+            if ndims == 0:
+                logging.info("No pre-processing on the extracted activations ...")
+                latent_full  = activations
+            elif ndims == 1:
+                logging.info("Scaling each feature to range 0, 1 ...")
+                from sklearn.preprocessing import MinMaxScaler
+
+                latent_full = MinMaxScaler().fit(activations).transform(activations)
+        elif ndims > 1:
             logging.info("Dimensionality reduction using tSNE begins ...")
             print("Requested number of components = ", ndims)
             print("Using max iterations = ", niters)
             print("Processing perplexity = ", perp)
             from sklearn.manifold import TSNE
             
-            tsne_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
-                             perplexity=perp).fit_transform(np.squeeze(extracted_activations_full))
-        elif ndims == 0:
-            logging.info("Scaling each feature to range 0, 1 ...")
-            from sklearn.preprocessing import MinMaxScaler
+            latent_full = TSNE(n_components=ndims, n_iter=niters, n_jobs=-1, random_state=0,
+                             perplexity=perp).fit_transform(activations)
             
-            tsne_full = MinMaxScaler().fit(np.squeeze(extracted_activations_full)).transform(
-                np.squeeze(extracted_activations_full))
-            
-        # Update the tsne values for the training and test sets 
-        tsne_test = [ ]
-        tsne_train = [ ]
-        tsne_val = [ ]
+        # Update the tsne values for the training and test sets
+        latent_test = [ ]
+        latent_train = [ ]
+        latent_val = [ ]
         for test in Xtest:
-            for full, tr in zip(Xfull, tsne_full):
+            for full, tr in zip(Xfull, latent_full):
                 if test == full:
-                    tsne_test.append(tr)
+                    latent_test.append(tr)
         for train in Xtrain:
-            for full, tr in zip(Xfull, tsne_full):
+            for full, tr in zip(Xfull, latent_full):
                 if train == full:
-                    tsne_train.append(tr)
+                    latent_train.append(tr)
         for val in Xval:
-            for full, tr in zip(Xfull, tsne_full):
+            for full, tr in zip(Xfull, latent_full):
                 if val == full:
-                    tsne_val.append(tr)
+                    latent_val.append(tr)
 
-        tsne_full = np.array(tsne_full)
-        tsne_train = np.array(tsne_train)
-        tsne_val = np.array(tsne_val)
-        tsne_test = np.array(tsne_test)
+        latent_train = np.array(latent_train)
+        latent_val = np.array(latent_val)
+        latent_test = np.array(latent_test)
 
         print("\nWriting latent points to file ...")
-        np.save(file="%s/latent_full.npy" %datadir, arr=tsne_full)
-        np.save(file="%s/latent_train.npy" %datadir, arr=tsne_train)
-        np.save(file="%s/latent_val.npy" %datadir, arr=tsne_val)
-        np.save(file="%s/latent_test.npy" %datadir, arr=tsne_test)
+        np.save(file="%s/latent_full.npy" %datadir, arr=latent_full)
+        np.save(file="%s/latent_train.npy" %datadir, arr=latent_train)
+        np.save(file="%s/latent_val.npy" %datadir, arr=latent_val)
+        np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
 
-        if ndims > 0: 
+        if ndims == 0:
+            logging.info("Saving extracted activations plot ...")
+            plt.figure(figsize = [12, 6])
+            plt.title("Raw activations from %s layer" %layer)
+            plt.scatter(latent_test[:,0], latent_test[:,1], c=ytest)
+            plt.savefig("%s/activations_%s.pdf" %(datadir, prop))
+        elif ndims == 1:
+            logging.info("Saving scaled activations plot ...")
+            plt.figure(figsize = [12, 6])
+            plt.title("Scaled activations from %s layer" %layer)
+            plt.scatter(latent_test[:,0], latent_test[:,1], c=ytest)
+            plt.savefig("%s/activations_%s.pdf" %(datadir, prop))        
+        elif ndims > 1: 
             logging.info("Saving tSNE plots ...")
             if ndims == 2:
                 plt.figure(figsize = [12, 6])
                 plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
                           %(layer, niters, perp))
-                plt.scatter(tsne_test[:,0], tsne_test[:,1], c=ytest)
+                plt.scatter(latent_test[:,0], latent_test[:,1], c=ytest)
             elif ndims == 3:
                 from mpl_toolkits.mplot3d import Axes3D
                 fig = plt.figure(figsize = [14, 6])
                 ax = fig.add_subplot(111, projection="3d")
                 plt.title("tSNE transformed activations of %s layer \nNumber of iterations = %s \nperplexity = %s"
                           %(layer, niters, perp))
-                ax.scatter(tsne_test[:,0], tsne_test[:,1], tsne_test[:,2], c=ytest)
+                ax.scatter(latent_test[:,0], latent_test[:,1], latent_test[:,2], c=ytest)
 
             if not os.path.isfile("%s/tSNE_%s.pdf" %(sampling, prop)):
                 plt.savefig("%s/tSNE_%s.pdf" %(datadir, prop))
 
-        return tsne_train, tsne_val, tsne_test
+        return latent_train, latent_val, latent_test
 
     

@@ -137,9 +137,9 @@ def main():
                         dense layer]", type=str)
 
     parser.add_argument("-ndims", 
-                        help="Dimensions of embedded space. 0 => scale activations in 0,1 range\
-                        2 or 3 => Reduce dimensions of activations with tSNE. [default: 0]",
-                        type=int)    
+                        help="Dimensions of embedded space. 0 => Do not preprocess activations\
+                        , 1 => scale activations to 0, 1 range, 2 or 3 => Reduce dimensions of\
+                        activations with tSNE. [default: 0]", type=int)
     parser.add_argument("-p", "--perp", 
                         help="Perplexity value to use in dimension reduction with tSNE.\
                         [default: 150]", type=float)
@@ -565,24 +565,10 @@ def main():
                      np.save("%s/val_mae.npy" %datadir, arr=Optmae_val_cycle)
 
                  logging.info("Saving plots ...")
-                 plt.figure(figsize = [12, 6])
-                 plt.plot(training_data, mae_test_cycle, marker="o", color="tab:red")
-                 plt.xlabel("Number of training data") 
-                 if prop == "band_gap":
-                     plt.ylabel("MAE on GP prediction [eV]") 
-                 else:
-                     plt.ylabel("MAE on GP prediction [eV/atom]")
-                 if maxiters > 0:
-                     plt.title("Type of sampling: %s \nAdam optimisation at learning rate = %s \nSamples per cycle = %s" %
-                               (samp, rate, query))
-                 else:
-                     plt.title("Type of sampling: %s \nSamples per cycle = %s" %(samp, query))
-                         
-                 plt.savefig("%s/active_learn_%s.pdf" %(datadir, prop))
+                 plot.norepeat(datadir, prop, layer, samp, query, maxiters)
 
 
-
-
+                 
 if __name__ == "__main__":
     print ("\ngp-net.py ver ", VERSION)
     main()

@@ -976,4 +976,3 @@ class plot:
                      fontsize=fontsize)               
 
         plt.savefig("%s/active_learn_%s.pdf" %(datadir, prop))
-B

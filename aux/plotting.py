@@ -849,6 +849,7 @@ class plot:
 
             plt.subplot(424) 
             plt.plot(training_data, mae_test_cycle, marker="o", color="tab:blue")
+            plt.xlabel("Amount of training data", fontsize=fontsize)
             if prop == "band_gap":
                 plt.ylabel("MAE on GP prediction [eV]", color="tab:blue", fontsize=fontsize)
             else:
@@ -913,7 +914,7 @@ class plot:
         else:
             plt.subplot(321)
             plt.plot(training_data, mae_test_cycle, marker="o", color="r")
-            plt.xlabel("Number of training data", fontsize=fontsize)
+            plt.xlabel("Amount of training data", fontsize=fontsize)
             if prop == "band_gap":
                 plt.ylabel("MAE on GP prediction [eV]", fontsize=fontsize)
             else:

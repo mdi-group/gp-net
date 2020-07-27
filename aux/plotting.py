@@ -831,8 +831,6 @@ class plot:
             OptLoss = np.load("%s/OptLoss.npy" %datadir)
             OptAmp = np.load("%s/OptAmp.npy" %datadir)
             OptLength = np.load("%s/OptLength.npy" %datadir)
-            OptLength = np.load("%s/OptLength.npy" %datadir)
-            Optmae_val_cycle = np.load("%s/Optmae_val.npy" %datadir)
             
             plt.subplot(421)
             plt.plot(OptLoss, "r")
@@ -978,3 +976,4 @@ class plot:
                      fontsize=fontsize)               
 
         plt.savefig("%s/active_learn_%s.pdf" %(datadir, prop))
+B

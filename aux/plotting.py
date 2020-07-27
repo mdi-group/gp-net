@@ -557,18 +557,18 @@ class plot:
         if maxiters > 0:
             plt.subplot(421)
             plt.plot(OptLoss, "r")
-            plt.xlabel("Iterations")
-            plt.ylabel("Loss") 
+            plt.xlabel("Iterations", fontsize=fontsize)
+            plt.ylabel("Loss", fontsize=fontsize) 
 
             plt.subplot(422)
             plt.plot(OptAmp, OptLoss, "b")
-            plt.xlabel("Amplitude of the GP kernel")
-            plt.ylabel("Loss") 
+            plt.xlabel("Amplitude of the GP kernel", fontsize=fontsize)
+            plt.ylabel("Loss", fontsize=fontsize) 
 
             plt.subplot(423)
             plt.plot(OptLength, OptLoss, "g")
-            plt.xlabel("Width of the GP kernel")
-            plt.ylabel("Loss") 
+            plt.xlabel("Width of the GP kernel", fontsize=fontsize)
+            plt.ylabel("Loss", fontsize=fontsize) 
 
             ax1 = plt.subplot(424)
             ax1.plot(training_data, Optmae_val_cycle, marker="o", color="tab:red")

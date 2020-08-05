@@ -86,15 +86,14 @@ def load_data(data):
     return props
 
 
-def ReadData(prop, ZeroVals):
+def ReadData(datafile, ZeroVals):
     """
-    ReadData(prop, ZeroVals) 
-
+    ReadData(datafile, ZeroVals) 
     Checks the entries in the dataset so the user 
     can decide on how to split data for processing.
 
     Inputs:
-    prop-         Optical property of interest.  
+    datafile-     The data in .pkl format. 
     ZeroVals-     Exclude/Include zero optical 
                   property values. 
     
@@ -102,8 +101,8 @@ def ReadData(prop, ZeroVals):
     1-            Number of entries in the 
                   dataset.
     """
-    datafile = "%s_data.pkl" %prop
     inputs = pd.read_pickle(datafile)
+    prop = datafile.split("_data")[0]
     print("\nNumber of input entries found for %s data = %s" %(prop, len(inputs)))
     if ZeroVals == False:
         logging.info("Excluding zero optical property values from the dataset ...")
@@ -163,7 +162,7 @@ def megnet_input(prop, ZeroVals, bond, nfeat_global, cutoff, width, *fraction):
         targets = np.delete(inputs[prop].to_numpy(), mask)
         print("Remaining number of entries = %s" %len(targets))
     else:
-        logging.info("Optical property values zero will not be excluded ...")
+        logging.info("Zero optical property values will be included ...")
         structures = inputs["structure"].to_numpy()
         targets = inputs[prop].to_numpy()        
         
@@ -183,28 +182,42 @@ def megnet_input(prop, ZeroVals, bond, nfeat_global, cutoff, width, *fraction):
     print("Number of invalid structures = %s" %(len(targets)-len(valid_targets)))
     print("\nTotal number of entries available for analysis = %s" %len(valid_targets))
 
-    pool_frac = fraction[0][0]
-    val_frac = fraction[0][1]    
-    test_frac = np.round(1 - pool_frac, decimals=2)
-    print("Requested pool: %s%%" %(pool_frac*100))
-    print("Requested test set: %s%%" %(test_frac*100))
-    
+    pool_frac = fraction[0][0]    
     if len(fraction) == 1:
-        # Data split is based on percentages
-        pool_boundary = int(len(valid_targets)*pool_frac)    
-        Xpool = np.array(valid_structures[0:pool_boundary])
-        ypool = np.array(valid_targets[0:pool_boundary])
-        Xtest = np.array(valid_structures[pool_boundary:])
-        ytest = np.array(valid_targets[pool_boundary:])
+        if (fraction[0][0] + fraction[0][1]) == 1.:
+            # For train-test split and k-fold cross-validation
+            test_frac = fraction[0][1]
 
-        if val_frac == 1:
-            # NB: The pool becomes the training set
+            logging.info("The pool is the same as the training set ...")
+            print("Requested pool: %s%%" %(pool_frac*100))
+            print("Requested test set: %s%%" %(test_frac*100))
+        
+            # Data split is based on percentages
+            pool_boundary = int(len(valid_targets)*pool_frac)    
+            Xpool = np.array(valid_structures[0:pool_boundary])
+            ypool = np.array(valid_targets[0:pool_boundary])
+            Xtest = np.array(valid_structures[pool_boundary:])
+            ytest = np.array(valid_targets[pool_boundary:])
+
             logging.info("The pool is the same as the training set ...")
             print("Pool:", ypool.shape)
-            print("Test set:", ytest.shape)
-            return (model, activations_input_full, valid_structures, valid_targets,
-                    Xpool, ypool, Xtest, ytest, None, None, None, None)             
-        else:
+            print("Test set:", ytest.shape)        
+            return (model, activations_input_full,
+                    valid_structures, valid_targets,
+                    Xpool, ypool,
+                    Xtest, ytest)
+    
+        elif (fraction[0][0] + fraction[0][1]) < 1.:
+            #  For repeat active learning 
+            val_frac = fraction[0][1]    
+            test_frac = np.round(1 - pool_frac, decimals=2)
+            
+            pool_boundary = int(len(valid_targets)*pool_frac)
+            Xpool = np.array(valid_structures[0:pool_boundary])
+            ypool = np.array(valid_targets[0:pool_boundary])
+            Xtest = np.array(valid_structures[pool_boundary:])
+            ytest = np.array(valid_targets[pool_boundary:])
+            
             val_boundary = int(pool_boundary * val_frac)
             Xtrain = Xpool[:-val_boundary]
             ytrain = ypool[:-val_boundary]
@@ -214,8 +227,13 @@ def megnet_input(prop, ZeroVals, bond, nfeat_global, cutoff, width, *fraction):
             print("Requested validation set: %s%% of pool" %(val_frac*100))
             print("Training set:", ytrain.shape)
             print("Validation set:", yval.shape)
-        return (model, activations_input_full, valid_structures, valid_targets,
-                Xpool, ypool, Xtest, ytest, Xtrain, ytrain, Xval, yval)            
+            print("Test set:", ytest.shape)
+            return (model, activations_input_full,
+                    valid_structures, valid_targets,
+                    Xpool, ypool,
+                    Xtest, ytest,
+                    Xtrain, ytrain,
+                    Xval, yval)            
 
     else:
         return ( model,

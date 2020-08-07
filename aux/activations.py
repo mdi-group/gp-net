@@ -296,7 +296,8 @@ class latent:
         np.save(file="%s/latent_train.npy" %datadir, arr=latent_train)
         np.save(file="%s/latent_val.npy" %datadir, arr=latent_val)
         np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
-
+        np.save(file="%s/ytest.npy" %datadir, arr=ytest) 
+        
         if ndims == 0:
             logging.info("Saving extracted activations plot ...")
             plt.figure(figsize = [12, 6])

@@ -36,7 +36,8 @@ class selection_fn:
                             iterations.
 
         Outputs
-        1-                  Updated pool and test sets.
+        1-                  Updated pool, test sets and their 
+                            indices. 
         """
         idx = (np.argsort(dft_variance)[::-1])[:query]
 
@@ -55,7 +56,7 @@ class selection_fn:
             print("Updated training set", ytrain.shape)
             print("Updated test set:", ytest.shape)
             
-        return Xpool, ypool, Xtrain, ytrain, Xtest, ytest
+        return idx, Xpool, ypool, Xtrain, ytrain, Xtest, ytest
 
 
     def RandomSelection(i, Xtrain, ytrain, Xtest, ytest, Xval, yval,
@@ -83,9 +84,11 @@ class selection_fn:
                             iterations.
 
         Outputs:
-        1-                  Updated pool and test sets.
+        1-                  Updated pool, test sets and their 
+                            indices. 
         """
-        np.random.seed(0)        
+        np.random.seed(0)
+        
         idx = np.sort(np.random.choice(len(dft_variance), query,
                                        replace=False))
 
@@ -98,11 +101,10 @@ class selection_fn:
         Xpool = np.concatenate((Xtrain, Xval)) 
         ypool = np.concatenate((ytrain, yval))
 
-
         if i < max_query:
             print("\nRandom sampling ...")
             print("Updated pool:", ypool.shape)
             print("Updated training set", ytrain.shape)
             print("Updated test set:", ytest.shape)
-
-        return Xpool, ypool, Xtrain, ytrain, Xtest, ytest
+        
+        return idx, Xpool, ypool, Xtrain, ytrain, Xtest, ytest

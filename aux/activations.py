@@ -87,9 +87,9 @@ class latent:
         latent_test = latent_full[len(Xpool):]
 
         logging.info("Writing results to file ...") 
-        np.save(file="%s/latent_full.npy" %datadir, arr=latent_full)
-        np.save(file="%s/latent_pool.npy" %datadir, arr=latent_pool)
-        np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
+        np.save(file="%s/latent_full.npy" %datadir, latent_full)
+        np.save(file="%s/latent_pool.npy" %datadir, latent_pool)
+        np.save(file="%s/latent_test.npy" %datadir, latent_test)
 
         if ndims == 0:
             logging.info("Saving extracted activations plot ...")
@@ -187,19 +187,19 @@ class latent:
                                perplexity=perp).fit_transform(activations)
             
         logging.info("Writing results to file ...") 
-        np.save(file="%s/latent_full.npy" %datadir, arr=latent_full)
+        np.save(file="%s/latent_full.npy" %datadir, latent_full)
         
         latent_pool = latent_full[:len(Xpool)]
-        np.save(file="%s/latent_pool.npy" %datadir, arr=latent_pool)
+        np.save(file="%s/latent_pool.npy" %datadir, latent_pool)
         
         latent_train = latent_pool[train_idx]
-        np.save(file="%s/latent_train.npy" %datadir, arr=latent_train)
+        np.save(file="%s/latent_train.npy" %datadir, latent_train)
         
         latent_val = latent_pool[val_idx]
-        np.save(file="%s/latent_val.npy" %datadir, arr=latent_val)
+        np.save(file="%s/latent_val.npy" %datadir, latent_val)
 
         latent_test  = latent_full[len(Xpool):]
-        np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
+        np.save(file="%s/latent_test.npy" %datadir, latent_test)
 
         return latent_train, latent_val, latent_test 
         
@@ -292,11 +292,12 @@ class latent:
         latent_test = np.array(latent_test)
 
         print("\nWriting latent points to file ...")
-        np.save(file="%s/latent_full.npy" %datadir, arr=latent_full)
-        np.save(file="%s/latent_train.npy" %datadir, arr=latent_train)
-        np.save(file="%s/latent_val.npy" %datadir, arr=latent_val)
-        np.save(file="%s/latent_test.npy" %datadir, arr=latent_test)
-        np.save(file="%s/ytest.npy" %datadir, arr=ytest) 
+        np.save(file="%s/latent_full.npy" %datadir, latent_full)
+        np.save(file="%s/latent_train.npy" %datadir, latent_train)
+        np.save(file="%s/latent_val.npy" %datadir, latent_val)
+        np.save(file="%s/latent_test.npy" %datadir, latent_test)
+        np.save(file="%s/Xtest.npy" %datadir, Xtest) 
+        np.save(file="%s/ytest.npy" %datadir, ytest) 
         
         if ndims == 0:
             logging.info("Saving extracted activations plot ...")

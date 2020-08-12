@@ -458,7 +458,8 @@ def main():
                  Optmae_val_cycle = np.array([])
                  mae_test_cycle = np.array([]) 
                  mse_test_cycle = np.array([]) 
-                 sae_test_cycle = np.array([]) 
+                 sae_test_cycle = np.array([])
+                 samp_idx = np.array([])
                  
                  if not args.nomeg:
                      model, activations_input_full, Xfull, yfull =\
@@ -490,8 +491,8 @@ def main():
                  print("Test set:", ytest.shape)
 
                  logging.info("Saving the data to file ...")
-                 np.save("%s/ytrain.npy" %datadir, arr=ytrain)
-                 np.save("%s/yval.npy" %datadir, arr=yval)
+                 np.save("%s/ytrain.npy" %datadir, ytrain)
+                 np.save("%s/yval.npy" %datadir, yval)
 
                  print("\nProcessing %s samples ..." %quan)
                  # MEGNet train and tSNE analyse or scale features once 
@@ -546,23 +547,26 @@ def main():
                          if samp == "entropy":
                              if i == 0:
                                  logging.info("Entropy sampling for active learning enabled ...")
-                             latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
+                             idx, latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
                                  EntropySelection(i, latent_train, ytrain, latent_test, ytest,
                                                   latent_val, yval, gp_variance, query, max_query)
                          elif samp == "random":
                              if i == 0:
                                  logging.info("Random sampling for active learning enabled ...")
-                             latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
+                             idx, latent_pool, ypool, latent_train, ytrain, latent_test, ytest  =\
                                  RandomSelection(i, latent_train, ytrain, latent_test, ytest,
                                                  latent_val, yval, gp_variance, query, max_query)
+                         samp_idx = np.append(samp_idx, idx)
                                  
                  logging.info("Writing the results to file ...")
-                 np.save("%s/training_data_for_plotting.npy" %datadir, arr=training_data)
-                 np.save("%s/gp_mae.npy" %datadir, arr=mae_test_cycle)
-                 np.save("%s/gp_mse.npy" %datadir, arr=mse_test_cycle)
-                 np.save("%s/gp_sae.npy" %datadir, arr=sae_test_cycle)
+                 np.save("%s/training_data_for_plotting.npy" %datadir, training_data)
+                 np.save("%s/gp_mae.npy" %datadir, mae_test_cycle)
+                 np.save("%s/gp_mse.npy" %datadir, mse_test_cycle)
+                 np.save("%s/gp_sae.npy" %datadir, sae_test_cycle)
+                 np.save("%s/samp_indices.npy" %datadir, samp_idx)
+                 np.save("%s/Xtest.npy" %datadir, np.delete(Xtest, samp_idx))                 
                  if maxiters > 0:
-                     np.save("%s/val_mae.npy" %datadir, arr=Optmae_val_cycle)
+                     np.save("%s/val_mae.npy" %datadir, Optmae_val_cycle)
 
                  logging.info("Saving plots ...")
                  plot.norepeat(datadir, prop, layer, samp, query, maxiters)

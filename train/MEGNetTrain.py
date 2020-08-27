@@ -47,10 +47,10 @@ class training:
             os.makedirs(datadir)
             
         logging.info("Writing data to file ...")
-        np.save(file="%s/Xpool.npy" %datadir, Xpool)
-        np.save(file="%s/ypool.npy" %datadir, ypool)
-        np.save(file="%s/Xtest.npy" %datadir, Xtest) 
-        np.save(file="%s/ytest.npy" %datadir, ytest) 
+        np.save("%s/Xpool.npy" %datadir, Xpool)
+        np.save("%s/ypool.npy" %datadir, ypool)
+        np.save("%s/Xtest.npy" %datadir, Xtest) 
+        np.save("%s/ytest.npy" %datadir, ytest) 
             
         if type(prev) == bool:
             if prev == False:
@@ -116,10 +116,10 @@ class training:
             os.makedirs(datadir) 
 
         logging.info("Writing data to file ...")
-        np.save(file="%s/Xtrain.npy" %datadir, Xtrain)
-        np.save(file="%s/ytrain.npy" %datadir, ytrain)
-        np.save(file="%s/Xval.npy" %datadir, Xval)
-        np.save(file="%s/yval.npy" %datadir, yval)
+        np.save("%s/Xtrain.npy" %datadir, Xtrain)
+        np.save("%s/ytrain.npy" %datadir, ytrain)
+        np.save("%s/Xval.npy" %datadir, Xval)
+        np.save("%s/yval.npy" %datadir, yval)
 
         if prev == False:
             logging.info("No previous model will be used ...")
@@ -185,10 +185,10 @@ class training:
             os.makedirs(datadir)
 
         logging.info("Writing data to file ...")
-        np.save(file="%s/Xpool.npy" %datadir, Xpool) 
-        np.save(file="%s/ypool.npy" %datadir, ypool) 
-        np.save(file="%s/Xtest.npy" %datadir, Xtest) 
-        np.save(file="%s/ytest.npy" %datadir, ytest) 
+        np.save("%s/Xpool.npy" %datadir, Xpool) 
+        np.save("%s/ypool.npy" %datadir, ypool) 
+        np.save("%s/Xtest.npy" %datadir, Xtest) 
+        np.save("%s/ytest.npy" %datadir, ytest) 
 
         # For identifying location of best models to be used in the next iteration, i
         if i == 0:

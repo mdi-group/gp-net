@@ -119,7 +119,7 @@ Cite this repo as follows:
 @misc{gp-net,
 title  = {Entropy-based active learning of graph neural network surrogate models for materials properties},
 author = {Johannes Allotey, Keith T. Butler, Jeyan Thiyagalingam},
-url    = {[https://github.com/keeeto/gp-net/](https://github.com/mdi-group/gp-net/)},
+url    = {https://github.com/mdi-group/gp-net/},
 doi    = {10.5281/zenodo.13321076}
 year   = {2021}
  }

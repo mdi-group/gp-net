@@ -1,5 +1,7 @@
 ## gp-net
 
+[![DOI](https://zenodo.org/badge/276850997.svg)](https://zenodo.org/doi/10.5281/zenodo.13321075)
+
 `gp-net` is a regression tool for predicting the optical properties of materials,
 and estimates the uncertainties on these predictions for the purpose
 of active learning. 
@@ -114,10 +116,11 @@ please contact us by email. If you have found a bug in any of the tools, please
 Cite this repo as follows:
 
 ```
-@misc{injector:2021,
-title  = {Injector-Surrogates: Machine Learning Surrogate Models for Particle Accelerator Injector Profile Simulation},
+@misc{gp-net,
+title  = {Entropy-based active learning of graph neural network surrogate models for materials properties},
 author = {Johannes Allotey, Keith T. Butler, Jeyan Thiyagalingam},
-url    = {https://github.com/keeeto/gp-net/},
+url    = {[https://github.com/keeeto/gp-net/](https://github.com/mdi-group/gp-net/)},
+doi    = {10.5281/zenodo.13321076}
 year   = {2021}
  }
 ```

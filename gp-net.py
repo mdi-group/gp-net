@@ -25,6 +25,69 @@ EntropySelection = SelectionFunction.entropy_based
 RandomSelection = SelectionFunction.random_based
 
 
+def _check_args(args):
+    """
+    Checks the arguments passed.
+
+    :param args: The arguments passed from the command line.
+
+    :return: None
+    """
+    if args.noactive:
+        log.info("No active learning requested...")
+        if len(args.frac) != 2:
+            raise ValueError("--frac requires two inputs!")
+        if not np.isclose(args.frac[0] + args.frac[1], 1.0):
+            raise ValueError("The sum of --frac must be 1!")
+        if not (0 < args.frac[0] and args.frac[1] < 1):
+            raise ValueError("--frac values must be between 0 and 1!")
+        if args.nsplit == 1:
+            log.info("Train-test split approach requested...")
+            if len(args.maxiters) > 1:
+                raise ValueError("--maxiters must have length 1!")
+            # maxiters = args.maxiters[0]
+        else:
+            print("%s-fold cross-validation requested..." % args.nsplit)
+            if len(args.maxiters) != 2:
+                raise ValueError("--maxiters must have length 2!")
+
+    else:
+        logging.info("Requested to perform active learning...")
+        if args.stop >= 1.0:
+            raise ValueError("--stop argument should be less than 1 but not zero!")
+        if args.nsplit != 1:
+            raise ValueError(
+                "Active learning with k-fold cross validation not supported!"
+            )
+        if len(args.maxiters) != 1:
+            raise ValueError("--maxiters must have length 1!")
+        # maxiters = args.maxiters[0]
+        if args.repeat:
+            log.info(
+                "MEGNet train and perform activation analysis per cycle of active learning..."
+            )
+            if len(args.frac) != 2:
+                raise ValueError("--frac requires two inputs!")
+            if not (args.frac[0] + args.frac[1]) < 1.0:
+                raise ValueError("The sum of --frac must be less than 1!")
+            if not (0 < args.frac[0] and args.frac[1] < 1):
+                raise ValueError("--frac values must be between 0 and 1!")
+        else:
+            log.info(
+                "MEGNet train and perform activation analysis ONCE during the active learning ..."
+            )
+            if len(args.frac) != 1:
+                raise ValueError(
+                    "--frac requires a single input as the validation fraction!"
+                )
+            if 1.0 > args.frac[0] > 0.0:
+                raise ValueError(
+                    "--frac must be less than 1!"
+                )  # fraction is a list, and we need to pass a single input
+            if not args.quan:
+                raise ValueError("Provide quantity of data to use with --quan!")
+
+
 def main():
     """From command line, all parsing are handled here"""
     parser = argparse.ArgumentParser(
@@ -211,11 +274,6 @@ def main():
     )
 
     args = parser.parse_args()
-    if args.include:
-        logging.info("Include zero optical property values ...")
-    else:
-        logging.info("Exclude zero optical property values ...")
-
     if args.nomeg:
         logging.info("No MEGNet training requested ...")
         sys.exit("No other network implemented!")
@@ -229,60 +287,9 @@ def main():
                     "Do not use a pre-trained MEGNet model in MEGNet training ..."
                 )
 
-    def _check_args(args):
-        """
-        Checks the arguments passed.
-        """
+    # Check passed arguments before proceeding with the data processing
+    _check_args(args)
 
-    if args.noactive:
-        logging.info("No active learning requested ...")
-        assert len(args.frac) == 2, "-frac requires two inputs!"
-        assert (args.frac[0] + args.frac[1]) == 1.0, "The sum of -frac must be 1!"
-        if not (0 < (args.frac[0] and args.frac[1]) < 1):
-            logging.error("-frac must be of the form 0 < parameter < 1!")
-            sys.exit()
-        if args.nsplit == 1:
-            logging.info("Train-test split approach requested ...")
-            assert len(args.maxiters) == 1, "--maxiters must have length 1!"
-            maxiters = args.maxiters[0]
-        else:
-            print("%s-fold cross-validation requested ..." % args.nsplit)
-            assert len(args.maxiters) == 2, "--maxiters must have length 2!"
-    else:
-        logging.info("Perform active learning ...")
-        assert args.stop < 1.0, "--stop argument should be less than 1!"
-        assert (
-            args.nsplit == 1
-        ), "Active learning with k-fold cross validation not supported!"
-        assert len(args.maxiters) == 1, "--maxiters must have length 1!"
-        maxiters = args.maxiters[0]
-
-        if args.repeat:
-            logging.info(
-                "MEGNet train and perform activation analysis per cycle of active learning ..."
-            )
-            assert len(args.frac) == 2, "--frac requires two inputs!"
-            assert (
-                args.fracfrac[0] + args.fracfrac[1]
-            ) < 1.0, "The sum of -frac must be less than 1!"
-            if not (0 < (args.frac[0] and args.frac[1]) < 1):
-                logging.error("--frac must be of the form 0 < parameter < 1!")
-                sys.exit()
-        else:
-            logging.info(
-                "MEGNet train and perform activation analysis ONCE during the active learning ..."
-            )
-            assert (
-                len(args.frac) == 1
-            ), "--frac requires a single input as the validation fraction!"
-            assert (
-                args.frac[0] < 1.0
-            ), "--frac must be less than 1!"  # fraction is a list and we need to pass a single input
-            if not args.quan:
-                logging.error("Provide quantity of data to use with --quan!")
-                sys.exit()
-
-    # Get data for processing
     properties = load_data(args.data)
     for prop in properties:
         if args.noactive:

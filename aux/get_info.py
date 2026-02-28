@@ -14,7 +14,7 @@ logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"),
 import pandas as pd
 import numpy as np 
 
-from pymatgen import MPRester
+#from pymatgen import MPRester
 from megnet.data.graph import GaussianDistance
 from megnet.data.graph import StructureGraph
 from megnet.data.crystal import CrystalGraph

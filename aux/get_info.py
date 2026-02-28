@@ -1,25 +1,21 @@
 """
-get_info.py, SciML-SCD, RAL
-
-Passes the name of the optical property of interest 
+Passes the name of the optical property of interest
 if the data is passed or data is downloaded from the 
 Materials Project if the API key is passed. 
 
 Other useful routines are accessible from here. 
 """
 import logging
-import os 
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"),
-                    format="%(levelname)s:gp-net: %(message)s")
 import pandas as pd
 import numpy as np 
 
-#from pymatgen import MPRester
+from pymatgen import MPRester
 from megnet.data.graph import GaussianDistance
 from megnet.data.graph import StructureGraph
 from megnet.data.crystal import CrystalGraph
 from megnet.models import MEGNetModel
 
+log = logging.getLogger("gp-net")
 
 def show_layers(model_file):
     """

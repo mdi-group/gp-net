@@ -1,19 +1,17 @@
 """
-MEGNetTrain.py, SciML-SCD, RAL
-
-Trains on the optical properties of materials using the MEGNet 
+Trains on the optical properties of materials using the MEGNet
 of materials. Refer to https://github.com/materialsvirtuallab/megnet 
 for more information on MEGNet. 
 """
-import sys
+
 import subprocess 
 import logging 
 import os
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"),
-                    format="%(levelname)s:gp-net: %(message)s")
 
 import numpy as np
 from keras.callbacks import ModelCheckpoint
+
+log = logging.getLogger("gp-net")
 
 
 class training:

@@ -1,15 +1,11 @@
 """
-adam.py, SciML-SCD, RAL
-
-Uses the adam optimiser to optimise the hyperparameters of the Matern
+Uses the Adam optimiser to optimise the hyperparameters of the Matern
 One Half kernel Gaussian Process. This process is also known as the 
 Ornstein-Uhlenbeck process. The optical properties of the materials 
 are predicted by the GP, and their uncertainties estimated. 
 """
 import logging
-import os 
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"),
-                    format="%(levelname)s:gp-net: %(message)s")
+
 import numpy as np
 import pandas as pd
 from scipy.stats import pearsonr
@@ -19,7 +15,9 @@ tf.enable_v2_behavior()
 import tensorflow_probability as tfp
 tfd = tfp.distributions 
 tfk = tfp.math.psd_kernels
-tfb = tfp.bijectors 
+tfb = tfp.bijectors
+
+log = logging.getLogger("gp-net")
 
 
 def convert_index_points(array):

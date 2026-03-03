@@ -16,9 +16,9 @@ of active learning.
 
 ### Usage
 ```
-usage: gp-net.py [-h] [-checkdata] [-ltype LTYPE] [-nomeg] [-noactive]
+usage: gp-net.py [-h] [-ltype LTYPE] [-nomeg] [-noactive]
                  [-samp SAMP] [-cycle CYCLE CYCLE] [-repeat] [-q QUAN]
-                 [-stop STOP] [-data DATA [DATA ...]] [-key KEY [KEY ...]]
+                 [-stop STOP] [-data DATA [DATA ...]] 
                  [-frac FRAC [FRAC ...]] [-include] [-nsplit NSPLIT]
                  [-epochs EPOCHS] [-batch BATCH] [-bond BOND] [-nfeat NFEAT]
                  [-cutoff CUTOFF] [-width WIDTH] [-prev] [-layer LAYER]
@@ -30,8 +30,6 @@ Uncertainty quantification in neural networks.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -checkdata            Check number of entries in the dataset. [default:
-                        False]
   -ltype LTYPE          Display the layers in a fitted MEGNet model.
   -nomeg                Do not train with MEGNet. [default: False]
   -noactive             Don't do active learning [default: False]
@@ -49,10 +47,6 @@ optional arguments:
   -data DATA [DATA ...]
                         Input dataset(s). Multiple datasets can be passed, one
                         per optical property of interest. [No default]
-  -key KEY [KEY ...]    API key for data download and the optical properties
-                        of interest, separated by spaces. For MEGNet users
-                        only. [eg. Key band_gap formation_energy_per_atom
-                        e_above_hull]
   -frac FRAC [FRAC ...]
                         Fraction of data for training and testing separated by
                         spaces for train-test split and k-fold cross-

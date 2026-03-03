@@ -21,23 +21,6 @@ logging.basicConfig(
 )
 
 
-def show_layers(model_file):
-    """
-    show_layers(model_file)
-
-    Displays information on layers of a pre-trained
-    MEGNet model.
-
-    Inputs:
-        model_file-      A pre-trained MEGNet model file.
-
-    Outputs:
-         1-              Layers in the model file.
-    """
-    pretrained_model = MEGNetModel.from_file(model_file)
-    print(pretrained_model.summary())
-
-
 def load_data(data):
     """
     load_data(data)

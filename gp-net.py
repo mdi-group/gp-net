@@ -9,7 +9,6 @@ import sys
 import logging
 import os
 
-
 import numpy as np
 
 from aux.get_info import load_data, megnet_input
@@ -80,15 +79,11 @@ def main():
         description="Uncertainty quantification in neural networks."
     )
     parser.add_argument(
-        "-ltype", help="Display the layers in a fitted MEGNet model.", type=str
-    )
-    parser.add_argument(
         "-nomeg",
         action="store_true",
         help="Do not train with MEGNet. [default: False]",
         default=False,
     )
-
     parser.add_argument(
         "-noactive",
         action="store_true",
@@ -135,6 +130,7 @@ def main():
                         per optical property of interest. [No default]",
         type=str,
         nargs="+",
+        required=True,
     )
     parser.add_argument(
         "-frac",
@@ -256,13 +252,6 @@ def main():
     amp = args.amp or Params().amp
     length_scale = args.length or Params().length
     maxiters = args.maxiters or Params().maxiters
-
-    # Display layers in a pre-fitted MEGNet model
-    if args.ltype:
-        from aux.get_info import show_layers
-
-        show_layers(args.ltype)
-        sys.exit()
 
     if args.include:
         logging.info("Include zero optical property values ...")

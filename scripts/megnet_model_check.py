@@ -1,5 +1,5 @@
 """
-Displays information about the layers of a pre-trained MEGNet model
+Displays the layers of a pre-trained MEGNet model
 """
 
 import os

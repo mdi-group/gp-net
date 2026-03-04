@@ -1,27 +1,22 @@
-#!/anaconda3/bin/python
+"""A tool for inserting uncertainties into a neural network."""
 
-"""
-gp-net.py, SciML-SCD, RAL
-
-A tool for inserting uncertainties into a neural network.
-"""
 import argparse
 import sys
 import logging
 import os
 
-logging.basicConfig(
-    level=os.environ.get("LOGLEVEL", "INFO"), format="%(levelname)s:gp-net: %(message)s"
-)
 import numpy
 
-from aux.get_info import megnet_input, get_train_and_validation_sets
+from aux.get_info import load_data, megnet_input, get_train_and_validation_sets
 from aux.activations import latent
 from aux.plotting import plot
+
 from train.MEGNetTrain import training
 from optimizers.adam import adam
 
-VERSION = "1.0"
+logging.basicConfig(
+    level=os.environ.get("LOGLEVEL", "INFO"), format="%(levelname)s:gp-net: %(message)s"
+)
 
 
 class Params:
@@ -79,15 +74,6 @@ def main():
         description="Uncertainty quantification in neural networks."
     )
     parser.add_argument(
-        "-checkdata",
-        action="store_true",
-        help="Check number of entries in the dataset. [default: False]",
-        default=False,
-    )
-    parser.add_argument(
-        "-ltype", help="Display the layers in a fitted MEGNet model.", type=str
-    )
-    parser.add_argument(
         "-nomeg",
         action="store_true",
         help="Do not train with MEGNet. [default: False]",
@@ -138,14 +124,6 @@ def main():
         "-data",
         help="Input dataset(s). Multiple datasets can be passed, one\
                         per optical property of interest. [No default]",
-        type=str,
-        nargs="+",
-    )
-    parser.add_argument(
-        "-key",
-        help="API key for data download and the optical properties of\
-                        interest, separated by spaces. For MEGNet users only. [eg. Key band_gap\
-                        formation_energy_per_atom e_above_hull]",
         type=str,
         nargs="+",
     )
@@ -270,13 +248,6 @@ def main():
     length_scale = args.length or Params().length
     maxiters = args.maxiters or Params().maxiters
 
-    # Display layers in a pre-fitted MEGNet model
-    if args.ltype:
-        from aux.get_info import show_layers
-
-        show_layers(args.ltype)
-        sys.exit()
-
     if args.include:
         logging.info("Include zero optical property values ...")
     else:
@@ -347,27 +318,7 @@ def main():
                 sys.exit()
 
     # Get data for processing
-    if args.data or (args.data and args.key):
-        from aux.get_info import load_data
-
-        properties = load_data(args.data)
-    elif args.key:
-        from aux.get_info import download
-
-        properties = download(args.key)
-    else:
-        logging.error("No input data provided. Use -data or -key option!")
-        sys.exit()
-
-    # Check number of entries in dataset
-    if args.checkdata:
-        from aux.get_info import ReadData
-
-        for prop in properties:
-            for dat in args.data:
-                ReadData(dat, args.include)
-        sys.exit()
-
+    properties = load_data(args.data)
     for prop in properties:
         if args.noactive:
             if not args.nomeg:
@@ -870,6 +821,7 @@ def main():
                 Xtrain, ytrain, Xval, yval = get_train_and_validation_sets(
                     Xpool, ypool, val_boundary
                 )
+
                 print("Requested validation set: %s%% of pool" % (val_frac * 100))
                 print("Training set:", ytrain.shape)
                 print("Validation set:", yval.shape)
@@ -1067,5 +1019,5 @@ def main():
 
 
 if __name__ == "__main__":
-    print("\ngp-net.py ver ", VERSION)
+    print("\ngp-net.py ver ")
     main()
